@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://5qtpdede8o7j"]
 
-[ext_resource type="Texture2D" uid="uid://bxlvjywgrumdp" path="res://icon.svg" id="1_lq3xn"]
+[ext_resource type="Texture2D" uid="uid://cho0l47xs3u3f" path="res://Entities/Art/Shapes.png" id="1_lq3xn"]
 
 [node name="Shape" type="Node2D" unique_id=2041839581]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1107377841]
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_lq3xn")
+hframes = 8
+frame = 2
