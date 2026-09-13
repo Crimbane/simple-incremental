@@ -21,6 +21,17 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Common/": "orange",
+"res://Entities/": "yellow",
+"res://Stages/": "green",
+"res://Systems/": "blue",
+"res://Testing/": "purple"
+}
+
 [input]
 
 "Left Click"={
