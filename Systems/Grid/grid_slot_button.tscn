@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dvinbarfymwhy"]
+
+[ext_resource type="Texture2D" uid="uid://coxg1sw70d0bn" path="res://Systems/Grid/Art/GridSlot.png" id="1_hdoya"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjc7g"]
+texture = ExtResource("1_hdoya")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrqo6"]
+texture = ExtResource("1_hdoya")
+modulate_color = Color(1.1291975, 1.1291975, 1.1291975, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6pas7"]
+texture = ExtResource("1_hdoya")
+modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
+
+[node name="GridSlotButton" type="Button" unique_id=1294166546]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fjc7g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nrqo6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6pas7")
