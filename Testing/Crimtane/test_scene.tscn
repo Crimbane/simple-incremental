@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_y4dht")
+gridSize = 8
 
 [node name="Button" type="Button" parent="Control" unique_id=2013118900]
 layout_mode = 1

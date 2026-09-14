@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://d0iur6id8k8mg"]
+
+[ext_resource type="Script" uid="uid://dx3rnmqjq6ufl" path="res://Entities/Shapes/shape.gd" id="1_g8yjc"]
+[ext_resource type="Texture2D" uid="uid://cho0l47xs3u3f" path="res://Entities/Shapes/Art/Shapes.png" id="2_slpie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh4ky"]
+atlas = ExtResource("2_slpie")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg2cs"]
+atlas = ExtResource("2_slpie")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67scd"]
+atlas = ExtResource("2_slpie")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6i1v"]
+atlas = ExtResource("2_slpie")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhd0j"]
+atlas = ExtResource("2_slpie")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnla8"]
+atlas = ExtResource("2_slpie")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dou1"]
+atlas = ExtResource("2_slpie")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccd6n"]
+atlas = ExtResource("2_slpie")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1yug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh4ky")
+}],
+"loop": 1,
+"name": &"dot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg2cs")
+}],
+"loop": 1,
+"name": &"heptagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67scd")
+}],
+"loop": 1,
+"name": &"hexagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6i1v")
+}],
+"loop": 1,
+"name": &"line",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhd0j")
+}],
+"loop": 1,
+"name": &"octagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnla8")
+}],
+"loop": 1,
+"name": &"pentagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dou1")
+}],
+"loop": 1,
+"name": &"square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccd6n")
+}],
+"loop": 1,
+"name": &"triangle",
+"speed": 5.0
+}]
+
+[node name="Hexagon" type="Node2D" unique_id=604213033]
+script = ExtResource("1_g8yjc")
+shapeSprite = "Hexagon"
+cost = 320
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016100403]
+sprite_frames = SubResource("SpriteFrames_t1yug")
+animation = &"hexagon"
