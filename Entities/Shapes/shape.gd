@@ -21,8 +21,6 @@ extends Node2D
 func _ready() -> void:
 	updateSprite()
 	updateColor()
-	
-	print("Shape value: ", getShapeValue())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
