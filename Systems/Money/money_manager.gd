@@ -1,30 +1,38 @@
 extends Control
 
-@onready var verticesLabel: Label = $MarginContainer/Vertices
-var vertices: float = 0.0
+@onready var moneyLabel: Label = $MarginContainer/Money
 
-# Called when the node enters the scene tree for the first time.
+var money: int = 0
+var time: float = 0.0
+var interval: float = 1.0 # Seconds between increments
+var incrementAmount: int = 1
+
+
 func _ready() -> void:
 	pass
 	#var triangle: Button = $VBoxContainer/HBoxContainer1/Triangle
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	vertices += delta * 10
+	time += delta
+	
+	if time > interval:
+		time = 0
+		money += incrementAmount
+	
 	updateMoneyUI()
 
 
 func updateMoneyUI() -> void:
-	verticesLabel.text = "Vertices: " + str(int(vertices))
+	moneyLabel.text = "Vertices: " + str(money)
 
 
 func addMoney(amount: int) -> void:
-	vertices += amount
+	money += amount
 	updateMoneyUI()
 
 
 func removeMoney(amount: int) -> void:
-	vertices -= amount
+	money -= amount
 	updateMoneyUI()

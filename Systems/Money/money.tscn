@@ -25,7 +25,7 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="Vertices" type="Label" parent="Money Manager/MarginContainer" unique_id=228411836]
+[node name="Money" type="Label" parent="Money Manager/MarginContainer" unique_id=228411836]
 layout_mode = 2
 text = "428 Vertices"
 

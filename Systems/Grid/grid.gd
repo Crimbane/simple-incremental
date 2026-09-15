@@ -35,7 +35,7 @@ var gridButtons: Array
 var gridStorage: Array[Dictionary]
 
 
-@onready var money = $"../Money/Money Manager"
+@onready var moneyManager = $"../Money/Money Manager"
 
 func _ready() -> void:
 	shapeButton.button_down.connect(_on_shape_button_press.bind(SHAPE))
@@ -80,8 +80,8 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 	if shapeHeldByCursor and not getShapeInStorageBySlot(slot):
 		if getSlotInStorageByShape(shapeHeldByCursor) == null:
 			print("place")
-			if money.vertices >= shapeHeldByCursor.cost:
-				money.removeMoney(shapeHeldByCursor.cost)
+			if moneyManager.money >= shapeHeldByCursor.cost:
+				moneyManager.removeMoney(shapeHeldByCursor.cost)
 			else:
 				print("You are poor")
 				shapeHeldByCursor.queue_free()
