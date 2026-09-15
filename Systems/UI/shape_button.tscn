@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cx3ey2m65d6vr"]
+
+[ext_resource type="Script" uid="uid://bqtoshw7qf1lb" path="res://Systems/UI/shape_button.gd" id="1_83lja"]
+
+[node name="Button" type="Button" unique_id=1791495124]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_83lja")

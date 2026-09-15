@@ -103,6 +103,7 @@ animations = [{
 }]
 
 [node name="Dot" type="Node2D" unique_id=604213033]
+z_index = 1
 script = ExtResource("1_ke8r0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016100403]

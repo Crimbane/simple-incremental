@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://chn1n630kw24g"]
 
-[ext_resource type="PackedScene" uid="uid://c7hu13n2r74df" path="res://Systems/Money/money.tscn" id="1_lxwtg"]
-[ext_resource type="PackedScene" uid="uid://dm0fi32bqnuv4" path="res://Systems/Grid/grid.tscn" id="2_dqdwq"]
+[ext_resource type="Script" uid="uid://dxlbbhb038hgt" path="res://Systems/game_manager.gd" id="1_dqdwq"]
+[ext_resource type="PackedScene" uid="uid://c7hu13n2r74df" path="res://Systems/UI/ui.tscn" id="1_lxwtg"]
 
-[node name="Main" type="Node" unique_id=311859188]
+[node name="Game Manager" type="Node" unique_id=311859188]
+script = ExtResource("1_dqdwq")
 
-[node name="Money" parent="." unique_id=1891957665 instance=ExtResource("1_lxwtg")]
+[node name="UI" parent="." unique_id=1891957665 instance=ExtResource("1_lxwtg")]
 
-[node name="Grid" parent="." unique_id=13575906 instance=ExtResource("2_dqdwq")]
-
-[editable path="Money"]
+[editable path="UI"]

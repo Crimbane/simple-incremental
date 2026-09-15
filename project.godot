@@ -14,6 +14,11 @@ config/name="Simple Incremental"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://dxlbbhb038hgt"
+UIManager="*uid://bgm2aymcg2fgu"
+
 [display]
 
 window/size/viewport_width=640
