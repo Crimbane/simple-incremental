@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dm2ovexatbsw" path="res://Entities/Shapes/dot.tscn" id="3_dbnd8"]
 [ext_resource type="PackedScene" uid="uid://c8qhdkcnfwhm0" path="res://Entities/Shapes/line.tscn" id="4_8vm6a"]
 [ext_resource type="Texture2D" uid="uid://dfmh6fcatyqp" path="res://Entities/Shapes/Art/Triangle.png" id="4_dbnd8"]
+[ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
 [ext_resource type="PackedScene" uid="uid://dxk2fgmtj8aow" path="res://Entities/Shapes/triangle.tscn" id="5_6uor8"]
 [ext_resource type="Texture2D" uid="uid://dxqco0xickmqf" path="res://Entities/Shapes/Art/Square.png" id="5_8vm6a"]
 [ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="6_6uor8"]
@@ -21,7 +22,7 @@
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "upgradeColorButton")]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -34,6 +35,7 @@ script = ExtResource("1_5q6yw")
 gridSize = 8
 moneyLabel = NodePath("MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("GridContainer")
+upgradeColorButton = NodePath("UpgradeButtons/Upgrade Color")
 
 [node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager" unique_id=1788288161]
 layout_mode = 1
@@ -88,43 +90,91 @@ columns = 4
 
 [node name="Dot" parent="UI Manager/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("2_27mu8")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("3_dbnd8")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Dot" unique_id=1638956966]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_27mu8")
 
 [node name="Line" parent="UI Manager/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("3_7xnr0")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("4_8vm6a")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Line" unique_id=1622302756]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_7xnr0")
 
 [node name="Triangle" parent="UI Manager/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("4_dbnd8")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("5_6uor8")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Triangle" unique_id=177981126]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_dbnd8")
 
 [node name="Square" parent="UI Manager/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_8vm6a")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("6_car1l")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Square" unique_id=1919839257]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_8vm6a")
 
 [node name="Pentagon" parent="UI Manager/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("6_6uor8")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("7_db80o")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Pentagon" unique_id=768671001]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_6uor8")
 
 [node name="Hexagon" parent="UI Manager/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("7_car1l")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("8_xm52q")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Hexagon" unique_id=1545123189]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_car1l")
 
 [node name="Heptagon" parent="UI Manager/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("8_db80o")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("9_3j335")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Heptagon" unique_id=978141538]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_db80o")
 
 [node name="Octagon" parent="UI Manager/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("9_xm52q")
+icon = ExtResource("5_5t6h7")
 shape = ExtResource("10_2jdqb")
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Octagon" unique_id=445230684]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_xm52q")
 
 [node name="GridContainer" type="GridContainer" parent="UI Manager" unique_id=980796157]
 z_index = -1
@@ -143,3 +193,38 @@ grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
+
+[node name="UpgradeButtons" type="GridContainer" parent="UI Manager" unique_id=1221519659]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Upgrade Color" type="Button" parent="UI Manager/UpgradeButtons" unique_id=500497845]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Upgrade
+Color"
+icon = ExtResource("5_5t6h7")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/UpgradeButtons/Upgrade Color" unique_id=1495224555]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6uor8")

@@ -9,6 +9,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 
 @export var moneyLabel: Label
 @export var gridContainer: GridContainer
+@export var upgradeColorButton: Button
 
 var gridButtons: Array
 
@@ -17,6 +18,8 @@ var shapeHeldByCursor: Node2D
 func _ready() -> void:
 	GameManager.UIManager = self
 	updateGrid()
+	
+	upgradeColorButton.pressed.connect(GameManager.upgradeColor)
 
 
 func _process(_delta: float) -> void:
@@ -44,6 +47,28 @@ func updateMoneyUI() -> void:
 		return
 	
 	moneyLabel.text = "Vertices: " + str(GameManager.money)
+
+func updateColor() -> void:
+	var shapeColor: String = GameManager.shapeColor
+	for button in $ShapeButtons.get_children():
+		var textureRect = button.get_node("TextureRect")
+		match shapeColor:
+			"White":
+				textureRect.modulate = Color.WHITE
+			"Red":
+				textureRect.modulate = Color.RED
+			"Orange":
+				textureRect.modulate = Color.ORANGE
+			"Yellow":
+				textureRect.modulate = Color.YELLOW
+			"Green":
+				textureRect.modulate = Color.GREEN
+			"Blue":
+				textureRect.modulate = Color.BLUE
+			"Purple":
+				textureRect.modulate = Color.PURPLE
+			"Black":
+				textureRect.modulate = Color.BLACK
 
 
 #region Grid

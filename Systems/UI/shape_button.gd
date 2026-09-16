@@ -1,6 +1,8 @@
 extends Button
 
 @export var shape: PackedScene
+const BUTTON_BACKGROUND = preload("uid://dtndmfviqeq4d")
+
 
 
 func _ready() -> void:

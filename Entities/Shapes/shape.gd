@@ -8,13 +8,6 @@ extends Node2D
 		shapeSprite = value
 		updateSprite()
 
-@export_enum(
-	"White", "Red", "Orange", "Yellow",
-	"Green", "Blue", "Purple", "Black") var shapeColor: String = "White":
-	set(value):
-		shapeColor = value
-		updateColor()
-
 @export var cost: int = 10
 
 # Called when the node enters the scene tree for the first time.
@@ -57,6 +50,8 @@ func updateColor() -> void:
 	if animatedSprite == null:
 		return
 	
+	var shapeColor: String = GameManager.shapeColor
+	
 	match shapeColor:
 		"White":
 			animatedSprite.modulate = Color.WHITE
@@ -76,23 +71,46 @@ func updateColor() -> void:
 			animatedSprite.modulate = Color.BLACK
 
 
+func getColorMultiplier() -> int:
+	match GameManager.shapeColor:
+		"White":
+			return 1
+		"Red":
+			return 2
+		"Orange":
+			return 4
+		"Yellow":
+			return 8
+		"Green":
+			return 16
+		"Blue":
+			return 32
+		"Purple":
+			return 64
+		"Black":
+			return 128
+	
+	return 1
+
+
 func getShapeValue() -> int:
+	var baseValue: int
 	match shapeSprite:
 		"Dot":
-			return 1
+			baseValue = 1
 		"Line":
-			return 2
+			baseValue = 2
 		"Triangle":
-			return 3
+			baseValue = 3
 		"Square":
-			return 4
+			baseValue = 4
 		"Pentagon":
-			return 5
+			baseValue = 5
 		"Hexagon":
-			return 6
+			baseValue = 6
 		"Heptagon":
-			return 7
+			baseValue = 7
 		"Octagon":
-			return 8
+			baseValue = 8
 	
-	return 0
+	return baseValue * getColorMultiplier()
