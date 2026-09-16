@@ -94,10 +94,20 @@ icon = ExtResource("5_5t6h7")
 shape = ExtResource("3_dbnd8")
 
 [node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Dot" unique_id=1638956966]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_27mu8")
+stretch_mode = 3
 
 [node name="Line" parent="UI Manager/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -109,6 +119,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_7xnr0")
+stretch_mode = 3
 
 [node name="Triangle" parent="UI Manager/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -120,6 +131,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_dbnd8")
+stretch_mode = 3
 
 [node name="Square" parent="UI Manager/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -131,6 +143,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_8vm6a")
+stretch_mode = 3
 
 [node name="Pentagon" parent="UI Manager/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -142,6 +155,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_6uor8")
+stretch_mode = 3
 
 [node name="Hexagon" parent="UI Manager/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -153,6 +167,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_car1l")
+stretch_mode = 3
 
 [node name="Heptagon" parent="UI Manager/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -164,6 +179,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_db80o")
+stretch_mode = 3
 
 [node name="Octagon" parent="UI Manager/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
@@ -175,6 +191,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_xm52q")
+stretch_mode = 3
 
 [node name="GridContainer" type="GridContainer" parent="UI Manager" unique_id=980796157]
 z_index = -1
