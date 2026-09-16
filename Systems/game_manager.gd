@@ -1,7 +1,7 @@
 extends Node
 
 
-var money: int = 10000000
+var money: int = 1000000
 var time: float = 0.0
 var interval: float = 1 # Seconds between increments
 const BASE_INCREMENT_AMOUNT: int = 0
