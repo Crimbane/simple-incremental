@@ -13,6 +13,7 @@ func _on_shape_button_press() -> void:
 	if GameManager.UIManager.shapeHeldByCursor:
 		return
 		
-	var newShape = shape.instantiate()
+	var newShape: Shape = shape.instantiate()
+	newShape.isPurchaseShape = true
 	GameManager.UIManager.addShapeToCursor(newShape)
 	GameManager.UIManager.add_child(newShape)

@@ -85,35 +85,42 @@ func upgradeColor() -> void:
 	calculateMoneyIncrement()
 
 #region Grid
-func addShapeToStorage(slot: int, shape: Node2D) -> void:
-	gridStorage.append({"slot": slot,"shape": shape})
+func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
+	storage.append({"slot": slot,"shape": shape})
 
 
-func removeShapeFromStorage(shape: Node2D) -> void:
-	for dict in gridStorage:
+func removeShapeFromStorage(shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
+	for dict in storage:
 		if dict["shape"] == shape:
-			gridStorage.erase(dict)
+			storage.erase(dict)
 			return
 
 
-func removeShapeFromStorageSlot(slot: int) -> void:
-	for dict in gridStorage:
+func removeShapeFromStorageSlot(slot: int, storage: Array[Dictionary] = gridStorage) -> void:
+	for dict in storage:
 		if dict["slot"] == slot:
-			gridStorage.erase(dict)
+			storage.erase(dict)
 			return
 
 
-func getShapeInStorageBySlot(slot: int) -> Node2D:
-	for dict in gridStorage:
+func getShapeInStorageBySlot(slot: int, storage: Array[Dictionary] = gridStorage) -> Node2D:
+	for dict in storage:
 		if dict["slot"] == slot:
 			return dict["shape"]
 	return null
 
 
-func getSlotInStorageByShape(shape: Node2D):
-	for dict in gridStorage:
+func getSlotInStorageByShape(shape: Node2D, storage: Array[Dictionary] = gridStorage):
+	for dict in storage:
 		if dict["shape"] == shape:
 			return dict["slot"]
 	return null
+
+
+func clearStorage(storage: Array[Dictionary] = gridStorage) -> void:
+	storage.clear()
+
+func transferBetweenStorages(storageA: Array[Dictionary], storageB: Array[Dictionary]) -> void:
+	storageA.append_array(storageB)
 
 #endregion

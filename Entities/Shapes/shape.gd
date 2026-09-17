@@ -1,4 +1,4 @@
-@tool
+class_name Shape
 extends Node2D
 
 @export_enum(
@@ -9,6 +9,12 @@ extends Node2D
 		updateSprite()
 
 @export var cost: int = 10
+
+var isPurchaseShape: bool = false
+var isGhostShape: bool = false:
+	set(value):
+		isGhostShape = value
+		makeGhostShape()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -114,3 +120,11 @@ func getShapeValue() -> int:
 			baseValue = 8
 	
 	return baseValue * getColorMultiplier()
+
+
+func makeGhostShape():
+	if not isGhostShape:
+		return
+	
+	var animatedSprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+	animatedSprite.modulate = Color(1.0, 1.0, 1.0, 0.25)
