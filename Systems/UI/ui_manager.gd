@@ -80,6 +80,7 @@ func addShapeToCursor(shape: Node2D) -> void:
 func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 	
 	if shapeHeldByCursor and not GameManager.getShapeInStorageBySlot(slot):
+		var move = false
 		if GameManager.getSlotInStorageByShape(shapeHeldByCursor) == null:
 			print("place")
 			
@@ -93,13 +94,21 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 			GameManager.calculateMoneyIncrement()
 		else:
 			print("move")
+			move = true
 			GameManager.removeShapeFromStorage(shapeHeldByCursor)
 			GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 			GameManager.calculateMoneyIncrement()
 		
+		
 		shapeHeldByCursor.reparent(gridButton)
 		shapeHeldByCursor.global_position = gridButton.global_position + Vector2(16, 16)
-		shapeHeldByCursor = null
+		
+		if not move and Input.is_action_pressed("Shift"):
+			var newShape = shapeHeldByCursor.duplicate()
+			self.add_child(newShape)
+			shapeHeldByCursor = newShape
+		else:
+			shapeHeldByCursor = null
 		
 	elif shapeHeldByCursor and GameManager.getShapeInStorageBySlot(slot) == shapeHeldByCursor:
 		print("place back")
