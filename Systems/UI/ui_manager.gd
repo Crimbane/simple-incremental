@@ -107,6 +107,23 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 		shapeHeldByCursor.reparent(gridButton)
 		shapeHeldByCursor.global_position = gridButton.global_position + Vector2(16, 16)
 		shapeHeldByCursor = null
+	
+	elif shapeHeldByCursor and GameManager.getShapeInStorageBySlot(slot):
+		print("swap")
+		
+		var limboShape = shapeHeldByCursor
+		var limboSlot = GameManager.getSlotInStorageByShape(shapeHeldByCursor)
+		
+		shapeHeldByCursor = GameManager.getShapeInStorageBySlot(slot)
+		shapeHeldByCursor.reparent(self)
+		limboShape.reparent(gridButton)
+		
+		GameManager.removeShapeFromStorage(limboShape)
+		GameManager.removeShapeFromStorage(shapeHeldByCursor)
+		GameManager.addShapeToStorage(limboSlot, shapeHeldByCursor)
+		GameManager.addShapeToStorage(slot, limboShape)
+		
+		limboShape.global_position = gridButton.global_position + Vector2(16, 16)
 		
 	elif not shapeHeldByCursor and GameManager.getShapeInStorageBySlot(slot):
 		print("pickup")
@@ -173,27 +190,25 @@ enum BigNumbers {
 }
 
 var notations: Dictionary = {
-	MILLION = {ABBREVIATION = "M", SCIENTIFIC = "e6", ENGINEERING = "e6"},
+	MILLION = {SCIENTIFIC = "e6", ENGINEERING = "e6", ABBREVIATION = "M"},
 	TEN_MILLION = {SCIENTIFIC = "e7"},
 	HUNDRED_MILLION = {SCIENTIFIC = "e8"},
-	BILLION = {ABBREVIATION = "B", SCIENTIFIC = "e9", ENGINEERING = "e9"},
+	BILLION = {SCIENTIFIC = "e9", ENGINEERING = "e9", ABBREVIATION = "B"},
 	TEN_BILLION = {SCIENTIFIC = "e10"},
 	HUNDRED_BILLION = {SCIENTIFIC = "e11"},
-	TRILLION = {ABBREVIATION = "T", SCIENTIFIC = "e12", ENGINEERING = "e12"},
+	TRILLION = {SCIENTIFIC = "e12", ENGINEERING = "e12", ABBREVIATION = "T"},
 	TEN_TRILLION = {SCIENTIFIC = "e13"},
 	HUNDRED_TRILLION = {SCIENTIFIC = "e14"},
-	QUADRILLION = {ABBREVIATION = "Qd", SCIENTIFIC = "e15", ENGINEERING = "e15"},
+	QUADRILLION = {SCIENTIFIC = "e15", ENGINEERING = "e15", ABBREVIATION = "Qd"},
 	TEN_QUADRILLION = {SCIENTIFIC = "e16"},
 	HUNDRED_QUADRILLION = {SCIENTIFIC = "e17"},
-	QUINTILLION = {ABBREVIATION = "Qn", SCIENTIFIC = "e18", ENGINEERING = "e18"}
+	QUINTILLION = {SCIENTIFIC = "e18", ENGINEERING = "e18", ABBREVIATION = "Qn"}
 }
 
 func formatMoney(value: int, notationStyle: NotationStyle) -> String:
 	if notationStyle == NotationStyle.NONE or value < BigNumbers.MILLION:
 		return str(value)
 	
-	var suffix: String = ""
-	var newValue: float = float(value)
 	var searchKey: String
 	
 	for numKey in BigNumbers:
@@ -204,8 +219,8 @@ func formatMoney(value: int, notationStyle: NotationStyle) -> String:
 		else:
 			break
 	
-	suffix = notations[searchKey][NotationStyle.find_key(notationStyle)]
-	newValue = float(value) / BigNumbers[searchKey]
+	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
+	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
 	
 	return str(snapped(newValue, 0.001)) + suffix
 
