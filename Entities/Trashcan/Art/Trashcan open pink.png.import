@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da04ju45o2p3t"
-path="res://.godot/imported/Trashcan open.png-cad05f3ecb7c4a9f7a623bcab9fd6065.ctex"
+uid="uid://d3lt5paffov2q"
+path="res://.godot/imported/Trashcan open pink.png-320918ad39e56dac8583348e484cb9fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Trashcan/Art/Trashcan open.png"
-dest_files=["res://.godot/imported/Trashcan open.png-cad05f3ecb7c4a9f7a623bcab9fd6065.ctex"]
+source_file="res://Entities/Trashcan/Art/Trashcan open pink.png"
+dest_files=["res://.godot/imported/Trashcan open pink.png-320918ad39e56dac8583348e484cb9fa.ctex"]
 
 [params]
 
