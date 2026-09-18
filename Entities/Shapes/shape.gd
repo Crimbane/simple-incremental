@@ -1,6 +1,7 @@
 class_name Shape
 extends Node2D
 
+
 enum ShapeSprite {
 	Dot,
 	Line,
@@ -27,31 +28,40 @@ func _ready() -> void:
 
 
 func updateSprite() -> void:
-	var animatedSprite = get_node_or_null("AnimatedSprite2D")
+	var animatedSprite = get_node_or_null("Sprite")
+	var dropShadow = get_node_or_null("Sprite/DropShadow")
 	
-	if animatedSprite == null:
+	if animatedSprite == null or dropShadow == null:
 		return
 	
 	match shapeSprite:
 		ShapeSprite.Dot:
 			animatedSprite.animation = "dot"
+			dropShadow.animation = "dot"
 		ShapeSprite.Line:
 			animatedSprite.animation = "line"
+			dropShadow.animation = "line"
 		ShapeSprite.Triangle:
 			animatedSprite.animation = "triangle"
+			dropShadow.animation = "triangle"
 		ShapeSprite.Square:
 			animatedSprite.animation = "square"
+			dropShadow.animation = "square"
 		ShapeSprite.Pentagon:
 			animatedSprite.animation = "pentagon"
+			dropShadow.animation = "pentagon"
 		ShapeSprite.Hexagon:
 			animatedSprite.animation = "hexagon"
+			dropShadow.animation = "hexagon"
 		ShapeSprite.Heptagon:
 			animatedSprite.animation = "heptagon"
+			dropShadow.animation = "heptagon"
 		ShapeSprite.Octagon:
 			animatedSprite.animation = "octagon"
+			dropShadow.animation = "octagon"
 
 func updateColor() -> void:
-	var animatedSprite = get_node_or_null("AnimatedSprite2D")
+	var animatedSprite = get_node_or_null("Sprite")
 	
 	if animatedSprite == null:
 		return

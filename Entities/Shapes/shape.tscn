@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dx3rnmqjq6ufl" path="res://Entities/Shapes/shape.gd" id="1_wfk0b"]
 [ext_resource type="Texture2D" uid="uid://cho0l47xs3u3f" path="res://Entities/Shapes/Art/Shapes.png" id="2_tetdi"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="3_wp3uc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sh4ky"]
 atlas = ExtResource("2_tetdi")
@@ -102,9 +103,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrqo6"]
+shader = ExtResource("3_wp3uc")
+shader_parameter/blur_strength = 1.8070000858325002
+
 [node name="Shape" type="Node2D" unique_id=604213033]
 script = ExtResource("1_wfk0b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016100403]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=2016100403]
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_t1yug")
-animation = &"octagon"
+animation = &"dot"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Sprite" unique_id=1050593287]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_nrqo6")
+sprite_frames = SubResource("SpriteFrames_t1yug")
+animation = &"dot"
