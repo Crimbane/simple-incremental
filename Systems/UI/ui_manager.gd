@@ -9,6 +9,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 
 @export var moneyLabel: Label
 @export var gridContainer: GridContainer
+@export var shapeButtons: GridContainer
 @export var upgradeColorButton: Button
 
 var gridButtons: Array
@@ -79,7 +80,7 @@ func updateColor() -> void:
 	
 	GameManager.bigShape.updateColor()
 	
-	for button in $ShapeButtons.get_children():
+	for button in shapeButtons.get_children():
 		var textureRect = button.get_node("TextureRect")
 		match shapeColor:
 			"White":
