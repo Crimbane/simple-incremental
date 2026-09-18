@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://ces5msndkbhj0"]
 
 [ext_resource type="Script" uid="uid://ba6af10djpn3c" path="res://Entities/Shapes/big_shape.gd" id="1_p3nkl"]
+[ext_resource type="Shader" uid="uid://cjacx0qa0om6u" path="res://Entities/Shapes/smooth_pixel_2D.gdshader" id="2_81k3f"]
 [ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="3_w0gq0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yv6x"]
+shader = ExtResource("2_81k3f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5dm2"]
 atlas = ExtResource("3_w0gq0")
@@ -132,5 +136,6 @@ script = ExtResource("1_p3nkl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715047503]
 modulate = Color(0.4745098, 1, 1, 1)
+material = SubResource("ShaderMaterial_8yv6x")
 sprite_frames = SubResource("SpriteFrames_t1yug")
 animation = &"octagon"
