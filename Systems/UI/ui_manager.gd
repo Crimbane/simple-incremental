@@ -115,18 +115,18 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 			shapeHeldByCursor.isPurchaseShape = false
 			
 			if GameManager.money >= shapeHeldByCursor.cost:
-				GameManager.removeMoney(shapeHeldByCursor.cost)
+				if shiftHold:
+					shapeHeldByCursor.isGhostShape = true
+					GameManager.addShapeToStorage(slot, shapeHeldByCursor, ghostStorage)
+				else:
+					GameManager.addShapeToStorage(slot, shapeHeldByCursor)
+					GameManager.removeMoney(shapeHeldByCursor.cost)
+					
+				GameManager.calculateMoneyIncrement()
 			else:
 				print("You are poor")
 				shapeHeldByCursor.queue_free()
 				return
-			
-			if shiftHold:
-				shapeHeldByCursor.isGhostShape = true
-				GameManager.addShapeToStorage(slot, shapeHeldByCursor, ghostStorage)
-			else:
-				GameManager.addShapeToStorage(slot, shapeHeldByCursor)
-			GameManager.calculateMoneyIncrement()
 		else:
 			print("move")
 			move = true
@@ -177,15 +177,16 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 
 func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
 	if shiftHold and gridLeftClickHold and shapeHeldByCursor:
-		var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
-		var ghostInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot, ghostStorage)
-		
-		if not shapeInThisSlot and not ghostInThisSlot:
-			var newGhostShape: Shape = shapeHeldByCursor.duplicate()
-			gridButton.add_child(newGhostShape)
-			newGhostShape.isGhostShape = true
-			newGhostShape.position = centerPosition
-			GameManager.addShapeToStorage(slot, newGhostShape, ghostStorage)
+		if shapeHeldByCursor.isPurchaseShape:
+			var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
+			var ghostInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot, ghostStorage)
+			
+			if not shapeInThisSlot and not ghostInThisSlot:
+				var newGhostShape: Shape = shapeHeldByCursor.duplicate()
+				gridButton.add_child(newGhostShape)
+				newGhostShape.isGhostShape = true
+				newGhostShape.position = centerPosition
+				GameManager.addShapeToStorage(slot, newGhostShape, ghostStorage)
 
 func convertGhosts() -> void:
 	var cost: int = 0
@@ -199,6 +200,7 @@ func convertGhosts() -> void:
 			dict["shape"].isGhostShape = false
 		GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
 		GameManager.clearStorage(ghostStorage)
+		GameManager.calculateMoneyIncrement()
 	else:
 		print("You are poor")
 		for dict in ghostStorage:
