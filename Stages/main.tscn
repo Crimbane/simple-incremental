@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://chn1n630kw24g"]
 
 [ext_resource type="PackedScene" uid="uid://c7hu13n2r74df" path="res://Systems/UI/ui.tscn" id="1_lxwtg"]
+[ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="2_lxwtg"]
 
 [node name="Main" type="Node" unique_id=311859188]
 
+[node name="Big Shape" parent="." unique_id=1237669307 instance=ExtResource("2_lxwtg")]
+position = Vector2(513, 166)
+
 [node name="UI" parent="." unique_id=1891957665 instance=ExtResource("1_lxwtg")]
+
+[node name="Size Increaser" type="Node2D" parent="." unique_id=1852899925]
+scale = Vector2(3, 3)

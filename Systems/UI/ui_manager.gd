@@ -66,6 +66,9 @@ func updateMoneyUI() -> void:
 
 func updateColor() -> void:
 	var shapeColor: String = GameManager.shapeColor
+	var bigShape = $"../../Big Shape"
+	bigShape.updateColor()
+	
 	for button in $ShapeButtons.get_children():
 		var textureRect = button.get_node("TextureRect")
 		match shapeColor:
