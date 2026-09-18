@@ -2,23 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bgm2aymcg2fgu" path="res://Systems/UI/ui_manager.gd" id="1_5q6yw"]
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
-[ext_resource type="Texture2D" uid="uid://dlg50nillq8k1" path="res://Entities/Shapes/Art/Dot.png" id="2_27mu8"]
-[ext_resource type="Texture2D" uid="uid://cg0dexsuih7l4" path="res://Entities/Shapes/Art/Line.png" id="3_7xnr0"]
-[ext_resource type="PackedScene" uid="uid://dm2ovexatbsw" path="res://Entities/Shapes/dot.tscn" id="3_dbnd8"]
-[ext_resource type="PackedScene" uid="uid://c8qhdkcnfwhm0" path="res://Entities/Shapes/line.tscn" id="4_8vm6a"]
-[ext_resource type="Texture2D" uid="uid://dfmh6fcatyqp" path="res://Entities/Shapes/Art/Triangle.png" id="4_dbnd8"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
-[ext_resource type="PackedScene" uid="uid://dxk2fgmtj8aow" path="res://Entities/Shapes/triangle.tscn" id="5_6uor8"]
-[ext_resource type="Texture2D" uid="uid://dxqco0xickmqf" path="res://Entities/Shapes/Art/Square.png" id="5_8vm6a"]
 [ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="6_6uor8"]
-[ext_resource type="PackedScene" uid="uid://njpjv407np8k" path="res://Entities/Shapes/square.tscn" id="6_car1l"]
-[ext_resource type="Texture2D" uid="uid://dbb0k618aw0ik" path="res://Entities/Shapes/Art/Hexagon.png" id="7_car1l"]
-[ext_resource type="PackedScene" uid="uid://q02suct8nroa" path="res://Entities/Shapes/pentagon.tscn" id="7_db80o"]
-[ext_resource type="Texture2D" uid="uid://hgy4pa7iuubv" path="res://Entities/Shapes/Art/Heptagon.png" id="8_db80o"]
-[ext_resource type="PackedScene" uid="uid://d0iur6id8k8mg" path="res://Entities/Shapes/hexagon.tscn" id="8_xm52q"]
-[ext_resource type="PackedScene" uid="uid://cqdpu0x11qw61" path="res://Entities/Shapes/heptagon.tscn" id="9_3j335"]
-[ext_resource type="Texture2D" uid="uid://c7102x3jjiyfl" path="res://Entities/Shapes/Art/Octagon.png" id="9_xm52q"]
-[ext_resource type="PackedScene" uid="uid://cie70mhpf51t1" path="res://Entities/Shapes/octagon.tscn" id="10_2jdqb"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
@@ -61,107 +46,49 @@ columns = 4
 [node name="Dot" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("3_dbnd8")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Dot" unique_id=1638956966]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_27mu8")
-stretch_mode = 3
+shape = "Dot"
 
 [node name="Line" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("4_8vm6a")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Line" unique_id=1622302756]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_7xnr0")
-stretch_mode = 3
+shape = "Line"
+cost = 20
 
 [node name="Triangle" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("5_6uor8")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Triangle" unique_id=177981126]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_dbnd8")
-stretch_mode = 3
+shape = "Triangle"
+cost = 30
 
 [node name="Square" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("6_car1l")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Square" unique_id=1919839257]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_8vm6a")
-stretch_mode = 3
+shape = "Square"
+cost = 40
 
 [node name="Pentagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("7_db80o")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Pentagon" unique_id=768671001]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("6_6uor8")
-stretch_mode = 3
+shape = "Pentagon"
+cost = 50
 
 [node name="Hexagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("8_xm52q")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Hexagon" unique_id=1545123189]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_car1l")
-stretch_mode = 3
+shape = "Hexagon"
+cost = 60
 
 [node name="Heptagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("9_3j335")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Heptagon" unique_id=978141538]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("8_db80o")
-stretch_mode = 3
+shape = "Heptagon"
+cost = 70
 
 [node name="Octagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
-shape = ExtResource("10_2jdqb")
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/ShapeButtons/Octagon" unique_id=445230684]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_xm52q")
-stretch_mode = 3
+shape = "Octagon"
+cost = 80
 
 [node name="GridContainer" type="GridContainer" parent="UI Manager/HSplit/LeftSide" unique_id=980796157]
 z_index = -1
@@ -182,6 +109,7 @@ anchor_bottom = 0.5
 offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
+grow_vertical = 2
 
 [node name="Upgrade Color" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=500497845]
 custom_maximum_size = Vector2(40, 40)

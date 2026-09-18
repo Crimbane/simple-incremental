@@ -1,13 +1,18 @@
 class_name Shape
 extends Node2D
 
-@export_enum(
-	"Dot", "Line", "Triangle", "Square", "Pentagon", "Hexagon", 
-	"Heptagon", "Octagon") var shapeSprite: String = "Dot":
-	set(value):
-		shapeSprite = value
-		updateSprite()
+enum ShapeSprite {
+	Dot,
+	Line,
+	Triangle,
+	Square,
+	Pentagon,
+	Hexagon, 
+	Heptagon,
+	Octagon
+}
 
+@export var shapeSprite: ShapeSprite = ShapeSprite.Dot
 @export var cost: int = 10
 
 var isPurchaseShape: bool = false
@@ -16,15 +21,10 @@ var isGhostShape: bool = false:
 		isGhostShape = value
 		updateColor()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	updateSprite()
 	updateColor()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func updateSprite() -> void:
 	var animatedSprite = get_node_or_null("AnimatedSprite2D")
@@ -33,21 +33,21 @@ func updateSprite() -> void:
 		return
 	
 	match shapeSprite:
-		"Dot":
+		ShapeSprite.Dot:
 			animatedSprite.animation = "dot"
-		"Line":
+		ShapeSprite.Line:
 			animatedSprite.animation = "line"
-		"Triangle":
+		ShapeSprite.Triangle:
 			animatedSprite.animation = "triangle"
-		"Square":
+		ShapeSprite.Square:
 			animatedSprite.animation = "square"
-		"Pentagon":
+		ShapeSprite.Pentagon:
 			animatedSprite.animation = "pentagon"
-		"Hexagon":
+		ShapeSprite.Hexagon:
 			animatedSprite.animation = "hexagon"
-		"Heptagon":
+		ShapeSprite.Heptagon:
 			animatedSprite.animation = "heptagon"
-		"Octagon":
+		ShapeSprite.Octagon:
 			animatedSprite.animation = "octagon"
 
 func updateColor() -> void:
@@ -107,21 +107,21 @@ func getColorMultiplier() -> int:
 func getShapeValue() -> int:
 	var baseValue: int
 	match shapeSprite:
-		"Dot":
+		ShapeSprite.Dot:
 			baseValue = 1
-		"Line":
+		ShapeSprite.Line:
 			baseValue = 2
-		"Triangle":
+		ShapeSprite.Triangle:
 			baseValue = 3
-		"Square":
+		ShapeSprite.Square:
 			baseValue = 4
-		"Pentagon":
+		ShapeSprite.Pentagon:
 			baseValue = 5
-		"Hexagon":
+		ShapeSprite.Hexagon:
 			baseValue = 6
-		"Heptagon":
+		ShapeSprite.Heptagon:
 			baseValue = 7
-		"Octagon":
+		ShapeSprite.Octagon:
 			baseValue = 8
 	
 	return baseValue * getColorMultiplier()
