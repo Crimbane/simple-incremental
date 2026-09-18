@@ -12,9 +12,9 @@ func _ready() -> void:
 	updateSprite()
 	updateColor()
 	
-	var viewport_size = get_viewport_rect().size
-	position.x = viewport_size.x - 140
-	position.y = viewport_size.y / 2
+	#var viewport_size = get_viewport_rect().size
+	#position.x = viewport_size.x - viewport_size.x / 4
+	#position.y = viewport_size.y / 2
 
 
 func _process(delta: float) -> void:

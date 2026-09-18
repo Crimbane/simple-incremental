@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cqdpu0x11qw61" path="res://Entities/Shapes/heptagon.tscn" id="9_3j335"]
 [ext_resource type="Texture2D" uid="uid://c7102x3jjiyfl" path="res://Entities/Shapes/Art/Octagon.png" id="9_xm52q"]
 [ext_resource type="PackedScene" uid="uid://cie70mhpf51t1" path="res://Entities/Shapes/octagon.tscn" id="10_2jdqb"]
+[ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
@@ -33,67 +34,36 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_5q6yw")
 gridSize = 8
-moneyLabel = NodePath("MoneyLabelMargin/MoneyLabel")
-gridContainer = NodePath("GridContainer")
-upgradeColorButton = NodePath("UpgradeButtons/Upgrade Color")
+moneyLabel = NodePath("HSplitContainer/Control/MoneyLabelMargin/MoneyLabel")
+gridContainer = NodePath("HSplitContainer/Container/GridContainer")
+upgradeColorButton = NodePath("HSplitContainer/Container/UpgradeButtons/Upgrade Color")
 
-[node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager" unique_id=1788288161]
+[node name="HSplitContainer" type="HBoxContainer" parent="UI Manager" unique_id=1892669714]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -94.0
-offset_bottom = 40.0
-grow_horizontal = 0
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="MoneyLabel" type="Label" parent="UI Manager/MoneyLabelMargin" unique_id=228411836]
+[node name="Container" type="Control" parent="UI Manager/HSplitContainer" unique_id=580188624]
+custom_minimum_size = Vector2(356, 0)
 layout_mode = 2
-text = "428 Vertices"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI Manager" unique_id=155264048]
-visible = false
+[node name="ShapeButtons" type="GridContainer" parent="UI Manager/HSplitContainer/Container" unique_id=1392619131]
 layout_mode = 0
 offset_left = 142.0
-offset_right = 183.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer1" type="HBoxContainer" parent="UI Manager/VBoxContainer" unique_id=643947563]
-layout_mode = 2
-
-[node name="Triangle" type="Button" parent="UI Manager/VBoxContainer/HBoxContainer1" unique_id=1781068286]
-layout_mode = 2
-text = "Triangle"
-
-[node name="Square" type="Button" parent="UI Manager/VBoxContainer/HBoxContainer1" unique_id=1884524511]
-layout_mode = 2
-text = "Square"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI Manager/VBoxContainer" unique_id=2002308391]
-layout_mode = 2
-
-[node name="Line" type="Button" parent="UI Manager/VBoxContainer/HBoxContainer2" unique_id=872441723]
-layout_mode = 2
-text = "Line"
-
-[node name="Pentagon" type="Button" parent="UI Manager/VBoxContainer/HBoxContainer2" unique_id=1657300403]
-layout_mode = 2
-text = "Pentagon"
-
-[node name="ShapeButtons" type="GridContainer" parent="UI Manager" unique_id=1392619131]
-layout_mode = 0
-offset_left = 142.0
-offset_right = 182.0
-offset_bottom = 40.0
+offset_right = 314.0
+offset_bottom = 84.0
 columns = 4
 
-[node name="Dot" parent="UI Manager/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
+[node name="Dot" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("3_dbnd8")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Dot" unique_id=1638956966]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Dot" unique_id=1638956966]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,111 +79,103 @@ grow_vertical = 2
 texture = ExtResource("2_27mu8")
 stretch_mode = 3
 
-[node name="Line" parent="UI Manager/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
+[node name="Line" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("4_8vm6a")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Line" unique_id=1622302756]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Line" unique_id=1622302756]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_7xnr0")
 stretch_mode = 3
 
-[node name="Triangle" parent="UI Manager/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
+[node name="Triangle" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("5_6uor8")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Triangle" unique_id=177981126]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Triangle" unique_id=177981126]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_dbnd8")
 stretch_mode = 3
 
-[node name="Square" parent="UI Manager/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
+[node name="Square" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("6_car1l")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Square" unique_id=1919839257]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Square" unique_id=1919839257]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_8vm6a")
 stretch_mode = 3
 
-[node name="Pentagon" parent="UI Manager/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
+[node name="Pentagon" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("7_db80o")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Pentagon" unique_id=768671001]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Pentagon" unique_id=768671001]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_6uor8")
 stretch_mode = 3
 
-[node name="Hexagon" parent="UI Manager/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
+[node name="Hexagon" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("8_xm52q")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Hexagon" unique_id=1545123189]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Hexagon" unique_id=1545123189]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_car1l")
 stretch_mode = 3
 
-[node name="Heptagon" parent="UI Manager/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
+[node name="Heptagon" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("9_3j335")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Heptagon" unique_id=978141538]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Heptagon" unique_id=978141538]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_db80o")
 stretch_mode = 3
 
-[node name="Octagon" parent="UI Manager/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
+[node name="Octagon" parent="UI Manager/HSplitContainer/Container/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 icon = ExtResource("5_5t6h7")
 shape = ExtResource("10_2jdqb")
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/ShapeButtons/Octagon" unique_id=445230684]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/ShapeButtons/Octagon" unique_id=445230684]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_xm52q")
 stretch_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="UI Manager" unique_id=980796157]
+[node name="GridContainer" type="GridContainer" parent="UI Manager/HSplitContainer/Container" unique_id=980796157]
 z_index = -1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = 45.0
-offset_right = -80.00015
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 100.0
+offset_top = 94.0
+offset_right = 139.99985
+offset_bottom = 94.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
 
-[node name="UpgradeButtons" type="GridContainer" parent="UI Manager" unique_id=1221519659]
-layout_mode = 1
-anchors_preset = 4
+[node name="UpgradeButtons" type="GridContainer" parent="UI Manager/HSplitContainer/Container" unique_id=1221519659]
+layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -20.0
@@ -221,7 +183,7 @@ offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="Upgrade Color" type="Button" parent="UI Manager/UpgradeButtons" unique_id=500497845]
+[node name="Upgrade Color" type="Button" parent="UI Manager/HSplitContainer/Container/UpgradeButtons" unique_id=500497845]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
@@ -230,7 +192,7 @@ Color"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/UpgradeButtons/Upgrade Color" unique_id=1495224555]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplitContainer/Container/UpgradeButtons/Upgrade Color" unique_id=1495224555]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -245,3 +207,40 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6uor8")
+
+[node name="Control" type="Control" parent="UI Manager/HSplitContainer" unique_id=1749908788]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager/HSplitContainer/Control" unique_id=1788288161]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="MoneyLabel" type="Label" parent="UI Manager/HSplitContainer/Control/MoneyLabelMargin" unique_id=228411836]
+layout_mode = 2
+text = "428 Vertices"
+
+[node name="Control" type="Control" parent="UI Manager/HSplitContainer/Control" unique_id=1568403876]
+custom_maximum_size = Vector2(0, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Big Shape" parent="UI Manager/HSplitContainer/Control/Control" unique_id=1237669307 instance=ExtResource("20_50h6r")]
+position = Vector2(0, 42)
