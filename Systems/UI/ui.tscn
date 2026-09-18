@@ -4,11 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
 [ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="6_6uor8"]
+[ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Entities/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
+[ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Entities/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton", "trashcanButton", "trashcanClosed", "trashcanOpen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +24,10 @@ moneyLabel = NodePath("HSplit/RigthSide/MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("HSplit/LeftSide/GridContainer")
 shapeButtons = NodePath("HSplit/LeftSide/ShapeButtons")
 upgradeColorButton = NodePath("HSplit/LeftSide/UpgradeButtons/Upgrade Color")
+upgradeBigShapeButton = NodePath("HSplit/LeftSide/UpgradeButtons/Upgrade BigShape")
+trashcanButton = NodePath("Trashcan")
+trashcanClosed = NodePath("Trashcan/Closed")
+trashcanOpen = NodePath("Trashcan/Open")
 
 [node name="HSplit" type="HBoxContainer" parent="UI Manager" unique_id=1892669714]
 layout_mode = 1
@@ -106,9 +112,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
+offset_top = -42.0
 offset_right = 40.0
-offset_bottom = 20.0
+offset_bottom = 42.0
 grow_vertical = 2
 
 [node name="Upgrade Color" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=500497845]
@@ -116,7 +122,8 @@ custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
 text = "Upgrade
-Color"
+Color /
+Rebirth"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
@@ -135,6 +142,31 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6uor8")
+
+[node name="Upgrade BigShape" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=1135798019]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Upgrade
+Big Shape"
+icon = ExtResource("5_5t6h7")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 39.0
+
+[node name="Button" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=980957521]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Unused"
+icon = ExtResource("5_5t6h7")
+icon_alignment = 1
 
 [node name="RigthSide" type="Control" parent="UI Manager/HSplit" unique_id=1749908788]
 layout_mode = 2
@@ -166,3 +198,35 @@ grow_vertical = 2
 
 [node name="Big Shape" parent="UI Manager/HSplit/RigthSide/Center" unique_id=1237669307 instance=ExtResource("20_50h6r")]
 position = Vector2(0, 42)
+
+[node name="Trashcan" type="Button" parent="UI Manager" unique_id=970780146]
+custom_maximum_size = Vector2(28, 40)
+layout_mode = 0
+offset_left = 366.0
+offset_top = 300.0
+offset_right = 394.0
+offset_bottom = 340.0
+flat = true
+icon_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Closed" type="TextureRect" parent="UI Manager/Trashcan" unique_id=454531370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vovoe")
+stretch_mode = 2
+
+[node name="Open" type="TextureRect" parent="UI Manager/Trashcan" unique_id=1956452579]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1gt4b")
+stretch_mode = 2

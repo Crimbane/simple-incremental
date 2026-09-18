@@ -67,10 +67,8 @@ func updateColor() -> void:
 		return
 	
 	if isGhostShape:
-		animatedSprite.modulate = Color(1.0, 1.0, 1.0, 0.25)
+		animatedSprite.modulate.a = 0.25
 	else:
-		#animatedSprite.modulate = Color(1.0, 1.0, 1.0, 1)
-		
 		var shapeColor: String = GameManager.shapeColor
 		
 		match shapeColor:

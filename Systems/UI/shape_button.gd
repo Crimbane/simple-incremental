@@ -59,7 +59,8 @@ func _on_shape_button_press() -> void:
 		
 	var newShape: Shape = SHAPE_SCENE.instantiate()
 	newShape.shapeSprite = newShape.ShapeSprite[shape]
-	newShape.cost = cost
+	#newShape.cost = cost
+	newShape.cost = GameManager.getShapeCost(cost, newShape.shapeSprite)
 	newShape.isPurchaseShape = true
 	GameManager.UIManager.addShapeToCursor(newShape)
 	GameManager.UIManager.add_child(newShape)

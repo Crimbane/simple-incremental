@@ -31,6 +31,63 @@ var upgradeColorCost: Array[int] = [
 	-1
 ]
 
+var bigShapeSprite: String = "Dot"
+var bigShapeNames: Array[String] = [
+	"Dot",
+	"Line",
+	"Triangle",
+	"Square",
+	"Pentagon",
+	"Hexagon",
+	"Heptagon",
+	"Octagon",
+	"Nonagon",
+	"Decagon"
+]
+var currentBigShapeIndex = 0
+var bigShapeDict: Dictionary = {
+	"Dot": {
+		"multiplier": 1,
+		"cost": 100
+	},
+	"Line": {
+		"multiplier": 2,
+		"cost": 200
+	},
+	"Triangle": {
+		"multiplier": 3,
+		"cost": 300
+	},
+	"Square": {
+		"multiplier": 4,
+		"cost": 400
+	},
+	"Pentagon": {
+		"multiplier": 5,
+		"cost": 500
+	},
+	"Hexagon": {
+		"multiplier": 6,
+		"cost": 600
+	},
+	"Heptagon": {
+		"multiplier": 7,
+		"cost": 700
+	},
+	"Octagon": {
+		"multiplier": 8,
+		"cost": 800
+	},
+	"Nonagon": {
+		"multiplier": 9,
+		"cost": 900
+	},
+	"Decagon": {
+		"multiplier": 10,
+		"cost": 1000
+	}
+}
+
 var gridStorage: Array[Dictionary]
 
 var UIManager: Node = null
@@ -49,6 +106,7 @@ func _process(delta: float) -> void:
 		money += incrementAmount
 
 
+#region Money
 func addMoney(amount: int) -> void:
 	money += amount
 
@@ -61,9 +119,22 @@ func calculateMoneyIncrement() -> void:
 	incrementAmount = BASE_INCREMENT_AMOUNT
 	for dict in gridStorage:
 		incrementAmount += dict["shape"].getShapeValue()
+	
+	var bigShapeMultiplier = bigShapeDict[bigShapeSprite]["multiplier"]
+	
+	incrementAmount *= bigShapeMultiplier
+	print("BIGSHAOEMULTIPLIER: ", bigShapeMultiplier)
 	print("incrementAmount: ", incrementAmount)
 
 
+func getShapeCost(baseCost: int, shape: Shape.ShapeSprite) -> int:
+	var count: int = getShapeCount(shape)
+	
+	return roundi(baseCost * pow(1.15, count))
+
+#endregion
+
+#region Upgrades
 func upgradeColor() -> void:
 	upgradeColorsIndex = currentColorsIndex
 	
@@ -85,6 +156,30 @@ func upgradeColor() -> void:
 	for dict in gridStorage:
 		dict["shape"].updateColor()
 	calculateMoneyIncrement()
+
+func upgradeBigShape() -> void:
+	print(bigShapeSprite)
+	if currentBigShapeIndex >= bigShapeNames.size() - 1:
+		print("bigshape max level reached")
+		return
+	var nextShape: String = bigShapeNames[currentBigShapeIndex + 1]
+	var cost: int = bigShapeDict[nextShape]["cost"]
+	
+	if money < cost:
+		print("Not enough money")
+		return
+	
+	removeMoney(cost)
+	
+	currentBigShapeIndex += 1
+	bigShapeSprite = bigShapeNames[currentBigShapeIndex]
+	print("BigshapeSprite: ", bigShapeSprite)
+	bigShape.updateSprite()
+	
+	print("upgraded big shape to ", currentBigShapeIndex)
+	calculateMoneyIncrement()
+
+#endregion
 
 #region Grid
 func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
@@ -124,5 +219,16 @@ func clearStorage(storage: Array[Dictionary] = gridStorage) -> void:
 
 func transferBetweenStorages(storageA: Array[Dictionary], storageB: Array[Dictionary]) -> void:
 	storageA.append_array(storageB)
+
+
+func getShapeCount(shape: Shape.ShapeSprite) -> int:
+	var count: int = 0
+	
+	for dict in gridStorage:
+		var storedShape = dict["shape"]
+		if storedShape.shapeSprite == shape:
+			count += 1
+		print("shape count: ", count)
+	return count
 
 #endregion

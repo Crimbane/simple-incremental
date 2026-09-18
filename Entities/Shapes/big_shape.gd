@@ -1,6 +1,6 @@
 extends Node2D
 
-var bigShapeSprite: String = "Octagon"
+var bigShapeSprite: String = "Dot"
 
 var rotationSpeed: float = 0.1
 
@@ -27,6 +27,7 @@ func updateSprite() -> void:
 	if animatedSprite == null:
 		return
 	
+	bigShapeSprite = GameManager.bigShapeSprite
 	animatedSprite.animation = bigShapeSprite.to_lower()
 
 

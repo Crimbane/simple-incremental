@@ -132,10 +132,10 @@ animations = [{
 
 [node name="Big Shape" type="Node2D" unique_id=1237669307]
 texture_filter = 2
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_p3nkl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715047503]
-modulate = Color(0.4745098, 1, 1, 1)
 material = SubResource("ShaderMaterial_8yv6x")
 sprite_frames = SubResource("SpriteFrames_t1yug")
 animation = &"octagon"

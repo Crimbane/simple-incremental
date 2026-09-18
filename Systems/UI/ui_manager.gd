@@ -11,6 +11,11 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var gridContainer: GridContainer
 @export var shapeButtons: GridContainer
 @export var upgradeColorButton: Button
+@export var upgradeBigShapeButton: Button
+
+@export var trashcanButton: Button
+@export var trashcanClosed: TextureRect
+@export var trashcanOpen: TextureRect
 
 var gridButtons: Array
 var ghostStorage: Array[Dictionary]
@@ -26,7 +31,12 @@ func _ready() -> void:
 	GameManager.UIManager = self
 	updateGrid()
 	
+	trashcanButton.pressed.connect(clearShapeHelpByCursor)
+	trashcanButton.mouse_entered.connect(onTrashcanMouseEntered)
+	trashcanButton.mouse_exited.connect(OnTrashcanMouseExited)
+	
 	upgradeColorButton.pressed.connect(GameManager.upgradeColor)
+	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 
 
 func _process(_delta: float) -> void:
@@ -81,25 +91,42 @@ func updateColor() -> void:
 	GameManager.bigShape.updateColor()
 	
 	for button in shapeButtons.get_children():
-		var textureRect = button.get_node("TextureRect")
+		var buttonIcon = button.get_node("Icon")
 		match shapeColor:
 			"White":
-				textureRect.modulate = Color.WHITE
+				buttonIcon.modulate = Color.WHITE
 			"Red":
-				textureRect.modulate = Color.RED
+				buttonIcon.modulate = Color.RED
 			"Orange":
-				textureRect.modulate = Color.ORANGE
+				buttonIcon.modulate = Color.ORANGE
 			"Yellow":
-				textureRect.modulate = Color.YELLOW
+				buttonIcon.modulate = Color.YELLOW
 			"Green":
-				textureRect.modulate = Color.GREEN
+				buttonIcon.modulate = Color.GREEN
 			"Blue":
-				textureRect.modulate = Color.BLUE
+				buttonIcon.modulate = Color.BLUE
 			"Purple":
-				textureRect.modulate = Color.PURPLE
+				buttonIcon.modulate = Color.PURPLE
 			"Black":
-				textureRect.modulate = Color.BLACK
+				buttonIcon.modulate = Color.BLACK
 
+
+#region Trashcan
+func onTrashcanMouseEntered():
+	trashcanClosed.hide()
+	trashcanOpen.show()
+
+func OnTrashcanMouseExited():
+	trashcanOpen.hide()
+	trashcanClosed.show()
+
+func clearShapeHelpByCursor() -> void:
+	if shapeHeldByCursor:
+		GameManager.removeShapeFromStorage(shapeHeldByCursor)
+		shapeHeldByCursor.queue_free()
+		GameManager.calculateMoneyIncrement()
+
+#endregion
 
 #region Grid
 func addShapeToCursor(shape: Shape) -> void:
