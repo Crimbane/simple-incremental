@@ -35,11 +35,20 @@ func _process(_delta: float) -> void:
 		shiftHold = true
 	elif not Input.is_action_pressed("Shift") and shiftHold:
 		shiftHold = false
+		if gridLeftClickHold and ghostStorage:
+			banishGhosts()
 	if Input.is_action_pressed("Left Click") and not leftClickHold:
 		leftClickHold = true
 	elif not Input.is_action_pressed("Left Click") and leftClickHold:
 		leftClickHold = false
 		gridLeftClickHold = false
+		if shiftHold and ghostStorage:
+			convertGhosts()
+	if Input.is_action_just_pressed("Right Click") and shapeHeldByCursor:
+		if shapeHeldByCursor.isPurchaseShape:
+			shapeHeldByCursor.queue_free()
+		if ghostStorage:
+			banishGhosts()
 	
 	
 	updateMoneyUI()
@@ -62,7 +71,7 @@ func updateMoneyUI() -> void:
 	if not moneyLabel:
 		return
 	
-	moneyLabel.text = "Vertices: " + str(formatMoney(GameManager.money, NotationStyle.ABBREVIATION))
+	moneyLabel.text = "Vertices: " + formatMoney(GameManager.money, NotationStyle.NONE)
 
 func updateColor() -> void:
 	var shapeColor: String = GameManager.shapeColor
@@ -96,7 +105,7 @@ func addShapeToCursor(shape: Shape) -> void:
 	shapeHeldByCursor = shape
 
 
-func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
+func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
 	gridLeftClickHold = true
 	var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
 	if shapeHeldByCursor and not shapeInThisSlot:
@@ -104,24 +113,28 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 		if GameManager.getSlotInStorageByShape(shapeHeldByCursor) == null:
 			print("place")
 			shapeHeldByCursor.isPurchaseShape = false
+			
 			if GameManager.money >= shapeHeldByCursor.cost:
 				GameManager.removeMoney(shapeHeldByCursor.cost)
 			else:
 				print("You are poor")
 				shapeHeldByCursor.queue_free()
 				return
-			GameManager.addShapeToStorage(slot, shapeHeldByCursor)
+			
+			if shiftHold:
+				shapeHeldByCursor.isGhostShape = true
+				GameManager.addShapeToStorage(slot, shapeHeldByCursor, ghostStorage)
+			else:
+				GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 			GameManager.calculateMoneyIncrement()
 		else:
 			print("move")
 			move = true
 			GameManager.removeShapeFromStorage(shapeHeldByCursor)
 			GameManager.addShapeToStorage(slot, shapeHeldByCursor)
-			GameManager.calculateMoneyIncrement()
-		
 		
 		shapeHeldByCursor.reparent(gridButton)
-		shapeHeldByCursor.global_position = gridButton.global_position + Vector2(16, 16)
+		shapeHeldByCursor.position = centerPosition
 		
 		if not move and shiftHold:
 			var newShape: Shape = shapeHeldByCursor.duplicate()
@@ -135,7 +148,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 		print("place back")
 		
 		shapeHeldByCursor.reparent(gridButton)
-		shapeHeldByCursor.global_position = gridButton.global_position + Vector2(16, 16)
+		shapeHeldByCursor.position = centerPosition
 		shapeHeldByCursor = null
 	
 	elif shapeHeldByCursor and shapeInThisSlot and not shapeHeldByCursor.isPurchaseShape:
@@ -153,7 +166,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 		GameManager.addShapeToStorage(limboSlot, shapeHeldByCursor)
 		GameManager.addShapeToStorage(slot, limboShape)
 		
-		limboShape.global_position = gridButton.global_position + Vector2(16, 16)
+		limboShape.position = centerPosition
 		
 	elif not shapeHeldByCursor and shapeInThisSlot:
 		print("pickup")
@@ -162,7 +175,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 		shapeHeldByCursor = shapeInThisSlot
 
 
-func _on_grid_slot_hovered(gridButton: Button, slot: int) -> void:
+func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
 	if shiftHold and gridLeftClickHold and shapeHeldByCursor:
 		var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
 		var ghostInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot, ghostStorage)
@@ -171,20 +184,32 @@ func _on_grid_slot_hovered(gridButton: Button, slot: int) -> void:
 			var newGhostShape: Shape = shapeHeldByCursor.duplicate()
 			gridButton.add_child(newGhostShape)
 			newGhostShape.isGhostShape = true
-			newGhostShape.global_position = gridButton.global_position + Vector2(16, 16)
+			newGhostShape.position = centerPosition
 			GameManager.addShapeToStorage(slot, newGhostShape, ghostStorage)
-	if shiftHold and not gridLeftClickHold and shapeHeldByCursor and ghostStorage.size() != 0:
-		var cost: int = 0
+
+func convertGhosts() -> void:
+	var cost: int = 0
+	
+	for dict in ghostStorage:
+		cost += dict["shape"].cost
+	
+	if GameManager.money >= cost:
+		GameManager.removeMoney(cost)
 		for dict in ghostStorage:
-			cost += dict["shape"].getShapeValue()
-		if GameManager.money >= cost:
-				GameManager.removeMoney(cost)
-		else:
-			print("You are poor")
-			shapeHeldByCursor.queue_free()
-			return
+			dict["shape"].isGhostShape = false
 		GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
 		GameManager.clearStorage(ghostStorage)
+	else:
+		print("You are poor")
+		for dict in ghostStorage:
+			dict["shape"].queue_free()
+		GameManager.clearStorage(ghostStorage)
+		shapeHeldByCursor.queue_free()
+
+func banishGhosts() -> void:
+	for dict in ghostStorage:
+		dict["shape"].queue_free()
+	GameManager.clearStorage(ghostStorage)
 
 
 func updateGrid() -> void:
@@ -208,14 +233,14 @@ func updateGrid() -> void:
 	elif currentAmountOfButtons < totalButtonAmountNeeded:
 		amountOfButtonsToAdd = totalButtonAmountNeeded - currentAmountOfButtons
 	else:
-		#Code for downgrading grid?
 		return
 	
 	for i in range(amountOfButtonsToAdd):
 		var newButton: Button = GRID_SLOT_BUTTON.instantiate()
 		gridContainer.add_child(newButton)
-		newButton.button_down.connect(_on_grid_button_pressed.bind(newButton, gridContainer.get_children().find(newButton)))
-		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton)))
+		var centerPosition = newButton.size / 2
+		newButton.button_down.connect(_on_grid_button_pressed.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
+		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 	
 	gridContainer.columns = gridSize
 	gridButtons = gridContainer.get_children()
