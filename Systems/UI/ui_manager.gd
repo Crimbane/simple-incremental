@@ -20,6 +20,7 @@ var shiftHold: bool = false
 var leftClickHold: bool = false
 var gridLeftClickHold: bool = false
 
+
 func _ready() -> void:
 	GameManager.UIManager = self
 	updateGrid()
@@ -75,8 +76,8 @@ func updateMoneyUI() -> void:
 
 func updateColor() -> void:
 	var shapeColor: String = GameManager.shapeColor
-	var bigShape = $"../../Big Shape"
-	bigShape.updateColor()
+	
+	GameManager.bigShape.updateColor()
 	
 	for button in $ShapeButtons.get_children():
 		var textureRect = button.get_node("TextureRect")

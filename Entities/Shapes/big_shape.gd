@@ -1,6 +1,6 @@
 extends Node2D
 
-var bigShapeSprite: String = "Line"
+var bigShapeSprite: String = "Octagon"
 
 var rotationSpeed: float = 0.1
 
@@ -8,17 +8,17 @@ var rotationSpeed: float = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.bigShape = self
 	updateSprite()
 	updateColor()
 	
-
+	var viewport_size = get_viewport_rect().size
+	position.x = viewport_size.x - 140
+	position.y = viewport_size.y / 2
 
 
 func _process(delta: float) -> void:
 	rotation += rotationSpeed * delta
-
-
-
 
 
 func updateSprite() -> void:
@@ -28,6 +28,7 @@ func updateSprite() -> void:
 		return
 	
 	animatedSprite.animation = bigShapeSprite.to_lower()
+
 
 func updateColor() -> void:
 	var animatedSprite = get_node_or_null("AnimatedSprite2D")

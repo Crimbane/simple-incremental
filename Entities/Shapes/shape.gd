@@ -56,30 +56,30 @@ func updateColor() -> void:
 	if animatedSprite == null:
 		return
 	
-	var shapeColor: String = GameManager.shapeColor
-	
-	match shapeColor:
-		"White":
-			animatedSprite.modulate = Color.WHITE
-		"Red":
-			animatedSprite.modulate = Color.RED
-		"Orange":
-			animatedSprite.modulate = Color.ORANGE
-		"Yellow":
-			animatedSprite.modulate = Color.YELLOW
-		"Green":
-			animatedSprite.modulate = Color.GREEN
-		"Blue":
-			animatedSprite.modulate = Color.BLUE
-		"Purple":
-			animatedSprite.modulate = Color.PURPLE
-		"Black":
-			animatedSprite.modulate = Color.BLACK
-	
 	if isGhostShape:
 		animatedSprite.modulate = Color(1.0, 1.0, 1.0, 0.25)
 	else:
-		animatedSprite.modulate = Color(1.0, 1.0, 1.0, 1)
+		#animatedSprite.modulate = Color(1.0, 1.0, 1.0, 1)
+		
+		var shapeColor: String = GameManager.shapeColor
+		
+		match shapeColor:
+			"White":
+				animatedSprite.modulate = Color.WHITE
+			"Red":
+				animatedSprite.modulate = Color.RED
+			"Orange":
+				animatedSprite.modulate = Color.ORANGE
+			"Yellow":
+				animatedSprite.modulate = Color.YELLOW
+			"Green":
+				animatedSprite.modulate = Color.GREEN
+			"Blue":
+				animatedSprite.modulate = Color.BLUE
+			"Purple":
+				animatedSprite.modulate = Color.PURPLE
+			"Black":
+				animatedSprite.modulate = Color.BLACK
 
 
 func getColorMultiplier() -> int:

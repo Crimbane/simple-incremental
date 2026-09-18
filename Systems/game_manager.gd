@@ -34,6 +34,7 @@ var upgradeColorCost: Array[int] = [
 var gridStorage: Array[Dictionary]
 
 var UIManager: Node = null
+var bigShape: Node2D = null
 var upgraded = false
 
 func _ready() -> void:
@@ -79,6 +80,7 @@ func upgradeColor() -> void:
 	shapeColor = colors[currentColorsIndex]
 	
 	UIManager.updateColor()
+	
 	
 	for dict in gridStorage:
 		dict["shape"].updateColor()
