@@ -14,11 +14,20 @@ const HEXAGON_TEXTURE: CompressedTexture2D = preload("uid://dbb0k618aw0ik")
 const HEPTAGON_TEXTURE: CompressedTexture2D = preload("uid://hgy4pa7iuubv")
 const OCTAGON_TEXTURE: CompressedTexture2D = preload("uid://c7102x3jjiyfl")
 
-@export_enum(
-	"Dot", "Line", "Triangle", "Square", "Pentagon", "Hexagon", 
-	"Heptagon", "Octagon") var shape: String:
+enum ShapeSprite {
+	Dot,
+	Line,
+	Triangle,
+	Square,
+	Pentagon,
+	Hexagon, 
+	Heptagon,
+	Octagon
+}
+
+@export var shapeSprite: ShapeSprite:
 	set(value):
-		shape = value
+		shapeSprite = value
 		updateIcon()
 
 @export var cost: int = 10:
@@ -37,29 +46,29 @@ func _ready() -> void:
 func updateIcon() -> void:
 	if not buttonIcon or not dropShadow:
 		return
-	match shape:
-		"Dot":
+	match shapeSprite:
+		ShapeSprite.Dot:
 			buttonIcon.texture = DOT_TEXTURE
 			dropShadow.texture = DOT_TEXTURE
-		"Line":
+		ShapeSprite.Line:
 			buttonIcon.texture = LINE_TEXTURE
 			dropShadow.texture = LINE_TEXTURE
-		"Triangle":
+		ShapeSprite.Triangle:
 			buttonIcon.texture = TRIANGLE_TEXTURE
 			dropShadow.texture = TRIANGLE_TEXTURE
-		"Square":
+		ShapeSprite.Square:
 			buttonIcon.texture = SQUARE_TEXTURE
 			dropShadow.texture = SQUARE_TEXTURE
-		"Pentagon":
+		ShapeSprite.Pentagon:
 			buttonIcon.texture = PENTAGON_TEXTURE
 			dropShadow.texture = PENTAGON_TEXTURE
-		"Hexagon":
+		ShapeSprite.Hexagon:
 			buttonIcon.texture = HEXAGON_TEXTURE
 			dropShadow.texture = HEXAGON_TEXTURE
-		"Heptagon":
+		ShapeSprite.Heptagon:
 			buttonIcon.texture = HEPTAGON_TEXTURE
 			dropShadow.texture = HEPTAGON_TEXTURE
-		"Octagon":
+		ShapeSprite.Octagon:
 			buttonIcon.texture = OCTAGON_TEXTURE
 			dropShadow.texture = OCTAGON_TEXTURE
 
@@ -68,7 +77,7 @@ func _on_shape_button_press() -> void:
 		return
 		
 	var newShape: Shape = SHAPE_SCENE.instantiate()
-	newShape.shapeSprite = newShape.ShapeSprite[shape]
+	newShape.shapeSprite = newShape.ShapeSprite[ShapeSprite.find_key(shapeSprite)]
 	#newShape.cost = cost
 	newShape.cost = GameManager.getShapeCost(cost, newShape.shapeSprite)
 	newShape.isPurchaseShape = true

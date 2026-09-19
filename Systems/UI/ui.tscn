@@ -81,48 +81,47 @@ columns = 4
 [node name="Dot" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Dot"
 
 [node name="Line" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Line"
+shapeSprite = 1
 cost = 20
 
 [node name="Triangle" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Triangle"
+shapeSprite = 2
 cost = 30
 
 [node name="Square" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Square"
+shapeSprite = 3
 cost = 40
 
 [node name="Pentagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Pentagon"
+shapeSprite = 4
 cost = 50
 
 [node name="Hexagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Hexagon"
+shapeSprite = 5
 cost = 60
 
 [node name="Heptagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Heptagon"
+shapeSprite = 6
 cost = 70
 
 [node name="Octagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 tooltip_text = "A very fancy shape."
-shape = "Octagon"
+shapeSprite = 7
 cost = 80
 
 [node name="LeftPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=103382533]

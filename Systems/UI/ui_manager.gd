@@ -233,9 +233,7 @@ func convertGhosts() -> void:
 		GameManager.calculateMoneyIncrement()
 	else:
 		print("You are poor")
-		for dict in ghostStorage:
-			dict["shape"].queue_free()
-		GameManager.clearStorage(ghostStorage)
+		banishGhosts()
 		shapeHeldByCursor.queue_free()
 
 func banishGhosts() -> void:
