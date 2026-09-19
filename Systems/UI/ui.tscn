@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bgm2aymcg2fgu" path="res://Systems/UI/ui_manager.gd" id="1_5q6yw"]
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
-[ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="6_6uor8"]
+[ext_resource type="Script" uid="uid://b5i4pwvywoipt" path="res://Systems/UI/rebirth_button.gd" id="6_1gt4b"]
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Entities/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Entities/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
@@ -29,7 +29,7 @@ gridSize = 8
 moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/GridContainer")
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
-upgradeColorButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Color")
+upgradeColorButton = NodePath("Buttons And Labels/Rebirth Button")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
 trashcanButton = NodePath("Buttons And Labels/LeftPanel/Trashcan")
 trashcanClosed = NodePath("Buttons And Labels/LeftPanel/Trashcan/Closed")
@@ -180,32 +180,6 @@ offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="Upgrade Color" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=500497845]
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
-text = "Upgrade
-Color /
-Rebirth"
-icon = ExtResource("5_5t6h7")
-icon_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Color" unique_id=1495224555]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_6uor8")
-
 [node name="Upgrade BigShape" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1135798019]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
@@ -230,6 +204,27 @@ theme_override_font_sizes/font_size = 7
 text = "Unused"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
+
+[node name="Rebirth Button" type="Button" parent="UI Manager/Buttons And Labels" unique_id=500497845]
+top_level = true
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 7
+text = "Ascend"
+icon = ExtResource("5_5t6h7")
+icon_alignment = 1
+script = ExtResource("6_1gt4b")
 
 [node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
 layout_mode = 1

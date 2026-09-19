@@ -7,6 +7,25 @@ var interval: float = 1 # Seconds between increments
 const BASE_INCREMENT_AMOUNT: int = 0
 var incrementAmount: int = 0
 
+
+
+enum State { White, Red, Orange, Yellow, Green, Blue, Purple, Black }
+const StateInfo: Dictionary[State, Dictionary] = {
+	State.White: {
+		StateColorRGB = Color(0.9, 0.9, 0.9),
+		ColorMultiplier = 1,
+		NextRebirthCost = 100
+	},
+	State.Red: {
+		StateColorRGB = Color(0.8, 0.2, 0.2),
+		ColorMultiplier = 2,
+		NextRebirthCost = 200
+	}
+}
+var currentState: int = State.White
+
+
+
 var ShapeColor: Dictionary = {
 	White = Color(0.9, 0.9, 0.9),
 	Red = Color(0.8, 0.2, 0.2),
@@ -106,6 +125,7 @@ var bigShape: Node2D = null
 var upgraded = false
 
 func _ready() -> void:
+	print("Current State Info: ", StateInfo[currentState])
 	pass # Replace with function body.
 
 
