@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Entities/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
+bg_color = Color(0.08442987, 0.5767153, 0.7888737, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
+bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
+
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
 [node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton", "trashcanButton", "trashcanClosed", "trashcanOpen")]
@@ -20,97 +26,162 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_5q6yw")
 gridSize = 8
-moneyLabel = NodePath("HSplit/RigthSide/MoneyLabelMargin/MoneyLabel")
-gridContainer = NodePath("HSplit/LeftSide/GridContainer")
-shapeButtons = NodePath("HSplit/LeftSide/ShapeButtons")
-upgradeColorButton = NodePath("HSplit/LeftSide/UpgradeButtons/Upgrade Color")
-upgradeBigShapeButton = NodePath("HSplit/LeftSide/UpgradeButtons/Upgrade BigShape")
-trashcanButton = NodePath("Trashcan")
-trashcanClosed = NodePath("Trashcan/Closed")
-trashcanOpen = NodePath("Trashcan/Open")
+moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
+gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/GridContainer")
+shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
+upgradeColorButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Color")
+upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
+trashcanButton = NodePath("Buttons And Labels/LeftPanel/Trashcan")
+trashcanClosed = NodePath("Buttons And Labels/LeftPanel/Trashcan/Closed")
+trashcanOpen = NodePath("Buttons And Labels/LeftPanel/Trashcan/Open")
 
-[node name="HSplit" type="HBoxContainer" parent="UI Manager" unique_id=1892669714]
+[node name="Buttons And Labels" type="Control" parent="UI Manager" unique_id=580188624]
+custom_minimum_size = Vector2(356, 272)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="LeftSide" type="Control" parent="UI Manager/HSplit" unique_id=580188624]
-custom_minimum_size = Vector2(356, 0)
-layout_mode = 2
 mouse_filter = 2
 
-[node name="ShapeButtons" type="GridContainer" parent="UI Manager/HSplit/LeftSide" unique_id=1392619131]
+[node name="TopPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=1545389865]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vovoe")
+
+[node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1788288161]
+custom_maximum_size = Vector2(-1, 33)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="MoneyLabel" type="Label" parent="UI Manager/Buttons And Labels/TopPanel/MoneyLabelMargin" unique_id=228411836]
+layout_mode = 2
+text = "428 Vertices"
+
+[node name="ShapeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1392619131]
 layout_mode = 0
-offset_left = 142.0
-offset_right = 314.0
+offset_left = 138.0
+offset_right = 310.0
 offset_bottom = 84.0
 columns = 4
 
-[node name="Dot" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
+[node name="Dot" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Dot"
 
-[node name="Line" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
+[node name="Line" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Line"
 cost = 20
 
-[node name="Triangle" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
+[node name="Triangle" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Triangle"
 cost = 30
 
-[node name="Square" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
+[node name="Square" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Square"
 cost = 40
 
-[node name="Pentagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
+[node name="Pentagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Pentagon"
 cost = 50
 
-[node name="Hexagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
+[node name="Hexagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Hexagon"
 cost = 60
 
-[node name="Heptagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
+[node name="Heptagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Heptagon"
 cost = 70
 
-[node name="Octagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
+[node name="Octagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
+tooltip_text = "A very fancy shape."
 shape = "Octagon"
 cost = 80
 
-[node name="GridContainer" type="GridContainer" parent="UI Manager/HSplit/LeftSide" unique_id=980796157]
-z_index = -1
-layout_mode = 0
-offset_left = 100.0
-offset_top = 94.0
-offset_right = 139.99985
-offset_bottom = 94.0
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 5
+[node name="LeftPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=103382533]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 88.0
+offset_right = 88.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vovoe")
 
-[node name="UpgradeButtons" type="GridContainer" parent="UI Manager/HSplit/LeftSide" unique_id=1221519659]
+[node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146]
+custom_maximum_size = Vector2(28, 40)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -48.0
+offset_right = 56.0
+offset_bottom = -8.0
+grow_vertical = 0
+flat = true
+icon_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Closed" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=454531370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vovoe")
+stretch_mode = 2
+
+[node name="Open" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=1956452579]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1gt4b")
+stretch_mode = 2
+
+[node name="UpgradeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=1221519659]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -42.0
+offset_top = -108.0
 offset_right = 40.0
-offset_bottom = 42.0
+offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="Upgrade Color" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=500497845]
+[node name="Upgrade Color" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=500497845]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
@@ -120,7 +191,7 @@ Rebirth"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/UpgradeButtons/Upgrade Color" unique_id=1495224555]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Color" unique_id=1495224555]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -136,7 +207,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6uor8")
 
-[node name="Upgrade BigShape" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=1135798019]
+[node name="Upgrade BigShape" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1135798019]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
@@ -145,7 +216,7 @@ Big Shape"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI Manager/HSplit/LeftSide/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -153,7 +224,7 @@ offset_top = -1.0
 offset_right = 41.0
 offset_bottom = 39.0
 
-[node name="Button" type="Button" parent="UI Manager/HSplit/LeftSide/UpgradeButtons" unique_id=980957521]
+[node name="Button" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
@@ -161,66 +232,57 @@ text = "Unused"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
-[node name="RigthSide" type="Control" parent="UI Manager/HSplit" unique_id=1749908788]
-layout_mode = 2
+[node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/margin_left = 88
+theme_override_constants/margin_top = 88
 
-[node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager/HSplit/RigthSide" unique_id=1788288161]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
-offset_bottom = 40.0
-grow_horizontal = 0
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="MoneyLabel" type="Label" parent="UI Manager/HSplit/RigthSide/MoneyLabelMargin" unique_id=228411836]
+[node name="ShapeZonePanel" type="Panel" parent="UI Manager/Shapes" unique_id=1680720052]
 layout_mode = 2
-text = "428 Vertices"
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
 
-[node name="Center" type="CenterContainer" parent="UI Manager/HSplit/RigthSide" unique_id=1375484952]
-custom_maximum_size = Vector2(0, 0)
+[node name="HSplit" type="HBoxContainer" parent="UI Manager/Shapes/ShapeZonePanel" unique_id=1892669714]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
 
-[node name="Big Shape" parent="UI Manager/HSplit/RigthSide/Center" unique_id=1237669307 instance=ExtResource("20_50h6r")]
-position = Vector2(0, 42)
+[node name="GridCenter" type="CenterContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit" unique_id=58114]
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Trashcan" type="Button" parent="UI Manager" unique_id=970780146]
-custom_maximum_size = Vector2(28, 40)
-layout_mode = 0
-offset_left = 366.0
-offset_top = 300.0
-offset_right = 394.0
-offset_bottom = 340.0
-flat = true
-icon_alignment = 1
-metadata/_edit_group_ = true
+[node name="GridContainer" type="GridContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/GridCenter" unique_id=980796157]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
 
-[node name="Closed" type="TextureRect" parent="UI Manager/Trashcan" unique_id=454531370]
+[node name="BigShapeContainer" type="Control" parent="UI Manager/Shapes/ShapeZonePanel/HSplit" unique_id=497165360]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BigShapeCenter" type="CenterContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer" unique_id=1375484952]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_vovoe")
-stretch_mode = 2
+size_flags_vertical = 4
 
-[node name="Open" type="TextureRect" parent="UI Manager/Trashcan" unique_id=1956452579]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_1gt4b")
-stretch_mode = 2
+[node name="Big Shape" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer/BigShapeCenter" unique_id=1237669307 instance=ExtResource("20_50h6r")]
