@@ -9,10 +9,27 @@
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
-bg_color = Color(0.08442987, 0.5767153, 0.7888737, 1)
+bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gt4b"]
+bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
+border_width_right = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
 bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrqo6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.23921569, 0.039215688, 0.34117648, 1)
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
@@ -27,7 +44,7 @@ mouse_filter = 2
 script = ExtResource("1_5q6yw")
 gridSize = 8
 moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
-gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/GridContainer")
+gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer/GridContainer")
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
 upgradeColorButton = NodePath("Buttons And Labels/Rebirth Button")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
@@ -132,7 +149,7 @@ anchor_bottom = 1.0
 offset_top = 88.0
 offset_right = 88.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vovoe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1gt4b")
 
 [node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146]
 custom_maximum_size = Vector2(28, 40)
@@ -258,7 +275,11 @@ custom_minimum_size = Vector2(272, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="GridContainer" type="GridContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/GridCenter" unique_id=980796157]
+[node name="PanelContainer" type="PanelContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/GridCenter" unique_id=1415292486]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrqo6")
+
+[node name="GridContainer" type="GridContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer" unique_id=980796157]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
