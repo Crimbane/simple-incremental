@@ -73,28 +73,6 @@ func updateColor() -> void:
 		dropShadow.visible = true
 
 
-func getColorMultiplier() -> int:
-	match GameManager.shapeColor:
-		"White":
-			return 1
-		"Red":
-			return 2
-		"Orange":
-			return 4
-		"Yellow":
-			return 8
-		"Green":
-			return 16
-		"Blue":
-			return 32
-		"Purple":
-			return 64
-		"Black":
-			return 128
-	
-	return 1
-
-
 func getShapeValue() -> int:
 	var baseValue: int
 	match shapeSprite:
@@ -115,4 +93,4 @@ func getShapeValue() -> int:
 		ShapeSprite.Octagon:
 			baseValue = 8
 	
-	return baseValue * getColorMultiplier()
+	return baseValue * GameManager.StateInfo[GameManager.currentState].ColorMultiplier

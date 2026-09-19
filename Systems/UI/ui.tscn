@@ -353,6 +353,7 @@ columns = 5
 [node name="BigShapeContainer" type="Control" parent="UI Manager/Shapes/ShapeZonePanel/HSplit" unique_id=497165360]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="BigShapeCenter" type="CenterContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer" unique_id=1375484952]
 layout_mode = 1

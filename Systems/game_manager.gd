@@ -55,31 +55,6 @@ var StateInfo: Dictionary[State, StateData] = {
 var currentState: int = State.White
 
 
-
-var shapeColor: String = "White"
-var currentColorsIndex: int = 0
-var colors: Array[String] = [
-	"White",
-	"Red",
-	"Orange",
-	"Yellow",
-	"Green",
-	"Blue",
-	"Purple",
-	"Black"
-]
-var upgradeColorsIndex: int = 0
-var upgradeColorCost: Array[int] = [
-	100, #Red
-	200, #Orange
-	300, #Yellow
-	400, #Greem
-	500, #Blue
-	600, #Purple
-	800, #Black
-	-1
-]
-
 var bigShapeSprite: String = "Dot"
 var bigShapeNames: Array[String] = [
 	"Dot",
@@ -186,19 +161,13 @@ func getShapeCost(baseCost: int, shape: Shape.ShapeSprite) -> int:
 
 #region Upgrades
 func upgradeColor() -> void:
-	upgradeColorsIndex = currentColorsIndex
-	
-	if money < upgradeColorCost[upgradeColorsIndex] :
+	if currentState == State.Black:
+		return
+	if money < StateInfo[currentState].NextRebirthCost:
 		print("Not enough money")
 		return
 	
-	if currentColorsIndex == colors.size() - 1:
-		return
-	
-	removeMoney(upgradeColorCost[upgradeColorsIndex])
-	
-	currentColorsIndex += 1
-	shapeColor = colors[currentColorsIndex]
+	removeMoney(StateInfo[currentState].NextRebirthCost)
 	
 	currentState += 1
 	UIManager.updateColor()
@@ -206,6 +175,7 @@ func upgradeColor() -> void:
 	for dict in gridStorage:
 		dict["shape"].updateColor()
 	calculateMoneyIncrement()
+
 
 func upgradeBigShape() -> void:
 	print(bigShapeSprite)
