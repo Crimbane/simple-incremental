@@ -60,14 +60,17 @@ func updateSprite() -> void:
 
 func updateColor() -> void:
 	var animatedSprite = get_node_or_null("Sprite")
+	var dropShadow = get_node_or_null("Sprite/DropShadow")
 	
-	if animatedSprite == null:
+	if animatedSprite == null or dropShadow == null:
 		return
 	
 	if isGhostShape:
-		animatedSprite.modulate.a = 0.25
+		animatedSprite.modulate.a = 0.4
+		dropShadow.visible = false
 	else:
 		animatedSprite.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
+		dropShadow.visible = true
 
 
 func getColorMultiplier() -> int:
