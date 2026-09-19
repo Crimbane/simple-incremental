@@ -13,10 +13,6 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var upgradeColorButton: Button
 @export var upgradeBigShapeButton: Button
 
-@export var trashcanButton: Button
-@export var trashcanClosed: TextureRect
-@export var trashcanOpen: TextureRect
-
 var gridButtons: Array
 var ghostStorage: Array[Dictionary]
 
@@ -30,10 +26,6 @@ var gridLeftClickHold: bool = false
 func _ready() -> void:
 	GameManager.UIManager = self
 	updateGrid()
-	
-	trashcanButton.pressed.connect(clearShapeHelpByCursor)
-	trashcanButton.mouse_entered.connect(onTrashcanMouseEntered)
-	trashcanButton.mouse_exited.connect(OnTrashcanMouseExited)
 	
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 
@@ -87,23 +79,6 @@ func updateColor() -> void:
 		var buttonIcon = button.get_node("Icon")
 		buttonIcon.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
 
-
-#region Trashcan
-func onTrashcanMouseEntered():
-	trashcanClosed.hide()
-	trashcanOpen.show()
-
-func OnTrashcanMouseExited():
-	trashcanOpen.hide()
-	trashcanClosed.show()
-
-func clearShapeHelpByCursor() -> void:
-	if shapeHeldByCursor:
-		GameManager.removeShapeFromStorage(shapeHeldByCursor)
-		shapeHeldByCursor.queue_free()
-		GameManager.calculateMoneyIncrement()
-
-#endregion
 
 #region Grid
 func addShapeToCursor(shape: Shape) -> void:

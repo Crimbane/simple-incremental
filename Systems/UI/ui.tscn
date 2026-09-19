@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bgm2aymcg2fgu" path="res://Systems/UI/ui_manager.gd" id="1_5q6yw"]
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="5_2bpht"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
+[ext_resource type="Script" uid="uid://dcmbqd7i3bbh3" path="res://Systems/UI/Trashcan/trashcan.gd" id="5_xo8aq"]
 [ext_resource type="Script" uid="uid://b5i4pwvywoipt" path="res://Systems/UI/rebirth_button.gd" id="6_1gt4b"]
-[ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Entities/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
-[ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Entities/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
+[ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="6_2bpht"]
+[ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
+[ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Systems/UI/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
@@ -17,6 +20,37 @@ border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
 border_width_right = 2
 border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhltn"]
+texture = ExtResource("6_vovoe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2tau"]
+texture = ExtResource("6_vovoe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxfak"]
+texture = ExtResource("7_1gt4b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1yug"]
+shader = ExtResource("5_2bpht")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1yug"]
+texture = ExtResource("6_2bpht")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_giag7"]
+texture = ExtResource("6_2bpht")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70d3y"]
+texture = ExtResource("6_2bpht")
+expand_margin_top = 2.0
+modulate_color = Color(1.274, 1.274, 1.274, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyjvv"]
+shader = ExtResource("5_2bpht")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
 bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
@@ -33,7 +67,7 @@ shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton", "trashcanButton", "trashcanClosed", "trashcanOpen")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,9 +82,6 @@ gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
 upgradeColorButton = NodePath("Buttons And Labels/Rebirth Button")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
-trashcanButton = NodePath("Buttons And Labels/LeftPanel/Trashcan")
-trashcanClosed = NodePath("Buttons And Labels/LeftPanel/Trashcan/Closed")
-trashcanOpen = NodePath("Buttons And Labels/LeftPanel/Trashcan/Open")
 
 [node name="Buttons And Labels" type="Control" parent="UI Manager" unique_id=580188624]
 custom_minimum_size = Vector2(356, 272)
@@ -151,39 +182,50 @@ offset_right = 88.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1gt4b")
 
-[node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146]
-custom_maximum_size = Vector2(28, 40)
+[node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146 node_paths=PackedStringArray("trashcanClosed", "trashcanOpen")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = -48.0
-offset_right = 56.0
-offset_bottom = -8.0
+offset_left = 10.0
+offset_top = -52.0
+offset_right = 42.0
+offset_bottom = -4.0
 grow_vertical = 0
-flat = true
-icon_alignment = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_uhltn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h2tau")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fxfak")
+script = ExtResource("5_xo8aq")
+trashcanClosed = NodePath("Closed")
+trashcanOpen = NodePath("Open")
 metadata/_edit_group_ = true
 
 [node name="Closed" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=454531370]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_t1yug")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("6_vovoe")
 stretch_mode = 2
 
 [node name="Open" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=1956452579]
 visible = false
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_t1yug")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("7_1gt4b")
 stretch_mode = 2
 
@@ -221,6 +263,29 @@ theme_override_font_sizes/font_size = 7
 text = "Unused"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
+
+[node name="Eraser" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=540966170]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -47.0
+offset_right = 82.0
+offset_bottom = -7.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_t1yug")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_giag7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_70d3y")
+
+[node name="Shadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Eraser" unique_id=271732105]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_fyjvv")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_2bpht")
 
 [node name="Rebirth Button" type="Button" parent="UI Manager/Buttons And Labels" unique_id=500497845]
 top_level = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yuc7ontcbs7y"
-path="res://.godot/imported/Trashcan closed pink.png-81da71bd217bf98c0c465065d6927630.ctex"
+uid="uid://bymt4ep1i6rmm"
+path="res://.godot/imported/Eraser.png-80ef02c7ff7b091df8ae0c8604ef1523.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Trashcan/Art/Trashcan closed pink.png"
-dest_files=["res://.godot/imported/Trashcan closed pink.png-81da71bd217bf98c0c465065d6927630.ctex"]
+source_file="res://Systems/UI/Art/Eraser.png"
+dest_files=["res://.godot/imported/Eraser.png-80ef02c7ff7b091df8ae0c8604ef1523.ctex"]
 
 [params]
 
