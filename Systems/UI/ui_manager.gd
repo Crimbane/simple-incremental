@@ -35,7 +35,6 @@ func _ready() -> void:
 	trashcanButton.mouse_entered.connect(onTrashcanMouseEntered)
 	trashcanButton.mouse_exited.connect(OnTrashcanMouseExited)
 	
-	upgradeColorButton.pressed.connect(GameManager.upgradeColor)
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 
 
@@ -72,11 +71,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if GameManager.getSlotInStorageByShape(shapeHeldByCursor) == null:
 				print("cancel")
 				shapeHeldByCursor.queue_free()
-			#else:
-				#print("delete")
-				#GameManager.removeShapeFromStorage(shapeHeldByCursor)
-				#shapeHeldByCursor.queue_free()
-				#GameManager.calculateMoneyIncrement()
 
 
 func updateMoneyUI() -> void:
@@ -86,30 +80,12 @@ func updateMoneyUI() -> void:
 	moneyLabel.text = "Vertices: " + formatMoney(GameManager.money, NotationStyle.NONE)
 
 func updateColor() -> void:
-	var shapeColor: String = GameManager.shapeColor
 	
 	GameManager.bigShape.updateColor()
 	
 	for button in shapeButtons.get_children():
 		var buttonIcon = button.get_node("Icon")
-		buttonIcon.modulate = GameManager.ShapeColor[shapeColor]
-		#match shapeColor:
-			#"White":
-				#buttonIcon.modulate = Color.WHITE
-			#"Red":
-				#buttonIcon.modulate = Color.RED
-			#"Orange":
-				#buttonIcon.modulate = Color.ORANGE
-			#"Yellow":
-				#buttonIcon.modulate = Color.YELLOW
-			#"Green":
-				#buttonIcon.modulate = Color.GREEN
-			#"Blue":
-				#buttonIcon.modulate = Color.BLUE
-			#"Purple":
-				#buttonIcon.modulate = Color.PURPLE
-			#"Black":
-				#buttonIcon.modulate = Color.BLACK
+		buttonIcon.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
 
 
 #region Trashcan

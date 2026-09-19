@@ -10,32 +10,51 @@ var incrementAmount: int = 0
 
 
 enum State { White, Red, Orange, Yellow, Green, Blue, Purple, Black }
-const StateInfo: Dictionary[State, Dictionary] = {
-	State.White: {
-		StateColorRGB = Color(0.9, 0.9, 0.9),
+var StateInfo: Dictionary[State, StateData] = {
+	State.White: StateData.new({
+		ColorRGB = Color(0.9, 0.9, 0.9),
 		ColorMultiplier = 1,
 		NextRebirthCost = 100
-	},
-	State.Red: {
-		StateColorRGB = Color(0.8, 0.2, 0.2),
+	}),
+	State.Red: StateData.new({
+		ColorRGB = Color(0.8, 0.2, 0.2),
 		ColorMultiplier = 2,
 		NextRebirthCost = 200
-	}
+	}),
+	State.Orange: StateData.new({
+		ColorRGB = Color(1.0, 0.5, 0.0),
+		ColorMultiplier = 4,
+		NextRebirthCost = 300
+	}),
+	State.Yellow: StateData.new({
+		ColorRGB = Color(1.0, 0.9, 0.0),
+		ColorMultiplier = 8,
+		NextRebirthCost = 400
+	}),
+	State.Green: StateData.new({
+		ColorRGB = Color(0.2, 0.7, 0.2),
+		ColorMultiplier = 16,
+		NextRebirthCost = 500
+	}),
+	State.Blue: StateData.new({
+		ColorRGB = Color(0.4, 0.5, 0.8),
+		ColorMultiplier = 32,
+		NextRebirthCost = 600
+	}),
+	State.Purple: StateData.new({
+		ColorRGB = Color(0.8, 0.2, 0.9),
+		ColorMultiplier = 64,
+		NextRebirthCost = 700
+	}),
+	State.Black: StateData.new({
+		ColorRGB = Color(0.1, 0.1, 0.1),
+		ColorMultiplier = 128,
+		NextRebirthCost = 800
+	})
 }
 var currentState: int = State.White
 
 
-
-var ShapeColor: Dictionary = {
-	White = Color(0.9, 0.9, 0.9),
-	Red = Color(0.8, 0.2, 0.2),
-	Orange = Color(1.0, 0.5, 0.0),
-	Yellow = Color(1.0, 0.9, 0.0),
-	Green = Color(0.2, 0.7, 0.2),
-	Blue = Color(0.4, 0.5, 0.8),
-	Purple = Color(0.8, 0.2, 0.9),
-	Black = Color(0.1, 0.1, 0.1)
-}
 
 var shapeColor: String = "White"
 var currentColorsIndex: int = 0
@@ -125,7 +144,7 @@ var bigShape: Node2D = null
 var upgraded = false
 
 func _ready() -> void:
-	print("Current State Info: ", StateInfo[currentState])
+	print("Current State Info: ", StateInfo[currentState].ColorRGB)
 	pass # Replace with function body.
 
 
@@ -181,8 +200,8 @@ func upgradeColor() -> void:
 	currentColorsIndex += 1
 	shapeColor = colors[currentColorsIndex]
 	
+	currentState += 1
 	UIManager.updateColor()
-	
 	
 	for dict in gridStorage:
 		dict["shape"].updateColor()
