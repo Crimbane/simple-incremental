@@ -5,7 +5,18 @@ var money: int = 1000000
 var time: float = 0.0
 var interval: float = 1 # Seconds between increments
 const BASE_INCREMENT_AMOUNT: int = 0
-var incrementAmount: int = 0 
+var incrementAmount: int = 0
+
+var ShapeColor: Dictionary = {
+	White = Color(0.9, 0.9, 0.9),
+	Red = Color(0.8, 0.2, 0.2),
+	Orange = Color(1.0, 0.5, 0.0),
+	Yellow = Color(1.0, 0.9, 0.0),
+	Green = Color(0.2, 0.7, 0.2),
+	Blue = Color(0.4, 0.5, 0.8),
+	Purple = Color(0.8, 0.2, 0.9),
+	Black = Color(0.1, 0.1, 0.1)
+}
 
 var shapeColor: String = "White"
 var currentColorsIndex: int = 0

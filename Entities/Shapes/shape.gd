@@ -1,7 +1,6 @@
 class_name Shape
 extends Node2D
 
-
 enum ShapeSprite {
 	Dot,
 	Line,
@@ -12,7 +11,6 @@ enum ShapeSprite {
 	Heptagon,
 	Octagon
 }
-
 @export var shapeSprite: ShapeSprite = ShapeSprite.Dot
 @export var cost: int = 10
 
@@ -70,24 +68,24 @@ func updateColor() -> void:
 		animatedSprite.modulate.a = 0.25
 	else:
 		var shapeColor: String = GameManager.shapeColor
-		
-		match shapeColor:
-			"White":
-				animatedSprite.modulate = Color.WHITE
-			"Red":
-				animatedSprite.modulate = Color.RED
-			"Orange":
-				animatedSprite.modulate = Color.ORANGE
-			"Yellow":
-				animatedSprite.modulate = Color.YELLOW
-			"Green":
-				animatedSprite.modulate = Color.GREEN
-			"Blue":
-				animatedSprite.modulate = Color.BLUE
-			"Purple":
-				animatedSprite.modulate = Color.PURPLE
-			"Black":
-				animatedSprite.modulate = Color.BLACK
+		animatedSprite.modulate = GameManager.ShapeColor[shapeColor]
+		#match shapeColor:
+			#"White":
+				#animatedSprite.modulate = Color.WHITE
+			#"Red":
+				#animatedSprite.modulate = Color.RED
+			#"Orange":
+				#animatedSprite.modulate = Color.ORANGE
+			#"Yellow":
+				#animatedSprite.modulate = Color.YELLOW
+			#"Green":
+				#animatedSprite.modulate = Color.GREEN
+			#"Blue":
+				#animatedSprite.modulate = Color.BLUE
+			#"Purple":
+				#animatedSprite.modulate = Color.PURPLE
+			#"Black":
+				#animatedSprite.modulate = Color.BLACK
 
 
 func getColorMultiplier() -> int:

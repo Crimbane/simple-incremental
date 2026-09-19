@@ -1,16 +1,61 @@
 [gd_scene format=3 uid="uid://cx3ey2m65d6vr"]
 
+[ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="1_4g1y0"]
 [ext_resource type="Script" uid="uid://bqtoshw7qf1lb" path="res://Systems/UI/shape_button.gd" id="1_83lja"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="3_j14i7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gex2x"]
+texture = ExtResource("1_4g1y0")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j14i7"]
+load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c27644ff30a93.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jlud"]
+texture = SubResource("CompressedTexture2D_j14i7")
+modulate_color = Color(1.274, 1.274, 1.274, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dovvo"]
+load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c27644ff30a93.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vumtr"]
+texture = SubResource("CompressedTexture2D_dovvo")
+modulate_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g1y0"]
+shader = ExtResource("3_j14i7")
+shader_parameter/blur_strength = 2.000000095
+shader_parameter/blur_alpha = 12.0000005225
 
 [node name="Button" type="Button" unique_id=1791495124]
 custom_minimum_size = Vector2(40, 40)
 custom_maximum_size = Vector2(40, 40)
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
 icon_alignment = 1
 script = ExtResource("1_83lja")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1699125796]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+
+[node name="DropShadow" type="TextureRect" parent="Icon" unique_id=982508205]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_4g1y0")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

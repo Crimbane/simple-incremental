@@ -26,32 +26,42 @@ const OCTAGON_TEXTURE: CompressedTexture2D = preload("uid://c7102x3jjiyfl")
 		cost = value
 
 @onready var buttonIcon: TextureRect = $Icon
+@onready var dropShadow: TextureRect = $Icon/DropShadow
 
 
 func _ready() -> void:
 	button_down.connect(_on_shape_button_press)
+	tooltip_text = "A very fancy shape."
 	updateIcon()
 
 func updateIcon() -> void:
-	if not buttonIcon:
+	if not buttonIcon or not dropShadow:
 		return
 	match shape:
 		"Dot":
 			buttonIcon.texture = DOT_TEXTURE
+			dropShadow.texture = DOT_TEXTURE
 		"Line":
 			buttonIcon.texture = LINE_TEXTURE
+			dropShadow.texture = LINE_TEXTURE
 		"Triangle":
 			buttonIcon.texture = TRIANGLE_TEXTURE
+			dropShadow.texture = TRIANGLE_TEXTURE
 		"Square":
 			buttonIcon.texture = SQUARE_TEXTURE
+			dropShadow.texture = SQUARE_TEXTURE
 		"Pentagon":
 			buttonIcon.texture = PENTAGON_TEXTURE
+			dropShadow.texture = PENTAGON_TEXTURE
 		"Hexagon":
 			buttonIcon.texture = HEXAGON_TEXTURE
+			dropShadow.texture = HEXAGON_TEXTURE
 		"Heptagon":
 			buttonIcon.texture = HEPTAGON_TEXTURE
+			dropShadow.texture = HEPTAGON_TEXTURE
 		"Octagon":
 			buttonIcon.texture = OCTAGON_TEXTURE
+			dropShadow.texture = OCTAGON_TEXTURE
 
 func _on_shape_button_press() -> void:
 	if GameManager.UIManager.shapeHeldByCursor:

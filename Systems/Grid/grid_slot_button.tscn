@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dvinbarfymwhy"]
 
-[ext_resource type="Texture2D" uid="uid://coxg1sw70d0bn" path="res://Systems/Grid/Art/GridSlot.png" id="1_hdoya"]
+[ext_resource type="Texture2D" uid="uid://cm2jn2sk6vuv2" path="res://Systems/Grid/Art/GridSlotAlternative.png" id="1_hdoya"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjc7g"]
 texture = ExtResource("1_hdoya")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrqo6"]
 texture = ExtResource("1_hdoya")
-modulate_color = Color(1.1291975, 1.1291975, 1.1291975, 1)
+modulate_color = Color(1.381, 1.381, 1.381, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6pas7"]
 texture = ExtResource("1_hdoya")

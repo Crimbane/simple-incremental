@@ -41,6 +41,7 @@ theme_override_constants/separation = 0
 [node name="LeftSide" type="Control" parent="UI Manager/HSplit" unique_id=580188624]
 custom_minimum_size = Vector2(356, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ShapeButtons" type="GridContainer" parent="UI Manager/HSplit/LeftSide" unique_id=1392619131]
 layout_mode = 0
@@ -51,48 +52,40 @@ columns = 4
 
 [node name="Dot" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Dot"
 
 [node name="Line" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Line"
 cost = 20
 
 [node name="Triangle" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Triangle"
 cost = 30
 
 [node name="Square" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Square"
 cost = 40
 
 [node name="Pentagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Pentagon"
 cost = 50
 
 [node name="Hexagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Hexagon"
 cost = 60
 
 [node name="Heptagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Heptagon"
 cost = 70
 
 [node name="Octagon" parent="UI Manager/HSplit/LeftSide/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-icon = ExtResource("5_5t6h7")
 shape = "Octagon"
 cost = 80
 
@@ -171,6 +164,7 @@ icon_alignment = 1
 [node name="RigthSide" type="Control" parent="UI Manager/HSplit" unique_id=1749908788]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager/HSplit/RigthSide" unique_id=1788288161]
 layout_mode = 1

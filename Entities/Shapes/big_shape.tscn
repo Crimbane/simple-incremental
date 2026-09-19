@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba6af10djpn3c" path="res://Entities/Shapes/big_shape.gd" id="1_p3nkl"]
 [ext_resource type="Shader" uid="uid://cjacx0qa0om6u" path="res://Entities/Shapes/smooth_pixel_2D.gdshader" id="2_81k3f"]
 [ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="3_w0gq0"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="4_w0gq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8yv6x"]
 shader = ExtResource("2_81k3f")
@@ -130,12 +131,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kerj0"]
+shader = ExtResource("4_w0gq0")
+shader_parameter/blur_strength = 5.0
+shader_parameter/blur_alpha = 13.5790005975025
+
 [node name="Big Shape" type="Node2D" unique_id=1237669307]
 texture_filter = 2
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_p3nkl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715047503]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1715047503]
+z_index = 10
 material = SubResource("ShaderMaterial_8yv6x")
+sprite_frames = SubResource("SpriteFrames_t1yug")
+animation = &"octagon"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Sprite" unique_id=632469082]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_kerj0")
+scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_t1yug")
 animation = &"octagon"
