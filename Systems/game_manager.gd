@@ -1,12 +1,21 @@
 extends Node
 
 
+const BASE_GRID_SIZE: int = 2
+const BASE_INCREMENT_AMOUNT: int = 0
+
+enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
+var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
+
 var money: int = 1000000
 var time: float = 0.0
 var interval: float = 1 # Seconds between increments
-const BASE_INCREMENT_AMOUNT: int = 0
-var incrementAmount: int = 0
-
+var incrementAmount: int = BASE_INCREMENT_AMOUNT
+var gridSize: int = 8:
+	set(value):
+		gridSize = value
+		if UIManager:
+			UIManager.updateGrid()
 
 
 enum State { White, Red, Orange, Yellow, Green, Blue, Purple, Black }
@@ -49,7 +58,7 @@ var StateInfo: Dictionary[State, StateData] = {
 	State.Black: StateData.new({
 		ColorRGB = Color(0.1, 0.1, 0.1),
 		ColorMultiplier = 128,
-		NextRebirthCost = 800
+		NextRebirthCost = 0
 	})
 }
 var currentState: int = State.White
@@ -119,7 +128,6 @@ var bigShape: Node2D = null
 var upgraded = false
 
 func _ready() -> void:
-	print("Current State Info: ", StateInfo[currentState].ColorRGB)
 	pass # Replace with function body.
 
 
@@ -160,7 +168,7 @@ func getShapeCost(baseCost: int, shape: Shape.ShapeSprite) -> int:
 #endregion
 
 #region Upgrades
-func upgradeColor() -> void:
+func rebirth() -> void:
 	if currentState == State.Black:
 		return
 	if money < StateInfo[currentState].NextRebirthCost:
@@ -170,10 +178,13 @@ func upgradeColor() -> void:
 	removeMoney(StateInfo[currentState].NextRebirthCost)
 	
 	currentState += 1
-	UIManager.updateColor()
+	gridSize = BASE_GRID_SIZE
 	
-	for dict in gridStorage:
-		dict["shape"].updateColor()
+	bigShape.updateColor()
+	UIManager.updateColor()
+	UIManager.clearShapesInGrid()
+	clearStorage()
+	#clearUpgrades()
 	calculateMoneyIncrement()
 
 

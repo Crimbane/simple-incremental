@@ -104,7 +104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_5q6yw")
-gridSize = 8
 moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer/GridContainer")
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")

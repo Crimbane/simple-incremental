@@ -5,14 +5,16 @@ extends Button
 const BUTTON_BACKGROUND = preload("uid://dtndmfviqeq4d")
 const SHAPE_SCENE: PackedScene = preload("uid://e1iphvwkj5db")
 
-const DOT_TEXTURE: CompressedTexture2D = preload("uid://dlg50nillq8k1")
-const LINE_TEXTURE: CompressedTexture2D = preload("uid://cg0dexsuih7l4")
-const TRIANGLE_TEXTURE: CompressedTexture2D = preload("uid://dfmh6fcatyqp")
-const SQUARE_TEXTURE: CompressedTexture2D = preload("uid://dxqco0xickmqf")
-const PENTAGON_TEXTURE: CompressedTexture2D = preload("uid://c85vy0xr24igy")
-const HEXAGON_TEXTURE: CompressedTexture2D = preload("uid://dbb0k618aw0ik")
-const HEPTAGON_TEXTURE: CompressedTexture2D = preload("uid://hgy4pa7iuubv")
-const OCTAGON_TEXTURE: CompressedTexture2D = preload("uid://c7102x3jjiyfl")
+const ICON_TEXTURE: Dictionary[String, CompressedTexture2D] = {
+	DOT = preload("uid://dlg50nillq8k1"),
+	LINE = preload("uid://cg0dexsuih7l4"),
+	TRIANGLE = preload("uid://dfmh6fcatyqp"),
+	SQUARE = preload("uid://dxqco0xickmqf"),
+	PENTAGON = preload("uid://c85vy0xr24igy"),
+	HEXAGON = preload("uid://dbb0k618aw0ik"),
+	HEPTAGON = preload("uid://hgy4pa7iuubv"),
+	OCTAGON = preload("uid://c7102x3jjiyfl")
+}
 
 enum ShapeSprite {
 	Dot,
@@ -46,31 +48,8 @@ func _ready() -> void:
 func updateIcon() -> void:
 	if not buttonIcon or not dropShadow:
 		return
-	match shapeSprite:
-		ShapeSprite.Dot:
-			buttonIcon.texture = DOT_TEXTURE
-			dropShadow.texture = DOT_TEXTURE
-		ShapeSprite.Line:
-			buttonIcon.texture = LINE_TEXTURE
-			dropShadow.texture = LINE_TEXTURE
-		ShapeSprite.Triangle:
-			buttonIcon.texture = TRIANGLE_TEXTURE
-			dropShadow.texture = TRIANGLE_TEXTURE
-		ShapeSprite.Square:
-			buttonIcon.texture = SQUARE_TEXTURE
-			dropShadow.texture = SQUARE_TEXTURE
-		ShapeSprite.Pentagon:
-			buttonIcon.texture = PENTAGON_TEXTURE
-			dropShadow.texture = PENTAGON_TEXTURE
-		ShapeSprite.Hexagon:
-			buttonIcon.texture = HEXAGON_TEXTURE
-			dropShadow.texture = HEXAGON_TEXTURE
-		ShapeSprite.Heptagon:
-			buttonIcon.texture = HEPTAGON_TEXTURE
-			dropShadow.texture = HEPTAGON_TEXTURE
-		ShapeSprite.Octagon:
-			buttonIcon.texture = OCTAGON_TEXTURE
-			dropShadow.texture = OCTAGON_TEXTURE
+	buttonIcon.texture = ICON_TEXTURE[ShapeSprite.find_key(shapeSprite).to_upper()]
+	dropShadow.texture = ICON_TEXTURE[ShapeSprite.find_key(shapeSprite).to_upper()]
 
 func _on_shape_button_press() -> void:
 	if GameManager.UIManager.shapeHeldByCursor:
@@ -78,7 +57,6 @@ func _on_shape_button_press() -> void:
 		
 	var newShape: Shape = SHAPE_SCENE.instantiate()
 	newShape.shapeSprite = newShape.ShapeSprite[ShapeSprite.find_key(shapeSprite)]
-	#newShape.cost = cost
 	newShape.cost = GameManager.getShapeCost(cost, newShape.shapeSprite)
 	newShape.isPurchaseShape = true
 	GameManager.UIManager.addShapeToCursor(newShape)

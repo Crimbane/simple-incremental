@@ -2,18 +2,12 @@ extends Control
 
 const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 
-@export var gridSize: int = 3:
-	set(value):
-		gridSize = value
-		updateGrid()
-
 @export var moneyLabel: Label
 @export var gridContainer: GridContainer
 @export var shapeButtons: GridContainer
 @export var upgradeColorButton: Button
 @export var upgradeBigShapeButton: Button
 
-var gridButtons: Array
 var ghostStorage: Array[Dictionary]
 
 var shapeHeldByCursor: Shape
@@ -69,12 +63,9 @@ func updateMoneyUI() -> void:
 	if not moneyLabel:
 		return
 	
-	moneyLabel.text = "Vertices: " + formatMoney(GameManager.money, NotationStyle.NONE)
+	moneyLabel.text = "Vertices: " + formatMoney(GameManager.money, GameManager.notationStyle)
 
 func updateColor() -> void:
-	
-	GameManager.bigShape.updateColor()
-	
 	for button in shapeButtons.get_children():
 		var buttonIcon = button.get_node("Icon")
 		buttonIcon.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
@@ -193,20 +184,31 @@ func banishGhosts() -> void:
 	GameManager.clearStorage(ghostStorage)
 
 
+func clearShapesInGrid() -> void:
+	for button in gridContainer.get_children():
+		var shape = button.get_children()
+		if shape:
+			shape[0].queue_free()
+
+
 func updateGrid() -> void:
 	if not gridContainer:
 		print("No grid container")
 		return
-	if gridSize < 1:
+	if GameManager.gridSize < 1:
 		push_error("Grid size cannot be smaller than 1")
 		return
 	
 	var buttonsInGrid = gridContainer.get_children()
 	var currentAmountOfButtons = buttonsInGrid.size()
-	var totalButtonAmountNeeded = gridSize * gridSize
+	var totalButtonAmountNeeded = GameManager.gridSize * GameManager.gridSize
 	
 	if currentAmountOfButtons == totalButtonAmountNeeded:
 		return
+	if totalButtonAmountNeeded < currentAmountOfButtons:
+		for button in buttonsInGrid:
+			button.queue_free()
+		currentAmountOfButtons = 0
 	
 	var amountOfButtonsToAdd = 0
 	if currentAmountOfButtons == 0:
@@ -223,17 +225,10 @@ func updateGrid() -> void:
 		newButton.button_down.connect(_on_grid_button_pressed.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 	
-	gridContainer.columns = gridSize
-	gridButtons = gridContainer.get_children()
+	gridContainer.columns = GameManager.gridSize
 #endregion
 
 #region Number Formatting
-enum NotationStyle {
-	NONE,
-	ABBREVIATION,
-	SCIENTIFIC,
-	ENGINEERING
-}
 
 enum BigNumbers {
 	MILLION = 10**6,
@@ -267,7 +262,8 @@ var notations: Dictionary = {
 	QUINTILLION = {SCIENTIFIC = "e18", ENGINEERING = "e18", ABBREVIATION = "Qn"}
 }
 
-func formatMoney(value: int, notationStyle: NotationStyle) -> String:
+func formatMoney(value: int, notationStyle: GameManager.NotationStyle) -> String:
+	var NotationStyle = GameManager.NotationStyle
 	if notationStyle == NotationStyle.NONE or value < BigNumbers.MILLION:
 		return str(value)
 	
@@ -284,6 +280,6 @@ func formatMoney(value: int, notationStyle: NotationStyle) -> String:
 	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
 	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
 	
-	return str(snapped(newValue, 0.001)) + suffix
+	return ("%.3f" % snapped(newValue, 0.001)) + suffix
 
 #endregion

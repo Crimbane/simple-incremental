@@ -8,6 +8,6 @@ var NextRebirthCost: int
 
 
 func _init(data: Dictionary) -> void:
-	for d in data:
-		if d in self:
-			self.set(d, data[d])
+	for key in data:
+		if key in self:
+			self.set(key, data[key])
