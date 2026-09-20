@@ -11,6 +11,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 var ghostStorage: Array[Dictionary]
 
 var shapeHeldByCursor: Shape
+var eraserHeldByCursor: Node2D
 
 var shiftHold: bool = false
 var leftClickHold: bool = false
@@ -27,6 +28,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if shapeHeldByCursor:
 		shapeHeldByCursor.global_position = get_global_mouse_position()
+	elif eraserHeldByCursor:
+		eraserHeldByCursor.global_position = get_global_mouse_position()
 	
 	if Input.is_action_pressed("Shift") and not shiftHold:
 		shiftHold = true
@@ -41,8 +44,8 @@ func _process(_delta: float) -> void:
 		gridLeftClickHold = false
 		if shiftHold and ghostStorage:
 			convertGhosts()
-	if Input.is_action_just_pressed("Right Click") and shapeHeldByCursor:
-		if shapeHeldByCursor.isPurchaseShape:
+	if Input.is_action_just_pressed("Right Click"):
+		if shapeHeldByCursor and shapeHeldByCursor.isPurchaseShape:
 			shapeHeldByCursor.queue_free()
 		if ghostStorage:
 			banishGhosts()
@@ -73,8 +76,10 @@ func updateColor() -> void:
 
 #region Grid
 func addShapeToCursor(shape: Shape) -> void:
-	#UIManager.reparent(shape)
 	shapeHeldByCursor = shape
+
+func addEraserToCursor(eraser: Node2D) -> void:
+	eraserHeldByCursor = eraser
 
 
 func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
@@ -140,11 +145,23 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 		
 		limboShape.position = centerPosition
 		
-	elif not shapeHeldByCursor and shapeInThisSlot:
+	elif not shapeHeldByCursor and shapeInThisSlot and not eraserHeldByCursor:
 		print("pickup")
 		
 		shapeInThisSlot.reparent(self)
 		shapeHeldByCursor = shapeInThisSlot
+		
+	elif eraserHeldByCursor and shapeInThisSlot:
+		if shiftHold:
+			var newGhostEraser: Node2D = eraserHeldByCursor.duplicate()
+			gridButton.add_child(newGhostEraser)
+			newGhostEraser.isGhostShape = true
+			newGhostEraser.position = centerPosition
+			GameManager.addShapeToStorage(slot, newGhostEraser, ghostStorage)
+		else:
+			GameManager.removeShapeFromStorage(shapeInThisSlot)
+			shapeInThisSlot.queue_free()
+			GameManager.calculateMoneyIncrement()
 
 
 func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
@@ -159,24 +176,43 @@ func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector
 				newGhostShape.isGhostShape = true
 				newGhostShape.position = centerPosition
 				GameManager.addShapeToStorage(slot, newGhostShape, ghostStorage)
+	elif shiftHold and gridLeftClickHold and eraserHeldByCursor:
+		var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
+		var ghostInThisSlot: Node2D = GameManager.getShapeInStorageBySlot(slot, ghostStorage)
+		
+		if shapeInThisSlot and not ghostInThisSlot:
+			var newGhostEraser: Node2D = eraserHeldByCursor.duplicate()
+			gridButton.add_child(newGhostEraser)
+			newGhostEraser.isGhostShape = true
+			newGhostEraser.position = centerPosition
+			GameManager.addShapeToStorage(slot, newGhostEraser, ghostStorage)
 
 func convertGhosts() -> void:
-	var cost: int = 0
-	
-	for dict in ghostStorage:
-		cost += dict["shape"].cost
-	
-	if GameManager.money >= cost:
-		GameManager.removeMoney(cost)
+	if shapeHeldByCursor:
+		var cost: int = 0
+		
 		for dict in ghostStorage:
-			dict["shape"].isGhostShape = false
-		GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
-		GameManager.clearStorage(ghostStorage)
-		GameManager.calculateMoneyIncrement()
-	else:
-		print("You are poor")
-		banishGhosts()
-		shapeHeldByCursor.queue_free()
+			cost += dict["shape"].cost
+		
+		if GameManager.money >= cost:
+			GameManager.removeMoney(cost)
+			for dict in ghostStorage:
+				dict["shape"].isGhostShape = false
+			GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
+			GameManager.clearStorage(ghostStorage)
+			GameManager.calculateMoneyIncrement()
+		else:
+			print("You are poor")
+			banishGhosts()
+			shapeHeldByCursor.queue_free()
+	
+	elif eraserHeldByCursor:
+		for dict in ghostStorage.duplicate():
+			print("WHYYY")
+			GameManager.getShapeInStorageBySlot(dict["slot"]).queue_free()
+			GameManager.removeShapeFromStorageSlot(dict["slot"])
+			dict["shape"].queue_free()
+			GameManager.removeShapeFromStorageSlot(dict["slot"], ghostStorage)
 
 func banishGhosts() -> void:
 	for dict in ghostStorage:

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="6_2bpht"]
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Systems/UI/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
+[ext_resource type="Script" uid="uid://dqk5artd4b1i3" path="res://Systems/UI/eraser_button.gd" id="9_fxfak"]
 [ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
@@ -304,6 +305,7 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_t1yug")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_giag7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_70d3y")
+script = ExtResource("9_fxfak")
 
 [node name="Shadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Eraser" unique_id=271732105]
 show_behind_parent = true

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dhigqih41adct"]
+
+[ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="1_hboym"]
+[ext_resource type="Script" uid="uid://bpf3q6pb3ukyp" path="res://Entities/eraser.gd" id="1_ux5q3"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="2_ux5q3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
+shader = ExtResource("2_ux5q3")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+
+[node name="Eraser" type="Node2D" unique_id=132592497]
+z_index = 100
+script = ExtResource("1_ux5q3")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=664854653]
+texture = ExtResource("1_hboym")
+
+[node name="DropShadow" type="Sprite2D" parent="Sprite" unique_id=1771007746]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_fjc7g")
+texture = ExtResource("1_hboym")
