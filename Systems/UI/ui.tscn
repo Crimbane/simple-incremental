@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="6_2bpht"]
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Systems/UI/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
+[ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
@@ -63,6 +64,33 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.23921569, 0.039215688, 0.34117648, 1)
 shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pas7"]
+content_margin_bottom = 2.0
+bg_color = Color(0.65882355, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo8aq"]
+content_margin_bottom = 2.0
+bg_color = Color(0.5201291, 0.0005995106, 0.00032844424, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhltn"]
+content_margin_bottom = 2.0
+bg_color = Color(0.7788029, 0.1510582, 0.14154711, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
@@ -367,3 +395,20 @@ grow_vertical = 2
 size_flags_vertical = 4
 
 [node name="Big Shape" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer/BigShapeCenter" unique_id=1237669307 instance=ExtResource("20_50h6r")]
+
+[node name="Button" type="Button" parent="UI Manager" unique_id=31119279]
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.7455808, 0.7455801, 0.7455802, 1)
+theme_override_colors/font_pressed_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_6pas7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xo8aq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uhltn")
+text = "X"
+script = ExtResource("11_uhltn")
