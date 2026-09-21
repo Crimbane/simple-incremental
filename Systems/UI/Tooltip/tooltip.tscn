@@ -10,6 +10,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.5058824, 0.5176471, 1)
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
 
 [node name="Tooltip" type="PanelContainer" unique_id=8808396 node_paths=PackedStringArray("costLabel", "textLabel")]
 top_level = true

@@ -30,15 +30,90 @@ texture = ExtResource("6_vovoe")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2tau"]
 texture = ExtResource("6_vovoe")
+modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxfak"]
 texture = ExtResource("7_1gt4b")
+modulate_color = Color(1.2742168, 1.2742168, 1.2742168, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1yug"]
 shader = ExtResource("5_2bpht")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70d3y"]
+bg_color = Color(0.2, 0.02745098, 0.28627452, 0.78431374)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.5058824, 0.5176471, 1)
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txu8q"]
+bg_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31m62"]
+bg_color = Color(0.73255324, 0.09448026, 0.37772238, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.138056, 0.5924884, 0.561363, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5t6h7"]
+bg_color = Color(1.1951628, 0.18228513, 0.631904, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25145727, 0.97282386, 0.92341524, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_giag7"]
+content_margin_left = 2.0
+bg_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdu1p"]
+content_margin_left = 2.0
+bg_color = Color(0.138056, 0.5924884, 0.561363, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.73255324, 0.09448026, 0.37772238, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lep1l"]
+content_margin_left = 2.0
+bg_color = Color(0.25145727, 0.97282386, 0.92341524, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1.1951628, 0.18228513, 0.631904, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1yug"]
 texture = ExtResource("6_2bpht")
@@ -256,9 +331,10 @@ anchor_bottom = 1.0
 offset_top = 88.0
 offset_right = 88.0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1gt4b")
 
-[node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146 node_paths=PackedStringArray("trashcanClosed", "trashcanOpen")]
+[node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146 node_paths=PackedStringArray("trashcanClosed", "trashcanOpen", "confirmationPanel", "yesButton", "noButton")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -274,6 +350,9 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_fxfak")
 script = ExtResource("5_xo8aq")
 trashcanClosed = NodePath("Closed")
 trashcanOpen = NodePath("Open")
+confirmationPanel = NodePath("TrashConfirmPanel")
+yesButton = NodePath("TrashConfirmPanel/YesButton")
+noButton = NodePath("TrashConfirmPanel/NoButton")
 metadata/_edit_group_ = true
 
 [node name="Closed" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=454531370]
@@ -304,6 +383,63 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_1gt4b")
 stretch_mode = 2
+
+[node name="TrashConfirmPanel" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan" unique_id=1436092107]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 54.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_70d3y")
+
+[node name="ConfirmationLabel" type="Label" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan/TrashConfirmPanel" unique_id=934599540]
+custom_maximum_size = Vector2(74, 22)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("2_70d3y")
+theme_override_font_sizes/font_size = 6
+text = "Delete all shapes?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="YesButton" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan/TrashConfirmPanel" unique_id=2143364070]
+custom_minimum_size = Vector2(16, 11)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 24.0
+offset_right = 30.0
+offset_bottom = 35.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_txu8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_31m62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5t6h7")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/Trashcan/TrashConfirmPanel" unique_id=741016975]
+custom_minimum_size = Vector2(16, 11)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 60.0
+offset_bottom = 35.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_colors/font_pressed_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_colors/font_hover_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_giag7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qdu1p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lep1l")
+text = "No"
 
 [node name="UpgradeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=1221519659]
 layout_mode = 1
