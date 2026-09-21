@@ -7,6 +7,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var shapeButtons: GridContainer
 @export var upgradeColorButton: Button
 @export var upgradeBigShapeButton: Button
+@export var upgradeMoneyIntervalButton: Button
 
 var ghostStorage: Array[Dictionary]
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	updateGrid()
 	
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
+	upgradeMoneyIntervalButton.pressed.connect(GameManager.upgradeMoneyInterval)
 
 
 func _process(_delta: float) -> void:

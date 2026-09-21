@@ -208,6 +208,12 @@ func upgradeBigShape() -> void:
 	print("upgraded big shape to ", currentBigShapeIndex)
 	calculateMoneyIncrement()
 
+func upgradeMoneyInterval() -> void:
+	if interval == 0.1 or interval < 0.1:
+		return
+	
+	interval -= 0.1
+
 #endregion
 
 #region Grid

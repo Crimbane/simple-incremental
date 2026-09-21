@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgm2aymcg2fgu" path="res://Systems/UI/ui_manager.gd" id="1_5q6yw"]
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
+[ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="2_70d3y"]
 [ext_resource type="PackedScene" uid="uid://1s0d0soy4dp3" path="res://Systems/UI/Tooltip/tooltip.tscn" id="2_h2tau"]
 [ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="5_2bpht"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
@@ -97,7 +98,7 @@ shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton", "upgradeMoneyIntervalButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,6 +112,7 @@ gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
 upgradeColorButton = NodePath("Buttons And Labels/Rebirth Button")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
+upgradeMoneyIntervalButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval")
 
 [node name="Buttons And Labels" type="Control" parent="UI Manager" unique_id=580188624]
 custom_minimum_size = Vector2(356, 272)
@@ -133,7 +135,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vovoe")
 
 [node name="MoneyLabelMargin" type="MarginContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1788288161]
-custom_maximum_size = Vector2(-1, 33)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -145,7 +146,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="MoneyLabel" type="Label" parent="UI Manager/Buttons And Labels/TopPanel/MoneyLabelMargin" unique_id=228411836]
+z_index = 200
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_70d3y")
+theme_override_font_sizes/font_size = 11
 text = "428 Vertices"
 
 [node name="ShapeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1392619131]
@@ -326,19 +330,23 @@ offset_right = 41.0
 offset_bottom = 39.0
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=297856955 instance=ExtResource("2_h2tau")]
+visible = false
 layout_mode = 0
 description = "Upgrade The Almighty Shape"
 parentType = "Big Shape"
 
-[node name="Button" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
+[node name="Upgrade Interval" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
-text = "Unused"
+text = "Upgrade
+Money
+Interval"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
-[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Button" unique_id=814998724 instance=ExtResource("2_h2tau")]
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=814998724 instance=ExtResource("2_h2tau")]
+visible = false
 layout_mode = 0
 parentType = "Rebirth"
 
@@ -388,6 +396,7 @@ icon_alignment = 1
 script = ExtResource("6_1gt4b")
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=1312935367 instance=ExtResource("2_h2tau")]
+visible = false
 layout_mode = 0
 description = "Rebirth the shapes"
 parentType = "Rebirth"

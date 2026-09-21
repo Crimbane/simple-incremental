@@ -1,0 +1,9 @@
+16:9 viewport: 640x360
+
+Hex codes for Simple Incremental palette:
+	Dark Purple: 3d0a57
+	Purple: 852469
+	Pink: ef227d
+	Dark blue: 49819c
+	Light blue/cyan: 30c2b8
+	Peach: ff8184

@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 				setBigShapeCost()
 			"Rebirth":
 				setRebirthCost()
-				global_position = parent.global_position + Vector2(-185,-20)
+				global_position = parent.global_position + Vector2(-150,-20)
 			"Shape":
 				setShapeCost()
 
