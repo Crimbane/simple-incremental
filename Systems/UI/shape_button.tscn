@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="1_4g1y0"]
 [ext_resource type="Script" uid="uid://bqtoshw7qf1lb" path="res://Systems/UI/shape_button.gd" id="1_83lja"]
+[ext_resource type="Texture2D" uid="uid://dlg50nillq8k1" path="res://Entities/Shapes/Art/Dot.png" id="3_8jlud"]
 [ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="3_j14i7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gex2x"]
@@ -50,6 +51,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_8jlud")
 stretch_mode = 3
 
 [node name="DropShadow" type="TextureRect" parent="Icon" unique_id=982508205]
@@ -68,4 +70,5 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_8jlud")
 stretch_mode = 3

@@ -42,7 +42,7 @@ enum ShapeSprite {
 
 func _ready() -> void:
 	button_down.connect(_on_shape_button_press)
-	tooltip_text = "A very fancy shape."
+	#tooltip_text = "A very fancy shape."
 	updateIcon()
 
 func updateIcon() -> void:

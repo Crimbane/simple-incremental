@@ -156,7 +156,6 @@ func calculateMoneyIncrement() -> void:
 	var bigShapeMultiplier = bigShapeDict[bigShapeSprite]["multiplier"]
 	
 	incrementAmount *= bigShapeMultiplier
-	print("BIGSHAOEMULTIPLIER: ", bigShapeMultiplier)
 	print("incrementAmount: ", incrementAmount)
 
 
@@ -189,7 +188,6 @@ func rebirth() -> void:
 
 
 func upgradeBigShape() -> void:
-	print(bigShapeSprite)
 	if currentBigShapeIndex >= bigShapeNames.size() - 1:
 		print("bigshape max level reached")
 		return
@@ -259,7 +257,7 @@ func getShapeCount(shape: Shape.ShapeSprite) -> int:
 		var storedShape = dict["shape"]
 		if storedShape.shapeSprite == shape:
 			count += 1
-		print("shape count: ", count)
+		
 	return count
 
 #endregion

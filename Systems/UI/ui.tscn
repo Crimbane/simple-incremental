@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgm2aymcg2fgu" path="res://Systems/UI/ui_manager.gd" id="1_5q6yw"]
 [ext_resource type="PackedScene" uid="uid://cx3ey2m65d6vr" path="res://Systems/UI/shape_button.tscn" id="2_7xnr0"]
+[ext_resource type="PackedScene" uid="uid://1s0d0soy4dp3" path="res://Systems/UI/Tooltip/tooltip.tscn" id="2_h2tau"]
 [ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="5_2bpht"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5t6h7"]
 [ext_resource type="Script" uid="uid://dcmbqd7i3bbh3" path="res://Systems/UI/Trashcan/trashcan.gd" id="5_xo8aq"]
@@ -156,49 +157,89 @@ columns = 4
 
 [node name="Dot" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Dot" unique_id=8808396 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Dot"
+parentType = "Shape"
 
 [node name="Line" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 1
 cost = 20
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Line" unique_id=2040448486 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Line"
+parentType = "Shape"
+
 [node name="Triangle" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 2
 cost = 30
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Triangle" unique_id=63776408 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Triangle"
+parentType = "Shape"
+
 [node name="Square" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 3
 cost = 40
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Square" unique_id=1825188698 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Square"
+parentType = "Shape"
+
 [node name="Pentagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 4
 cost = 50
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Pentagon" unique_id=1144478235 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Pentagon"
+parentType = "Shape"
+
 [node name="Hexagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 5
 cost = 60
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Hexagon" unique_id=2105786303 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Hexagon"
+parentType = "Shape"
+
 [node name="Heptagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 6
 cost = 70
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Heptagon" unique_id=1333005492 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Heptagon"
+parentType = "Shape"
+
 [node name="Octagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
-tooltip_text = "A very fancy shape."
 shapeSprite = 7
 cost = 80
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Octagon" unique_id=949869363 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Buy Octagon"
+parentType = "Shape"
 
 [node name="LeftPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=103382533]
 custom_minimum_size = Vector2(88, 0)
@@ -284,6 +325,11 @@ offset_top = -1.0
 offset_right = 41.0
 offset_bottom = 39.0
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=297856955 instance=ExtResource("2_h2tau")]
+layout_mode = 0
+description = "Upgrade The Almighty Shape"
+parentType = "Big Shape"
+
 [node name="Button" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
@@ -291,6 +337,10 @@ theme_override_font_sizes/font_size = 7
 text = "Unused"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Button" unique_id=814998724 instance=ExtResource("2_h2tau")]
+layout_mode = 0
+parentType = "Rebirth"
 
 [node name="Eraser" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=540966170]
 layout_mode = 1
@@ -336,6 +386,11 @@ text = "Ascend"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 script = ExtResource("6_1gt4b")
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=1312935367 instance=ExtResource("2_h2tau")]
+layout_mode = 0
+description = "Rebirth the shapes"
+parentType = "Rebirth"
 
 [node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
 layout_mode = 1
@@ -413,3 +468,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xo8aq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhltn")
 text = "X"
 script = ExtResource("11_uhltn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI Manager" unique_id=1155648543]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "klsdkljsklfjk"
+fit_content = true
