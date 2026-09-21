@@ -48,11 +48,10 @@ func onMouseExited() -> void:
 
 
 func setBigShapeCost() -> void:
-	if GameManager.currentBigShapeIndex >= GameManager.bigShapeNames.size() - 1:
+	if GameManager.currentBigShapeType == GameManager.ShapeType.Circle:
 		return
 	
-	var nextShape: String = GameManager.bigShapeNames[GameManager.currentBigShapeIndex + 1]
-	setCost(GameManager.bigShapeDict[nextShape]["cost"])
+	setCost(GameManager.ShapeInfo[GameManager.currentBigShapeType].NextBigShapeCost)
 
 func setRebirthCost() -> void:
 	setCost(GameManager.StateInfo[GameManager.currentState].NextRebirthCost)

@@ -48,6 +48,9 @@ func updateColor() -> void:
 	else:
 		animatedSprite.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
 		dropShadow.visible = true
+		if GameManager.currentState == GameManager.State.Black:
+			dropShadow.material.set_shader_parameter("blur_color", Color(1.0, 1.0, 1.0, 1.0))
+			dropShadow.material.set_shader_parameter("blur_alpha", 4.0)
 
 
 func getShapeValue() -> int:

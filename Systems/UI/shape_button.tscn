@@ -26,6 +26,7 @@ modulate_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
 shader = ExtResource("3_j14i7")
 shader_parameter/blur_strength = 2.000000095
 shader_parameter/blur_alpha = 12.0000005225
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" unique_id=1791495124]
 custom_minimum_size = Vector2(40, 40)

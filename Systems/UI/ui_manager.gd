@@ -5,7 +5,6 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var moneyLabel: Label
 @export var gridContainer: GridContainer
 @export var shapeButtons: GridContainer
-@export var upgradeColorButton: Button
 @export var upgradeBigShapeButton: Button
 @export var upgradeMoneyIntervalButton: Button
 
@@ -68,12 +67,37 @@ func updateMoneyUI() -> void:
 	if not moneyLabel:
 		return
 	
-	moneyLabel.text = "Vertices: " + formatMoney(GameManager.money, GameManager.notationStyle)
+	moneyLabel.text = "Vertices:\n" + formatMoney(GameManager.money, GameManager.notationStyle)
 
 func updateColor() -> void:
-	for button in shapeButtons.get_children():
+	for button: Button in shapeButtons.get_children():
 		var buttonIcon = button.get_node("Icon")
+		var buttonShadow = buttonIcon.get_node("DropShadow")
 		buttonIcon.modulate = GameManager.StateInfo[GameManager.currentState].ColorRGB
+		if GameManager.currentState == GameManager.State.Black:
+			buttonShadow.material.set_shader_parameter("blur_color", Color(1.0, 1.0, 1.0, 1.0))
+			buttonShadow.material.set_shader_parameter("blur_alpha", 4.0)
+			button.self_modulate = Color(0.663, 0.663, 1.0)
+	if GameManager.currentState == GameManager.State.Black:
+		var topPanel: Panel = %TopPanel
+		var leftPanel: Panel = %LeftPanel
+		var shapeZonePanel: Panel = %ShapeZonePanel
+		var topPanelStyle: StyleBoxFlat = topPanel.get_theme_stylebox("panel")
+		var leftPanelStyle: StyleBoxFlat = leftPanel.get_theme_stylebox("panel")
+		var shapeZonePanelStyle: StyleBoxFlat = shapeZonePanel.get_theme_stylebox("panel")
+		
+		topPanelStyle.bg_color = Color(0.307, 0.065, 0.238)
+		topPanelStyle.border_color = Color(0.286, 0.506, 0.612)
+		leftPanelStyle.bg_color = Color(0.307, 0.065, 0.238)
+		leftPanelStyle.border_color = Color(0.286, 0.506, 0.612)
+		shapeZonePanelStyle.bg_color = Color(0.0, 0.0, 0.0)
+		
+		upgradeBigShapeButton.self_modulate = Color(0.663, 0.663, 1.0)
+		upgradeMoneyIntervalButton.self_modulate = Color(0.663, 0.663, 1.0)
+		
+		for slot: Button in gridContainer.get_children():
+			slot.self_modulate = Color(0.663, 0.663, 1.0)
+
 
 
 #region Grid
@@ -210,11 +234,11 @@ func convertGhosts() -> void:
 	
 	elif eraserHeldByCursor:
 		for dict in ghostStorage.duplicate():
-			print("WHYYY")
 			GameManager.getShapeInStorageBySlot(dict["slot"]).queue_free()
 			GameManager.removeShapeFromStorageSlot(dict["slot"])
 			dict["shape"].queue_free()
 			GameManager.removeShapeFromStorageSlot(dict["slot"], ghostStorage)
+			GameManager.calculateMoneyIncrement()
 
 func banishGhosts() -> void:
 	for dict in ghostStorage:

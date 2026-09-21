@@ -2,9 +2,9 @@ class_name StateData
 extends Resource
 
 
-var ColorRGB: Color
-var ColorMultiplier: int
-var NextRebirthCost: int
+var ColorRGB: Color = Color.WHITE
+var ColorMultiplier: int = 0
+var NextRebirthCost: int = 0
 
 
 func _init(data: Dictionary) -> void:

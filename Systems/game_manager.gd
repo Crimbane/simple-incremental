@@ -3,13 +3,14 @@ extends Node
 
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
+const BASE_INTERVAL: float = 1.1
 
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
 
 var money: int = 1000000
 var time: float = 0.0
-var interval: float = 1 # Seconds between increments
+var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
 var gridSize: int = 8:
 	set(value):
@@ -57,71 +58,74 @@ var StateInfo: Dictionary[State, StateData] = {
 	}),
 	State.Black: StateData.new({
 		ColorRGB = Color(0.1, 0.1, 0.1),
-		ColorMultiplier = 128,
-		NextRebirthCost = 0
+		ColorMultiplier = 128
 	})
 }
 var currentState: int = State.White
 
-
-var bigShapeSprite: String = "Dot"
-var bigShapeNames: Array[String] = [
-	"Dot",
-	"Line",
-	"Triangle",
-	"Square",
-	"Pentagon",
-	"Hexagon",
-	"Heptagon",
-	"Octagon",
-	"Nonagon",
-	"Decagon"
-]
-var currentBigShapeIndex = 0
-var bigShapeDict: Dictionary = {
-	"Dot": {
-		"multiplier": 1,
-		"cost": 100
-	},
-	"Line": {
-		"multiplier": 2,
-		"cost": 200
-	},
-	"Triangle": {
-		"multiplier": 3,
-		"cost": 300
-	},
-	"Square": {
-		"multiplier": 4,
-		"cost": 400
-	},
-	"Pentagon": {
-		"multiplier": 5,
-		"cost": 500
-	},
-	"Hexagon": {
-		"multiplier": 6,
-		"cost": 600
-	},
-	"Heptagon": {
-		"multiplier": 7,
-		"cost": 700
-	},
-	"Octagon": {
-		"multiplier": 8,
-		"cost": 800
-	},
-	"Nonagon": {
-		"multiplier": 9,
-		"cost": 900
-	},
-	"Decagon": {
-		"multiplier": 10,
-		"cost": 1000
-	}
+enum ShapeType { Dot, Line, Triangle, Square, Pentagon, Hexagon, Heptagon, Octagon, Nonagon, Decagon, Circle }
+var ShapeInfo: Dictionary[ShapeType, ShapeData] = {
+	ShapeType.Dot: ShapeData.new({
+		ShapeMultiplier = 1,
+		ShapeCost = 10,
+		BigShapeMultiplier = 1,
+		NextBigShapeCost = 100
+	}),
+	ShapeType.Line: ShapeData.new({
+		ShapeMultiplier = 2,
+		ShapeCost = 20,
+		BigShapeMultiplier = 2,
+		NextBigShapeCost = 200
+	}),
+	ShapeType.Triangle: ShapeData.new({
+		ShapeMultiplier = 3,
+		ShapeCost = 30,
+		BigShapeMultiplier = 3,
+		NextBigShapeCost = 300
+	}),
+	ShapeType.Square: ShapeData.new({
+		ShapeMultiplier = 4,
+		ShapeCost = 40,
+		BigShapeMultiplier = 4,
+		NextBigShapeCost = 400
+	}),
+	ShapeType.Pentagon: ShapeData.new({
+		ShapeMultiplier = 5,
+		ShapeCost = 50,
+		BigShapeMultiplier = 5,
+		NextBigShapeCost = 500
+	}),
+	ShapeType.Hexagon: ShapeData.new({
+		ShapeMultiplier = 6,
+		ShapeCost = 60,
+		BigShapeMultiplier = 6,
+		NextBigShapeCost = 600
+	}),
+	ShapeType.Heptagon: ShapeData.new({
+		ShapeMultiplier = 7,
+		ShapeCost = 70,
+		BigShapeMultiplier = 7,
+		NextBigShapeCost = 700
+	}),
+	ShapeType.Octagon: ShapeData.new({
+		ShapeMultiplier = 8,
+		ShapeCost = 80,
+		BigShapeMultiplier = 8,
+		NextBigShapeCost = 800
+	}),
+	ShapeType.Nonagon: ShapeData.new({
+		BigShapeMultiplier = 9,
+		NextBigShapeCost = 900
+	}),
+	ShapeType.Decagon: ShapeData.new({
+		BigShapeMultiplier = 10,
+		NextBigShapeCost = 10*18 # 1 Quintillion / 1.0e18
+	})
 }
+var currentBigShapeType: int = ShapeType.Dot
 
 var gridStorage: Array[Dictionary]
+
 
 var UIManager: Node = null
 var bigShape: Node2D = null
@@ -153,9 +157,7 @@ func calculateMoneyIncrement() -> void:
 	for dict in gridStorage:
 		incrementAmount += dict["shape"].getShapeValue()
 	
-	var bigShapeMultiplier = bigShapeDict[bigShapeSprite]["multiplier"]
-	
-	incrementAmount *= bigShapeMultiplier
+	incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
 	print("incrementAmount: ", incrementAmount)
 
 
@@ -177,22 +179,20 @@ func rebirth() -> void:
 	removeMoney(StateInfo[currentState].NextRebirthCost)
 	
 	currentState += 1
-	gridSize = BASE_GRID_SIZE
 	
 	bigShape.updateColor()
 	UIManager.updateColor()
 	UIManager.clearShapesInGrid()
 	clearStorage()
-	#clearUpgrades()
+	clearUpgrades()
 	calculateMoneyIncrement()
 
 
 func upgradeBigShape() -> void:
-	if currentBigShapeIndex >= bigShapeNames.size() - 1:
+	if currentBigShapeType == ShapeType.Circle:
 		print("bigshape max level reached")
 		return
-	var nextShape: String = bigShapeNames[currentBigShapeIndex + 1]
-	var cost: int = bigShapeDict[nextShape]["cost"]
+	var cost: int = ShapeInfo[currentBigShapeType].NextBigShapeCost
 	
 	if money < cost:
 		print("Not enough money")
@@ -200,19 +200,24 @@ func upgradeBigShape() -> void:
 	
 	removeMoney(cost)
 	
-	currentBigShapeIndex += 1
-	bigShapeSprite = bigShapeNames[currentBigShapeIndex]
-	print("BigshapeSprite: ", bigShapeSprite)
+	currentBigShapeType += 1
+	
 	bigShape.updateSprite()
 	
-	print("upgraded big shape to ", currentBigShapeIndex)
+	print("upgraded big shape to ", ShapeType.find_key(currentBigShapeType))
 	calculateMoneyIncrement()
 
 func upgradeMoneyInterval() -> void:
-	if interval == 0.1 or interval < 0.1:
+	if interval <= 0.1:
 		return
-	
+	print("interval")
 	interval -= 0.1
+
+func clearUpgrades() -> void:
+	gridSize = BASE_GRID_SIZE
+	interval = BASE_INTERVAL
+	currentBigShapeType = ShapeType.Dot
+	bigShape.updateSprite()
 
 #endregion
 

@@ -38,6 +38,7 @@ texture = ExtResource("7_1gt4b")
 shader = ExtResource("5_2bpht")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1yug"]
 texture = ExtResource("6_2bpht")
@@ -55,6 +56,7 @@ modulate_color = Color(1.274, 1.274, 1.274, 1)
 shader = ExtResource("5_2bpht")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
 bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
@@ -98,7 +100,7 @@ shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeColorButton", "upgradeBigShapeButton", "upgradeMoneyIntervalButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +112,6 @@ script = ExtResource("1_5q6yw")
 moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer/GridContainer")
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
-upgradeColorButton = NodePath("Buttons And Labels/Rebirth Button")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
 upgradeMoneyIntervalButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval")
 
@@ -125,6 +126,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TopPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=1545389865]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 88)
 layout_mode = 1
 anchors_preset = 10
@@ -246,6 +248,7 @@ description = "Buy Octagon"
 parentType = "Shape"
 
 [node name="LeftPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=103382533]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 1
 anchors_preset = 9
@@ -414,6 +417,7 @@ theme_override_constants/margin_left = 88
 theme_override_constants/margin_top = 88
 
 [node name="ShapeZonePanel" type="Panel" parent="UI Manager/Shapes" unique_id=1680720052]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")

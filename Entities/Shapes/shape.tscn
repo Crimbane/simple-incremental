@@ -106,6 +106,8 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nrqo6"]
 shader = ExtResource("3_wp3uc")
 shader_parameter/blur_strength = 2.000000095
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [node name="Shape" type="Node2D" unique_id=604213033]
 script = ExtResource("1_wfk0b")
