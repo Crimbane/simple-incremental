@@ -50,6 +50,8 @@ var notations: Dictionary = {
 
 @onready var shapeButton: Button = $Button
 @onready var gridContainer: GridContainer = $GridContainer
+@onready var textureRect: TextureRect = $TextureRect
+@onready var shaderMaterial: ShaderMaterial = textureRect.material
 
 var shapeHeldByCursor: Node2D
 var gridButtons: Array
@@ -85,7 +87,20 @@ func _on_shape_button_press() -> void:
 	var newShape = SHAPE.instantiate()
 	shapeHeldByCursor = newShape
 	add_child(newShape)
-
+	
+	await RenderingServer.frame_post_draw
+	var viewport = get_viewport()
+	var screenshot = viewport.get_texture().get_image()
+	textureRect.texture = ImageTexture.create_from_image(screenshot)
+	shaderMaterial.set_shader_parameter("trans_color", Color(1.0, 0.0, 0.0))
+	print(viewport.size)
+	shaderMaterial.set_shader_parameter("start_position", get_local_mouse_position() / Vector2(viewport.size))
+	var tween = create_tween()
+	tween.tween_method(set_shader_progress, 0.0, 1.0, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	tween.tween_method(set_shader_progress, 1.0, 0.0, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	
+func set_shader_progress(value: float) -> void:
+	shaderMaterial.set_shader_parameter("progress", value)
 
 func _on_grid_button_pressed(gridButton: Button, slot: int) -> void:
 	

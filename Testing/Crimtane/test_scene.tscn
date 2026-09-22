@@ -1,6 +1,25 @@
 [gd_scene format=3 uid="uid://cgla51otyum31"]
 
 [ext_resource type="Script" uid="uid://cv8dksllnh6sl" path="res://Testing/Crimtane/test_scene.gd" id="1_y4dht"]
+[ext_resource type="Shader" uid="uid://cyln1c1egvwk2" path="res://Systems/rebirth_transition.gdshader" id="2_e4vjr"]
+[ext_resource type="Texture2D" uid="uid://bxlvjywgrumdp" path="res://icon.svg" id="2_uqbjg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cn7nd"]
+noise_type = 4
+seed = 1
+frequency = 0.0736
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uqbjg"]
+noise = SubResource("FastNoiseLite_cn7nd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
+shader = ExtResource("2_e4vjr")
+shader_parameter/start_position = Vector2(0.5, 0.5)
+shader_parameter/trans_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_uqbjg")
+shader_parameter/progress = 0.0
 
 [node name="Test Scene" type="Node" unique_id=1183496534]
 
@@ -14,6 +33,15 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_y4dht")
 gridSize = 8
+
+[node name="Panel" type="TextureRect" parent="Control" unique_id=1755792812]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uqbjg")
 
 [node name="Button" type="Button" parent="Control" unique_id=2013118900]
 layout_mode = 1
@@ -37,3 +65,14 @@ grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2032483633]
+material = SubResource("ShaderMaterial_fjc7g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
