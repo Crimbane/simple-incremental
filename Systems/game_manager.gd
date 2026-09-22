@@ -3,16 +3,16 @@ extends Node
 
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
-const BASE_INTERVAL: float = 1.1
+const BASE_INTERVAL: float = 1.0
 
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
 
-var money: int = 1000000
+var money: int = 1000000000000
 var time: float = 0.0
 var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
-var gridSize: int = 8:
+var gridSize: int = BASE_GRID_SIZE:
 	set(value):
 		gridSize = value
 		if UIManager:
@@ -124,6 +124,26 @@ var ShapeInfo: Dictionary[ShapeType, ShapeData] = {
 }
 var currentBigShapeType: int = ShapeType.Dot
 
+enum UpgradeType { Interval, Grid }
+var UpgradeInfo: Dictionary[UpgradeType, UpgradeData] = {
+	UpgradeType.Interval: UpgradeData.new({
+		CurrentLevel = 0,
+		MaxLevel = 10,
+		BaseCost = 100,
+		NextLevelCost = 100,
+		ExponentialCostIncrease = 10
+	}),
+	UpgradeType.Grid: UpgradeData.new({
+		CurrentLevel = 0,
+		MaxLevel = 6,
+		BaseCost = 100,
+		NextLevelCost = 100,
+		ExponentialCostIncrease = 8
+	}),
+}
+
+var highestUnlockedShapeButton: int = 0
+
 var gridStorage: Array[Dictionary]
 
 
@@ -168,6 +188,7 @@ func getShapeCost(baseCost: int, shape: Shape.ShapeSprite) -> int:
 
 #endregion
 
+
 #region Upgrades
 func rebirth() -> void:
 	if currentState == State.Black:
@@ -208,18 +229,83 @@ func upgradeBigShape() -> void:
 	calculateMoneyIncrement()
 
 func upgradeMoneyInterval() -> void:
-	if interval <= 0.1:
+	var cost: int = UpgradeInfo[UpgradeType.Interval].NextLevelCost
+	var baseCost: int = UpgradeInfo[UpgradeType.Interval].BaseCost
+	var costIncrease: float = UpgradeInfo[UpgradeType.Interval].ExponentialCostIncrease
+	var currentLevel: int = UpgradeInfo[UpgradeType.Interval].CurrentLevel
+	
+	if interval <= 0.1 or currentLevel == UpgradeInfo[UpgradeType.Interval].MaxLevel:
+		UpgradeInfo[UpgradeType.Interval].NextLevelCost = 0
 		return
-	print("interval")
-	interval -= 0.1
+	
+	if money < cost:
+		print("Not enough money")
+		return
+	removeMoney(cost)
+	
+	currentLevel += 1
+	UpgradeInfo[UpgradeType.Interval].CurrentLevel = currentLevel
+	
+	var nextLevelCost = roundi(baseCost * pow(costIncrease, currentLevel))
+	UpgradeInfo[UpgradeType.Interval].NextLevelCost = nextLevelCost
+	
+	interval -= 0.09
+
+
+func upgradeGrid() -> void:
+	var cost: int = UpgradeInfo[UpgradeType.Grid].NextLevelCost
+	var baseCost: int = UpgradeInfo[UpgradeType.Grid].BaseCost
+	var costIncrease: float = UpgradeInfo[UpgradeType.Grid].ExponentialCostIncrease
+	var currentLevel: int = UpgradeInfo[UpgradeType.Grid].CurrentLevel
+	
+	if gridSize == 8 or currentLevel == UpgradeInfo[UpgradeType.Grid].MaxLevel:
+		UpgradeInfo[UpgradeType.Grid].NextLevelCost = 0
+		return
+	
+	if money < cost:
+		print("Not enough money")
+		return
+	removeMoney(cost)
+	
+	currentLevel += 1
+	UpgradeInfo[UpgradeType.Grid].CurrentLevel = currentLevel
+	
+	var nextLevelCost = roundi(baseCost * pow(costIncrease, currentLevel))
+	UpgradeInfo[UpgradeType.Grid].NextLevelCost = nextLevelCost
+	
+	gridSize += 1
+
 
 func clearUpgrades() -> void:
 	gridSize = BASE_GRID_SIZE
+	UpgradeInfo[UpgradeType.Grid].CurrentLevel = 0
+	UpgradeInfo[UpgradeType.Grid].NextLevelCost = UpgradeInfo[UpgradeType.Grid].BaseCost
+	
 	interval = BASE_INTERVAL
+	UpgradeInfo[UpgradeType.Interval].CurrentLevel = 0
+	UpgradeInfo[UpgradeType.Interval].NextLevelCost = UpgradeInfo[UpgradeType.Grid].BaseCost
+	
 	currentBigShapeType = ShapeType.Dot
 	bigShape.updateSprite()
+	
+	highestUnlockedShapeButton = 0
 
 #endregion
+
+
+func unlockNextShapeButton(shape: int) -> void:
+	print("!!!!!",shape)
+	if shape > highestUnlockedShapeButton:
+		highestUnlockedShapeButton += 1
+		print(highestUnlockedShapeButton)
+		for button in UIManager.shapeButtons.get_children():
+			print("outisde if")
+			if button.shapeSprite + 1 == shape + 1:
+				print("insid if")
+				button.updateVisibility()
+		
+		
+	
 
 #region Grid
 func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:

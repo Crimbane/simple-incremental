@@ -7,6 +7,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var shapeButtons: GridContainer
 @export var upgradeBigShapeButton: Button
 @export var upgradeMoneyIntervalButton: Button
+@export var upgradeGridButton: Button
 
 var ghostStorage: Array[Dictionary]
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 	
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 	upgradeMoneyIntervalButton.pressed.connect(GameManager.upgradeMoneyInterval)
+	upgradeGridButton.pressed.connect(GameManager.upgradeGrid)
 
 
 func _process(_delta: float) -> void:
@@ -122,8 +124,10 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 					shapeHeldByCursor.isGhostShape = true
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor, ghostStorage)
 				else:
+					GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite)
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 					GameManager.removeMoney(shapeHeldByCursor.cost)
+					
 					
 				GameManager.calculateMoneyIncrement()
 			else:
@@ -222,6 +226,7 @@ func convertGhosts() -> void:
 		
 		if GameManager.money >= cost:
 			GameManager.removeMoney(cost)
+			GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite)
 			for dict in ghostStorage:
 				dict["shape"].isGhostShape = false
 			GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
@@ -342,6 +347,6 @@ func formatMoney(value: int, notationStyle: GameManager.NotationStyle) -> String
 	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
 	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
 	
-	return ("%.3f" % snapped(newValue, 0.001)) + suffix
+	return ("%.2f" % snapped(newValue, 0.01)) + suffix
 
 #endregion

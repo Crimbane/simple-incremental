@@ -27,7 +27,7 @@ enum ShapeSprite {
 	Octagon
 }
 
-@export var shapeSprite: ShapeSprite:
+@export var shapeSprite: ShapeSprite = ShapeSprite.Dot:
 	set(value):
 		shapeSprite = value
 		updateIcon()
@@ -40,16 +40,28 @@ enum ShapeSprite {
 @onready var dropShadow: TextureRect = $Icon/DropShadow
 
 
+
+
 func _ready() -> void:
 	button_down.connect(_on_shape_button_press)
-	#tooltip_text = "A very fancy shape."
 	updateIcon()
+	updateVisibility()
 
+func _process(_delta: float) -> void:
+	#updateVisibility()
+	pass
 func updateIcon() -> void:
 	if not buttonIcon or not dropShadow:
 		return
 	buttonIcon.texture = ICON_TEXTURE[ShapeSprite.find_key(shapeSprite).to_upper()]
 	dropShadow.texture = ICON_TEXTURE[ShapeSprite.find_key(shapeSprite).to_upper()]
+
+func updateVisibility() -> void:
+	if shapeSprite <= GameManager.highestUnlockedShapeButton:
+		show()
+	else:
+		hide()
+	
 
 func _on_shape_button_press() -> void:
 	if GameManager.UIManager.shapeHeldByCursor:

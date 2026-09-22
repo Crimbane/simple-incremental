@@ -175,7 +175,7 @@ shadow_size = 4
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton", "upgradeGridButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,6 +189,7 @@ gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
 upgradeMoneyIntervalButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval")
+upgradeGridButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid")
 
 [node name="Buttons And Labels" type="Control" parent="UI Manager" unique_id=580188624]
 custom_minimum_size = Vector2(356, 272)
@@ -487,7 +488,21 @@ icon_alignment = 1
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=814998724 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
-parentType = "Rebirth"
+parentType = "Interval"
+
+[node name="Upgrade Grid" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1519491349]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Upgrade
+Grid"
+icon = ExtResource("5_5t6h7")
+icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=428622712 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+parentType = "Grid"
 
 [node name="Eraser" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=540966170]
 layout_mode = 1
@@ -601,7 +616,7 @@ size_flags_vertical = 4
 
 [node name="Big Shape" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer/BigShapeCenter" unique_id=1237669307 instance=ExtResource("20_50h6r")]
 
-[node name="Button" type="Button" parent="UI Manager" unique_id=31119279]
+[node name="Exit Button" type="Button" parent="UI Manager" unique_id=31119279]
 custom_maximum_size = Vector2(16, 16)
 layout_mode = 1
 offset_left = 4.0
@@ -617,12 +632,3 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xo8aq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhltn")
 text = "X"
 script = ExtResource("11_uhltn")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI Manager" unique_id=1155648543]
-visible = false
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-text = "klsdkljsklfjk"
-fit_content = true

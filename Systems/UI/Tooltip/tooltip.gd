@@ -7,7 +7,7 @@ extends PanelContainer
 
 @onready var parent = $".."
 
-@export_enum("Big Shape", "Rebirth", "Shape",) var parentType: String
+@export_enum("Big Shape", "Rebirth", "Shape", "Interval", "Grid") var parentType: String
 
 
 func _ready() -> void:
@@ -31,13 +31,21 @@ func _process(_delta: float) -> void:
 				global_position = parent.global_position + Vector2(-150,-20)
 			"Shape":
 				setShapeCost()
+			"Interval":
+				setIntervalCost()
+			"Grid":
+				setGridCost()
 
 
 func setDescription(text: String) -> void:
 	textLabel.text = text
 
 func setCost(cost: int) -> void:
-	costLabel.text = "cost: " + str(cost)
+	if GameManager.UIManager == null:
+		return
+	else:
+		var formattedCost = GameManager.UIManager.formatMoney(cost, GameManager.notationStyle)
+		costLabel.text = "cost: " + formattedCost
 
 func onMouseEntered() -> void:
 	show()
@@ -59,5 +67,25 @@ func setRebirthCost() -> void:
 func setShapeCost() -> void:
 	var currentCost = GameManager.getShapeCost(parent.cost, parent.shapeSprite + 1)
 	setCost(currentCost)
+
+func setIntervalCost() -> void:
+	var currentLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].CurrentLevel
+	var maxLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].MaxLevel
+	var cost = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].NextLevelCost
+	if currentLevel == maxLevel:
+		costLabel.hide()
+		return
 	
+	setCost(cost)
+
+func setGridCost() -> void:
+	var currentLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Grid].CurrentLevel
+	var maxLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Grid].MaxLevel
+	var cost = GameManager.UpgradeInfo[GameManager.UpgradeType.Grid].NextLevelCost
+	if currentLevel == maxLevel:
+		costLabel.hide()
+		return
+	else:
+		costLabel.show()
 	
+	setCost(cost)
