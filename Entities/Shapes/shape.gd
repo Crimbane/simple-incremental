@@ -2,14 +2,14 @@ class_name Shape
 extends Node2D
 
 enum ShapeSprite {
-	Dot = 1,
-	Line = 2,
-	Triangle = 3,
-	Square = 4,
-	Pentagon = 5,
-	Hexagon = 6, 
-	Heptagon = 7,
-	Octagon= 8
+	Dot,
+	Line,
+	Triangle,
+	Square,
+	Pentagon,
+	Hexagon, 
+	Heptagon,
+	Octagon
 }
 @export var shapeSprite: ShapeSprite = ShapeSprite.Dot
 @export var cost: int = 10

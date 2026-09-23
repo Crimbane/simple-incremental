@@ -2,12 +2,16 @@ extends Control
 
 const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 
+@export var rebirthTransition: TextureRect
+@export var rebirthScreenshot: TextureRect
 @export var moneyLabel: Label
 @export var gridContainer: GridContainer
 @export var shapeButtons: GridContainer
 @export var upgradeBigShapeButton: Button
 @export var upgradeMoneyIntervalButton: Button
 @export var upgradeGridButton: Button
+
+@onready var shaderMaterial = rebirthTransition.material
 
 var ghostStorage: Array[Dictionary]
 
@@ -101,6 +105,33 @@ func updateColor() -> void:
 			slot.self_modulate = Color(0.663, 0.663, 1.0)
 
 
+func createPreRebirthScreenshot() -> void:
+	await RenderingServer.frame_post_draw
+	var screenshot = get_viewport().get_texture().get_image()
+	rebirthTransition.texture = ImageTexture.create_from_image(screenshot)
+	rebirthScreenshot.texture = ImageTexture.create_from_image(screenshot)
+	rebirthTransition.visible = true
+	rebirthScreenshot.visible = true
+
+func playRebirthTransition(color: Color) -> void:
+	shaderMaterial.set_shader_parameter("trans_color", color)
+	shaderMaterial.set_shader_parameter("start_position", get_local_mouse_position() / Vector2(get_viewport_rect().size))
+	shaderMaterial.set_shader_parameter("invert", 1.0)
+	shaderMaterial.set_shader_parameter("progress", 1.0)
+	var tween = create_tween()
+	tween.tween_method(set_shader_progress, 1.0, 0.0, 2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	rebirthScreenshot.visible = false
+	tween.stop()
+	shaderMaterial.set_shader_parameter("invert", 0.0)
+	shaderMaterial.set_shader_parameter("progress", 1.0)
+	tween.play()
+	await tween.finished
+	rebirthTransition.visible = false
+	
+func set_shader_progress(value: float) -> void:
+	shaderMaterial.set_shader_parameter("progress", value)
+
 
 #region Grid
 func addShapeToCursor(shape: Shape) -> void:
@@ -124,7 +155,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 					shapeHeldByCursor.isGhostShape = true
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor, ghostStorage)
 				else:
-					GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite)
+					GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite + 1)
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 					GameManager.removeMoney(shapeHeldByCursor.cost)
 					
@@ -226,7 +257,7 @@ func convertGhosts() -> void:
 		
 		if GameManager.money >= cost:
 			GameManager.removeMoney(cost)
-			GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite)
+			GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite + 1)
 			for dict in ghostStorage:
 				dict["shape"].isGhostShape = false
 			GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)

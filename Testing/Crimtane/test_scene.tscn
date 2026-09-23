@@ -20,6 +20,7 @@ shader_parameter/start_position = Vector2(0.5, 0.5)
 shader_parameter/trans_color = Color(1, 1, 1, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_uqbjg")
 shader_parameter/progress = 0.0
+shader_parameter/invert = 1.0
 
 [node name="Test Scene" type="Node" unique_id=1183496534]
 

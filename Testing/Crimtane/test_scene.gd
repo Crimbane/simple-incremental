@@ -93,11 +93,15 @@ func _on_shape_button_press() -> void:
 	var screenshot = viewport.get_texture().get_image()
 	textureRect.texture = ImageTexture.create_from_image(screenshot)
 	shaderMaterial.set_shader_parameter("trans_color", Color(1.0, 0.0, 0.0))
-	print(viewport.size)
 	shaderMaterial.set_shader_parameter("start_position", get_local_mouse_position() / Vector2(viewport.size))
 	var tween = create_tween()
-	tween.tween_method(set_shader_progress, 0.0, 1.0, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 	tween.tween_method(set_shader_progress, 1.0, 0.0, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	tween.stop()
+	shaderMaterial.set_shader_parameter("invert", 0.0)
+	shaderMaterial.set_shader_parameter("progress", 1.0)
+	tween.play()
+	await tween.finished
 	
 func set_shader_progress(value: float) -> void:
 	shaderMaterial.set_shader_parameter("progress", value)

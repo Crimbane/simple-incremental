@@ -37,7 +37,7 @@ var StateInfo: Dictionary[State, StateData] = {
 		NextRebirthCost = 300
 	}),
 	State.Yellow: StateData.new({
-		ColorRGB = Color(1.0, 0.9, 0.0),
+		ColorRGB = Color(1.0, 0.8, 0.0),
 		ColorMultiplier = 8,
 		NextRebirthCost = 400
 	}),
@@ -175,9 +175,11 @@ func removeMoney(amount: int) -> void:
 func calculateMoneyIncrement() -> void:
 	incrementAmount = BASE_INCREMENT_AMOUNT
 	for dict in gridStorage:
-		incrementAmount += dict["shape"].getShapeValue()
+		
+		incrementAmount += ShapeInfo[dict["shape"].shapeSprite].ShapeMultiplier
 	
-	incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
+	if currentBigShapeType != ShapeType.Circle:
+		incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
 	print("incrementAmount: ", incrementAmount)
 
 
@@ -201,12 +203,16 @@ func rebirth() -> void:
 	
 	currentState += 1
 	
+	await UIManager.createPreRebirthScreenshot()
+	
 	bigShape.updateColor()
 	UIManager.updateColor()
 	UIManager.clearShapesInGrid()
 	clearStorage()
 	clearUpgrades()
 	calculateMoneyIncrement()
+	
+	UIManager.playRebirthTransition(StateInfo[currentState].ColorRGB)
 
 
 func upgradeBigShape() -> void:
@@ -300,7 +306,7 @@ func unlockNextShapeButton(shape: int) -> void:
 		print(highestUnlockedShapeButton)
 		for button in UIManager.shapeButtons.get_children():
 			print("outisde if")
-			if button.shapeSprite + 1 == shape + 1:
+			if button.shapeSprite == shape:
 				print("insid if")
 				button.updateVisibility()
 		

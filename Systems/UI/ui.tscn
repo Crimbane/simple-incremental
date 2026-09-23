@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c2vec82ne7oxh" path="res://Systems/UI/Art/Interval Upgrade v2.png" id="11_lep1l"]
 [ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
+[ext_resource type="Shader" uid="uid://cyln1c1egvwk2" path="res://Systems/rebirth_transition.gdshader" id="21_2t3r2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
 bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
@@ -175,9 +176,27 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 shadow_size = 4
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ppjn4"]
+noise_type = 4
+seed = 1
+frequency = 0.0736
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b8hlr"]
+noise = SubResource("FastNoiseLite_ppjn4")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50h6r"]
+shader = ExtResource("21_2t3r2")
+shader_parameter/start_position = Vector2(0.5, 0.5)
+shader_parameter/trans_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_b8hlr")
+shader_parameter/progress = 0.0
+shader_parameter/invert = 1.0
+
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton", "upgradeGridButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("rebirthTransition", "rebirthScreenshot", "moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton", "upgradeGridButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,6 +205,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_5q6yw")
+rebirthTransition = NodePath("RebirthTransition")
+rebirthScreenshot = NodePath("RebirthScreenshot")
 moneyLabel = NodePath("Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel")
 gridContainer = NodePath("Shapes/ShapeZonePanel/HSplit/GridCenter/PanelContainer/GridContainer")
 shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
@@ -546,7 +567,7 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 7
-text = "Ascend"
+text = "Hueshift"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 script = ExtResource("6_1gt4b")
@@ -554,7 +575,7 @@ script = ExtResource("6_1gt4b")
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=1312935367 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
-description = "Rebirth the shapes"
+description = "Shift through time and color."
 parentType = "Rebirth"
 
 [node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
@@ -634,3 +655,26 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xo8aq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhltn")
 text = "X"
 script = ExtResource("11_uhltn")
+
+[node name="RebirthTransition" type="TextureRect" parent="UI Manager" unique_id=65872969]
+visible = false
+z_index = 1000
+material = SubResource("ShaderMaterial_50h6r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="RebirthScreenshot" type="TextureRect" parent="UI Manager" unique_id=1930329639]
+visible = false
+z_index = 999
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
