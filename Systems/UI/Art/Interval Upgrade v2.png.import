@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8r6yxprbmci"
-path="res://.godot/imported/Big Shape Upgrade.png-89a25a0a736679eb1c4e85fe00ca666b.ctex"
+uid="uid://c2vec82ne7oxh"
+path="res://.godot/imported/Interval Upgrade v2.png-f8f769f84124df35f04b940a9ade83a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/UI/Art/Big Shape Upgrade.png"
-dest_files=["res://.godot/imported/Big Shape Upgrade.png-89a25a0a736679eb1c4e85fe00ca666b.ctex"]
+source_file="res://Systems/UI/Art/Interval Upgrade v2.png"
+dest_files=["res://.godot/imported/Interval Upgrade v2.png-f8f769f84124df35f04b940a9ade83a8.ctex"]
 
 [params]
 
