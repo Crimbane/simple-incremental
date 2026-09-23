@@ -122,11 +122,14 @@ func playRebirthTransition(color: Color) -> void:
 	tween.tween_method(set_shader_progress, 1.0, 0.0, 2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	rebirthScreenshot.visible = false
-	tween.stop()
-	shaderMaterial.set_shader_parameter("invert", 0.0)
-	shaderMaterial.set_shader_parameter("progress", 1.0)
-	tween.play()
-	await tween.finished
+	var tween2 = create_tween()
+	tween2.tween_method(set_shader_progress, 0.0, 1.0, 2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	await tween2.finished
+	#tween.stop()
+	#shaderMaterial.set_shader_parameter("invert", 0.0)
+	#shaderMaterial.set_shader_parameter("progress", 1.0)
+	#tween.play()
+	#await tween.finished
 	rebirthTransition.visible = false
 	
 func set_shader_progress(value: float) -> void:
