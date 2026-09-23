@@ -24,37 +24,44 @@ var StateInfo: Dictionary[State, StateData] = {
 	State.White: StateData.new({
 		ColorRGB = Color(0.9, 0.9, 0.9),
 		ColorMultiplier = 1,
-		NextRebirthCost = 100
+		NextRebirthCost = 100,
+		NextRebirthAvailabilityThreshold = 100
 	}),
 	State.Red: StateData.new({
 		ColorRGB = Color(0.8, 0.2, 0.2),
 		ColorMultiplier = 2,
-		NextRebirthCost = 200
+		NextRebirthCost = 200,
+		NextRebirthAvailabilityThreshold = 200
 	}),
 	State.Orange: StateData.new({
 		ColorRGB = Color(1.0, 0.5, 0.0),
 		ColorMultiplier = 4,
-		NextRebirthCost = 300
+		NextRebirthCost = 300,
+		NextRebirthAvailabilityThreshold = 300
 	}),
 	State.Yellow: StateData.new({
 		ColorRGB = Color(1.0, 0.8, 0.0),
 		ColorMultiplier = 8,
-		NextRebirthCost = 400
+		NextRebirthCost = 400,
+		NextRebirthAvailabilityThreshold = 400
 	}),
 	State.Green: StateData.new({
 		ColorRGB = Color(0.2, 0.7, 0.2),
 		ColorMultiplier = 16,
-		NextRebirthCost = 500
+		NextRebirthCost = 500,
+		NextRebirthAvailabilityThreshold = 500
 	}),
 	State.Blue: StateData.new({
 		ColorRGB = Color(0.4, 0.5, 0.8),
 		ColorMultiplier = 32,
-		NextRebirthCost = 600
+		NextRebirthCost = 600,
+		NextRebirthAvailabilityThreshold = 600
 	}),
 	State.Purple: StateData.new({
 		ColorRGB = Color(0.8, 0.2, 0.9),
 		ColorMultiplier = 64,
-		NextRebirthCost = 700
+		NextRebirthCost = 700,
+		NextRebirthAvailabilityThreshold = 700
 	}),
 	State.Black: StateData.new({
 		ColorRGB = Color(0.1, 0.1, 0.1),
@@ -295,6 +302,7 @@ func clearUpgrades() -> void:
 	bigShape.updateSprite()
 	
 	highestUnlockedShapeButton = 0
+	UIManager.shapeButtons.propagate_call("updateVisibility")
 
 #endregion
 

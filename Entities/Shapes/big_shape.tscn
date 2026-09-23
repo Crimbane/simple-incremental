@@ -8,6 +8,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8yv6x"]
 shader = ExtResource("2_81k3f")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff7ms"]
+atlas = ExtResource("3_w0gq0")
+region = Rect2(2560, 0, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5dm2"]
 atlas = ExtResource("3_w0gq0")
 region = Rect2(2304, 0, 256, 256)
@@ -50,6 +54,14 @@ region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1yug"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff7ms")
+}],
+"loop": 1,
+"name": &"circle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v5dm2")
@@ -135,6 +147,7 @@ animations = [{
 shader = ExtResource("4_w0gq0")
 shader_parameter/blur_strength = 5.0
 shader_parameter/blur_alpha = 13.5790005975025
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [node name="Big Shape" type="Node2D" unique_id=1237669307]
 texture_filter = 2
@@ -145,7 +158,7 @@ script = ExtResource("1_p3nkl")
 z_index = 10
 material = SubResource("ShaderMaterial_8yv6x")
 sprite_frames = SubResource("SpriteFrames_t1yug")
-animation = &"octagon"
+animation = &"circle"
 
 [node name="DropShadow" type="AnimatedSprite2D" parent="Sprite" unique_id=632469082]
 show_behind_parent = true
@@ -153,4 +166,4 @@ texture_filter = 4
 material = SubResource("ShaderMaterial_kerj0")
 scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_t1yug")
-animation = &"octagon"
+animation = &"circle"
