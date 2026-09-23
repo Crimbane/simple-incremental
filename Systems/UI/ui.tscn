@@ -12,7 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Systems/UI/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="Script" uid="uid://dqk5artd4b1i3" path="res://Systems/UI/eraser_button.gd" id="9_fxfak"]
+[ext_resource type="Texture2D" uid="uid://dy8r6yxprbmci" path="res://Systems/UI/Art/Big Shape Upgrade.png" id="10_qdu1p"]
+[ext_resource type="Texture2D" uid="uid://8e1enuqh05e7" path="res://Systems/UI/Art/Big Shape Upgrade Alt.png" id="11_lep1l"]
 [ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
+[ext_resource type="Texture2D" uid="uid://brry4svy811yi" path="res://Systems/UI/Art/Interval Upgrade.png" id="12_50h6r"]
+[ext_resource type="Texture2D" uid="uid://djg1bjsxfymwe" path="res://Systems/UI/Art/Interval Upgrade Alt.png" id="13_2t3r2"]
+[ext_resource type="Texture2D" uid="uid://b4saxp8ee40rl" path="res://Systems/UI/Art/Interval Upgrade 2.png" id="14_ppjn4"]
+[ext_resource type="Texture2D" uid="uid://cc3vy00oqo3s5" path="res://Systems/UI/Art/Interval Upgrade 2 Alt.png" id="15_b8hlr"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vovoe"]
@@ -456,18 +462,14 @@ grow_vertical = 2
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
-text = "Upgrade
-Big Shape"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
-visible = false
 layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 41.0
-offset_bottom = 39.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_qdu1p")
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=297856955 instance=ExtResource("2_h2tau")]
 visible = false
@@ -475,20 +477,52 @@ layout_mode = 0
 description = "Upgrade The Almighty Shape"
 parentType = "Big Shape"
 
+[node name="TextureRectAlt" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=2035699019]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_lep1l")
+
 [node name="Upgrade Interval" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
-text = "Upgrade
-Money
-Interval"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=814998724 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
+description = "Decreases the generation time by 0.09s, producing vertices faster"
 parentType = "Interval"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=828506284]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_50h6r")
+
+[node name="TextureRectAlt" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=1854133891]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_2t3r2")
+
+[node name="TextureRect2" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=1638830426]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("14_ppjn4")
+
+[node name="TextureRect2Alt" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=447066934]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("15_b8hlr")
 
 [node name="Upgrade Grid" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1519491349]
 custom_maximum_size = Vector2(40, 40)

@@ -3,7 +3,7 @@ extends Node
 
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
-const BASE_INTERVAL: float = 1.0
+const BASE_INTERVAL: float = 1
 
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
@@ -283,7 +283,7 @@ func clearUpgrades() -> void:
 	
 	interval = BASE_INTERVAL
 	UpgradeInfo[UpgradeType.Interval].CurrentLevel = 0
-	UpgradeInfo[UpgradeType.Interval].NextLevelCost = UpgradeInfo[UpgradeType.Grid].BaseCost
+	UpgradeInfo[UpgradeType.Interval].NextLevelCost = UpgradeInfo[UpgradeType.Interval].BaseCost
 	
 	currentBigShapeType = ShapeType.Dot
 	bigShape.updateSprite()

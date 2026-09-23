@@ -13,10 +13,10 @@ border_color = Color(1, 0.5058824, 0.5176471, 1)
 shadow_color = Color(0, 0, 0, 0.39215687)
 shadow_size = 2
 
-[node name="Tooltip" type="PanelContainer" unique_id=8808396 node_paths=PackedStringArray("costLabel", "textLabel")]
+[node name="Tooltip" type="PanelContainer" unique_id=8808396 node_paths=PackedStringArray("costLabel", "textLabel", "functionLabel")]
 top_level = true
 z_index = 10
-custom_maximum_size = Vector2(500, -1)
+custom_maximum_size = Vector2(250, -1)
 offset_right = 112.0
 offset_bottom = 63.0
 mouse_filter = 2
@@ -24,6 +24,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_70d3y")
 script = ExtResource("1_adyak")
 costLabel = NodePath("MarginContainer/VBoxContainer/Cost")
 textLabel = NodePath("MarginContainer/VBoxContainer/Description")
+functionLabel = NodePath("MarginContainer/VBoxContainer/Function")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=661914315]
 layout_mode = 2
@@ -49,3 +50,8 @@ theme_override_fonts/font = ExtResource("2_2h8tt")
 theme_override_font_sizes/font_size = 8
 text = "Description "
 autowrap_mode = 3
+
+[node name="Function" type="Label" parent="MarginContainer/VBoxContainer" unique_id=702310237]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2h8tt")
+theme_override_font_sizes/font_size = 8

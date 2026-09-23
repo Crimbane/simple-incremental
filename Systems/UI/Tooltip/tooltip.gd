@@ -2,6 +2,7 @@ extends PanelContainer
 
 @export var costLabel: Label
 @export var textLabel: Label
+@export var functionLabel: Label
 
 @export_multiline var description: String
 
@@ -68,15 +69,23 @@ func setShapeCost() -> void:
 	var currentCost = GameManager.getShapeCost(parent.cost, parent.shapeSprite + 1)
 	setCost(currentCost)
 
+
 func setIntervalCost() -> void:
 	var currentLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].CurrentLevel
 	var maxLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].MaxLevel
 	var cost = GameManager.UpgradeInfo[GameManager.UpgradeType.Interval].NextLevelCost
 	if currentLevel == maxLevel:
 		costLabel.hide()
+		#costLabel.modulate.a = 0.0
 		return
 	
 	setCost(cost)
+	
+	var interval = GameManager.interval
+	if interval == 0.01:
+		functionLabel.text = "Current: " + str(interval) + "s"
+	else:
+		functionLabel.text = "Current: " + str(interval) + "s Next: " + str(interval - 0.09) + "s"
 
 func setGridCost() -> void:
 	var currentLevel = GameManager.UpgradeInfo[GameManager.UpgradeType.Grid].CurrentLevel
