@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://71nj16psjw17" path="res://Stages/Main Menu/vignette.gdshader" id="2_c4dj5"]
 [ext_resource type="Shader" uid="uid://cjacx0qa0om6u" path="res://Entities/Shapes/smooth_pixel_2D.gdshader" id="3_q1k4k"]
 [ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="4_ihivm"]
+[ext_resource type="Shader" uid="uid://clu5gyexyixpp" path="res://Stages/Main Menu/blur.gdshader" id="5_c4dj5"]
 [ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="5_r7bji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
@@ -18,6 +19,16 @@ bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c4dj5"]
 shader = ExtResource("3_q1k4k")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1k4k"]
+shader = ExtResource("5_c4dj5")
+shader_parameter/blur_strength = 4.00000019
+shader_parameter/blur_alpha = 9.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7bji"]
+shader = ExtResource("5_c4dj5")
+shader_parameter/blur_strength = 10.0
+shader_parameter/blur_alpha = 10.0000004275
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihivm"]
 content_margin_left = 16.0
 content_margin_top = 16.0
@@ -29,8 +40,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0.5058824, 0.5176471, 1)
-shadow_color = Color(0, 0, 0, 0.39215687)
-shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7bji"]
 content_margin_left = 2.0
@@ -114,48 +125,13 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
 metadata/_edit_lock_ = true
 
-[node name="MovingShapes" type="Node2D" parent="Control/Background/BackgroundColor" unique_id=1893186481]
+[node name="ParallaxLayer1" type="Node2D" parent="Control/Background/BackgroundColor" unique_id=1893186481]
 unique_name_in_owner = true
 texture_filter = 4
 material = SubResource("ShaderMaterial_c4dj5")
 position = Vector2(320, 180)
 
-[node name="Dot" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1133993060]
-use_parent_material = true
-position = Vector2(-118, 120.000015)
-rotation = -0.40491638
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-
-[node name="Line" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=199799182]
-self_modulate = Color(1, 0.5, 0, 1)
-use_parent_material = true
-position = Vector2(148, -140)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 1
-
-[node name="Line2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=534576295]
-use_parent_material = true
-position = Vector2(-367.00003, -159.00002)
-rotation = 0.3036873
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 1
-
-[node name="Line3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=776979876]
-use_parent_material = true
-position = Vector2(417, 165)
-rotation = 0.30368727
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 1
-
-[node name="Line4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1591534245]
+[node name="Line4" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=1591534245]
 self_modulate = Color(0.8, 0.2, 0.2, 1)
 use_parent_material = true
 position = Vector2(-167, 15.000015)
@@ -165,7 +141,7 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 1
 
-[node name="Line5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1963181125]
+[node name="Line5" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=1963181125]
 self_modulate = Color(0.2, 0.7019608, 0.2, 1)
 use_parent_material = true
 position = Vector2(233, 35)
@@ -175,17 +151,7 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 1
 
-[node name="Line6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=481385536]
-self_modulate = Color(0.2, 0.7, 0.2, 1)
-use_parent_material = true
-position = Vector2(-11, 148)
-rotation = -0.40491638
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 1
-
-[node name="Triangle" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=514664773]
+[node name="Triangle" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=514664773]
 use_parent_material = true
 position = Vector2(304, -85)
 rotation = -0.40491638
@@ -194,27 +160,7 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 2
 
-[node name="Triangle2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1456002812]
-self_modulate = Color(0.2, 0.7019608, 0.2, 1)
-use_parent_material = true
-position = Vector2(-188, -145.00002)
-rotation = 0.30368727
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 2
-
-[node name="Triangle3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=330238258]
-self_modulate = Color(1, 0.8, 0, 1)
-use_parent_material = true
-position = Vector2(421, -171)
-rotation = 1.0140363
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 2
-
-[node name="Triangle4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1502978250]
+[node name="Triangle4" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=1502978250]
 self_modulate = Color(1, 0.8, 0, 1)
 use_parent_material = true
 position = Vector2(-302.00003, -41)
@@ -224,16 +170,69 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 2
 
-[node name="Triangle5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1893071318]
+[node name="Square3" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=1619464472]
+self_modulate = Color(0.4, 0.5019608, 0.8, 1)
 use_parent_material = true
-position = Vector2(161, 87.99997)
-rotation = 0.5078909
+position = Vector2(-386, 136.00003)
+rotation = 1.8238691
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square4" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=767407239]
+self_modulate = Color(0.8, 0.2, 0.2, 1)
+use_parent_material = true
+position = Vector2(315.99997, 70)
+rotation = -0.09599311
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Dot2" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer1" unique_id=712377751]
+use_parent_material = true
+position = Vector2(-261, -124)
+rotation = 0.3036873
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="ParallaxLayer2" type="Node2D" parent="Control/Background/BackgroundColor" unique_id=955311031]
+unique_name_in_owner = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_q1k4k")
+position = Vector2(320, 180)
+
+[node name="Line2" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=601397281]
+use_parent_material = true
+position = Vector2(-367.00003, -159.00002)
+rotation = 0.3036873
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line3" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=1360628734]
+use_parent_material = true
+position = Vector2(383, 155)
+rotation = 0.30368727
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Triangle3" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=877648341]
+self_modulate = Color(1, 0.8, 0, 1)
+use_parent_material = true
+position = Vector2(373, -170)
+rotation = 1.0140363
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 2
 
-[node name="Triangle6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=852910741]
+[node name="Triangle6" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=332680455]
 use_parent_material = true
 position = Vector2(-397, 27)
 scale = Vector2(0.125, 0.125)
@@ -241,7 +240,7 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 2
 
-[node name="Square" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=2043375236]
+[node name="Square" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=13285556]
 self_modulate = Color(1, 0.5, 0, 1)
 use_parent_material = true
 position = Vector2(248, 179)
@@ -251,37 +250,17 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 3
 
-[node name="Square2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=2077961021]
+[node name="Square2" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=1614035219]
 self_modulate = Color(0.8, 0.2, 0.2, 1)
 use_parent_material = true
-position = Vector2(-422, -68.00001)
+position = Vector2(-404, -82)
 rotation = -0.4049164
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 3
 
-[node name="Square3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1619464472]
-self_modulate = Color(0.4, 0.5, 0.8, 1)
-use_parent_material = true
-position = Vector2(-440, 154)
-rotation = 1.8238691
-scale = Vector2(0.195, 0.195)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 3
-
-[node name="Square4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=767407239]
-self_modulate = Color(0.4, 0.5, 0.8, 1)
-use_parent_material = true
-position = Vector2(-240.00003, 38)
-rotation = -0.09599311
-scale = Vector2(0.195, 0.195)
-texture = ExtResource("4_ihivm")
-hframes = 11
-frame = 3
-
-[node name="Square5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1397415794]
+[node name="Square5" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=1960884536]
 use_parent_material = true
 position = Vector2(-204, 139)
 rotation = 0.4049164
@@ -290,23 +269,83 @@ texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 3
 
-[node name="Square6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1762006460]
+[node name="Dot4" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=1890103854]
 use_parent_material = true
-position = Vector2(415, -6.999998)
+position = Vector2(149, -60)
+rotation = -2.4312437
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Dot5" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer2" unique_id=669032773]
+self_modulate = Color(0.4, 0.5019608, 0.8, 1)
+use_parent_material = true
+position = Vector2(-264.99994, 52.000004)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="ParallaxLayer3" type="Node2D" parent="Control/Background/BackgroundColor" unique_id=1112179080]
+unique_name_in_owner = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_r7bji")
+position = Vector2(320, 180)
+
+[node name="Dot" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=416993230]
+use_parent_material = true
+position = Vector2(-118, 120.000015)
+rotation = -0.40491638
 scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Line" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=787794515]
+self_modulate = Color(1, 0.5, 0, 1)
+use_parent_material = true
+position = Vector2(148, -140)
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line6" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=204561741]
+self_modulate = Color(0.2, 0.7, 0.2, 1)
+use_parent_material = true
+position = Vector2(-11, 148)
+rotation = -0.40491638
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Triangle2" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=76136386]
+self_modulate = Color(0.2, 0.7019608, 0.2, 1)
+use_parent_material = true
+position = Vector2(-188, -145.00002)
+rotation = 0.30368727
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle5" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=1671998582]
+use_parent_material = true
+position = Vector2(161, 87.99997)
+rotation = 0.5078909
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Square6" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=605402734]
+use_parent_material = true
+position = Vector2(388, -18.999996)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ihivm")
 hframes = 11
 frame = 3
 
-[node name="Dot2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=712377751]
-use_parent_material = true
-position = Vector2(-261, -124)
-rotation = 0.3036873
-scale = Vector2(0.31, 0.31)
-texture = ExtResource("4_ihivm")
-hframes = 11
-
-[node name="Dot3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=753074826]
+[node name="Dot3" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=202179750]
 self_modulate = Color(1, 0.5, 0, 1)
 use_parent_material = true
 position = Vector2(-304, 137)
@@ -315,23 +354,7 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_ihivm")
 hframes = 11
 
-[node name="Dot4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1304554318]
-use_parent_material = true
-position = Vector2(149, -60)
-rotation = -2.4312437
-scale = Vector2(0.195, 0.195)
-texture = ExtResource("4_ihivm")
-hframes = 11
-
-[node name="Dot5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1068172618]
-self_modulate = Color(0.8, 0.2, 0.2, 1)
-use_parent_material = true
-position = Vector2(324, 85)
-scale = Vector2(0.21, 0.21)
-texture = ExtResource("4_ihivm")
-hframes = 11
-
-[node name="Dot6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1333405378]
+[node name="Dot6" type="Sprite2D" parent="Control/Background/BackgroundColor/ParallaxLayer3" unique_id=1974866837]
 use_parent_material = true
 position = Vector2(234, -147)
 rotation = -0.40491638
@@ -339,27 +362,30 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_ihivm")
 hframes = 11
 
-[node name="ButtonPanel" type="PanelContainer" parent="Control" unique_id=24213470]
-layout_mode = 1
+[node name="ButtonPanelParallax" type="Node2D" parent="Control" unique_id=400085531]
+unique_name_in_owner = true
+position = Vector2(320, 220)
+
+[node name="ButtonPanel" type="PanelContainer" parent="Control/ButtonPanelParallax" unique_id=24213470]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -79.0
-offset_top = -30.0
+offset_top = -75.0
 offset_right = 79.0
-offset_bottom = 120.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ihivm")
 
-[node name="Buttons" type="VBoxContainer" parent="Control/ButtonPanel" unique_id=421383775]
+[node name="Buttons" type="VBoxContainer" parent="Control/ButtonPanelParallax/ButtonPanel" unique_id=421383775]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="StartGame" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=1613509880]
+[node name="StartGame" type="Button" parent="Control/ButtonPanelParallax/ButtonPanel/Buttons" unique_id=1613509880]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
@@ -372,7 +398,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
 text = "Start Game"
 
-[node name="Settings" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=1187280039]
+[node name="Settings" type="Button" parent="Control/ButtonPanelParallax/ButtonPanel/Buttons" unique_id=1187280039]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
@@ -385,7 +411,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
 text = "Settings"
 
-[node name="QuitGame" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=2072595599]
+[node name="QuitGame" type="Button" parent="Control/ButtonPanelParallax/ButtonPanel/Buttons" unique_id=2072595599]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
