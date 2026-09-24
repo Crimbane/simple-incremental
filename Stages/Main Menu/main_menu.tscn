@@ -1,0 +1,399 @@
+[gd_scene format=3 uid="uid://cbuhbt0v8ubxn"]
+
+[ext_resource type="Script" uid="uid://dyufm83jq38mr" path="res://Stages/Main Menu/main_menu.gd" id="1_r7bji"]
+[ext_resource type="Shader" uid="uid://71nj16psjw17" path="res://Stages/Main Menu/vignette.gdshader" id="2_c4dj5"]
+[ext_resource type="Shader" uid="uid://cjacx0qa0om6u" path="res://Entities/Shapes/smooth_pixel_2D.gdshader" id="3_q1k4k"]
+[ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="4_ihivm"]
+[ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="5_r7bji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
+shader = ExtResource("2_c4dj5")
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/vignette_radius = 3.0
+shader_parameter/vignette_softness = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
+bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4dj5"]
+shader = ExtResource("3_q1k4k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihivm"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.2, 0.02745098, 0.28627452, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.5058824, 0.5176471, 1)
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7bji"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+bg_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4dj5"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1k4k"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+bg_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 4
+
+[node name="Main Menu" type="Node" unique_id=2069781728]
+
+[node name="Control" type="Control" parent="." unique_id=1208220117]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r7bji")
+gamePath = "uid://chn1n630kw24g"
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Control" parent="Control" unique_id=1869326813]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Vignette" type="ColorRect" parent="Control/Background" unique_id=1746024215]
+top_level = true
+material = SubResource("ShaderMaterial_fjc7g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="BackgroundColor" type="Panel" parent="Control/Background" unique_id=1024464532]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
+metadata/_edit_lock_ = true
+
+[node name="MovingShapes" type="Node2D" parent="Control/Background/BackgroundColor" unique_id=1893186481]
+unique_name_in_owner = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_c4dj5")
+position = Vector2(320, 180)
+
+[node name="Dot" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1133993060]
+use_parent_material = true
+position = Vector2(-118, 120.000015)
+rotation = -0.40491638
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Line" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=199799182]
+self_modulate = Color(1, 0.5, 0, 1)
+use_parent_material = true
+position = Vector2(148, -140)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=534576295]
+use_parent_material = true
+position = Vector2(-367.00003, -159.00002)
+rotation = 0.3036873
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=776979876]
+use_parent_material = true
+position = Vector2(417, 165)
+rotation = 0.30368727
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1591534245]
+self_modulate = Color(0.8, 0.2, 0.2, 1)
+use_parent_material = true
+position = Vector2(-167, 15.000015)
+rotation = -0.80983275
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1963181125]
+self_modulate = Color(0.2, 0.7019608, 0.2, 1)
+use_parent_material = true
+position = Vector2(233, 35)
+rotation = 1.3177236
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Line6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=481385536]
+self_modulate = Color(0.2, 0.7, 0.2, 1)
+use_parent_material = true
+position = Vector2(-11, 148)
+rotation = -0.40491638
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 1
+
+[node name="Triangle" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=514664773]
+use_parent_material = true
+position = Vector2(304, -85)
+rotation = -0.40491638
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1456002812]
+self_modulate = Color(0.2, 0.7019608, 0.2, 1)
+use_parent_material = true
+position = Vector2(-188, -145.00002)
+rotation = 0.30368727
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=330238258]
+self_modulate = Color(1, 0.8, 0, 1)
+use_parent_material = true
+position = Vector2(421, -171)
+rotation = 1.0140363
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1502978250]
+self_modulate = Color(1, 0.8, 0, 1)
+use_parent_material = true
+position = Vector2(-302.00003, -41)
+rotation = -1.7226399
+scale = Vector2(0.235, 0.235)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1893071318]
+use_parent_material = true
+position = Vector2(161, 87.99997)
+rotation = 0.5078909
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Triangle6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=852910741]
+use_parent_material = true
+position = Vector2(-397, 27)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 2
+
+[node name="Square" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=2043375236]
+self_modulate = Color(1, 0.5, 0, 1)
+use_parent_material = true
+position = Vector2(248, 179)
+rotation = 0.9128072
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=2077961021]
+self_modulate = Color(0.8, 0.2, 0.2, 1)
+use_parent_material = true
+position = Vector2(-422, -68.00001)
+rotation = -0.4049164
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1619464472]
+self_modulate = Color(0.4, 0.5, 0.8, 1)
+use_parent_material = true
+position = Vector2(-440, 154)
+rotation = 1.8238691
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=767407239]
+self_modulate = Color(0.4, 0.5, 0.8, 1)
+use_parent_material = true
+position = Vector2(-240.00003, 38)
+rotation = -0.09599311
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1397415794]
+use_parent_material = true
+position = Vector2(-204, 139)
+rotation = 0.4049164
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Square6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1762006460]
+use_parent_material = true
+position = Vector2(415, -6.999998)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+frame = 3
+
+[node name="Dot2" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=712377751]
+use_parent_material = true
+position = Vector2(-261, -124)
+rotation = 0.3036873
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Dot3" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=753074826]
+self_modulate = Color(1, 0.5, 0, 1)
+use_parent_material = true
+position = Vector2(-304, 137)
+rotation = 1.7226399
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Dot4" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1304554318]
+use_parent_material = true
+position = Vector2(149, -60)
+rotation = -2.4312437
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Dot5" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1068172618]
+self_modulate = Color(0.8, 0.2, 0.2, 1)
+use_parent_material = true
+position = Vector2(324, 85)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="Dot6" type="Sprite2D" parent="Control/Background/BackgroundColor/MovingShapes" unique_id=1333405378]
+use_parent_material = true
+position = Vector2(234, -147)
+rotation = -0.40491638
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_ihivm")
+hframes = 11
+
+[node name="ButtonPanel" type="PanelContainer" parent="Control" unique_id=24213470]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -30.0
+offset_right = 79.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ihivm")
+
+[node name="Buttons" type="VBoxContainer" parent="Control/ButtonPanel" unique_id=421383775]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StartGame" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=1613509880]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "Start Game"
+
+[node name="Settings" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=1187280039]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "Settings"
+
+[node name="QuitGame" type="Button" parent="Control/ButtonPanel/Buttons" unique_id=2072595599]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "Quit Game"
