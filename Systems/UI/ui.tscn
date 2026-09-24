@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dnl420khbk6u6" path="res://Systems/UI/Art/Big Shape Upgrade v2.png" id="10_qdu1p"]
 [ext_resource type="Texture2D" uid="uid://c2vec82ne7oxh" path="res://Systems/UI/Art/Interval Upgrade v2.png" id="11_lep1l"]
 [ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
+[ext_resource type="Texture2D" uid="uid://ipcp5wn6j0jr" path="res://Systems/UI/Art/Grid Upgrade.png" id="12_31m62"]
+[ext_resource type="Texture2D" uid="uid://dar3odjd8e2b8" path="res://Systems/UI/Art/Rebirth upgrade.png" id="15_5t6h7"]
 [ext_resource type="PackedScene" uid="uid://ces5msndkbhj0" path="res://Entities/Shapes/big_shape.tscn" id="20_50h6r"]
 [ext_resource type="Shader" uid="uid://cyln1c1egvwk2" path="res://Systems/rebirth_transition.gdshader" id="21_2t3r2"]
 
@@ -134,6 +136,12 @@ modulate_color = Color(1.274, 1.274, 1.274, 1)
 shader = ExtResource("5_2bpht")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onxlf"]
+shader = ExtResource("5_2bpht")
+shader_parameter/blur_strength = 1.200000057
+shader_parameter/blur_alpha = 6.846000277685
 shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
@@ -517,8 +525,6 @@ texture = ExtResource("11_lep1l")
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 7
-text = "Upgrade
-Grid"
 icon = ExtResource("5_5t6h7")
 icon_alignment = 1
 
@@ -526,6 +532,12 @@ icon_alignment = 1
 visible = false
 layout_mode = 0
 parentType = "Grid"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=1405050247]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_31m62")
 
 [node name="Eraser" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=540966170]
 layout_mode = 1
@@ -567,8 +579,8 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 7
-text = "Hueshift"
-icon = ExtResource("5_5t6h7")
+icon = ExtResource("15_5t6h7")
+flat = true
 icon_alignment = 1
 script = ExtResource("6_1gt4b")
 
@@ -577,6 +589,15 @@ visible = false
 layout_mode = 0
 description = "Shift through time and color."
 parentType = "Rebirth"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=332097673]
+show_behind_parent = true
+texture_filter = 2
+material = SubResource("ShaderMaterial_onxlf")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("15_5t6h7")
 
 [node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
 layout_mode = 1
