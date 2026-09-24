@@ -9,10 +9,12 @@ extends Control
 @onready var shapes1 = parallaxLayer1.get_children()
 @onready var shapes2 = parallaxLayer2.get_children()
 @onready var shapes3 = parallaxLayer3.get_children()
-@onready var buttonPanelParallax = %ButtonPanelParallax
+@onready var mainMenuParallax = %MainMenuParallax
 @onready var startGameButton = %StartGame
 @onready var settingsButton = %Settings
 @onready var quitGameButton = %QuitGame
+@onready var settingsParallax = %SettingsParallax
+@onready var backButton = %Back
 
 
 
@@ -20,12 +22,16 @@ func _ready() -> void:
 	startGameButton.pressed.connect(startGame)
 	settingsButton.pressed.connect(settings)
 	quitGameButton.pressed.connect(quitGame)
+	backButton.pressed.connect(backToMainMenu)
 
 func _process(_delta: float) -> void:
 	parallaxLayer1.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2)
 	parallaxLayer2.position = -get_local_mouse_position() * 0.02 + (get_viewport_rect().size / 2)
 	parallaxLayer3.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2)
-	buttonPanelParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2) + Vector2(0.0, 40.0)
+	if mainMenuParallax.visible == true:
+		mainMenuParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2) + Vector2(0.0, 60.0)
+	else:
+		settingsParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2) - Vector2(0.0, 1.0)
 	
 	for shape in shapes1:
 		if shapes1.find(shape) > 0 and shapes1.find(shape) < int(shapes1.size()/2.0):
@@ -49,7 +55,12 @@ func startGame() -> void:
 	get_tree().change_scene_to_file(gamePath)
 
 func settings() -> void:
-	pass
+	mainMenuParallax.visible = false
+	settingsParallax.visible = true
 
 func quitGame() -> void:
 	get_tree().quit()
+
+func backToMainMenu() -> void:
+	mainMenuParallax.visible = true
+	settingsParallax.visible = false
