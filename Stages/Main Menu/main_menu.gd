@@ -10,7 +10,8 @@ extends Control
 @onready var shapes2 = parallaxLayer2.get_children()
 @onready var shapes3 = parallaxLayer3.get_children()
 @onready var mainMenuParallax = %MainMenuParallax
-@onready var startGameButton = %StartGame
+@onready var continueButton = %Continue
+@onready var newGameButton = %NewGame
 @onready var settingsButton = %Settings
 @onready var quitGameButton = %QuitGame
 @onready var settingsParallax = %SettingsParallax
@@ -19,7 +20,10 @@ extends Control
 
 
 func _ready() -> void:
-	startGameButton.pressed.connect(startGame)
+	# If save exists, make continue button visible.
+	
+	continueButton.pressed.connect(continueGame)
+	newGameButton.pressed.connect(newGame)
 	settingsButton.pressed.connect(settings)
 	quitGameButton.pressed.connect(quitGame)
 	backButton.pressed.connect(backToMainMenu)
@@ -35,7 +39,7 @@ func animateMainMenu() -> void:
 	if mainMenuParallax.visible == true:
 		mainMenuParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2) + Vector2(0.0, 60.0)
 	else:
-		settingsParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2) - Vector2(0.0, 1.0)
+		settingsParallax.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2)
 	
 	for shape in shapes1:
 		if shapes1.find(shape) > 0 and shapes1.find(shape) < int(shapes1.size()/2.0):
@@ -54,7 +58,12 @@ func animateMainMenu() -> void:
 			shape.rotation -= randf_range(0.0005, 0.002)
 
 
-func startGame() -> void:
+func continueGame() -> void:
+	pass # Load save file and start game.
+
+func newGame() -> void:
+	# If save exists, ask for confirmation.
+	# Overwrite save file with new game.
 	get_tree().change_scene_to_file(gamePath)
 
 func settings() -> void:

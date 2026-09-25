@@ -85,6 +85,20 @@ border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 shadow_color = Color(0, 0, 0, 0.5019608)
 shadow_size = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrqo6"]
+bg_color = Color(0.23529412, 0.043137256, 0.28627452, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8352941, 0.42352942, 0.43137255, 1)
+expand_margin_left = 32.0
+expand_margin_top = 16.0
+expand_margin_right = 32.0
+expand_margin_bottom = 24.0
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maqrl"]
 content_margin_left = 16.0
 content_margin_right = 16.0
@@ -454,7 +468,9 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(320, 240)
 
+
 [node name="ButtonPanel" type="PanelContainer" parent="Control/MainMenuParallax" unique_id=24213470]
+custom_maximum_size = Vector2(158, 192)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -473,7 +489,21 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ihivm")
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="StartGame" type="Button" parent="Control/MainMenuParallax/ButtonPanel/Buttons" unique_id=1613509880]
+[node name="Continue" type="Button" parent="Control/MainMenuParallax/ButtonPanel/Buttons" unique_id=444847677]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="Control/MainMenuParallax/ButtonPanel/Buttons" unique_id=1613509880]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
@@ -484,7 +514,7 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
-text = "Start Game"
+text = "New Game"
 
 [node name="Settings" type="Button" parent="Control/MainMenuParallax/ButtonPanel/Buttons" unique_id=1187280039]
 unique_name_in_owner = true
@@ -511,6 +541,62 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
 text = "Quit Game"
+
+[node name="ConfirmationPanel" type="PanelContainer" parent="Control/MainMenuParallax/ButtonPanel" unique_id=306299339]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -58)
+offset_transform_visual_only = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrqo6")
+
+[node name="Buttons" type="VBoxContainer" parent="Control/MainMenuParallax/ButtonPanel/ConfirmationPanel" unique_id=1846948148]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_position = Vector2(-2, 0)
+offset_transform_visual_only = false
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ConfirmationLabel" type="Label" parent="Control/MainMenuParallax/ButtonPanel/ConfirmationPanel/Buttons" unique_id=652898086]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+text = "Overwrite
+save file?"
+horizontal_alignment = 1
+
+[node name="Yes" type="Button" parent="Control/MainMenuParallax/ButtonPanel/ConfirmationPanel/Buttons" unique_id=2068686760]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "Yes"
+
+[node name="No" type="Button" parent="Control/MainMenuParallax/ButtonPanel/ConfirmationPanel/Buttons" unique_id=1238771092]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(126, 34)
+custom_maximum_size = Vector2(126, 34)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.19607843, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
+text = "No
+"
 
 [node name="SettingsParallax" type="Node2D" parent="Control" unique_id=818521593]
 unique_name_in_owner = true
