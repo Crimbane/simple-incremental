@@ -10,6 +10,8 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var upgradeBigShapeButton: Button
 @export var upgradeMoneyIntervalButton: Button
 @export var upgradeGridButton: Button
+@export var upgradeSynergyUnlockButton: Button
+@export var upgradeSynergyMultiButton: Button
 
 @onready var shaderMaterial = rebirthTransition.material
 
@@ -30,6 +32,8 @@ func _ready() -> void:
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 	upgradeMoneyIntervalButton.pressed.connect(GameManager.upgradeMoneyInterval)
 	upgradeGridButton.pressed.connect(GameManager.upgradeGrid)
+	upgradeSynergyUnlockButton.pressed.connect(GameManager.upgradeSynergyUnlock)
+	upgradeSynergyMultiButton.pressed.connect(GameManager.upgradeSynergyMultiplier)
 
 
 func _process(_delta: float) -> void:

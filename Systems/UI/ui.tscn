@@ -391,7 +391,7 @@ shader_parameter/invert = 1.0
 
 [node name="UI" type="CanvasLayer" unique_id=1891957665]
 
-[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("rebirthTransition", "rebirthScreenshot", "moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton", "upgradeGridButton")]
+[node name="UI Manager" type="Control" parent="." unique_id=1195161169 node_paths=PackedStringArray("rebirthTransition", "rebirthScreenshot", "moneyLabel", "gridContainer", "shapeButtons", "upgradeBigShapeButton", "upgradeMoneyIntervalButton", "upgradeGridButton", "upgradeSynergyUnlockButton", "upgradeSynergyMultiButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -408,6 +408,8 @@ shapeButtons = NodePath("Buttons And Labels/TopPanel/ShapeButtons")
 upgradeBigShapeButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape")
 upgradeMoneyIntervalButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval")
 upgradeGridButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid")
+upgradeSynergyUnlockButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism")
+upgradeSynergyMultiButton = NodePath("Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism")
 
 [node name="Buttons And Labels" type="Control" parent="UI Manager" unique_id=580188624]
 custom_minimum_size = Vector2(356, 272)
@@ -445,6 +447,7 @@ theme_override_constants/margin_right = 10
 [node name="MoneyLabel" type="Label" parent="UI Manager/Buttons And Labels/TopPanel/MoneyLabelMargin" unique_id=228411836]
 z_index = 200
 layout_mode = 2
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 11
 text = "428 Vertices"
@@ -452,6 +455,7 @@ text = "428 Vertices"
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel" unique_id=8808396 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
+parentType = "MoneyLabel"
 
 [node name="ShapeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1392619131]
 layout_mode = 0
@@ -678,6 +682,7 @@ icon_alignment = 1
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=428622712 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
+description = "Increases grid size"
 parentType = "Grid"
 
 [node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=1405050247]
@@ -718,7 +723,9 @@ icon_alignment = 1
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism" unique_id=819357118 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
-parentType = "Grid"
+description = "Unlock Synergism:
+Weaker shapes empower stronger shapes"
+parentType = "SynergyUnlock"
 
 [node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism" unique_id=290605114]
 layout_mode = 0
@@ -754,7 +761,8 @@ icon_alignment = 1
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism" unique_id=1315466033 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
-parentType = "Grid"
+description = "Increase empower strength"
+parentType = "SynergyMulti"
 
 [node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism" unique_id=1099331657]
 layout_mode = 0

@@ -40,6 +40,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Cost" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1844369643]
+modulate = Color(0.9372549, 0.13333334, 0.49019608, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2h8tt")
 theme_override_font_sizes/font_size = 11
@@ -53,6 +54,9 @@ text = "Description "
 autowrap_mode = 3
 
 [node name="Function" type="Label" parent="MarginContainer/VBoxContainer" unique_id=702310237]
+modulate = Color(0.1882353, 0.7607843, 0.72156864, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2h8tt")
 theme_override_font_sizes/font_size = 8
+text = "Func"
+autowrap_mode = 3
