@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="6_vovoe"]
 [ext_resource type="Texture2D" uid="uid://d3lt5paffov2q" path="res://Systems/UI/Trashcan/Art/Trashcan open pink.png" id="7_1gt4b"]
 [ext_resource type="Script" uid="uid://dqk5artd4b1i3" path="res://Systems/UI/eraser_button.gd" id="9_fxfak"]
+[ext_resource type="Texture2D" uid="uid://dyg4n0rpijyi5" path="res://Systems/UI/Art/Synergism unlock upgrade.png" id="10_50h6r"]
 [ext_resource type="Texture2D" uid="uid://dnl420khbk6u6" path="res://Systems/UI/Art/Big Shape Upgrade v2.png" id="10_qdu1p"]
 [ext_resource type="Texture2D" uid="uid://c2vec82ne7oxh" path="res://Systems/UI/Art/Interval Upgrade v2.png" id="11_lep1l"]
 [ext_resource type="Script" uid="uid://7gp5ipeuw3qi" path="res://Systems/UI/quit_game_button.gd" id="11_uhltn"]
@@ -716,7 +717,6 @@ theme_override_font_sizes/font_size = 7
 theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
-text = "Unlock Synergism"
 autowrap_mode = 2
 icon_alignment = 1
 
@@ -731,6 +731,7 @@ parentType = "SynergyUnlock"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("10_50h6r")
 
 [node name="DropShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism/TextureRect" unique_id=1812051370]
 material = SubResource("ShaderMaterial_ppjn4")
