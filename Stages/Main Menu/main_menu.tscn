@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://73p4w1wlcqyb" path="res://Systems/UI/Art/Slider Handle.png" id="7_q1k4k"]
 [ext_resource type="Texture2D" uid="uid://ciwi0mt6n7tvn" path="res://Systems/UI/Art/Slider Handle Hover.png" id="8_maqrl"]
 [ext_resource type="Script" uid="uid://c62ucikcrbcwv" path="res://Stages/Main Menu/volume_slider.gd" id="9_v7n75"]
+[ext_resource type="Texture2D" uid="uid://duvtom7e3vn4q" path="res://Systems/UI/Art/Dropdown Menu Arrow.png" id="10_hqbxt"]
+[ext_resource type="Script" uid="uid://c2qg5arln8cwk" path="res://Stages/Main Menu/notation_button.gd" id="10_yoibo"]
+[ext_resource type="Script" uid="uid://d24twsah8i141" path="res://Stages/Main Menu/dropdown_option.gd" id="12_qdsk4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
 shader = ExtResource("2_c4dj5")
@@ -85,7 +88,7 @@ shadow_size = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maqrl"]
 content_margin_left = 16.0
 content_margin_right = 16.0
-content_margin_bottom = 16.0
+content_margin_bottom = 0.0
 bg_color = Color(0.2, 0.02745098, 0.28627452, 0.78431374)
 border_width_left = 2
 border_width_top = 2
@@ -103,7 +106,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.18809484, 0.7603132, 0.72112024, 1)
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 shadow_color = Color(0, 0, 0, 0.5019608)
 shadow_size = 2
 
@@ -123,6 +126,45 @@ border_width_bottom = 2
 border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 expand_margin_right = 6.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pas7"]
+bg_color = Color(0.1882353, 0.019607844, 0.20784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqbxt"]
+bg_color = Color(0.23529412, 0.043137256, 0.28627452, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txu8q"]
+bg_color = Color(0.1882353, 0.019607844, 0.20784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hbcl"]
+bg_color = Color(0.1882353, 0.019607844, 0.20784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edghe"]
+bg_color = Color(0.23137255, 0.043137256, 0.28235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfcxn"]
+bg_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+
 [node name="Main Menu" type="Node" unique_id=2069781728]
 
 [node name="Control" type="Control" parent="." unique_id=1208220117]
@@ -132,6 +174,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_r7bji")
 gamePath = "uid://chn1n630kw24g"
 metadata/_edit_lock_ = true
@@ -408,6 +451,7 @@ hframes = 11
 
 [node name="MainMenuParallax" type="Node2D" parent="Control" unique_id=400085531]
 unique_name_in_owner = true
+visible = false
 position = Vector2(320, 240)
 
 [node name="ButtonPanel" type="PanelContainer" parent="Control/MainMenuParallax" unique_id=24213470]
@@ -470,45 +514,52 @@ text = "Quit Game"
 
 [node name="SettingsParallax" type="Node2D" parent="Control" unique_id=818521593]
 unique_name_in_owner = true
-visible = false
 position = Vector2(320, 179)
 
 [node name="ButtonPanel" type="PanelContainer" parent="Control/SettingsParallax" unique_id=1353707268]
+custom_maximum_size = Vector2(-1, 312)
+propagate_maximum_size = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -79.0
+offset_top = -185.0
+offset_right = 79.0
+offset_bottom = 185.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_maqrl")
 
 [node name="Buttons" type="VBoxContainer" parent="Control/SettingsParallax/ButtonPanel" unique_id=2008159362]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 2
 
-[node name="Volume" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1561629963]
+[node name="VolumeLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1561629963]
+custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 12)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
 theme_override_fonts/font = ExtResource("5_r7bji")
 theme_override_font_sizes/font_size = 12
 text = "VOLUME"
 horizontal_alignment = 1
 
 [node name="MasterLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=2035121332]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 8)
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
 theme_override_fonts/font = ExtResource("5_r7bji")
 theme_override_font_sizes/font_size = 10
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=842913242]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
@@ -521,14 +572,18 @@ script = ExtResource("9_v7n75")
 busName = "Master"
 
 [node name="MusicLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=2144448488]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 8)
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
 theme_override_fonts/font = ExtResource("5_r7bji")
 theme_override_font_sizes/font_size = 10
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=792492709]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
@@ -541,14 +596,18 @@ script = ExtResource("9_v7n75")
 busName = "Music"
 
 [node name="SFXLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=746396116]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 8)
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
 theme_override_fonts/font = ExtResource("5_r7bji")
 theme_override_font_sizes/font_size = 10
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1715729797]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
@@ -560,10 +619,84 @@ step = 0.001
 script = ExtResource("9_v7n75")
 busName = "SFX"
 
-[node name="Spacer" type="Panel" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=986428312]
+[node name="Spacer1" type="Panel" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=986428312]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="MiscLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=394092262]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 12)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 12
+text = "MISC."
+horizontal_alignment = 1
+
+[node name="Notation Style" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=231305006]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 8)
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.15686275)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 10
+text = "Notation Style"
+
+[node name="Spacer2" type="Panel" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1846430415]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="NotationButton" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=437645754]
+custom_minimum_size = Vector2(126, 22)
+custom_maximum_size = Vector2(126, 22)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6pas7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6pas7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hqbxt")
+script = ExtResource("10_yoibo")
+
+[node name="NotationLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationButton" unique_id=1010748071]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -8.0
+offset_right = 35.0
+offset_bottom = 10.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 8
+text = "None"
+
+[node name="DownArrowIcon" type="TextureRect" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationButton" unique_id=1879949432]
+custom_minimum_size = Vector2(16, 16)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = -4.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+offset_transform_position = Vector2(2, 3)
+texture = ExtResource("10_hqbxt")
+
+[node name="Spacer3" type="Panel" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1468324615]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Back" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1866161406]
 unique_name_in_owner = true
@@ -577,3 +710,76 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r7bji")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c4dj5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1k4k")
 text = "Back"
+
+[node name="NotationDropdown" type="PanelContainer" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1212304691]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(126, 76)
+custom_maximum_size = Vector2(126, 76)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -78)
+offset_transform_visual_only = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_txu8q")
+
+[node name="Options" type="VBoxContainer" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationDropdown" unique_id=908988026]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="None" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationDropdown/Options" unique_id=968870388]
+custom_minimum_size = Vector2(122, 18)
+custom_maximum_size = Vector2(122, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hbcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edghe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jfcxn")
+text = "None"
+script = ExtResource("12_qdsk4")
+
+[node name="Abbreviation" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationDropdown/Options" unique_id=1896366256]
+custom_minimum_size = Vector2(122, 18)
+custom_maximum_size = Vector2(122, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hbcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edghe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jfcxn")
+text = "Abbreviation"
+script = ExtResource("12_qdsk4")
+notationStyle = 1
+
+[node name="Scientific" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationDropdown/Options" unique_id=1979849425]
+custom_minimum_size = Vector2(122, 18)
+custom_maximum_size = Vector2(122, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hbcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edghe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jfcxn")
+text = "Scientific"
+script = ExtResource("12_qdsk4")
+notationStyle = 2
+
+[node name="Engineering" type="Button" parent="Control/SettingsParallax/ButtonPanel/Buttons/NotationDropdown/Options" unique_id=861613533]
+custom_minimum_size = Vector2(122, 18)
+custom_maximum_size = Vector2(122, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_fonts/font = ExtResource("5_r7bji")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hbcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edghe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jfcxn")
+text = "Engineering"
+script = ExtResource("12_qdsk4")
+notationStyle = 3
