@@ -25,6 +25,10 @@ func _ready() -> void:
 	backButton.pressed.connect(backToMainMenu)
 
 func _process(_delta: float) -> void:
+	animateMainMenu()
+
+
+func animateMainMenu() -> void:
 	parallaxLayer1.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2)
 	parallaxLayer2.position = -get_local_mouse_position() * 0.02 + (get_viewport_rect().size / 2)
 	parallaxLayer3.position = -get_local_mouse_position() * 0.01 + (get_viewport_rect().size / 2)
@@ -48,7 +52,6 @@ func _process(_delta: float) -> void:
 			shape.rotation += randf_range(0.0005, 0.002)
 		else:
 			shape.rotation -= randf_range(0.0005, 0.002)
-
 
 
 func startGame() -> void:

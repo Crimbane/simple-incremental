@@ -13,20 +13,24 @@ load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c276
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jlud"]
 texture = SubResource("CompressedTexture2D_j14i7")
-modulate_color = Color(1.274, 1.274, 1.274, 1)
+modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dovvo"]
 load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c27644ff30a93.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vumtr"]
 texture = SubResource("CompressedTexture2D_dovvo")
-modulate_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
+modulate_color = Color(1.2742168, 1.2742168, 1.2742168, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4g1y0"]
 shader = ExtResource("3_j14i7")
 shader_parameter/blur_strength = 2.000000095
 shader_parameter/blur_alpha = 12.0000005225
 shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
 
 [node name="Button" type="Button" unique_id=1791495124]
 custom_minimum_size = Vector2(40, 40)
@@ -73,3 +77,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_8jlud")
 stretch_mode = 3
+
+[node name="ButtonShadow" type="Panel" parent="." unique_id=882584088]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")

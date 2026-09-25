@@ -7,11 +7,11 @@ texture = ExtResource("1_hdoya")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrqo6"]
 texture = ExtResource("1_hdoya")
-modulate_color = Color(1.381, 1.381, 1.381, 1)
+modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6pas7"]
 texture = ExtResource("1_hdoya")
-modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
+modulate_color = Color(1.2742168, 1.2742168, 1.2742168, 1)
 
 [node name="GridSlotButton" type="Button" unique_id=1294166546]
 custom_minimum_size = Vector2(32, 32)

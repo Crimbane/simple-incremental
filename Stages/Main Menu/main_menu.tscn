@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="5_r7bji"]
 [ext_resource type="Texture2D" uid="uid://73p4w1wlcqyb" path="res://Systems/UI/Art/Slider Handle.png" id="7_q1k4k"]
 [ext_resource type="Texture2D" uid="uid://ciwi0mt6n7tvn" path="res://Systems/UI/Art/Slider Handle Hover.png" id="8_maqrl"]
+[ext_resource type="Script" uid="uid://c62ucikcrbcwv" path="res://Stages/Main Menu/volume_slider.gd" id="9_v7n75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjc7g"]
 shader = ExtResource("2_c4dj5")
@@ -508,13 +509,16 @@ theme_override_font_sizes/font_size = 10
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=842913242]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
 theme_override_styles/slider = SubResource("StyleBoxFlat_gank0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_udlpr")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v7n75")
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_v7n75")
+busName = "Master"
 
 [node name="MusicLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=2144448488]
 layout_mode = 2
@@ -525,13 +529,16 @@ theme_override_font_sizes/font_size = 10
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=792492709]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
 theme_override_styles/slider = SubResource("StyleBoxFlat_gank0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_udlpr")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v7n75")
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_v7n75")
+busName = "Music"
 
 [node name="SFXLabel" type="Label" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=746396116]
 layout_mode = 2
@@ -542,13 +549,16 @@ theme_override_font_sizes/font_size = 10
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=1715729797]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("7_q1k4k")
 theme_override_icons/grabber_highlight = ExtResource("8_maqrl")
 theme_override_styles/slider = SubResource("StyleBoxFlat_gank0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_udlpr")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v7n75")
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_v7n75")
+busName = "SFX"
 
 [node name="Spacer" type="Panel" parent="Control/SettingsParallax/ButtonPanel/Buttons" unique_id=986428312]
 self_modulate = Color(1, 1, 1, 0)

@@ -25,10 +25,173 @@ bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
 border_width_bottom = 2
 border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gank0"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gt4b"]
 bg_color = Color(0.28627452, 0.5058824, 0.6117647, 1)
 border_width_right = 2
 border_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gex2x"]
+texture = ExtResource("5_5t6h7")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j14i7"]
+load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c27644ff30a93.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jlud"]
+texture = SubResource("CompressedTexture2D_j14i7")
+modulate_color = Color(0.78235406, 0.78235406, 0.78235406, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dovvo"]
+load_path = "res://.godot/imported/Button background.png-a58ef77301c7b302bf3c27644ff30a93.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vumtr"]
+texture = SubResource("CompressedTexture2D_dovvo")
+modulate_color = Color(1.2742168, 1.2742168, 1.2742168, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t6h7"]
+shader = ExtResource("5_2bpht")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udlpr"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
+
+[sub_resource type="Shader" id="Shader_5t6h7"]
+code = "shader_type canvas_item;
+
+// Controls the sharpness/smoothness of the blur distribution
+uniform float blur_strength : hint_range(0.0, 5.0) = 1.2;
+uniform float blur_alpha : hint_range(1.0, 50.0) = 9.0;
+uniform vec4 blur_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * blur_strength;
+    
+    // Accumulate surrounding pixels manually to bypass textureLod limitations
+    vec4 col = texture(TEXTURE, UV);
+    col += texture(TEXTURE, UV + vec2(size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(-size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(0.0, size.y));
+    col += texture(TEXTURE, UV + vec2(0.0, -size.y));
+    
+    col += texture(TEXTURE, UV + vec2(size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(size.x, -size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, -size.y) * 0.707);
+	col *= blur_color;
+
+    COLOR = col / blur_alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2t3r2"]
+shader = SubResource("Shader_5t6h7")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="Shader" id="Shader_ppjn4"]
+code = "shader_type canvas_item;
+
+// Controls the sharpness/smoothness of the blur distribution
+uniform float blur_strength : hint_range(0.0, 5.0) = 1.2;
+uniform float blur_alpha : hint_range(1.0, 50.0) = 9.0;
+uniform vec4 blur_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * blur_strength;
+    
+    // Accumulate surrounding pixels manually to bypass textureLod limitations
+    vec4 col = texture(TEXTURE, UV);
+    col += texture(TEXTURE, UV + vec2(size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(-size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(0.0, size.y));
+    col += texture(TEXTURE, UV + vec2(0.0, -size.y));
+    
+    col += texture(TEXTURE, UV + vec2(size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(size.x, -size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, -size.y) * 0.707);
+	col *= blur_color;
+
+    COLOR = col / blur_alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8hlr"]
+shader = SubResource("Shader_ppjn4")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="Shader" id="Shader_50h6r"]
+code = "shader_type canvas_item;
+
+// Controls the sharpness/smoothness of the blur distribution
+uniform float blur_strength : hint_range(0.0, 5.0) = 1.2;
+uniform float blur_alpha : hint_range(1.0, 50.0) = 9.0;
+uniform vec4 blur_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * blur_strength;
+    
+    // Accumulate surrounding pixels manually to bypass textureLod limitations
+    vec4 col = texture(TEXTURE, UV);
+    col += texture(TEXTURE, UV + vec2(size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(-size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(0.0, size.y));
+    col += texture(TEXTURE, UV + vec2(0.0, -size.y));
+    
+    col += texture(TEXTURE, UV + vec2(size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(size.x, -size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, -size.y) * 0.707);
+	col *= blur_color;
+
+    COLOR = col / blur_alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppjn4"]
+shader = SubResource("Shader_50h6r")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="Shader" id="Shader_b8hlr"]
+code = "shader_type canvas_item;
+
+// Controls the sharpness/smoothness of the blur distribution
+uniform float blur_strength : hint_range(0.0, 5.0) = 1.2;
+uniform float blur_alpha : hint_range(1.0, 50.0) = 9.0;
+uniform vec4 blur_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void fragment() {
+    vec2 size = TEXTURE_PIXEL_SIZE * blur_strength;
+    
+    // Accumulate surrounding pixels manually to bypass textureLod limitations
+    vec4 col = texture(TEXTURE, UV);
+    col += texture(TEXTURE, UV + vec2(size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(-size.x, 0.0));
+    col += texture(TEXTURE, UV + vec2(0.0, size.y));
+    col += texture(TEXTURE, UV + vec2(0.0, -size.y));
+    
+    col += texture(TEXTURE, UV + vec2(size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(size.x, -size.y) * 0.707);
+    col += texture(TEXTURE, UV + vec2(-size.x, -size.y) * 0.707);
+	col *= blur_color;
+
+    COLOR = col / blur_alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uawr"]
+shader = SubResource("Shader_b8hlr")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhltn"]
 texture = ExtResource("6_vovoe")
@@ -137,6 +300,10 @@ shader = ExtResource("5_2bpht")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hbcl"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5t6h7"]
 texture = ExtResource("15_5t6h7")
@@ -254,7 +421,8 @@ mouse_filter = 2
 
 [node name="TopPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=1545389865]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 88)
+z_index = 2
+custom_minimum_size = Vector2(0, 94)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -281,17 +449,24 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 11
 text = "428 Vertices"
 
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/MoneyLabelMargin/MoneyLabel" unique_id=8808396 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+
 [node name="ShapeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=1392619131]
 layout_mode = 0
-offset_left = 138.0
-offset_right = 310.0
-offset_bottom = 84.0
+offset_left = 141.0
+offset_top = 4.0
+offset_right = 313.0
+offset_bottom = 88.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
 columns = 4
 
 [node name="Dot" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1791495124 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 
-[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Dot" unique_id=8808396 instance=ExtResource("2_h2tau")]
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Dot" unique_id=1095314284 instance=ExtResource("2_h2tau")]
 visible = false
 layout_mode = 0
 description = "Buy Dot"
@@ -374,26 +549,240 @@ layout_mode = 0
 description = "Buy Octagon"
 parentType = "Shape"
 
+[node name="TopPanelShadow" type="Panel" parent="UI Manager/Buttons And Labels/TopPanel" unique_id=255348952]
+show_behind_parent = true
+z_index = 1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gank0")
+
 [node name="LeftPanel" type="Panel" parent="UI Manager/Buttons And Labels" unique_id=103382533]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(88, 0)
+z_index = 1
+custom_minimum_size = Vector2(94, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 88.0
-offset_right = 88.0
+offset_top = 94.0
+offset_right = 94.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1gt4b")
+
+[node name="UpgradeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=1221519659]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -129.0
+offset_right = 88.0
+offset_bottom = 87.0
+grow_vertical = 2
+columns = 2
+
+[node name="Upgrade BigShape" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1135798019]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_qdu1p")
+
+[node name="DropsShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape/TextureRect" unique_id=1738713690]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_5t6h7")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_qdu1p")
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=297856955 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Upgrade The Almighty Shape"
+parentType = "Big Shape"
+
+[node name="ButtonShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=1946270561]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
+
+[node name="Upgrade Interval" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
+icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=814998724 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+description = "Decreases the generation time by 0.09s, producing vertices faster"
+parentType = "Interval"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=828506284]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_lep1l")
+
+[node name="DropShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval/TextureRect" unique_id=2126834898]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_2t3r2")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_lep1l")
+
+[node name="ButtonShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=968397531]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
+
+[node name="Upgrade Grid" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1519491349]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
+icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=428622712 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+parentType = "Grid"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=1405050247]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_31m62")
+
+[node name="DropShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid/TextureRect" unique_id=431913269]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_b8hlr")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_31m62")
+
+[node name="ButtonShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=2090262956]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
+
+[node name="Unlock Synergism" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=2114723358]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
+text = "Unlock Synergism"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism" unique_id=819357118 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+parentType = "Grid"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism" unique_id=290605114]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DropShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism/TextureRect" unique_id=1812051370]
+material = SubResource("ShaderMaterial_ppjn4")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Unlock Synergism" unique_id=1976301680]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
+
+[node name="Upgrade Synergism" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1956005772]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_gex2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jlud")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vumtr")
+text = "Upgrade Synergism"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism" unique_id=1315466033 instance=ExtResource("2_h2tau")]
+visible = false
+layout_mode = 0
+parentType = "Grid"
+
+[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism" unique_id=1099331657]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DropShadow" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism/TextureRect" unique_id=531527392]
+material = SubResource("ShaderMaterial_8uawr")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Synergism" unique_id=1709093682]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
 
 [node name="Trashcan" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=970780146 node_paths=PackedStringArray("trashcanClosed", "trashcanOpen", "confirmationPanel", "yesButton", "noButton")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
+offset_left = 12.0
 offset_top = -52.0
-offset_right = 42.0
+offset_right = 44.0
 offset_bottom = -4.0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_uhltn")
@@ -493,80 +882,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qdu1p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lep1l")
 text = "No"
 
-[node name="UpgradeButtons" type="GridContainer" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=1221519659]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -108.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-
-[node name="Upgrade BigShape" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1135798019]
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
-icon = ExtResource("5_5t6h7")
-icon_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=370641430]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("10_qdu1p")
-
-[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade BigShape" unique_id=297856955 instance=ExtResource("2_h2tau")]
-visible = false
-layout_mode = 0
-description = "Upgrade The Almighty Shape"
-parentType = "Big Shape"
-
-[node name="Upgrade Interval" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
-icon = ExtResource("5_5t6h7")
-icon_alignment = 1
-
-[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=814998724 instance=ExtResource("2_h2tau")]
-visible = false
-layout_mode = 0
-description = "Decreases the generation time by 0.09s, producing vertices faster"
-parentType = "Interval"
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Interval" unique_id=828506284]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("11_lep1l")
-
-[node name="Upgrade Grid" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=1519491349]
-custom_maximum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
-icon = ExtResource("5_5t6h7")
-icon_alignment = 1
-
-[node name="Tooltip" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=428622712 instance=ExtResource("2_h2tau")]
-visible = false
-layout_mode = 0
-parentType = "Grid"
-
-[node name="TextureRect" type="TextureRect" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons/Upgrade Grid" unique_id=1405050247]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("12_31m62")
-
 [node name="Eraser" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=540966170]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 42.0
+offset_left = 46.0
 offset_top = -47.0
-offset_right = 82.0
+offset_right = 86.0
 offset_bottom = -7.0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_t1yug")
@@ -582,6 +905,19 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_2bpht")
+
+[node name="LeftPanelShadow" type="Panel" parent="UI Manager/Buttons And Labels/LeftPanel" unique_id=864826056]
+show_behind_parent = true
+z_index = 1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6hbcl")
 
 [node name="Rebirth Button" type="Button" parent="UI Manager/Buttons And Labels" unique_id=500497845 node_paths=PackedStringArray("tooltip")]
 top_level = true
@@ -652,8 +988,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-theme_override_constants/margin_left = 88
-theme_override_constants/margin_top = 88
+theme_override_constants/margin_left = 94
+theme_override_constants/margin_top = 94
 
 [node name="ShapeZonePanel" type="Panel" parent="UI Manager/Shapes" unique_id=1680720052]
 unique_name_in_owner = true
@@ -672,7 +1008,7 @@ mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="GridCenter" type="CenterContainer" parent="UI Manager/Shapes/ShapeZonePanel/HSplit" unique_id=58114]
-custom_minimum_size = Vector2(272, 0)
+custom_minimum_size = Vector2(266, 0)
 layout_mode = 2
 mouse_filter = 2
 
@@ -705,6 +1041,7 @@ size_flags_vertical = 4
 [node name="Big Shape" parent="UI Manager/Shapes/ShapeZonePanel/HSplit/BigShapeContainer/BigShapeCenter" unique_id=1237669307 instance=ExtResource("20_50h6r")]
 
 [node name="Exit Button" type="Button" parent="UI Manager" unique_id=31119279]
+z_index = 2
 custom_maximum_size = Vector2(16, 16)
 layout_mode = 1
 offset_left = 4.0
