@@ -308,14 +308,11 @@ func clearUpgrades() -> void:
 
 
 func unlockNextShapeButton(shape: int) -> void:
-	print("!!!!!",shape)
 	if shape > highestUnlockedShapeButton:
 		highestUnlockedShapeButton += 1
 		print(highestUnlockedShapeButton)
 		for button in UIManager.shapeButtons.get_children():
-			print("outisde if")
 			if button.shapeSprite == shape:
-				print("insid if")
 				button.updateVisibility()
 		
 		

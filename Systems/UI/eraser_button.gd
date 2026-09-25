@@ -4,7 +4,7 @@ extends Button
 const ERASER_SCENE: PackedScene = preload("uid://dhigqih41adct")
 
 func _ready() -> void:
-	button_down.connect(pickupEraser)
+	pressed.connect(pickupEraser)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Right Click") and GameManager.UIManager.eraserHeldByCursor:

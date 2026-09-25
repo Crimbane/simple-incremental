@@ -138,11 +138,31 @@ shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5t6h7"]
+texture = ExtResource("15_5t6h7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2t3r2"]
+texture = ExtResource("15_5t6h7")
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50h6r"]
+texture = ExtResource("15_5t6h7")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+modulate_color = Color(1.353256, 1.353256, 1.353256, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onxlf"]
 shader = ExtResource("5_2bpht")
-shader_parameter/blur_strength = 1.200000057
-shader_parameter/blur_alpha = 6.846000277685
-shader_parameter/blur_color = Color(0, 0, 0, 1)
+shader_parameter/blur_strength = 2.50000011875
+shader_parameter/blur_alpha = 5.00000019
+shader_parameter/blur_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_fjc7g"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
 bg_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
@@ -563,7 +583,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_2bpht")
 
-[node name="Rebirth Button" type="Button" parent="UI Manager/Buttons And Labels" unique_id=500497845]
+[node name="Rebirth Button" type="Button" parent="UI Manager/Buttons And Labels" unique_id=500497845 node_paths=PackedStringArray("tooltip")]
 top_level = true
 custom_maximum_size = Vector2(40, 40)
 layout_mode = 1
@@ -578,11 +598,12 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 7
-icon = ExtResource("15_5t6h7")
-flat = true
+theme_override_styles/normal = SubResource("StyleBoxTexture_5t6h7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2t3r2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_50h6r")
 icon_alignment = 1
 script = ExtResource("6_1gt4b")
+tooltip = NodePath("Tooltip")
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=1312935367 instance=ExtResource("2_h2tau")]
 visible = false
@@ -598,6 +619,29 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("15_5t6h7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="UI Manager/Buttons And Labels/Rebirth Button" unique_id=437031786]
+show_behind_parent = true
+position = Vector2(20, 20)
+amount = 16
+emission_shape = 6
+emission_ring_inner_radius = 10.0
+emission_ring_radius = 15.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 20.0
+angular_velocity_max = 64.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+angle_max = 45.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0.8, 0.2, 0.2, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_fjc7g")
 
 [node name="Shapes" type="MarginContainer" parent="UI Manager" unique_id=664220498]
 layout_mode = 1

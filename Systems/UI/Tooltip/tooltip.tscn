@@ -19,6 +19,7 @@ z_index = 10
 custom_maximum_size = Vector2(250, -1)
 offset_right = 112.0
 offset_bottom = 63.0
+offset_transform_enabled = true
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_70d3y")
 script = ExtResource("1_adyak")

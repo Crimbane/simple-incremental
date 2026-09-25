@@ -43,7 +43,7 @@ enum ShapeSprite {
 
 
 func _ready() -> void:
-	button_down.connect(_on_shape_button_press)
+	pressed.connect(_on_shape_button_press)
 	updateIcon()
 	if not Engine.is_editor_hint():
 		updateVisibility()

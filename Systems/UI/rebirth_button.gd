@@ -1,8 +1,11 @@
 extends Button
 
 
+@export var tooltip: PanelContainer
+
 func _ready() -> void:
-	button_down.connect(GameManager.rebirth)
+	pressed.connect(GameManager.rebirth)
+	button_up.connect(hideTooltip)
 
 func _process(_delta: float) -> void:
 	var threshold = GameManager.StateInfo[GameManager.currentState].NextRebirthAvailabilityThreshold
@@ -10,3 +13,6 @@ func _process(_delta: float) -> void:
 		visible = false
 	elif GameManager.money >= threshold and visible == false:
 		visible = true
+
+func hideTooltip() -> void:
+	tooltip.visible = false
