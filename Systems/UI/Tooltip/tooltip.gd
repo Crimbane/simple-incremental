@@ -71,7 +71,7 @@ func setRebirthCost() -> void:
 	setCost(GameManager.StateInfo[GameManager.currentState].NextRebirthCost)
 
 func setShapeCost() -> void:
-	var currentCost = GameManager.getShapeCost(parent.cost, parent.shapeSprite + 1)
+	var currentCost = GameManager.getShapeCost(parent.cost, parent.shapeSprite)
 	setCost(currentCost)
 
 

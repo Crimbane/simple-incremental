@@ -3,7 +3,8 @@ extends Node
 
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
-const BASE_INTERVAL: float = 1
+const BASE_INTERVAL: float = 1.0
+const SHAPE_SYNERGY_MULTI: float = 1.2
 
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
@@ -18,7 +19,7 @@ var gridSize: int = BASE_GRID_SIZE:
 		if UIManager:
 			UIManager.updateGrid()
 
-
+#region Dictionary
 enum State { White, Red, Orange, Yellow, Green, Blue, Purple, Black }
 var StateInfo: Dictionary[State, StateData] = {
 	State.White: StateData.new({
@@ -148,6 +149,7 @@ var UpgradeInfo: Dictionary[UpgradeType, UpgradeData] = {
 		ExponentialCostIncrease = 8
 	}),
 }
+#endregion
 
 var highestUnlockedShapeButton: int = 0
 
@@ -187,6 +189,8 @@ func calculateMoneyIncrement() -> void:
 	
 	if currentBigShapeType != ShapeType.Circle:
 		incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
+	
+	incrementAmount *= StateInfo[currentState].ColorMultiplier
 	print("incrementAmount: ", incrementAmount)
 
 
