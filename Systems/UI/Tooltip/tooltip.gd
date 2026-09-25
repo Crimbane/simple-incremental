@@ -92,9 +92,9 @@ func setBigShapeTooltip() -> void:
 		costLabel.show()
 		setCost(GameManager.ShapeInfo[GameManager.currentBigShapeType].NextBigShapeCost)
 		
-		var nextBigShapeMulti = GameManager.ShapeInfo[GameManager.currentBigShapeType + 1].BigShapeMultiplier
+		#var nextBigShapeMulti = GameManager.ShapeInfo[GameManager.currentBigShapeType + 1].BigShapeMultiplier
 		functionLabel.text = "Current multiplier: " + str(bigShapeMulti) + "x \nNext: " \
-		+ str(nextBigShapeMulti) + "x"
+		+ str(bigShapeMulti + 1) + "x"
 		
 	resizeContainer()
 
@@ -113,6 +113,8 @@ func setShapeTooltip() -> void:
 	var colorMultiplier = GameManager.StateInfo[GameManager.currentState].ColorMultiplier
 	var generationValue = roundi(baseGeneration * shapeSynergy * colorMultiplier)
 	functionLabel.text = "Generates " + str(generationValue) + " vertices"
+	if generationValue == 1:
+		functionLabel.text = "Generates " + str(generationValue) + " vertex"
 
 
 func setIntervalTooltip() -> void:

@@ -15,7 +15,7 @@ var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
 var synergyUnlocked: bool = false
 var synergyMulti: float = BASE_SHAPE_SYNERGY_MULTI
-var highestUnlockedShapeButton: int = 7
+var highestUnlockedShapeButton: int = 0
 var gridSize: int = BASE_GRID_SIZE:
 	set(value):
 		gridSize = value
@@ -400,6 +400,12 @@ func clearUpgrades() -> void:
 	
 	currentBigShapeType = ShapeType.Dot
 	bigShape.updateSprite()
+	
+	synergyUnlocked = false
+	UpgradeInfo[UpgradeType.SynergyUnlock].CurrentLevel = 0
+	
+	synergyMulti = BASE_SHAPE_SYNERGY_MULTI
+	UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = 0
 	
 	highestUnlockedShapeButton = 0
 	UIManager.shapeButtons.propagate_call("updateVisibility")

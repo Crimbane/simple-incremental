@@ -465,9 +465,7 @@ hframes = 11
 
 [node name="MainMenuParallax" type="Node2D" parent="Control" unique_id=400085531]
 unique_name_in_owner = true
-visible = false
 position = Vector2(320, 240)
-
 
 [node name="ButtonPanel" type="PanelContainer" parent="Control/MainMenuParallax" unique_id=24213470]
 custom_maximum_size = Vector2(158, 192)
@@ -600,6 +598,7 @@ text = "No
 
 [node name="SettingsParallax" type="Node2D" parent="Control" unique_id=818521593]
 unique_name_in_owner = true
+visible = false
 position = Vector2(320, 179)
 
 [node name="ButtonPanel" type="PanelContainer" parent="Control/SettingsParallax" unique_id=1353707268]
