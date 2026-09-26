@@ -1,3 +1,4 @@
+class_name Eraser
 extends Node2D
 
 

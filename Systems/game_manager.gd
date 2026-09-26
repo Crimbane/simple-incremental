@@ -437,7 +437,10 @@ func unlockNextShapeButton(shape: int) -> void:
 
 #region Grid
 func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
-	storage.append({"slot": slot, "shape": shape, "shape_type": ShapeType.find_key(shape.shapeSprite)})
+	if not shape is Eraser:
+		storage.append({"slot": slot, "shape": shape, "shape_type": ShapeType.find_key(shape.shapeSprite)})
+	else:
+		storage.append({"slot": slot, "shape": shape})
 
 
 func removeShapeFromStorage(shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
