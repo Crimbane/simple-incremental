@@ -9,6 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://c2vec82ne7oxh" path="res://Systems/UI/Art/Interval Upgrade v2.png" id="7_you0t"]
 [ext_resource type="Texture2D" uid="uid://ipcp5wn6j0jr" path="res://Systems/UI/Art/Grid Upgrade.png" id="8_qn20m"]
 [ext_resource type="Texture2D" uid="uid://dyg4n0rpijyi5" path="res://Systems/UI/Art/Synergism unlock upgrade.png" id="9_gxc2t"]
+[ext_resource type="Texture2D" uid="uid://dlg50nillq8k1" path="res://Entities/Shapes/Art/Dot.png" id="10_c62l5"]
+[ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="11_47clu"]
+[ext_resource type="Texture2D" uid="uid://dbb0k618aw0ik" path="res://Entities/Shapes/Art/Hexagon.png" id="12_aksd3"]
+[ext_resource type="Texture2D" uid="uid://cg0dexsuih7l4" path="res://Entities/Shapes/Art/Line.png" id="13_s3y2e"]
+[ext_resource type="Texture2D" uid="uid://dfmh6fcatyqp" path="res://Entities/Shapes/Art/Triangle.png" id="14_vnrpm"]
+[ext_resource type="Texture2D" uid="uid://hgy4pa7iuubv" path="res://Entities/Shapes/Art/Heptagon.png" id="15_troff"]
+[ext_resource type="Texture2D" uid="uid://c7102x3jjiyfl" path="res://Entities/Shapes/Art/Octagon.png" id="16_ksqja"]
+[ext_resource type="Texture2D" uid="uid://dxqco0xickmqf" path="res://Entities/Shapes/Art/Square.png" id="17_8v87f"]
+[ext_resource type="Texture2D" uid="uid://cm2jn2sk6vuv2" path="res://Systems/Grid/Art/GridSlotAlternative.png" id="18_47clu"]
+[ext_resource type="Texture2D" uid="uid://cho0l47xs3u3f" path="res://Entities/Shapes/Art/Shapes.png" id="19_s3y2e"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="20_vnrpm"]
+[ext_resource type="Shader" uid="uid://cjacx0qa0om6u" path="res://Entities/Shapes/smooth_pixel_2D.gdshader" id="21_troff"]
+[ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="22_ksqja"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
 bg_color = Color(0, 0, 0, 1)
@@ -22,6 +35,153 @@ border_color = Color(0.286, 0.506, 0.612, 1)
 bg_color = Color(0.307, 0.065, 0.238, 1)
 border_width_right = 2
 border_color = Color(0.286, 0.506, 0.612, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g0rh"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvybh"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_troff"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 1.2
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbd47"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dda2y"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 2.000000095
+shader_parameter/blur_alpha = 4.000000142499999
+shader_parameter/blur_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh4ky"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg2cs"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67scd"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6i1v"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhd0j"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnla8"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dou1"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccd6n"]
+atlas = ExtResource("19_s3y2e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_troff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh4ky")
+}],
+"loop": 1,
+"name": &"dot",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg2cs")
+}],
+"loop": 1,
+"name": &"heptagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67scd")
+}],
+"loop": 1,
+"name": &"hexagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6i1v")
+}],
+"loop": 1,
+"name": &"line",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhd0j")
+}],
+"loop": 1,
+"name": &"octagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnla8")
+}],
+"loop": 1,
+"name": &"pentagon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dou1")
+}],
+"loop": 1,
+"name": &"square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccd6n")
+}],
+"loop": 1,
+"name": &"triangle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksqja"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 2.000000095
+shader_parameter/blur_alpha = 4.000000142499999
+shader_parameter/blur_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8v87f"]
+shader = ExtResource("21_troff")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwwgb"]
+shader = ExtResource("20_vnrpm")
+shader_parameter/blur_strength = 5.0
+shader_parameter/blur_alpha = 6.0000002375
+shader_parameter/blur_color = Color(1, 1, 1, 1)
 
 [node name="End Sequence" type="Node2D" unique_id=1285325761]
 script = ExtResource("1_0ry8p")
@@ -101,6 +261,12 @@ position = Vector2(28, 332)
 [node name="Trashcan" type="Sprite2D" parent="Trashcan" unique_id=219342106]
 texture = ExtResource("3_gnex7")
 
+[node name="DropShadow" type="Sprite2D" parent="Trashcan/Trashcan" unique_id=1778213625]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_0g0rh")
+texture = ExtResource("3_gnex7")
+
 [node name="Eraser" type="Node2D" parent="." unique_id=1913672602]
 position = Vector2(66, 333)
 
@@ -108,51 +274,1714 @@ position = Vector2(66, 333)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_law1d")
 
-[node name="Upgrade1" type="Node2D" parent="." unique_id=1529342715]
-position = Vector2(24, 118)
+[node name="DropShadow" type="Sprite2D" parent="Eraser/Eraser" unique_id=2009328458]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_yvybh")
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_law1d")
 
-[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade1" unique_id=1169126850]
+[node name="Upgrades" type="Node2D" parent="." unique_id=1347994289]
+position = Vector2(4, 98)
+
+[node name="Upgrade1" type="Node2D" parent="Upgrades" unique_id=1529342715]
+position = Vector2(20, 20)
+
+[node name="Background" type="Sprite2D" parent="Upgrades/Upgrade1" unique_id=1169126850]
 self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade1/UpgradeBackground" unique_id=975202140]
+[node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade1/Background" unique_id=975202140]
 texture = ExtResource("6_6v5yq")
 
-[node name="Upgrade2" type="Node2D" parent="." unique_id=2036624054]
-position = Vector2(68, 118)
+[node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade1/Background/Icon" unique_id=953749151]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_troff")
+texture = ExtResource("6_6v5yq")
 
-[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade2" unique_id=860786921]
+[node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade1/Background" unique_id=1138544175]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="Upgrade2" type="Node2D" parent="Upgrades" unique_id=2036624054]
+position = Vector2(64, 20)
+
+[node name="Background" type="Sprite2D" parent="Upgrades/Upgrade2" unique_id=860786921]
 self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade2/UpgradeBackground" unique_id=326463751]
+[node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade2/Background" unique_id=326463751]
 texture = ExtResource("7_you0t")
 
-[node name="Upgrade3" type="Node2D" parent="." unique_id=749875251]
-position = Vector2(24, 162)
+[node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade2/Background/Icon" unique_id=414270884]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_troff")
+texture = ExtResource("7_you0t")
 
-[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade3" unique_id=1815230198]
+[node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade2/Background" unique_id=659526601]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="Upgrade3" type="Node2D" parent="Upgrades" unique_id=749875251]
+position = Vector2(20, 64)
+
+[node name="Background" type="Sprite2D" parent="Upgrades/Upgrade3" unique_id=1815230198]
 self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade3/UpgradeBackground" unique_id=1567031071]
+[node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade3/Background" unique_id=1567031071]
 texture = ExtResource("8_qn20m")
 
-[node name="Upgrade4" type="Node2D" parent="." unique_id=185219682]
-position = Vector2(68, 162)
+[node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade3/Background/Icon" unique_id=544979819]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_troff")
+texture = ExtResource("8_qn20m")
 
-[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade4" unique_id=871489652]
+[node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade3/Background" unique_id=1070425749]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="Upgrade4" type="Node2D" parent="Upgrades" unique_id=185219682]
+position = Vector2(64, 64)
+
+[node name="Background" type="Sprite2D" parent="Upgrades/Upgrade4" unique_id=871489652]
 self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade4/UpgradeBackground" unique_id=1655241293]
+[node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade4/Background" unique_id=1655241293]
 texture = ExtResource("9_gxc2t")
 
-[node name="Upgrade5" type="Node2D" parent="." unique_id=55386208]
-position = Vector2(24, 206)
+[node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade4/Background/Icon" unique_id=131557609]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_troff")
 
-[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade5" unique_id=829192530]
+[node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade4/Background" unique_id=537723570]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="Upgrade5" type="Node2D" parent="Upgrades" unique_id=55386208]
+position = Vector2(20, 108)
+
+[node name="Background" type="Sprite2D" parent="Upgrades/Upgrade5" unique_id=829192530]
 self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
-[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade5/UpgradeBackground" unique_id=1367151890]
+[node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade5/Background" unique_id=1367151890]
+
+[node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade5/Background/Icon" unique_id=2001760835]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_troff")
+
+[node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade5/Background" unique_id=669586863]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButtons" type="Node2D" parent="." unique_id=103260974]
+
+[node name="ShapeButton1" type="Node2D" parent="ShapeButtons" unique_id=884025810]
+position = Vector2(161, 24)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton1" unique_id=654166625]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton1/Background" unique_id=1842062891]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("10_c62l5")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton1/Background/Icon" unique_id=828799800]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("10_c62l5")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton1/Background" unique_id=1425185904]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton2" type="Node2D" parent="ShapeButtons" unique_id=376879414]
+position = Vector2(161, 68)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton2" unique_id=1597395028]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton2/Background" unique_id=258532077]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("11_47clu")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton2/Background/Icon" unique_id=485483671]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("11_47clu")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton2/Background" unique_id=1555957639]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton3" type="Node2D" parent="ShapeButtons" unique_id=1350103402]
+position = Vector2(205, 68)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton3" unique_id=118193720]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton3/Background" unique_id=368961097]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("12_aksd3")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton3/Background/Icon" unique_id=940683463]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("12_aksd3")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton3/Background" unique_id=1320485930]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton4" type="Node2D" parent="ShapeButtons" unique_id=1697077265]
+position = Vector2(205, 24)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton4" unique_id=107758014]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton4/Background" unique_id=2139484423]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("13_s3y2e")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton4/Background/Icon" unique_id=1894460875]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("13_s3y2e")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton4/Background" unique_id=1058432829]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton5" type="Node2D" parent="ShapeButtons" unique_id=810423536]
+position = Vector2(249, 24)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton5" unique_id=178891399]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton5/Background" unique_id=617026772]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("14_vnrpm")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton5/Background/Icon" unique_id=1175741069]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("14_vnrpm")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton5/Background" unique_id=1328384173]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton6" type="Node2D" parent="ShapeButtons" unique_id=1789775228]
+position = Vector2(249, 68)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton6" unique_id=418165017]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton6/Background" unique_id=611734356]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("15_troff")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton6/Background/Icon" unique_id=1409568177]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("15_troff")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton6/Background" unique_id=1405210267]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton7" type="Node2D" parent="ShapeButtons" unique_id=1800995661]
+position = Vector2(293, 68)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton7" unique_id=827934267]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton7/Background" unique_id=1642849435]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("16_ksqja")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton7/Background/Icon" unique_id=1847586404]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("16_ksqja")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton7/Background" unique_id=840065927]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="ShapeButton8" type="Node2D" parent="ShapeButtons" unique_id=1112437250]
+position = Vector2(293, 24)
+
+[node name="Background" type="Sprite2D" parent="ShapeButtons/ShapeButton8" unique_id=383362891]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="Icon" type="Sprite2D" parent="ShapeButtons/ShapeButton8/Background" unique_id=403789939]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture = ExtResource("17_8v87f")
+
+[node name="DropShadow" type="Sprite2D" parent="ShapeButtons/ShapeButton8/Background/Icon" unique_id=913459454]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_dda2y")
+texture = ExtResource("17_8v87f")
+
+[node name="ButtonShadow" type="Panel" parent="ShapeButtons/ShapeButton8/Background" unique_id=2033965706]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+
+[node name="Grid" type="Node2D" parent="." unique_id=997307139]
+position = Vector2(227, 227)
+
+[node name="Slot0" type="Node2D" parent="Grid" unique_id=497500956]
+position = Vector2(-112, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot0" unique_id=435967841]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot0/Slot" unique_id=1829296671]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot0/Slot/Shape" unique_id=2062447154]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot1" type="Node2D" parent="Grid" unique_id=304894311]
+position = Vector2(-80, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot1" unique_id=1824854786]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot1/Slot" unique_id=1876485836]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot1/Slot/Shape" unique_id=441793660]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot2" type="Node2D" parent="Grid" unique_id=425469075]
+position = Vector2(-48, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot2" unique_id=1953842051]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot2/Slot" unique_id=1718170616]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot2/Slot/Shape" unique_id=1940155881]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot3" type="Node2D" parent="Grid" unique_id=981258171]
+position = Vector2(-16, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot3" unique_id=80435436]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot3/Slot" unique_id=729624027]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot3/Slot/Shape" unique_id=2028836501]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot4" type="Node2D" parent="Grid" unique_id=257288368]
+position = Vector2(16, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot4" unique_id=189776929]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot4/Slot" unique_id=303194918]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot4/Slot/Shape" unique_id=173350433]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot5" type="Node2D" parent="Grid" unique_id=1707158720]
+position = Vector2(48, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot5" unique_id=2110948275]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot5/Slot" unique_id=82340676]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot5/Slot/Shape" unique_id=2101358314]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot6" type="Node2D" parent="Grid" unique_id=1875669563]
+position = Vector2(80, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot6" unique_id=104557088]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot6/Slot" unique_id=2128237126]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot6/Slot/Shape" unique_id=1859231140]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot7" type="Node2D" parent="Grid" unique_id=1357243523]
+position = Vector2(112, -112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot7" unique_id=285044902]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot7/Slot" unique_id=1809118432]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot7/Slot/Shape" unique_id=908066998]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot8" type="Node2D" parent="Grid" unique_id=412688994]
+position = Vector2(-112, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot8" unique_id=1948188140]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot8/Slot" unique_id=1168065763]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot8/Slot/Shape" unique_id=715676233]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot9" type="Node2D" parent="Grid" unique_id=261239333]
+position = Vector2(-80, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot9" unique_id=642854263]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot9/Slot" unique_id=59334626]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot9/Slot/Shape" unique_id=1421275866]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot10" type="Node2D" parent="Grid" unique_id=1818813150]
+position = Vector2(-48, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot10" unique_id=1234767562]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot10/Slot" unique_id=1553708538]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot10/Slot/Shape" unique_id=2115092]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot11" type="Node2D" parent="Grid" unique_id=1740416983]
+position = Vector2(-16, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot11" unique_id=1194258583]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot11/Slot" unique_id=1497684688]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot11/Slot/Shape" unique_id=1112964835]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot12" type="Node2D" parent="Grid" unique_id=1713409905]
+position = Vector2(16, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot12" unique_id=1775793879]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot12/Slot" unique_id=1107285882]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot12/Slot/Shape" unique_id=796077516]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot13" type="Node2D" parent="Grid" unique_id=2076693621]
+position = Vector2(48, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot13" unique_id=2015256714]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot13/Slot" unique_id=1387972941]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot13/Slot/Shape" unique_id=599270093]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot14" type="Node2D" parent="Grid" unique_id=1689353081]
+position = Vector2(80, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot14" unique_id=1937430616]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot14/Slot" unique_id=570526081]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot14/Slot/Shape" unique_id=295493728]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot15" type="Node2D" parent="Grid" unique_id=387331092]
+position = Vector2(112, -80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot15" unique_id=1360485775]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot15/Slot" unique_id=889791550]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot15/Slot/Shape" unique_id=931547320]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot16" type="Node2D" parent="Grid" unique_id=603432363]
+position = Vector2(-112, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot16" unique_id=220761801]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot16/Slot" unique_id=528039677]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot16/Slot/Shape" unique_id=2042910052]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot17" type="Node2D" parent="Grid" unique_id=387295481]
+position = Vector2(-80, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot17" unique_id=551872717]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot17/Slot" unique_id=495500675]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot17/Slot/Shape" unique_id=2096919857]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot18" type="Node2D" parent="Grid" unique_id=212694323]
+position = Vector2(-48, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot18" unique_id=1545142426]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot18/Slot" unique_id=596671891]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot18/Slot/Shape" unique_id=1753428232]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot19" type="Node2D" parent="Grid" unique_id=131963716]
+position = Vector2(-16, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot19" unique_id=473597586]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot19/Slot" unique_id=450015985]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot19/Slot/Shape" unique_id=1893683279]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot20" type="Node2D" parent="Grid" unique_id=1963848822]
+position = Vector2(16, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot20" unique_id=401092740]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot20/Slot" unique_id=399273037]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot20/Slot/Shape" unique_id=1917585256]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot21" type="Node2D" parent="Grid" unique_id=1556695760]
+position = Vector2(48, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot21" unique_id=100592008]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot21/Slot" unique_id=1544865405]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot21/Slot/Shape" unique_id=380710927]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot22" type="Node2D" parent="Grid" unique_id=2024662959]
+position = Vector2(80, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot22" unique_id=1601884930]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot22/Slot" unique_id=1343290641]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot22/Slot/Shape" unique_id=1038360969]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot23" type="Node2D" parent="Grid" unique_id=1220969941]
+position = Vector2(112, -48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot23" unique_id=2041854539]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot23/Slot" unique_id=599918753]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot23/Slot/Shape" unique_id=921605576]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot24" type="Node2D" parent="Grid" unique_id=299564937]
+position = Vector2(-112, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot24" unique_id=336126349]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot24/Slot" unique_id=938024118]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot24/Slot/Shape" unique_id=363987800]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot25" type="Node2D" parent="Grid" unique_id=1682171467]
+position = Vector2(-80, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot25" unique_id=420077773]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot25/Slot" unique_id=1080765798]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot25/Slot/Shape" unique_id=1417400028]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot26" type="Node2D" parent="Grid" unique_id=299188087]
+position = Vector2(-48, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot26" unique_id=1575450807]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot26/Slot" unique_id=557488303]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot26/Slot/Shape" unique_id=1579546297]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot27" type="Node2D" parent="Grid" unique_id=137684563]
+position = Vector2(-16, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot27" unique_id=1213473785]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot27/Slot" unique_id=406802488]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot27/Slot/Shape" unique_id=1707383778]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot28" type="Node2D" parent="Grid" unique_id=831108266]
+position = Vector2(16, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot28" unique_id=1344158729]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot28/Slot" unique_id=566480662]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot28/Slot/Shape" unique_id=857179625]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot29" type="Node2D" parent="Grid" unique_id=1539006536]
+position = Vector2(48, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot29" unique_id=1233674759]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot29/Slot" unique_id=113632587]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot29/Slot/Shape" unique_id=1668326881]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot30" type="Node2D" parent="Grid" unique_id=267472646]
+position = Vector2(80, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot30" unique_id=2143164357]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot30/Slot" unique_id=1814737881]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot30/Slot/Shape" unique_id=1361766655]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot31" type="Node2D" parent="Grid" unique_id=1901375395]
+position = Vector2(112, -16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot31" unique_id=64413388]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot31/Slot" unique_id=203276507]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot31/Slot/Shape" unique_id=1611984786]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot32" type="Node2D" parent="Grid" unique_id=1150685334]
+position = Vector2(-112, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot32" unique_id=860889254]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot32/Slot" unique_id=2072332165]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot32/Slot/Shape" unique_id=1118309382]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot33" type="Node2D" parent="Grid" unique_id=198544338]
+position = Vector2(-80, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot33" unique_id=1379447992]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot33/Slot" unique_id=1593693295]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot33/Slot/Shape" unique_id=2068186997]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot34" type="Node2D" parent="Grid" unique_id=2071329118]
+position = Vector2(-48, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot34" unique_id=1025593549]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot34/Slot" unique_id=663343872]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot34/Slot/Shape" unique_id=908933082]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot35" type="Node2D" parent="Grid" unique_id=667142408]
+position = Vector2(-16, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot35" unique_id=77277872]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot35/Slot" unique_id=1049206970]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot35/Slot/Shape" unique_id=1222310437]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot36" type="Node2D" parent="Grid" unique_id=312539046]
+position = Vector2(16, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot36" unique_id=926478333]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot36/Slot" unique_id=554117520]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot36/Slot/Shape" unique_id=1524741787]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot37" type="Node2D" parent="Grid" unique_id=1265454867]
+position = Vector2(48, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot37" unique_id=1251277699]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot37/Slot" unique_id=2076881577]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot37/Slot/Shape" unique_id=186628256]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot38" type="Node2D" parent="Grid" unique_id=18873877]
+position = Vector2(80, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot38" unique_id=1045341200]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot38/Slot" unique_id=1789057764]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot38/Slot/Shape" unique_id=1000206725]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot39" type="Node2D" parent="Grid" unique_id=901603626]
+position = Vector2(112, 16)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot39" unique_id=721858710]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot39/Slot" unique_id=423269220]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot39/Slot/Shape" unique_id=880774268]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot40" type="Node2D" parent="Grid" unique_id=227869705]
+position = Vector2(-112, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot40" unique_id=1581312011]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot40/Slot" unique_id=1991027797]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot40/Slot/Shape" unique_id=145733376]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot41" type="Node2D" parent="Grid" unique_id=1323333822]
+position = Vector2(-80, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot41" unique_id=1656220859]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot41/Slot" unique_id=1521766588]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot41/Slot/Shape" unique_id=1244648875]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot42" type="Node2D" parent="Grid" unique_id=828491465]
+position = Vector2(-48, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot42" unique_id=188112855]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot42/Slot" unique_id=786263477]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot42/Slot/Shape" unique_id=1029956339]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot43" type="Node2D" parent="Grid" unique_id=266421845]
+position = Vector2(-16, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot43" unique_id=158698143]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot43/Slot" unique_id=1629241890]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot43/Slot/Shape" unique_id=1367939810]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot44" type="Node2D" parent="Grid" unique_id=1129074567]
+position = Vector2(16, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot44" unique_id=1506163737]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot44/Slot" unique_id=743091142]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot44/Slot/Shape" unique_id=1206192311]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot45" type="Node2D" parent="Grid" unique_id=770323459]
+position = Vector2(48, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot45" unique_id=481775425]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot45/Slot" unique_id=1241225015]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot45/Slot/Shape" unique_id=1204907162]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot46" type="Node2D" parent="Grid" unique_id=113092425]
+position = Vector2(80, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot46" unique_id=817764867]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot46/Slot" unique_id=319599378]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot46/Slot/Shape" unique_id=620653503]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot47" type="Node2D" parent="Grid" unique_id=2069743991]
+position = Vector2(112, 48)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot47" unique_id=1280957222]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot47/Slot" unique_id=1093111144]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot47/Slot/Shape" unique_id=671696915]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot48" type="Node2D" parent="Grid" unique_id=1997459031]
+position = Vector2(-112, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot48" unique_id=2058200172]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot48/Slot" unique_id=639234002]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot48/Slot/Shape" unique_id=240651730]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot49" type="Node2D" parent="Grid" unique_id=370602706]
+position = Vector2(-80, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot49" unique_id=1362955977]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot49/Slot" unique_id=1865111111]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot49/Slot/Shape" unique_id=651571000]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot50" type="Node2D" parent="Grid" unique_id=41860988]
+position = Vector2(-48, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot50" unique_id=819202233]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot50/Slot" unique_id=1108247035]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot50/Slot/Shape" unique_id=124099267]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot51" type="Node2D" parent="Grid" unique_id=494712291]
+position = Vector2(-16, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot51" unique_id=589469520]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot51/Slot" unique_id=1916808922]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot51/Slot/Shape" unique_id=732859647]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot52" type="Node2D" parent="Grid" unique_id=2080352144]
+position = Vector2(16, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot52" unique_id=1945224800]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot52/Slot" unique_id=42332255]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot52/Slot/Shape" unique_id=421311827]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot53" type="Node2D" parent="Grid" unique_id=15465282]
+position = Vector2(48, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot53" unique_id=1000500263]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot53/Slot" unique_id=156144051]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot53/Slot/Shape" unique_id=1208640798]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot54" type="Node2D" parent="Grid" unique_id=1124284547]
+position = Vector2(80, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot54" unique_id=1427278643]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot54/Slot" unique_id=1341009610]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot54/Slot/Shape" unique_id=953101337]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot55" type="Node2D" parent="Grid" unique_id=503154305]
+position = Vector2(112, 80)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot55" unique_id=1933477245]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot55/Slot" unique_id=1154715905]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot55/Slot/Shape" unique_id=271805250]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot56" type="Node2D" parent="Grid" unique_id=1908440783]
+position = Vector2(-112, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot56" unique_id=846401784]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot56/Slot" unique_id=424974973]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot56/Slot/Shape" unique_id=4356142]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot57" type="Node2D" parent="Grid" unique_id=1553225029]
+position = Vector2(-80, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot57" unique_id=179599201]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot57/Slot" unique_id=104216284]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot57/Slot/Shape" unique_id=1284586925]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot58" type="Node2D" parent="Grid" unique_id=151474267]
+position = Vector2(-48, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot58" unique_id=165939179]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot58/Slot" unique_id=1540978668]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot58/Slot/Shape" unique_id=215898987]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot59" type="Node2D" parent="Grid" unique_id=1223372085]
+position = Vector2(-16, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot59" unique_id=1865581913]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot59/Slot" unique_id=21019624]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot59/Slot/Shape" unique_id=226929945]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot60" type="Node2D" parent="Grid" unique_id=1587830190]
+position = Vector2(16, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot60" unique_id=2001149004]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot60/Slot" unique_id=811933649]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot60/Slot/Shape" unique_id=1420087008]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot61" type="Node2D" parent="Grid" unique_id=1474250326]
+position = Vector2(48, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot61" unique_id=1328713957]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot61/Slot" unique_id=1905788572]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot61/Slot/Shape" unique_id=1851193423]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot62" type="Node2D" parent="Grid" unique_id=1858668794]
+position = Vector2(80, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot62" unique_id=614629079]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot62/Slot" unique_id=1613154259]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot62/Slot/Shape" unique_id=471131750]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Slot63" type="Node2D" parent="Grid" unique_id=867550051]
+position = Vector2(112, 112)
+
+[node name="Slot" type="Sprite2D" parent="Grid/Slot63" unique_id=708085746]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("18_47clu")
+
+[node name="Shape" type="AnimatedSprite2D" parent="Grid/Slot63/Slot" unique_id=819676698]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="Grid/Slot63/Slot/Shape" unique_id=1763135455]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_ksqja")
+sprite_frames = SubResource("SpriteFrames_troff")
+animation = &"empty"
+
+[node name="Bishape" type="Node2D" parent="." unique_id=947034038]
+position = Vector2(500, 227)
+scale = Vector2(0.8, 0.8)
+
+[node name="Bigshape" type="Sprite2D" parent="Bishape" unique_id=1170300122]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+texture_filter = 2
+material = SubResource("ShaderMaterial_8v87f")
+texture = ExtResource("22_ksqja")
+hframes = 11
+frame = 10
+
+[node name="DropShadow" type="Sprite2D" parent="Bishape/Bigshape" unique_id=973311981]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_mwwgb")
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("22_ksqja")
+hframes = 11
+frame = 10

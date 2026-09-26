@@ -5,22 +5,15 @@ extends Node2D
 @onready var moneyLabelObject: Node2D = $MoneyLabel
 @onready var trashcanObject: Node2D = $Trashcan
 @onready var eraserObject: Node2D = $Eraser
-@onready var upgrade1Object: Node2D = $Upgrade1
-@onready var upgrade2Object: Node2D = $Upgrade2
-@onready var upgrade3Object: Node2D = $Upgrade3
-@onready var upgrade4Object: Node2D = $Upgrade4
-@onready var upgrade5Object: Node2D = $Upgrade5
+@onready var upgradesObject: Node2D = $Upgrades
+@onready var gridObject: Node2D = $Grid
+@onready var bigShape: Node2D = $Bishape
 
 @onready var topPanel: Control = topPanelObject.get_child(0)
 @onready var leftPanel: Control = leftPanelObject.get_child(0)
 @onready var moneyLabel: Control = moneyLabelObject.get_child(0)
 @onready var trashcan: Sprite2D = trashcanObject.get_child(0)
 @onready var eraser: Sprite2D = eraserObject.get_child(0)
-@onready var upgrade1: Sprite2D = upgrade1Object.get_child(0)
-@onready var upgrade2: Sprite2D = upgrade2Object.get_child(0)
-@onready var upgrade3: Sprite2D = upgrade3Object.get_child(0)
-@onready var upgrade4: Sprite2D = upgrade4Object.get_child(0)
-@onready var upgrade5: Sprite2D = upgrade5Object.get_child(0)
 
 func _ready() -> void:
 	setInitialStateOfObjects()
@@ -46,8 +39,8 @@ func setInitialStateOfObjects() -> void:
 	trashcanObject.position.y = viewport_size.y - (trashcan.texture.get_size().y / 2) - 4
 	eraserObject.position.y = viewport_size.y - (eraser.texture.get_size().y * 1.25 / 2) - 7
 	
-	upgrade1Object.position.y = viewport_size.y / 2 + (topPanel.size.y / 2) - 133 + (upgrade1.texture.get_size().y / 2) + 4
-	upgrade2Object.position.y = upgrade1Object.position.y
-	upgrade3Object.position.y = upgrade1Object.position.y + upgrade1.texture.get_size().y + 4
-	upgrade4Object.position.y = upgrade3Object.position.y
-	upgrade5Object.position.y = upgrade3Object.position.y + upgrade1.texture.get_size().y + 4
+	upgradesObject.position.y = viewport_size.y / 2 + (topPanel.size.y / 2) - 133 + 4
+	
+	gridObject.position.y = viewport_size.y / 2 + (topPanel.size.y / 2)
+	bigShape.position.y = viewport_size.y / 2 + (topPanel.size.y / 2)
+	bigShape.position.x = (viewport_size.x - (leftPanel.size.x + 266)) / 2 + (leftPanel.size.x + 266)
