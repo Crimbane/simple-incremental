@@ -65,15 +65,23 @@ func setInitialStateOfObjects() -> void:
 	
 	bigShape.position.y = viewport_size.y / 2 + (topPanel.size.y / 2)
 	bigShape.position.x = (viewport_size.x - (leftPanel.size.x + 266)) / 2 + (leftPanel.size.x + 266)
+	bigShape.get_child(0).emission_ring_inner_radius = 100
+	bigShape.get_child(0).emission_ring_radius = 100
 	
 	credits.position = viewport_size / 2
 	credits.scale = Vector2(0.0, 0.0)
 
 
 func startEndSequence() -> void:
+	var tweenParticles = create_tween()
+	tweenParticles.tween_property(bigShape.get_child(0), "emission_ring_inner_radius", 128.0, 2)
+	tweenParticles.parallel().tween_property(bigShape.get_child(0), "emission_ring_radius", 132.0, 2)
+	tweenParticles.parallel().tween_property(bigShape.get_child(0), "scale_amount_max", 10.0, 5)
+	
 	var tweenBigShape = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tweenBigShape.tween_property(bigShape, "global_position", get_viewport_rect().size / 2, 8)
 	tweenBigShape.parallel().tween_property(bigShape, "rotation", 5.0, 8)
+	tweenBigShape.parallel().tween_property(bigShape.get_child(1).get_child(0), "rotation", -10, 8)
 	tweenBigShape.parallel().tween_property(bigShape, "scale", Vector2(5.0, 5.0), 8)
 	
 	
@@ -162,8 +170,8 @@ func startEndSequence() -> void:
 	tweenLeft.parallel().tween_property(leftPanelObject, "scale", Vector2(0.0, 0.0), distanceLeft + randf_range(-1.0, 0.0))
 	
 	await tweenBigShape.finished
-	bigShape.get_child(0).get_child(0).visible = false
+	bigShape.get_child(1).get_child(0).visible = false
 	var fadeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	fadeTween.tween_property(bigShape, "modulate:a", 0.0, 3)
 	var creditTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	creditTween.tween_property(credits, "scale", Vector2(1.0, 1.0), 3)
+	creditTween.tween_property(credits, "scale", Vector2(1.0, 1.0), 4)

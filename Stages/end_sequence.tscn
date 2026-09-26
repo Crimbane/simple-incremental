@@ -1969,6 +1969,23 @@ z_index = -1
 position = Vector2(500, 227)
 scale = Vector2(0.8, 0.8)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Bishape" unique_id=150345471]
+scale = Vector2(0.99999976, 0.99999976)
+amount = 32
+emission_shape = 6
+emission_ring_inner_radius = 128.0
+emission_ring_radius = 128.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_max = 60.0
+orbit_velocity_min = 0.5
+orbit_velocity_max = 0.5
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(1, 1, 1, 0.5882353)
+
 [node name="Bigshape" type="Sprite2D" parent="Bishape" unique_id=1170300122]
 self_modulate = Color(0.1, 0.1, 0.1, 1)
 texture_filter = 2
