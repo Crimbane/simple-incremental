@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://bg0xht34kaht7"]
+
+[ext_resource type="Script" uid="uid://cy8j6xk1ymfk" path="res://Stages/end_sequence.gd" id="1_0ry8p"]
+[ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="1_uotvr"]
+[ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="3_gnex7"]
+[ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="4_law1d"]
+[ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5a71w"]
+[ext_resource type="Texture2D" uid="uid://dnl420khbk6u6" path="res://Systems/UI/Art/Big Shape Upgrade v2.png" id="6_6v5yq"]
+[ext_resource type="Texture2D" uid="uid://c2vec82ne7oxh" path="res://Systems/UI/Art/Interval Upgrade v2.png" id="7_you0t"]
+[ext_resource type="Texture2D" uid="uid://ipcp5wn6j0jr" path="res://Systems/UI/Art/Grid Upgrade.png" id="8_qn20m"]
+[ext_resource type="Texture2D" uid="uid://dyg4n0rpijyi5" path="res://Systems/UI/Art/Synergism unlock upgrade.png" id="9_gxc2t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjc7g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hg4gr"]
+bg_color = Color(0.307, 0.065, 0.238, 1)
+border_width_bottom = 2
+border_color = Color(0.286, 0.506, 0.612, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ry8p"]
+bg_color = Color(0.307, 0.065, 0.238, 1)
+border_width_right = 2
+border_color = Color(0.286, 0.506, 0.612, 1)
+
+[node name="End Sequence" type="Node2D" unique_id=1285325761]
+script = ExtResource("1_0ry8p")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1955811390]
+layer = -1
+
+[node name="BackgroundColor" type="Panel" parent="Background" unique_id=163739033]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
+
+[node name="TopPanel" type="Node2D" parent="." unique_id=1231734998]
+position = Vector2(320, 47)
+
+[node name="TopPanel" type="Panel" parent="TopPanel" unique_id=1064825148]
+custom_minimum_size = Vector2(640, 94)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -47.0
+offset_right = 320.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hg4gr")
+
+[node name="LeftPanel" type="Node2D" parent="." unique_id=545086786]
+position = Vector2(47, 227)
+
+[node name="LeftPanel" type="Panel" parent="LeftPanel" unique_id=2054313606]
+custom_minimum_size = Vector2(94, 266)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -133.0
+offset_right = 47.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ry8p")
+
+[node name="MoneyLabel" type="Node2D" parent="." unique_id=1600488113]
+position = Vector2(583, 36)
+
+[node name="MoneyLabel" type="Label" parent="MoneyLabel" unique_id=1604805695]
+z_index = 200
+custom_minimum_size = Vector2(94, 53)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -26.5
+offset_right = 47.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uotvr")
+theme_override_font_sizes/font_size = 11
+text = "Vertices:
+1.00T"
+
+[node name="Trashcan" type="Node2D" parent="." unique_id=557605185]
+position = Vector2(28, 332)
+
+[node name="Trashcan" type="Sprite2D" parent="Trashcan" unique_id=219342106]
+texture = ExtResource("3_gnex7")
+
+[node name="Eraser" type="Node2D" parent="." unique_id=1913672602]
+position = Vector2(66, 333)
+
+[node name="Eraser" type="Sprite2D" parent="Eraser" unique_id=195932691]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_law1d")
+
+[node name="Upgrade1" type="Node2D" parent="." unique_id=1529342715]
+position = Vector2(24, 118)
+
+[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade1" unique_id=1169126850]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade1/UpgradeBackground" unique_id=975202140]
+texture = ExtResource("6_6v5yq")
+
+[node name="Upgrade2" type="Node2D" parent="." unique_id=2036624054]
+position = Vector2(68, 118)
+
+[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade2" unique_id=860786921]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade2/UpgradeBackground" unique_id=326463751]
+texture = ExtResource("7_you0t")
+
+[node name="Upgrade3" type="Node2D" parent="." unique_id=749875251]
+position = Vector2(24, 162)
+
+[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade3" unique_id=1815230198]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade3/UpgradeBackground" unique_id=1567031071]
+texture = ExtResource("8_qn20m")
+
+[node name="Upgrade4" type="Node2D" parent="." unique_id=185219682]
+position = Vector2(68, 162)
+
+[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade4" unique_id=871489652]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade4/UpgradeBackground" unique_id=1655241293]
+texture = ExtResource("9_gxc2t")
+
+[node name="Upgrade5" type="Node2D" parent="." unique_id=55386208]
+position = Vector2(24, 206)
+
+[node name="UpgradeBackground" type="Sprite2D" parent="Upgrade5" unique_id=829192530]
+self_modulate = Color(0.663, 0.663, 1, 1)
+texture = ExtResource("5_5a71w")
+
+[node name="UpgradeIcon" type="Sprite2D" parent="Upgrade5/UpgradeBackground" unique_id=1367151890]
