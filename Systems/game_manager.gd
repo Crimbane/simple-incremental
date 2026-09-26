@@ -9,13 +9,12 @@ const BASE_SHAPE_SYNERGY_MULTI: float = 0.2
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
 
-var money: int = 1000000000000
+var money: int = 10
 var time: float = 0.0
 var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
 var synergyUnlocked: bool = false
 var synergyMulti: float = BASE_SHAPE_SYNERGY_MULTI
-var highestUnlockedShapeButton: int = 0
 var gridSize: int = BASE_GRID_SIZE:
 	set(value):
 		gridSize = value
@@ -28,56 +27,64 @@ var StateInfo: Dictionary[State, StateData] = {
 	State.White: StateData.new({
 		ColorRGB = Color(0.9, 0.9, 0.9),
 		ColorMultiplier = 1,
-		NextRebirthCost = 100,
-		NextRebirthAvailabilityThreshold = 100,
-		MaxBigShapeLevel = 9
+		NextRebirthCost = 500,
+		NextRebirthAvailabilityThreshold = 400,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 0
 	}),
 	State.Red: StateData.new({
 		ColorRGB = Color(0.8, 0.2, 0.2),
-		ColorMultiplier = 2,
-		NextRebirthCost = 200,
-		NextRebirthAvailabilityThreshold = 200,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 8,
+		NextRebirthCost = 25000,
+		NextRebirthAvailabilityThreshold = 2500,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 1
 	}),
 	State.Orange: StateData.new({
 		ColorRGB = Color(1.0, 0.5, 0.0),
-		ColorMultiplier = 4,
-		NextRebirthCost = 300,
-		NextRebirthAvailabilityThreshold = 300,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 64,
+		NextRebirthCost = 10000000,
+		NextRebirthAvailabilityThreshold = 1000000,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 2
 	}),
 	State.Yellow: StateData.new({
 		ColorRGB = Color(1.0, 0.8, 0.0),
-		ColorMultiplier = 8,
-		NextRebirthCost = 400,
-		NextRebirthAvailabilityThreshold = 400,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 512,
+		NextRebirthCost = 500000000,
+		NextRebirthAvailabilityThreshold = 50000000,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 3
 	}),
 	State.Green: StateData.new({
 		ColorRGB = Color(0.2, 0.7, 0.2),
-		ColorMultiplier = 16,
-		NextRebirthCost = 500,
-		NextRebirthAvailabilityThreshold = 500,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 4096,
+		NextRebirthCost = 25000000000,
+		NextRebirthAvailabilityThreshold = 2500000000,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 4
 	}),
 	State.Blue: StateData.new({
 		ColorRGB = Color(0.4, 0.5, 0.8),
-		ColorMultiplier = 32,
-		NextRebirthCost = 600,
-		NextRebirthAvailabilityThreshold = 600,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 32768,
+		NextRebirthCost = 500000000000,
+		NextRebirthAvailabilityThreshold = 50000000000,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 5
 	}),
 	State.Purple: StateData.new({
 		ColorRGB = Color(0.8, 0.2, 0.9),
-		ColorMultiplier = 64,
-		NextRebirthCost = 700,
-		NextRebirthAvailabilityThreshold = 700,
-		MaxBigShapeLevel = 9
+		ColorMultiplier = 262144,
+		NextRebirthCost = 12500000000000,
+		NextRebirthAvailabilityThreshold = 1250000000000,
+		MaxBigShapeLevel = 9,
+		HighestUnlockedShapeButton = 6
 	}),
 	State.Black: StateData.new({
 		ColorRGB = Color(0.1, 0.1, 0.1),
-		ColorMultiplier = 128,
-		MaxBigShapeLevel = 10
+		ColorMultiplier = 4294967296,
+		MaxBigShapeLevel = 10,
+		HighestUnlockedShapeButton = 7
 	})
 }
 var currentState: int = State.White
@@ -94,51 +101,51 @@ var ShapeInfo: Dictionary[ShapeType, ShapeData] = {
 		ShapeMultiplier = 2,
 		ShapeCost = 20,
 		BigShapeMultiplier = 2,
-		NextBigShapeCost = 200
+		NextBigShapeCost = 5000
 	}),
 	ShapeType.Triangle: ShapeData.new({
 		ShapeMultiplier = 3,
 		ShapeCost = 30,
 		BigShapeMultiplier = 3,
-		NextBigShapeCost = 300
+		NextBigShapeCost = 250000
 	}),
 	ShapeType.Square: ShapeData.new({
 		ShapeMultiplier = 4,
 		ShapeCost = 40,
 		BigShapeMultiplier = 4,
-		NextBigShapeCost = 400
+		NextBigShapeCost = 10000000
 	}),
 	ShapeType.Pentagon: ShapeData.new({
 		ShapeMultiplier = 5,
 		ShapeCost = 50,
 		BigShapeMultiplier = 5,
-		NextBigShapeCost = 500
+		NextBigShapeCost = 500000000
 	}),
 	ShapeType.Hexagon: ShapeData.new({
 		ShapeMultiplier = 6,
 		ShapeCost = 60,
 		BigShapeMultiplier = 6,
-		NextBigShapeCost = 600
+		NextBigShapeCost = 25000000000
 	}),
 	ShapeType.Heptagon: ShapeData.new({
 		ShapeMultiplier = 7,
 		ShapeCost = 70,
 		BigShapeMultiplier = 7,
-		NextBigShapeCost = 700
+		NextBigShapeCost = 1000000000000
 	}),
 	ShapeType.Octagon: ShapeData.new({
 		ShapeMultiplier = 8,
 		ShapeCost = 80,
 		BigShapeMultiplier = 8,
-		NextBigShapeCost = 800
+		NextBigShapeCost = 50000000000000
 	}),
 	ShapeType.Nonagon: ShapeData.new({
 		BigShapeMultiplier = 9,
-		NextBigShapeCost = 900
+		NextBigShapeCost = 500000000000000
 	}),
 	ShapeType.Decagon: ShapeData.new({
 		BigShapeMultiplier = 10,
-		NextBigShapeCost = 10*18 # 1 Quintillion / 1.0e18
+		NextBigShapeCost = 1000000000000000000 # 1 Quadrillion / 1.0e18
 	})
 }
 var currentBigShapeType: int = ShapeType.Dot
@@ -148,45 +155,39 @@ var UpgradeInfo: Dictionary[UpgradeType, UpgradeData] = {
 	UpgradeType.Interval: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 10,
-		BaseCost = 100,
-		NextLevelCost = 100,
-		ExponentialCostIncrease = 10
+		BaseCost = 250,
+		NextLevelCost = 250,
+		ExponentialCostIncrease = 4.5
 	}),
 	UpgradeType.Grid: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 6,
-		BaseCost = 100,
-		NextLevelCost = 100,
-		ExponentialCostIncrease = 8
+		BaseCost = 1000,
+		NextLevelCost = 1000,
+		ExponentialCostIncrease = 6
 	}),
 	UpgradeType.SynergyUnlock: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 1,
-		BaseCost = 100,
-		NextLevelCost = 100,
-		ExponentialCostIncrease = 5
+		BaseCost = 25000,
+		NextLevelCost = 25000,
+		ExponentialCostIncrease = 1
 	}),
 	UpgradeType.SynergyMulti: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 4,
-		BaseCost = 100,
-		NextLevelCost = 100,
-		ExponentialCostIncrease = 8
+		BaseCost = 250000,
+		NextLevelCost = 250000,
+		ExponentialCostIncrease = 10
 	}),
 }
 #endregion
 
-
-
 var gridStorage: Array[Dictionary]
-
 
 var UIManager: Node = null
 var bigShape: Node2D = null
 var upgraded = false
-
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 func _process(delta: float) -> void:
@@ -215,7 +216,7 @@ func calculateMoneyIncrement() -> void:
 		
 		var finalShapeValue = shapeValue * shapeSynergy
 		
-		incrementAmount += roundi(finalShapeValue)
+		incrementAmount += roundi(finalShapeValue) * 10#playtesting number
 	
 	if currentBigShapeType != ShapeType.Circle:
 		incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
@@ -265,6 +266,7 @@ func rebirth() -> void:
 	UIManager.clearShapesInGrid()
 	clearStorage()
 	clearUpgrades()
+	money = 10
 	calculateMoneyIncrement()
 	
 	UIManager.playRebirthTransition(StateInfo[currentState].ColorRGB)
@@ -407,15 +409,15 @@ func clearUpgrades() -> void:
 	synergyMulti = BASE_SHAPE_SYNERGY_MULTI
 	UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = 0
 	
-	highestUnlockedShapeButton = 0
 	UIManager.shapeButtons.propagate_call("updateVisibility")
 
 #endregion
 
 
 func unlockNextShapeButton(shape: int) -> void:
+	var highestUnlockedShapeButton = StateInfo[currentState].HighestUnlockedShapeButton
 	if shape > highestUnlockedShapeButton:
-		highestUnlockedShapeButton += 1
+		StateInfo[currentState].HighestUnlockedShapeButton += 1
 		print(highestUnlockedShapeButton)
 		for button in UIManager.shapeButtons.get_children():
 			if button.shapeSprite == shape:

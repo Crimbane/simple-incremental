@@ -58,7 +58,7 @@ func updateIcon() -> void:
 	dropShadow.texture = ICON_TEXTURE[ShapeSprite.find_key(shapeSprite).to_upper()]
 
 func updateVisibility() -> void:
-	if shapeSprite <= GameManager.highestUnlockedShapeButton:
+	if shapeSprite <= GameManager.StateInfo[GameManager.currentState].HighestUnlockedShapeButton:
 		show()
 	else:
 		hide()

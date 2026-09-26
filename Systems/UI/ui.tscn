@@ -480,7 +480,7 @@ parentType = "Shape"
 [node name="Line" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=2004233853 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 1
-cost = 20
+cost = 30
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Line" unique_id=2040448486 instance=ExtResource("2_h2tau")]
 visible = false
@@ -491,7 +491,7 @@ parentType = "Shape"
 [node name="Triangle" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1647496833 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 2
-cost = 30
+cost = 100
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Triangle" unique_id=63776408 instance=ExtResource("2_h2tau")]
 visible = false
@@ -502,7 +502,7 @@ parentType = "Shape"
 [node name="Square" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1191489212 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 3
-cost = 40
+cost = 300
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Square" unique_id=1825188698 instance=ExtResource("2_h2tau")]
 visible = false
@@ -513,7 +513,7 @@ parentType = "Shape"
 [node name="Pentagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1269358334 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 4
-cost = 50
+cost = 1000
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Pentagon" unique_id=1144478235 instance=ExtResource("2_h2tau")]
 visible = false
@@ -524,7 +524,7 @@ parentType = "Shape"
 [node name="Hexagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1705570680 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 5
-cost = 60
+cost = 5000
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Hexagon" unique_id=2105786303 instance=ExtResource("2_h2tau")]
 visible = false
@@ -535,7 +535,7 @@ parentType = "Shape"
 [node name="Heptagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1665249521 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 6
-cost = 70
+cost = 25000
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Heptagon" unique_id=1333005492 instance=ExtResource("2_h2tau")]
 visible = false
@@ -546,7 +546,7 @@ parentType = "Shape"
 [node name="Octagon" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons" unique_id=1063528890 instance=ExtResource("2_7xnr0")]
 layout_mode = 2
 shapeSprite = 7
-cost = 80
+cost = 150000
 
 [node name="Tooltip" parent="UI Manager/Buttons And Labels/TopPanel/ShapeButtons/Octagon" unique_id=949869363 instance=ExtResource("2_h2tau")]
 visible = false
