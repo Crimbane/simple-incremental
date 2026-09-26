@@ -52,6 +52,8 @@ func clearShapeHeldByCursor() -> void:
 	elif not shapeHeldByCursor and not eraserHeldByCursor:
 		if GameManager.gridStorage and not confirmationPanel.visible:
 			confirmationPanel.visible = true
+		elif confirmationPanel.visible:
+			confirmationPanel.visible = false
 		
 	
 	if mouseInside == true:
