@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1dp0fov53n1a"
+path="res://.godot/imported/Eraser - 16bitBoxing 001.wav-07f744a2403602b54ff3ea22c7ff1443.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Eraser - 16bitBoxing 001.wav"
+dest_files=["res://.godot/imported/Eraser - 16bitBoxing 001.wav-07f744a2403602b54ff3ea22c7ff1443.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

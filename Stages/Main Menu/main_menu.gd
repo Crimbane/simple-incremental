@@ -59,20 +59,27 @@ func animateMainMenu() -> void:
 
 
 func continueGame() -> void:
+	SoundManager.playMainMenuButtonSound()
+	SoundManager.playRandomTrack()
 	pass # Load save file and start game.
 
 func newGame() -> void:
 	# If save exists, ask for confirmation.
 	# Overwrite save file with new game.
 	get_tree().change_scene_to_file(gamePath)
+	SoundManager.playMainMenuButtonSound()
+	SoundManager.playRandomTrack()
 
 func settings() -> void:
 	mainMenuParallax.visible = false
 	settingsParallax.visible = true
+	SoundManager.playMainMenuButtonSound()
 
 func quitGame() -> void:
+	SoundManager.playMainMenuButtonSound()
 	get_tree().quit()
 
 func backToMainMenu() -> void:
 	mainMenuParallax.visible = true
 	settingsParallax.visible = false
+	SoundManager.playMainMenuButtonSound()

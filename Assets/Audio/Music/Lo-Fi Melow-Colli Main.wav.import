@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://betkse1w4dcvg"
+path="res://.godot/imported/Lo-Fi Melow-Colli Main.wav-fe8426bfe77572d4242dfc552358f898.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Lo-Fi Melow-Colli Main.wav"
+dest_files=["res://.godot/imported/Lo-Fi Melow-Colli Main.wav-fe8426bfe77572d4242dfc552358f898.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

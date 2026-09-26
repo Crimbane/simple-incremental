@@ -22,6 +22,7 @@ buses/default_bus_layout="res://Common/default_bus_layout.tres"
 [autoload]
 
 GameManager="*uid://oaqm8idyihg4"
+SoundManager="*uid://cuxi2ehh6o7qo"
 
 [display]
 

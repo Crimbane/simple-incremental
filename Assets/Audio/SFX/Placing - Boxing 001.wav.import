@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buqbv3e3p42te"
+path="res://.godot/imported/Placing - Boxing 001.wav-2dfc36c59b97ce763753107d9766b356.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Placing - Boxing 001.wav"
+dest_files=["res://.godot/imported/Placing - Boxing 001.wav-2dfc36c59b97ce763753107d9766b356.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cuxi2ehh6o7qo"]
+
+[ext_resource type="Script" uid="uid://bn223h42xxwrg" path="res://Assets/Audio/sound_manager.gd" id="1_qfo6o"]
+[ext_resource type="AudioStream" uid="uid://o5snl6vcocnf" path="res://Assets/Audio/Music/Main Menu - Lo-Fi Neon Lounge Main.wav" id="2_pucfo"]
+[ext_resource type="AudioStream" uid="uid://dwbry7okuhorx" path="res://Assets/Audio/Music/Lo-Fi A Drive at Dusk Intensity 1.wav" id="3_5mqmg"]
+[ext_resource type="AudioStream" uid="uid://betkse1w4dcvg" path="res://Assets/Audio/Music/Lo-Fi Melow-Colli Main.wav" id="4_sorwi"]
+[ext_resource type="AudioStream" uid="uid://i7mm00bum76m" path="res://Assets/Audio/Music/Lo-Fi Wicker Main.wav" id="5_oq88w"]
+[ext_resource type="AudioStream" uid="uid://ckm156yq8xkh" path="res://Assets/Audio/Music/Credits - Synthwave Spacious Odyssey Cut 30.wav" id="6_2t5b1"]
+[ext_resource type="AudioStream" uid="uid://2xujcth5bxp7" path="res://Assets/Audio/SFX/Black Hole - Pixel Wind Close Loop.wav" id="7_tq2el"]
+[ext_resource type="AudioStream" uid="uid://c1dp0fov53n1a" path="res://Assets/Audio/SFX/Eraser - 16bitBoxing 001.wav" id="8_70pi0"]
+[ext_resource type="AudioStream" uid="uid://cboa6oeus1wlx" path="res://Assets/Audio/SFX/Main Menu Buttons - Boxing 003.wav" id="9_drp63"]
+[ext_resource type="AudioStream" uid="uid://cfron8futd7oe" path="res://Assets/Audio/SFX/No Money - Bad Button 001.wav" id="10_6t8d7"]
+[ext_resource type="AudioStream" uid="uid://buqbv3e3p42te" path="res://Assets/Audio/SFX/Placing - Boxing 001.wav" id="11_0s17l"]
+[ext_resource type="AudioStream" uid="uid://gnn4occvkeux" path="res://Assets/Audio/SFX/Synergy Unlock - UI Double Button 003.wav" id="12_ma1uu"]
+[ext_resource type="AudioStream" uid="uid://bmng7f73108ki" path="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav" id="13_gtfnx"]
+[ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
+
+[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "mainMenuButtonsSound", "noMoneySound", "placeShapeSound", "synergyUnlockedSound", "trashcanThrowSound", "upgradeButtonSound")]
+script = ExtResource("1_qfo6o")
+blackHoleSound = NodePath("Black Hole")
+eraserSound = NodePath("Eraser")
+mainMenuButtonsSound = NodePath("Main Menu Buttons")
+noMoneySound = NodePath("No Money")
+placeShapeSound = NodePath("Place Shape")
+synergyUnlockedSound = NodePath("Synergy Unlocked")
+trashcanThrowSound = NodePath("Trashcan Throw")
+upgradeButtonSound = NodePath("Upgrade Button")
+menuMusic = ExtResource("2_pucfo")
+gameMusic = ExtResource("2_pucfo")
+gameMusic2 = ExtResource("3_5mqmg")
+gameMusic3 = ExtResource("4_sorwi")
+gameMusic4 = ExtResource("5_oq88w")
+creditsMusic = ExtResource("6_2t5b1")
+
+[node name="Music Player" type="AudioStreamPlayer" parent="." unique_id=421528191]
+
+[node name="Black Hole" type="AudioStreamPlayer2D" parent="." unique_id=2013177483]
+stream = ExtResource("7_tq2el")
+
+[node name="Eraser" type="AudioStreamPlayer2D" parent="." unique_id=780792361]
+stream = ExtResource("8_70pi0")
+
+[node name="Main Menu Buttons" type="AudioStreamPlayer2D" parent="." unique_id=470106764]
+stream = ExtResource("9_drp63")
+
+[node name="No Money" type="AudioStreamPlayer2D" parent="." unique_id=1996393237]
+stream = ExtResource("10_6t8d7")
+
+[node name="Place Shape" type="AudioStreamPlayer2D" parent="." unique_id=304459455]
+stream = ExtResource("11_0s17l")
+
+[node name="Synergy Unlocked" type="AudioStreamPlayer2D" parent="." unique_id=1670508254]
+stream = ExtResource("12_ma1uu")
+
+[node name="Trashcan Throw" type="AudioStreamPlayer2D" parent="." unique_id=1150862980]
+stream = ExtResource("13_gtfnx")
+
+[node name="Upgrade Button" type="AudioStreamPlayer2D" parent="." unique_id=283381335]
+stream = ExtResource("14_rfhmp")

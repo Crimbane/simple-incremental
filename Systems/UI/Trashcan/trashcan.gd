@@ -48,6 +48,7 @@ func clearShapeHeldByCursor() -> void:
 		GameManager.removeShapeFromStorage(shapeHeldByCursor)
 		shapeHeldByCursor.queue_free()
 		GameManager.calculateMoneyIncrement()
+		SoundManager.playTrashcanThrowSound()
 		
 	elif not shapeHeldByCursor and not eraserHeldByCursor:
 		if GameManager.gridStorage and not confirmationPanel.visible:
@@ -69,6 +70,7 @@ func deleteAllShapes() -> void:
 			GameManager.getShapeInStorageBySlot(dict["slot"]).queue_free()
 			GameManager.removeShapeFromStorageSlot(dict["slot"])
 			GameManager.calculateMoneyIncrement()
+			SoundManager.playTrashcanThrowSound()
 
 func hideConfirmation() -> void:
 	confirmationPanel.visible = false

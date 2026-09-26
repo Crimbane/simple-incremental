@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2xujcth5bxp7"
+path="res://.godot/imported/Black Hole - Pixel Wind Close Loop.wav-9ba623c286306e8c40ac767be20cd7da.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Black Hole - Pixel Wind Close Loop.wav"
+dest_files=["res://.godot/imported/Black Hole - Pixel Wind Close Loop.wav-9ba623c286306e8c40ac767be20cd7da.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

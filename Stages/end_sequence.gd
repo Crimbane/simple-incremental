@@ -31,6 +31,8 @@ var money = GameManager.money
 func _ready() -> void:
 	setInitialStateOfObjects()
 	startEndSequence()
+	SoundManager.stopMusic()
+	SoundManager.playBlackHoleSound()
 
 func _process(_delta: float) -> void:
 	pass

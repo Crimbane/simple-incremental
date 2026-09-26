@@ -168,12 +168,14 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 					GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite + 1)
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 					GameManager.removeMoney(shapeHeldByCursor.cost)
+					SoundManager.playPlaceShapeSound()
 					
 					
 				GameManager.calculateMoneyIncrement()
 			else:
 				print("You are poor")
 				shapeHeldByCursor.queue_free()
+				SoundManager.playNoMoneySound()
 				return
 		else:
 			print("move")
@@ -233,6 +235,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 			GameManager.removeShapeFromStorage(shapeInThisSlot)
 			shapeInThisSlot.queue_free()
 			GameManager.calculateMoneyIncrement()
+			SoundManager.playEraserSound()
 
 
 func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector2) -> void:
@@ -273,10 +276,12 @@ func convertGhosts() -> void:
 			GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
 			GameManager.clearStorage(ghostStorage)
 			GameManager.calculateMoneyIncrement()
+			SoundManager.playPlaceShapeSound()
 		else:
 			print("You are poor")
 			banishGhosts()
 			shapeHeldByCursor.queue_free()
+			SoundManager.playNoMoneySound()
 	
 	elif eraserHeldByCursor:
 		for dict in ghostStorage.duplicate():
@@ -285,6 +290,7 @@ func convertGhosts() -> void:
 			dict["shape"].queue_free()
 			GameManager.removeShapeFromStorageSlot(dict["slot"], ghostStorage)
 			GameManager.calculateMoneyIncrement()
+			SoundManager.playEraserSound()
 
 func banishGhosts() -> void:
 	for dict in ghostStorage:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckm156yq8xkh"
+path="res://.godot/imported/Credits - Synthwave Spacious Odyssey Cut 30.wav-414cedfbfd0bef7076cb2bf33f8d00f5.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Credits - Synthwave Spacious Odyssey Cut 30.wav"
+dest_files=["res://.godot/imported/Credits - Synthwave Spacious Odyssey Cut 30.wav-414cedfbfd0bef7076cb2bf33f8d00f5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

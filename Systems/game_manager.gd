@@ -302,6 +302,7 @@ func upgradeBigShape() -> void:
 	
 	print("upgraded big shape to ", ShapeType.find_key(currentBigShapeType))
 	calculateMoneyIncrement()
+	SoundManager.playUpgradeButtonSound()
 
 func upgradeMoneyInterval() -> void:
 	var cost: int = UpgradeInfo[UpgradeType.Interval].NextLevelCost
@@ -325,6 +326,7 @@ func upgradeMoneyInterval() -> void:
 	UpgradeInfo[UpgradeType.Interval].NextLevelCost = nextLevelCost
 	
 	interval -= 0.09
+	SoundManager.playUpgradeButtonSound()
 
 func upgradeGrid() -> void:
 	var cost: int = UpgradeInfo[UpgradeType.Grid].NextLevelCost
@@ -348,6 +350,7 @@ func upgradeGrid() -> void:
 	UpgradeInfo[UpgradeType.Grid].NextLevelCost = nextLevelCost
 	
 	gridSize += 1
+	SoundManager.playUpgradeButtonSound()
 
 
 func upgradeSynergyUnlock() -> void:
@@ -372,6 +375,7 @@ func upgradeSynergyUnlock() -> void:
 	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = nextLevelCost
 	
 	synergyUnlocked = true
+	SoundManager.playSynergyUnlockedSound()
 
 
 func upgradeSynergyMultiplier() -> void:
@@ -396,6 +400,7 @@ func upgradeSynergyMultiplier() -> void:
 	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = nextLevelCost
 	
 	synergyMulti += 0.1
+	SoundManager.playUpgradeButtonSound()
 
 
 func clearUpgrades() -> void:

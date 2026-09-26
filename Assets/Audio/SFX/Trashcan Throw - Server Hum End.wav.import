@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmng7f73108ki"
+path="res://.godot/imported/Trashcan Throw - Server Hum End.wav-67c70d96cb45214ea8876e1f28997fd3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav"
+dest_files=["res://.godot/imported/Trashcan Throw - Server Hum End.wav-67c70d96cb45214ea8876e1f28997fd3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
