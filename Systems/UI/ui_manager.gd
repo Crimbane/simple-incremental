@@ -77,7 +77,7 @@ func updateMoneyUI() -> void:
 	if not moneyLabel:
 		return
 	
-	moneyLabel.text = "Vertices:\n" + formatMoney(GameManager.money, GameManager.notationStyle)
+	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(GameManager.money)
 
 func updateColor() -> void:
 	for button: Button in shapeButtons.get_children():
@@ -104,6 +104,9 @@ func updateColor() -> void:
 		
 		upgradeBigShapeButton.self_modulate = Color(0.663, 0.663, 1.0)
 		upgradeMoneyIntervalButton.self_modulate = Color(0.663, 0.663, 1.0)
+		upgradeGridButton.self_modulate = Color(0.663, 0.663, 1.0)
+		upgradeSynergyUnlockButton.self_modulate = Color(0.663, 0.663, 1.0)
+		upgradeSynergyMultiButton.self_modulate = Color(0.663, 0.663, 1.0)
 		
 		for slot: Button in gridContainer.get_children():
 			slot.self_modulate = Color(0.663, 0.663, 1.0)
@@ -326,65 +329,11 @@ func updateGrid() -> void:
 	for i in range(amountOfButtonsToAdd):
 		var newButton: Button = GRID_SLOT_BUTTON.instantiate()
 		gridContainer.add_child(newButton)
+		if GameManager.currentState == GameManager.State.Black:
+			newButton.self_modulate = Color(0.663, 0.663, 1.0)
 		var centerPosition = newButton.size / 2
 		newButton.button_down.connect(_on_grid_button_pressed.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 	
 	gridContainer.columns = GameManager.gridSize
-#endregion
-
-#region Number Formatting
-
-enum BigNumbers {
-	MILLION = 10**6,
-	TEN_MILLION = 10**7,
-	HUNDRED_MILLION = 10**8,
-	BILLION = 10**9,
-	TEN_BILLION = 10**10,
-	HUNDRED_BILLION = 10**11,
-	TRILLION = 10**12,
-	TEN_TRILLION = 10**13,
-	HUNDRED_TRILLION = 10**14,
-	QUADRILLION = 10**15,
-	TEN_QUADRILLION = 10**16,
-	HUNDRED_QUADRILLION = 10**17,
-	QUINTILLION = 10**18
-}
-
-var notations: Dictionary = {
-	MILLION = {SCIENTIFIC = "e6", ENGINEERING = "e6", ABBREVIATION = "M"},
-	TEN_MILLION = {SCIENTIFIC = "e7"},
-	HUNDRED_MILLION = {SCIENTIFIC = "e8"},
-	BILLION = {SCIENTIFIC = "e9", ENGINEERING = "e9", ABBREVIATION = "B"},
-	TEN_BILLION = {SCIENTIFIC = "e10"},
-	HUNDRED_BILLION = {SCIENTIFIC = "e11"},
-	TRILLION = {SCIENTIFIC = "e12", ENGINEERING = "e12", ABBREVIATION = "T"},
-	TEN_TRILLION = {SCIENTIFIC = "e13"},
-	HUNDRED_TRILLION = {SCIENTIFIC = "e14"},
-	QUADRILLION = {SCIENTIFIC = "e15", ENGINEERING = "e15", ABBREVIATION = "Qd"},
-	TEN_QUADRILLION = {SCIENTIFIC = "e16"},
-	HUNDRED_QUADRILLION = {SCIENTIFIC = "e17"},
-	QUINTILLION = {SCIENTIFIC = "e18", ENGINEERING = "e18", ABBREVIATION = "Qn"}
-}
-
-func formatMoney(value: int, notationStyle: GameManager.NotationStyle) -> String:
-	var NotationStyle = GameManager.NotationStyle
-	if notationStyle == NotationStyle.NONE or value < BigNumbers.MILLION:
-		return str(value)
-	
-	var searchKey: String
-	
-	for numKey in BigNumbers:
-		if notationStyle != NotationStyle.SCIENTIFIC and ("TEN" in numKey or "HUNDRED" in numKey):
-			continue
-		if value >= BigNumbers[numKey]:
-			searchKey = numKey
-		else:
-			break
-	
-	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
-	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
-	
-	return ("%.2f" % snapped(newValue, 0.01)) + suffix
-
 #endregion

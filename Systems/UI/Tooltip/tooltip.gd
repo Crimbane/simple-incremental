@@ -58,7 +58,7 @@ func setCost(cost: int) -> void:
 	if GameManager.UIManager == null:
 		return
 	else:
-		var formattedCost = GameManager.UIManager.formatMoney(cost, GameManager.notationStyle)
+		var formattedCost = GameManager.formatMoney(cost)
 		costLabel.text = "Cost: " + formattedCost
 
 func onMouseEntered() -> void:
@@ -191,5 +191,5 @@ func setMoneyLabelTooltip() -> void:
 	costLabel.hide()
 	textLabel.hide()
 	var verticesPerSecond = roundi(GameManager.incrementAmount / GameManager.interval)
-	var formattedVPS = GameManager.UIManager.formatMoney(verticesPerSecond, GameManager.notationStyle)
+	var formattedVPS = GameManager.formatMoney(verticesPerSecond)
 	functionLabel.text = "Vertices per second: " + str(formattedVPS)

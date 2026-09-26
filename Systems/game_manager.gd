@@ -1,6 +1,8 @@
 extends Node
 
 
+const END_SEQUENCE: String = "res://Stages/end_sequence.tscn"
+
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
 const BASE_INTERVAL: float = 1.0
@@ -9,7 +11,7 @@ const BASE_SHAPE_SYNERGY_MULTI: float = 0.2
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
 
-var money: int = 10
+var money: int = 10**18 * 2
 var time: float = 0.0
 var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
@@ -294,6 +296,10 @@ func upgradeBigShape() -> void:
 	
 	bigShape.updateSprite()
 	
+	if currentBigShapeType == ShapeType.Circle:
+		get_tree().change_scene_to_file(END_SEQUENCE)
+		return
+	
 	print("upgraded big shape to ", ShapeType.find_key(currentBigShapeType))
 	calculateMoneyIncrement()
 
@@ -431,7 +437,7 @@ func unlockNextShapeButton(shape: int) -> void:
 
 #region Grid
 func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
-	storage.append({"slot": slot,"shape": shape})
+	storage.append({"slot": slot, "shape": shape, "shape_type": ShapeType.find_key(shape.shapeSprite)})
 
 
 func removeShapeFromStorage(shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
@@ -478,5 +484,61 @@ func getShapeCount(shape: Shape.ShapeSprite) -> int:
 			count += 1
 		
 	return count
+
+#endregion
+
+
+#region Number Formatting
+
+enum BigNumbers {
+	MILLION = 10**6,
+	TEN_MILLION = 10**7,
+	HUNDRED_MILLION = 10**8,
+	BILLION = 10**9,
+	TEN_BILLION = 10**10,
+	HUNDRED_BILLION = 10**11,
+	TRILLION = 10**12,
+	TEN_TRILLION = 10**13,
+	HUNDRED_TRILLION = 10**14,
+	QUADRILLION = 10**15,
+	TEN_QUADRILLION = 10**16,
+	HUNDRED_QUADRILLION = 10**17,
+	QUINTILLION = 10**18
+}
+
+var notations: Dictionary = {
+	MILLION = {SCIENTIFIC = "e6", ENGINEERING = "e6", ABBREVIATION = "M"},
+	TEN_MILLION = {SCIENTIFIC = "e7"},
+	HUNDRED_MILLION = {SCIENTIFIC = "e8"},
+	BILLION = {SCIENTIFIC = "e9", ENGINEERING = "e9", ABBREVIATION = "B"},
+	TEN_BILLION = {SCIENTIFIC = "e10"},
+	HUNDRED_BILLION = {SCIENTIFIC = "e11"},
+	TRILLION = {SCIENTIFIC = "e12", ENGINEERING = "e12", ABBREVIATION = "T"},
+	TEN_TRILLION = {SCIENTIFIC = "e13"},
+	HUNDRED_TRILLION = {SCIENTIFIC = "e14"},
+	QUADRILLION = {SCIENTIFIC = "e15", ENGINEERING = "e15", ABBREVIATION = "Qd"},
+	TEN_QUADRILLION = {SCIENTIFIC = "e16"},
+	HUNDRED_QUADRILLION = {SCIENTIFIC = "e17"},
+	QUINTILLION = {SCIENTIFIC = "e18", ENGINEERING = "e18", ABBREVIATION = "Qn"}
+}
+
+func formatMoney(value: int) -> String:
+	if notationStyle == NotationStyle.NONE or value < BigNumbers.MILLION:
+		return str(value)
+	
+	var searchKey: String
+	
+	for numKey in BigNumbers:
+		if notationStyle != NotationStyle.SCIENTIFIC and ("TEN" in numKey or "HUNDRED" in numKey):
+			continue
+		if value >= BigNumbers[numKey]:
+			searchKey = numKey
+		else:
+			break
+	
+	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
+	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
+	
+	return ("%.2f" % snapped(newValue, 0.01)) + suffix
 
 #endregion

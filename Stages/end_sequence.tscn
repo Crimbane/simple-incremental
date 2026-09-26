@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dyg4n0rpijyi5" path="res://Systems/UI/Art/Synergism unlock upgrade.png" id="9_gxc2t"]
 [ext_resource type="Texture2D" uid="uid://dlg50nillq8k1" path="res://Entities/Shapes/Art/Dot.png" id="10_c62l5"]
 [ext_resource type="Texture2D" uid="uid://c85vy0xr24igy" path="res://Entities/Shapes/Art/Pentagon.png" id="11_47clu"]
+[ext_resource type="Texture2D" uid="uid://desgsckjdjt1g" path="res://Systems/UI/Art/Synergism strength upgrade.png" id="11_ksqja"]
 [ext_resource type="Texture2D" uid="uid://dbb0k618aw0ik" path="res://Entities/Shapes/Art/Hexagon.png" id="12_aksd3"]
 [ext_resource type="Texture2D" uid="uid://cg0dexsuih7l4" path="res://Entities/Shapes/Art/Line.png" id="13_s3y2e"]
 [ext_resource type="Texture2D" uid="uid://dfmh6fcatyqp" path="res://Entities/Shapes/Art/Triangle.png" id="14_vnrpm"]
@@ -388,6 +389,7 @@ texture = ExtResource("9_gxc2t")
 show_behind_parent = true
 texture_filter = 4
 material = SubResource("ShaderMaterial_troff")
+texture = ExtResource("9_gxc2t")
 
 [node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade4/Background" unique_id=537723570]
 show_behind_parent = true
@@ -411,11 +413,13 @@ self_modulate = Color(0.663, 0.663, 1, 1)
 texture = ExtResource("5_5a71w")
 
 [node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade5/Background" unique_id=1367151890]
+texture = ExtResource("11_ksqja")
 
 [node name="DropShadow" type="Sprite2D" parent="Upgrades/Upgrade5/Background/Icon" unique_id=2001760835]
 show_behind_parent = true
 texture_filter = 4
 material = SubResource("ShaderMaterial_troff")
+texture = ExtResource("11_ksqja")
 
 [node name="ButtonShadow" type="Panel" parent="Upgrades/Upgrade5/Background" unique_id=669586863]
 show_behind_parent = true

@@ -1,5 +1,9 @@
 extends Node2D
 
+const MAIN_MENU: String = "res://Stages/Main Menu/main_menu.tscn"
+
+@onready var background: Panel = $Background/BackgroundColor
+
 @onready var topPanelObject: Node2D = $TopPanel
 @onready var leftPanelObject: Node2D = $LeftPanel
 @onready var moneyLabelObject: Node2D = $MoneyLabel
@@ -30,8 +34,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
-	#money -= 1
-	#moneyLabel.text = "Vertices:\n" + formatMoney(money, GameManager.notationStyle)
+	money -= 10**15
+	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(money)
 
 
 func setInitialStateOfObjects() -> void:
@@ -47,7 +51,7 @@ func setInitialStateOfObjects() -> void:
 	
 	moneyLabelObject.position.x = viewport_size.x - (moneyLabel.size.x / 2) - 10
 	moneyLabel.position.x = -moneyLabel.size.x / 2
-	#moneyLabel.text = "Vertices:\n" + formatMoney(money, GameManager.notationStyle)
+	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(money)
 	
 	trashcanObject.position.y = viewport_size.y - (trashcan.texture.get_size().y / 2) - 4
 	eraserObject.position.y = viewport_size.y - (eraser.texture.get_size().y * 1.25 / 2) - 7
@@ -55,13 +59,13 @@ func setInitialStateOfObjects() -> void:
 	upgradesObject.position.y = viewport_size.y / 2 + (topPanel.size.y / 2) - 133 + 4
 	
 	gridObject.position.y = viewport_size.y / 2 + (topPanel.size.y / 2)
-	#for shape in GameManager.gridStorage:
-		#for slot in gridSlots:
-			#if shape["slot"] == gridSlots.find(slot):
-				#var icon: AnimatedSprite2D = slot.get_child(0).get_child(0)
-				#var dropShadow: AnimatedSprite2D = icon.get_child(0)
-				#icon.animation = GameManager.ShapeType.find_key(shape["shape"].shapeSprite).to_lower()
-				#dropShadow.animation = GameManager.ShapeType.find_key(shape["shape"].shapeSprite).to_lower()
+	for shape in GameManager.gridStorage:
+		for slot in gridSlots:
+			if shape["slot"] == gridSlots.find(slot):
+				var icon: AnimatedSprite2D = slot.get_child(0).get_child(0)
+				var dropShadow: AnimatedSprite2D = icon.get_child(0)
+				icon.animation = shape["shape_type"].to_lower()
+				dropShadow.animation = shape["shape_type"].to_lower()
 	
 	bigShape.position.y = viewport_size.y / 2 + (topPanel.size.y / 2)
 	bigShape.position.x = (viewport_size.x - (leftPanel.size.x + 266)) / 2 + (leftPanel.size.x + 266)
@@ -175,3 +179,12 @@ func startEndSequence() -> void:
 	fadeTween.tween_property(bigShape, "modulate:a", 0.0, 3)
 	var creditTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	creditTween.tween_property(credits, "scale", Vector2(1.0, 1.0), 4)
+	
+	
+	await get_tree().create_timer(15).timeout
+	var toPurpleTween = create_tween()
+	toPurpleTween.tween_property(background.get_theme_stylebox("panel"), "bg_color", Color(0.522, 0.141, 0.412), 5)
+	toPurpleTween.parallel().tween_property(credits, "modulate:a", 0.0, 4)
+	
+	await get_tree().create_timer(5).timeout
+	get_tree().change_scene_to_file(MAIN_MENU)

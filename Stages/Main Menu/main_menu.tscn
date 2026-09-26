@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cmw6rvvvsw2d" path="res://Entities/Shapes/Art/Shapes x8 size.png" id="4_ihivm"]
 [ext_resource type="Shader" uid="uid://clu5gyexyixpp" path="res://Stages/Main Menu/blur.gdshader" id="5_c4dj5"]
 [ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="5_r7bji"]
+[ext_resource type="Texture2D" uid="uid://gh82dnox62oh" path="res://Stages/Main Menu/Art/Vertex game title.png" id="6_edghe"]
+[ext_resource type="Shader" uid="uid://cikun5nv2a37w" path="res://Entities/Shapes/drop_shadow.gdshader" id="7_o775m"]
 [ext_resource type="Texture2D" uid="uid://73p4w1wlcqyb" path="res://Systems/UI/Art/Slider Handle.png" id="7_q1k4k"]
 [ext_resource type="Texture2D" uid="uid://ciwi0mt6n7tvn" path="res://Systems/UI/Art/Slider Handle Hover.png" id="8_maqrl"]
 [ext_resource type="Script" uid="uid://c62ucikcrbcwv" path="res://Stages/Main Menu/volume_slider.gd" id="9_v7n75"]
@@ -34,6 +36,12 @@ shader_parameter/blur_alpha = 9.0
 shader = ExtResource("5_c4dj5")
 shader_parameter/blur_strength = 10.0
 shader_parameter/blur_alpha = 10.0000004275
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrqo6"]
+shader = ExtResource("7_o775m")
+shader_parameter/blur_strength = 2.000000095
+shader_parameter/blur_alpha = 9.0
+shader_parameter/blur_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihivm"]
 content_margin_left = 16.0
@@ -466,6 +474,38 @@ hframes = 11
 [node name="MainMenuParallax" type="Node2D" parent="Control" unique_id=400085531]
 unique_name_in_owner = true
 position = Vector2(320, 240)
+
+[node name="Logo" type="TextureRect" parent="Control/MainMenuParallax" unique_id=1604088075]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -220.0
+offset_right = 128.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_edghe")
+
+[node name="DropShadow" type="TextureRect" parent="Control/MainMenuParallax/Logo" unique_id=1150155707]
+show_behind_parent = true
+texture_filter = 4
+material = SubResource("ShaderMaterial_nrqo6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_edghe")
 
 [node name="ButtonPanel" type="PanelContainer" parent="Control/MainMenuParallax" unique_id=24213470]
 custom_maximum_size = Vector2(158, 192)
