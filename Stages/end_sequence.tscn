@@ -1965,6 +1965,7 @@ sprite_frames = SubResource("SpriteFrames_troff")
 animation = &"empty"
 
 [node name="Bishape" type="Node2D" parent="." unique_id=947034038]
+z_index = -1
 position = Vector2(500, 227)
 scale = Vector2(0.8, 0.8)
 
@@ -1985,3 +1986,60 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("22_ksqja")
 hframes = 11
 frame = 10
+
+[node name="Credits" type="Node2D" parent="." unique_id=1184060569]
+position = Vector2(320, 180)
+
+[node name="Made by" type="Label" parent="Credits" unique_id=1215677570]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.5
+offset_top = -64.0
+offset_right = 56.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.1882353, 0.7607843, 0.72156864, 1)
+theme_override_colors/font_shadow_color = Color(0.1882353, 0.7607843, 0.72156864, 0.19607843)
+theme_override_fonts/font = ExtResource("1_uotvr")
+theme_override_font_sizes/font_size = 18
+text = "Made by"
+horizontal_alignment = 1
+
+[node name="olem50 and Crimtane" type="Label" parent="Credits" unique_id=374923436]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -15.5
+offset_right = 113.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9372549, 0.13333334, 0.49019608, 1)
+theme_override_colors/font_shadow_color = Color(0.9372549, 0.13333334, 0.49019608, 0.19607843)
+theme_override_fonts/font = ExtResource("1_uotvr")
+theme_override_font_sizes/font_size = 14
+text = "olem50 and Crimtane"
+horizontal_alignment = 1
+
+[node name="With audio from Ovani Sounds" type="Label" parent="Credits" unique_id=782927482]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_top = 100.0
+offset_right = 91.5
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.52156866, 0.14117648, 0.4117647, 1)
+theme_override_colors/font_shadow_color = Color(0.52156866, 0.14117648, 0.4117647, 0.19607843)
+theme_override_fonts/font = ExtResource("1_uotvr")
+theme_override_font_sizes/font_size = 6
+text = "With audio from Ovani Sounds"
+horizontal_alignment = 1
