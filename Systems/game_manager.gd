@@ -83,6 +83,7 @@ var StateInfo: Dictionary[State, StateData] = {
 	State.Black: StateData.new({
 		ColorRGB = Color(0.1, 0.1, 0.1),
 		ColorMultiplier = 4294967296,
+		NextRebirthAvailabilityThreshold = -1,
 		MaxBigShapeLevel = 10,
 		HighestUnlockedShapeButton = 7
 	})
@@ -405,9 +406,11 @@ func clearUpgrades() -> void:
 	
 	synergyUnlocked = false
 	UpgradeInfo[UpgradeType.SynergyUnlock].CurrentLevel = 0
+	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = UpgradeInfo[UpgradeType.SynergyUnlock].BaseCost
 	
 	synergyMulti = BASE_SHAPE_SYNERGY_MULTI
 	UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = 0
+	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = UpgradeInfo[UpgradeType.SynergyMulti].BaseCost
 	
 	UIManager.shapeButtons.propagate_call("updateVisibility")
 

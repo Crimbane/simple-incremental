@@ -128,6 +128,7 @@ func setIntervalTooltip() -> void:
 		resizeContainer()
 		return
 	else:
+		costLabel.show()
 		setCost(cost)
 		functionLabel.text = "Current: " + str(interval) + "s Next: " + str(interval - 0.09) + "s"
 	
