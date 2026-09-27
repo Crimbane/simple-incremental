@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func quitGame() -> void:
-	# Add code to save game
+	GameManager.saveGame()
 	
 	SoundManager.playMenuButtonClickSound()
 	get_tree().quit()

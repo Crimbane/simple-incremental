@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func toMainMenu() -> void:
-	# Add code to save game
+	GameManager.saveGame()
 	
 	SoundManager.playMenuButtonClickSound()
 	SoundManager.playMenuMusic()

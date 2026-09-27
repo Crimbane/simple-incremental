@@ -16,16 +16,35 @@ extends Control
 @onready var quitGameButton: Button = %QuitGame
 @onready var backButton: Button = %Back
 
+@onready var confirmationPanel: PanelContainer = $MainMenuParallax/ConfirmationPanel
 
+@onready var conformationYes: Button = %Yes
+@onready var confirmationNo: Button = %No
+
+
+
+
+
+const SAVE_PATH = "user://savegame.json"
+var saveExists = FileAccess.file_exists(SAVE_PATH)
 
 func _ready() -> void:
-	# If save exists, make continue button visible.
+	if saveExists:
+		continueButton.show()
+	else:
+		continueButton.hide()
+	
 	
 	continueButton.pressed.connect(continueGame)
 	newGameButton.pressed.connect(newGame)
+	conformationYes.pressed.connect(startNewGame)
+	confirmationNo.pressed.connect(hideConfirmation)
 	settingsButton.pressed.connect(settings)
 	quitGameButton.pressed.connect(quitGame)
 	backButton.pressed.connect(backToMainMenu)
+	
+	
+	
 	
 	continueButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
 	newGameButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
@@ -66,11 +85,24 @@ func animateMainMenu() -> void:
 func continueGame() -> void:
 	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()
-	pass # Load save file and start game.
+	GameManager.loadSaveFile()
+	get_tree().change_scene_to_file(GameManager.GAME)
 
 func newGame() -> void:
-	# If save exists, ask for confirmation.
-	# Overwrite save file with new game.
+	if saveExists:
+		confirmationPanel.show()
+		return
+	startNewGame()
+
+func hideConfirmation() -> void:
+	confirmationPanel.hide()
+
+func startNewGame() -> void:
+	# Delete save file
+	if saveExists: 
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+	
+	GameManager.loadSaveFile()
 	get_tree().change_scene_to_file(GameManager.GAME)
 	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()

@@ -35,7 +35,7 @@ gameMusic4 = ExtResource("5_oq88w")
 creditsMusic = ExtResource("6_2t5b1")
 
 [node name="Music Player" type="AudioStreamPlayer" parent="." unique_id=421528191]
-volume_db = -10.0
+volume_db = -15.0
 bus = &"Music"
 
 [node name="Black Hole" type="AudioStreamPlayer2D" parent="." unique_id=2013177483]
