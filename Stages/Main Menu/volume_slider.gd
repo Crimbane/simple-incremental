@@ -13,4 +13,4 @@ func _ready() -> void:
 
 func _on_value_changed(soundValue: float) -> void:
 	AudioServer.set_bus_volume_db(busIndex, linear_to_db(soundValue))
-	#GameManager.updateSoundVolumes(busName, soundValue)
+	SoundManager.updateSoundVolumeVariables(busName, soundValue)

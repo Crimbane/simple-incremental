@@ -21,10 +21,21 @@ extends Node
 
 var gameMusicTracks: Array[AudioStream] = []
 
+var masterVolume: float = 1.0
+var musicVolume: float = 1.0
+var sfxVolume: float = 1.0
+
 func _ready() -> void:
 	musicPlayer.finished.connect(onGameMusicFinished)
 	playMenuMusic()
 	gameMusicTracks = [gameMusic, gameMusic2, gameMusic3, gameMusic4]
+	
+	var masterBusIndex = AudioServer.get_bus_index("Master")
+	var musicBusIndex = AudioServer.get_bus_index("Music")
+	var sfxBusIndex = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(masterBusIndex, linear_to_db(masterVolume))
+	AudioServer.set_bus_volume_db(musicBusIndex, linear_to_db(musicVolume))
+	AudioServer.set_bus_volume_db(sfxBusIndex, linear_to_db(sfxVolume))
 
 func stopMusic():
 	musicPlayer.stop()
@@ -89,3 +100,13 @@ func playTrashcanThrowSound() -> void:
 
 func playUpgradeButtonSound() -> void:
 	upgradeButtonSound.play()
+
+
+func updateSoundVolumeVariables(busName: String, soundValue: float) -> void:
+	match busName:
+		"Master":
+			masterVolume = soundValue
+		"Music":
+			musicVolume = soundValue
+		"SFX":
+			sfxVolume = soundValue

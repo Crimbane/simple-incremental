@@ -33,27 +33,37 @@ gameMusic4 = ExtResource("5_oq88w")
 creditsMusic = ExtResource("6_2t5b1")
 
 [node name="Music Player" type="AudioStreamPlayer" parent="." unique_id=421528191]
+volume_db = -10.0
+bus = &"Music"
 
 [node name="Black Hole" type="AudioStreamPlayer2D" parent="." unique_id=2013177483]
 stream = ExtResource("7_tq2el")
+bus = &"SFX"
 
 [node name="Eraser" type="AudioStreamPlayer2D" parent="." unique_id=780792361]
 stream = ExtResource("8_70pi0")
+bus = &"SFX"
 
 [node name="Main Menu Buttons" type="AudioStreamPlayer2D" parent="." unique_id=470106764]
 stream = ExtResource("9_drp63")
+bus = &"SFX"
 
 [node name="No Money" type="AudioStreamPlayer2D" parent="." unique_id=1996393237]
 stream = ExtResource("10_6t8d7")
+bus = &"SFX"
 
 [node name="Place Shape" type="AudioStreamPlayer2D" parent="." unique_id=304459455]
 stream = ExtResource("11_0s17l")
+bus = &"SFX"
 
 [node name="Synergy Unlocked" type="AudioStreamPlayer2D" parent="." unique_id=1670508254]
 stream = ExtResource("12_ma1uu")
+bus = &"SFX"
 
 [node name="Trashcan Throw" type="AudioStreamPlayer2D" parent="." unique_id=1150862980]
 stream = ExtResource("13_gtfnx")
+bus = &"SFX"
 
 [node name="Upgrade Button" type="AudioStreamPlayer2D" parent="." unique_id=283381335]
 stream = ExtResource("14_rfhmp")
+bus = &"SFX"
