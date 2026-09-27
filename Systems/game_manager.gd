@@ -6,7 +6,11 @@ const MAIN_MENU: String = "res://Stages/Main Menu/main_menu.tscn"
 const END_SEQUENCE: String = "res://Stages/end_sequence.tscn"
 const SHAPE_SCENE: PackedScene = preload("uid://e1iphvwkj5db")
 
-const START_MONEY = 10**18
+@export var starMultiplierTimer: Timer
+var starBuffActive: bool = false
+var currentStarMultiplier: float = 1.0
+
+const START_MONEY = 10#**18
 const START_STATE = State.White
 const START_BIG_SHAPE = ShapeType.Dot
 const BASE_GRID_SIZE: int = 2
@@ -203,6 +207,7 @@ const SAVE_PATH = "user://savegame.json"
 
 func _ready() -> void:
 	loadSaveFile()
+	starMultiplierTimer.timeout.connect(onStarMultiplierTimerTimeout)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -236,14 +241,16 @@ func calculateMoneyIncrement() -> void:
 		incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
 	
 	incrementAmount *= StateInfo[currentState].ColorMultiplier
+	
+	var starMultiplier = starMultiplierGift()
+	incrementAmount = roundi(incrementAmount * starMultiplier)
+	
 	print("incrementAmount: ", incrementAmount)
-
 
 func getShapeCost(baseCost: int, shape: Shape.ShapeSprite) -> int:
 	var count: int = getShapeCount(shape)
 	
 	return roundi(baseCost * pow(1.15, count))
-
 
 func getShapeSynergyMulti(shape: Shape.ShapeSprite) -> float:
 	if synergyUnlocked:
@@ -256,7 +263,21 @@ func getShapeSynergyMulti(shape: Shape.ShapeSprite) -> float:
 		return multiplier
 	else:
 		return 1.0
+
+func starMoneyGift(number: float) -> void:
+	var moneyGift = incrementAmount * number
+	money += int(moneyGift)
+
+func starMultiplierGift() -> float:
+	if starBuffActive == true:
+		return currentStarMultiplier
 	
+	return 1.0
+
+func onStarMultiplierTimerTimeout() -> void:
+	starBuffActive = false
+	currentStarMultiplier = 1.0
+	calculateMoneyIncrement()
 
 #endregion
 

@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dxlbbhb038hgt" path="res://Systems/game_manager.gd" id="1_8tmks"]
 
-[node name="Game Manager" type="Node" unique_id=1723615253]
+[node name="Game Manager" type="Node" unique_id=1723615253 node_paths=PackedStringArray("starMultiplierTimer")]
 script = ExtResource("1_8tmks")
+starMultiplierTimer = NodePath("Star Multiplier Timer")
+
+[node name="Star Multiplier Timer" type="Timer" parent="." unique_id=510915441]
+wait_time = 10.0
+one_shot = true

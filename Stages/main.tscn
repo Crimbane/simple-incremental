@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://chn1n630kw24g"]
 
+[ext_resource type="PackedScene" uid="uid://cikrllpass5td" path="res://Systems/Star Spawner/star_spawner.tscn" id="1_dqdwq"]
 [ext_resource type="PackedScene" uid="uid://c7hu13n2r74df" path="res://Systems/UI/ui.tscn" id="1_lxwtg"]
 
 [node name="Main" type="Node" unique_id=311859188]
 
+[node name="Spawner" parent="." unique_id=1781214380 instance=ExtResource("1_dqdwq")]
+
 [node name="UI" parent="." unique_id=1891957665 instance=ExtResource("1_lxwtg")]
+layer = -1

@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Simple Incremental"
+config/name="Vertex"
+config/description="Simple Incremental"
 run/main_scene="uid://chn1n630kw24g"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

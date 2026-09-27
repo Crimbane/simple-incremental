@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cuxi2ehh6o7qo"]
 
 [ext_resource type="Script" uid="uid://bn223h42xxwrg" path="res://Assets/Audio/sound_manager.gd" id="1_qfo6o"]
-[ext_resource type="AudioStream" uid="uid://o5snl6vcocnf" path="res://Assets/Audio/Music/Main Menu - Lo-Fi Neon Lounge Main.wav" id="2_pucfo"]
+[ext_resource type="AudioStream" uid="uid://nhea2gils1al" path="res://Assets/Audio/Music/Main Menu - Lo-Fi Neon Lounge Cut 30.wav" id="2_xng1w"]
 [ext_resource type="AudioStream" uid="uid://dwbry7okuhorx" path="res://Assets/Audio/Music/Lo-Fi A Drive at Dusk Intensity 1.wav" id="3_5mqmg"]
 [ext_resource type="AudioStream" uid="uid://betkse1w4dcvg" path="res://Assets/Audio/Music/Lo-Fi Melow-Colli Main.wav" id="4_sorwi"]
 [ext_resource type="AudioStream" uid="uid://i7mm00bum76m" path="res://Assets/Audio/Music/Lo-Fi Wicker Main.wav" id="5_oq88w"]
@@ -55,7 +55,7 @@ endSequenceMiddle1 = NodePath("End Sequence/Middle")
 endSequenceMiddle2 = NodePath("End Sequence/Middle2")
 endSequenceMiddle3 = NodePath("End Sequence/Middle3")
 endSequenceEnd = NodePath("End Sequence/End")
-menuMusic = ExtResource("2_pucfo")
+menuMusic = ExtResource("2_xng1w")
 gameMusic1 = ExtResource("5_oq88w")
 gameMusic2 = ExtResource("3_5mqmg")
 gameMusic3 = ExtResource("4_sorwi")
