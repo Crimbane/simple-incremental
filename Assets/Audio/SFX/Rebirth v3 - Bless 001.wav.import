@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://elfc6j2it8v3"
+path="res://.godot/imported/Rebirth v3 - Bless 001.wav-c91f26727812042ef9b615e669a3a0b1.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Rebirth v3 - Bless 001.wav"
+dest_files=["res://.godot/imported/Rebirth v3 - Bless 001.wav-c91f26727812042ef9b615e669a3a0b1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

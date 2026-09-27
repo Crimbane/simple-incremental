@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
 [ext_resource type="AudioStream" uid="uid://cwhbveqp50tg0" path="res://Assets/Audio/SFX/Trashcan Delete All - Gravel Plunge A.wav" id="15_0s17l"]
 [ext_resource type="AudioStream" uid="uid://b2jie0fho1rxm" path="res://Assets/Audio/SFX/Rebirth Threshold - Cure 004.wav" id="16_drp63"]
-[ext_resource type="AudioStream" uid="uid://dscu2ljqmigqg" path="res://Assets/Placeholders/Rebirth v2 - Bless 001.wav" id="17_6t8d7"]
+[ext_resource type="AudioStream" uid="uid://elfc6j2it8v3" path="res://Assets/Audio/SFX/Rebirth v3 - Bless 001.wav" id="18_0s17l"]
 
 [node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "maxUpgradeSound", "trashcanThrowSound", "trashcanDeleteAllSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound")]
 script = ExtResource("1_qfo6o")
@@ -90,5 +90,5 @@ stream = ExtResource("16_drp63")
 bus = &"SFX"
 
 [node name="Rebirth" type="AudioStreamPlayer2D" parent="." unique_id=1983146042]
-stream = ExtResource("17_6t8d7")
+stream = ExtResource("18_0s17l")
 bus = &"SFX"
