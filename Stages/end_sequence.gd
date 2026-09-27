@@ -1,5 +1,8 @@
 extends Node2D
 
+
+@export var camera: Camera2D
+
 @onready var background: Panel = $Background/BackgroundColor
 
 @onready var topPanelObject: Node2D = $TopPanel
@@ -28,14 +31,18 @@ extends Node2D
 
 var money = GameManager.money
 
+var cameraShake = true
+
 func _ready() -> void:
 	setInitialStateOfObjects()
 	startEndSequence()
 	SoundManager.stopMusic()
-	SoundManager.playBlackHoleSound()
 
 func _process(_delta: float) -> void:
 	blackStateStars.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2) + Vector2(94.0, 94.0)
+	
+	if cameraShake:
+		camera.offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	
 	money -= 10**15
 	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(money)
@@ -80,6 +87,16 @@ func setInitialStateOfObjects() -> void:
 
 
 func startEndSequence() -> void:
+	SoundManager.playEndSequenceStart1()
+	SoundManager.playEndSequenceStart2()
+	SoundManager.playEndSequenceStart3()
+	SoundManager.playEndSequenceMiddle1()
+	SoundManager.playEndSequenceMiddle2()
+	SoundManager.playEndSequenceMiddle3()
+	SoundManager.playEndSequenceEnd()
+	
+	await get_tree().create_timer(1).timeout
+	
 	var tweenParticles = create_tween()
 	tweenParticles.tween_property(bigShape.get_child(0), "emission_ring_inner_radius", 128.0, 2)
 	tweenParticles.parallel().tween_property(bigShape.get_child(0), "emission_ring_radius", 132.0, 2)
@@ -177,6 +194,7 @@ func startEndSequence() -> void:
 	tweenLeft.parallel().tween_property(leftPanelObject, "scale", Vector2(0.0, 0.0), distanceLeft + randf_range(-1.0, 0.0))
 	
 	await tweenBigShape.finished
+	cameraShake = false
 	SoundManager.playCreditsMusic()
 	bigShape.get_child(1).get_child(0).visible = false
 	blackStateStars.visible = false

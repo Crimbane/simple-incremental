@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bas2odalptfg3"
+path="res://.godot/imported/Earthquake Long A.wav-660ce8c6464a8cc0c7c18e8df896c098.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/End Sequence/Earthquake Long A.wav"
+dest_files=["res://.godot/imported/Earthquake Long A.wav-660ce8c6464a8cc0c7c18e8df896c098.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

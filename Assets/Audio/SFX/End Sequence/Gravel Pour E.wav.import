@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckuvc2saq0bdb"
+path="res://.godot/imported/Gravel Pour E.wav-1b3a77cadbccf0beae8eee8bc7084a88.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/End Sequence/Gravel Pour E.wav"
+dest_files=["res://.godot/imported/Gravel Pour E.wav-1b3a77cadbccf0beae8eee8bc7084a88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

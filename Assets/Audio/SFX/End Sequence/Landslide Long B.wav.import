@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvgnbiykvmnqy"
+path="res://.godot/imported/Landslide Long B.wav-f2ccf7ae2fe0b58e5367036405423bac.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/End Sequence/Landslide Long B.wav"
+dest_files=["res://.godot/imported/Landslide Long B.wav-f2ccf7ae2fe0b58e5367036405423bac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

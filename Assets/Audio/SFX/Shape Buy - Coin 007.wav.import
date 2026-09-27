@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cudqm2vn6y00v"
-path="res://.godot/imported/Shape Place - Coin 007.wav-1d919bfe5b86870d0da9c1fa544646ec.sample"
+path="res://.godot/imported/Shape Buy - Coin 007.wav-22d4fd6c188140633ae5d5a34ec06bed.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/Shape Place - Coin 007.wav"
-dest_files=["res://.godot/imported/Shape Place - Coin 007.wav-1d919bfe5b86870d0da9c1fa544646ec.sample"]
+source_file="res://Assets/Audio/SFX/Shape Buy - Coin 007.wav"
+dest_files=["res://.godot/imported/Shape Buy - Coin 007.wav-22d4fd6c188140633ae5d5a34ec06bed.sample"]
 
 [params]
 

@@ -50,7 +50,9 @@ func clearShapeHeldByCursor() -> void:
 		GameManager.calculateMoneyIncrement()
 		SoundManager.playTrashcanThrowSound()
 		
+		
 	elif not shapeHeldByCursor and not eraserHeldByCursor:
+		SoundManager.playTrashcanNothingSound()
 		if GameManager.gridStorage and not confirmationPanel.visible:
 			confirmationPanel.visible = true
 		elif confirmationPanel.visible:

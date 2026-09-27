@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ci7tcmc3exxih"
+path="res://.godot/imported/Landslide Stomp D.wav-2176232d580f378665cc58345f44377b.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/End Sequence/Landslide Stomp D.wav"
+dest_files=["res://.godot/imported/Landslide Stomp D.wav-2176232d580f378665cc58345f44377b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

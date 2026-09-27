@@ -20,3 +20,4 @@ func pickupEraser() -> void:
 	var eraser: Node2D = ERASER_SCENE.instantiate()
 	GameManager.UIManager.addEraserToCursor(eraser)
 	GameManager.UIManager.add_child(eraser)
+	SoundManager.playEraserPickupSound()

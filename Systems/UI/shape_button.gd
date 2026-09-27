@@ -73,3 +73,4 @@ func _on_shape_button_press() -> void:
 	newShape.isPurchaseShape = true
 	GameManager.UIManager.addShapeToCursor(newShape)
 	GameManager.UIManager.add_child(newShape)
+	SoundManager.playShapeButtonSound()

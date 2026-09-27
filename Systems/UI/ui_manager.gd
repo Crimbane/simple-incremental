@@ -64,6 +64,7 @@ func _process(_delta: float) -> void:
 			convertGhosts()
 	if Input.is_action_just_pressed("Right Click"):
 		if shapeHeldByCursor and shapeHeldByCursor.isPurchaseShape:
+			SoundManager.playEraserSound()
 			shapeHeldByCursor.queue_free()
 		if ghostStorage:
 			banishGhosts()
@@ -77,6 +78,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if shapeHeldByCursor:
 			if GameManager.getSlotInStorageByShape(shapeHeldByCursor) == null:
 				print("cancel")
+				SoundManager.playEraserSound()
 				shapeHeldByCursor.queue_free()
 
 
@@ -182,9 +184,9 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 					GameManager.unlockNextShapeButton(shapeHeldByCursor.shapeSprite + 1)
 					GameManager.addShapeToStorage(slot, shapeHeldByCursor)
 					GameManager.removeMoney(shapeHeldByCursor.cost)
-					SoundManager.playPlaceShapeSound()
-					
-					
+					SoundManager.playBuyShapeSound()
+				
+				
 				GameManager.calculateMoneyIncrement()
 			else:
 				print("You are poor")
@@ -196,6 +198,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 			move = true
 			GameManager.removeShapeFromStorage(shapeHeldByCursor)
 			GameManager.addShapeToStorage(slot, shapeHeldByCursor)
+			SoundManager.playShapeSound()
 		
 		shapeHeldByCursor.reparent(gridButton)
 		shapeHeldByCursor.position = centerPosition
@@ -214,6 +217,7 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 		shapeHeldByCursor.reparent(gridButton)
 		shapeHeldByCursor.position = centerPosition
 		shapeHeldByCursor = null
+		SoundManager.playShapeSound()
 	
 	elif shapeHeldByCursor and shapeInThisSlot and not shapeHeldByCursor.isPurchaseShape:
 		print("swap")
@@ -231,12 +235,14 @@ func _on_grid_button_pressed(gridButton: Button, slot: int, centerPosition: Vect
 		GameManager.addShapeToStorage(slot, limboShape)
 		
 		limboShape.position = centerPosition
+		SoundManager.playShapeSound()
 		
 	elif not shapeHeldByCursor and shapeInThisSlot and not eraserHeldByCursor:
 		print("pickup")
 		
 		shapeInThisSlot.reparent(self)
 		shapeHeldByCursor = shapeInThisSlot
+		SoundManager.playShapeSound()
 		
 	elif eraserHeldByCursor and shapeInThisSlot:
 		if shiftHold:
@@ -264,6 +270,7 @@ func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector
 				newGhostShape.isGhostShape = true
 				newGhostShape.position = centerPosition
 				GameManager.addShapeToStorage(slot, newGhostShape, ghostStorage)
+				SoundManager.playPlaceGhostSound()
 	elif shiftHold and gridLeftClickHold and eraserHeldByCursor:
 		var shapeInThisSlot: Shape = GameManager.getShapeInStorageBySlot(slot)
 		var ghostInThisSlot: Node2D = GameManager.getShapeInStorageBySlot(slot, ghostStorage)
@@ -274,6 +281,7 @@ func _on_grid_slot_hovered(gridButton: Button, slot: int, centerPosition: Vector
 			newGhostEraser.isGhostShape = true
 			newGhostEraser.position = centerPosition
 			GameManager.addShapeToStorage(slot, newGhostEraser, ghostStorage)
+			SoundManager.playPlaceGhostSound()
 
 func convertGhosts() -> void:
 	if shapeHeldByCursor:
@@ -290,7 +298,7 @@ func convertGhosts() -> void:
 			GameManager.transferBetweenStorages(GameManager.gridStorage, ghostStorage)
 			GameManager.clearStorage(ghostStorage)
 			GameManager.calculateMoneyIncrement()
-			SoundManager.playPlaceShapeSound()
+			SoundManager.playBuyShapeSound()
 		else:
 			print("You are poor")
 			banishGhosts()

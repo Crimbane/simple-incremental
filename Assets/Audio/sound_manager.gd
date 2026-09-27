@@ -1,17 +1,29 @@
 extends Node
 
-@export var blackHoleSound: AudioStreamPlayer2D
 @export var eraserSound: AudioStreamPlayer2D
+@export var eraserPickupSound: AudioStreamPlayer2D
 @export var menuButtonClick: AudioStreamPlayer2D
 @export var menuButtonHover: AudioStreamPlayer2D
 @export var noMoneySound: AudioStreamPlayer2D
-@export var placeShapeSound: AudioStreamPlayer2D
+@export var shapeButtonSound: AudioStreamPlayer2D
+@export var shapeSound: AudioStreamPlayer2D
+@export var buyShapeSound: AudioStreamPlayer2D
+@export var placeGhostSound: AudioStreamPlayer2D
 @export var maxUpgradeSound: AudioStreamPlayer2D
 @export var trashcanThrowSound: AudioStreamPlayer2D
 @export var trashcanDeleteAllSound: AudioStreamPlayer2D
+@export var trashcanNothingSound: AudioStreamPlayer2D
 @export var upgradeButtonSound: AudioStreamPlayer2D
 @export var rebirthThresholdSound: AudioStreamPlayer2D
 @export var rebirthSound: AudioStreamPlayer2D
+
+@export var endSequenceStart1: AudioStreamPlayer2D
+@export var endSequenceStart2: AudioStreamPlayer2D
+@export var endSequenceStart3: AudioStreamPlayer2D
+@export var endSequenceMiddle1: AudioStreamPlayer2D
+@export var endSequenceMiddle2: AudioStreamPlayer2D
+@export var endSequenceMiddle3: AudioStreamPlayer2D
+@export var endSequenceEnd: AudioStreamPlayer2D
 
 
 @onready var musicPlayer: AudioStreamPlayer = $"Music Player"
@@ -79,11 +91,12 @@ func playRandomTrack() -> void:
 	musicPlayer.play()
 
 
-func playBlackHoleSound() -> void:
-	blackHoleSound.play()
 
 func playEraserSound() -> void:
 	eraserSound.play()
+
+func playEraserPickupSound() -> void:
+	eraserPickupSound.play()
 
 func playMenuButtonClickSound() -> void:
 	menuButtonClick.play()
@@ -94,8 +107,17 @@ func playMenuButtonHoverSound() -> void:
 func playNoMoneySound() -> void:
 	noMoneySound.play()
 
-func playPlaceShapeSound() -> void:
-	placeShapeSound.play()
+func playShapeButtonSound() -> void:
+	shapeButtonSound.play()
+
+func playShapeSound() -> void:
+	shapeSound.play()
+
+func playBuyShapeSound() -> void:
+	buyShapeSound.play()
+
+func playPlaceGhostSound() -> void:
+	placeGhostSound.play()
 
 func playMaxUpgradeSound() -> void:
 	maxUpgradeSound.play()
@@ -106,6 +128,9 @@ func playTrashcanThrowSound() -> void:
 func playTrashcanDeleteAllSound() -> void:
 	trashcanDeleteAllSound.play()
 
+func playTrashcanNothingSound() -> void:
+	trashcanNothingSound.play()
+
 func playUpgradeButtonSound() -> void:
 	upgradeButtonSound.play()
 
@@ -114,6 +139,29 @@ func playRebirthThresholdSound() -> void:
 
 func playRebirthSound() -> void:
 	rebirthSound.play()
+
+
+
+func playEndSequenceStart1() -> void:
+	endSequenceStart1.play()
+
+func playEndSequenceStart2() -> void:
+	endSequenceStart2.play()
+
+func playEndSequenceStart3() -> void:
+	endSequenceStart3.play()
+
+func playEndSequenceMiddle1() -> void:
+	endSequenceMiddle1.play()
+
+func playEndSequenceMiddle2() -> void:
+	endSequenceMiddle2.play()
+
+func playEndSequenceMiddle3() -> void:
+	endSequenceMiddle3.play()
+
+func playEndSequenceEnd() -> void:
+	endSequenceEnd.play()
 
 
 func updateSoundVolumeVariables(busName: String, soundValue: float) -> void:
