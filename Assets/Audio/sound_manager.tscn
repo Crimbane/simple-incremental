@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bmng7f73108ki" path="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav" id="13_gtfnx"]
 [ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
 [ext_resource type="AudioStream" uid="uid://b2jie0fho1rxm" path="res://Assets/Audio/SFX/Rebirth Threshold - Cure 004.wav" id="16_drp63"]
-[ext_resource type="AudioStream" uid="uid://gxogywqcql6l" path="res://Assets/Audio/SFX/Rebirth - Bless 001.wav" id="17_6t8d7"]
+[ext_resource type="AudioStream" uid="uid://dscu2ljqmigqg" path="res://Assets/Placeholders/Rebirth v2 - Bless 001.wav" id="17_6t8d7"]
 
 [node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "maxUpgradeSound", "trashcanThrowSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound")]
 script = ExtResource("1_qfo6o")
