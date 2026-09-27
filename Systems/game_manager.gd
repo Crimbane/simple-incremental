@@ -576,7 +576,7 @@ func formatMoney(value: int) -> String:
 	var suffix = notations[searchKey][NotationStyle.find_key(notationStyle)] if searchKey else ""
 	var newValue = float(value) / BigNumbers[searchKey] if searchKey else value
 	
-	return ("%.2f" % snapped(newValue, 0.01)) + suffix
+	return ("%.2f" % (floor(newValue / 0.01) * 0.01)) + suffix
 
 #endregion
 
