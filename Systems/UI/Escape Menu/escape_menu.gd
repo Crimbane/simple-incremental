@@ -13,6 +13,8 @@ extends Control
 
 func _ready() -> void:
 	resumeButton.pressed.connect(closeMenu)
+	
+	resumeButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
 
 func _process(_delta: float) -> void:
 	parallaxForeground.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2)
@@ -38,4 +40,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func closeMenu() -> void:
 	visible = false
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()

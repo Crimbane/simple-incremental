@@ -8,18 +8,20 @@
 [ext_resource type="AudioStream" uid="uid://ckm156yq8xkh" path="res://Assets/Audio/Music/Credits - Synthwave Spacious Odyssey Cut 30.wav" id="6_2t5b1"]
 [ext_resource type="AudioStream" uid="uid://2xujcth5bxp7" path="res://Assets/Audio/SFX/Black Hole - Pixel Wind Close Loop.wav" id="7_tq2el"]
 [ext_resource type="AudioStream" uid="uid://c1dp0fov53n1a" path="res://Assets/Audio/SFX/Eraser - 16bitBoxing 001.wav" id="8_70pi0"]
-[ext_resource type="AudioStream" uid="uid://cboa6oeus1wlx" path="res://Assets/Audio/SFX/Main Menu Buttons - Boxing 003.wav" id="9_drp63"]
 [ext_resource type="AudioStream" uid="uid://cfron8futd7oe" path="res://Assets/Audio/SFX/No Money - Bad Button 001.wav" id="10_6t8d7"]
+[ext_resource type="AudioStream" uid="uid://q13xdknklux7" path="res://Assets/Audio/SFX/Menu Button Click - Woodcutter 004.wav" id="10_70pi0"]
+[ext_resource type="AudioStream" uid="uid://drcp3uw708pfo" path="res://Assets/Audio/SFX/Menu Button Hover - Cable Unplug.wav" id="10_drp63"]
 [ext_resource type="AudioStream" uid="uid://buqbv3e3p42te" path="res://Assets/Audio/SFX/Placing - Boxing 001.wav" id="11_0s17l"]
 [ext_resource type="AudioStream" uid="uid://gnn4occvkeux" path="res://Assets/Audio/SFX/Synergy Unlock - UI Double Button 003.wav" id="12_ma1uu"]
 [ext_resource type="AudioStream" uid="uid://bmng7f73108ki" path="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav" id="13_gtfnx"]
 [ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
 
-[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "mainMenuButtonsSound", "noMoneySound", "placeShapeSound", "synergyUnlockedSound", "trashcanThrowSound", "upgradeButtonSound")]
+[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "synergyUnlockedSound", "trashcanThrowSound", "upgradeButtonSound")]
 script = ExtResource("1_qfo6o")
 blackHoleSound = NodePath("Black Hole")
 eraserSound = NodePath("Eraser")
-mainMenuButtonsSound = NodePath("Main Menu Buttons")
+menuButtonClick = NodePath("Menu Button Click")
+menuButtonHover = NodePath("Menu Button Hover")
 noMoneySound = NodePath("No Money")
 placeShapeSound = NodePath("Place Shape")
 synergyUnlockedSound = NodePath("Synergy Unlocked")
@@ -44,8 +46,12 @@ bus = &"SFX"
 stream = ExtResource("8_70pi0")
 bus = &"SFX"
 
-[node name="Main Menu Buttons" type="AudioStreamPlayer2D" parent="." unique_id=470106764]
-stream = ExtResource("9_drp63")
+[node name="Menu Button Click" type="AudioStreamPlayer2D" parent="." unique_id=2069993102]
+stream = ExtResource("10_70pi0")
+bus = &"SFX"
+
+[node name="Menu Button Hover" type="AudioStreamPlayer2D" parent="." unique_id=470106764]
+stream = ExtResource("10_drp63")
 bus = &"SFX"
 
 [node name="No Money" type="AudioStreamPlayer2D" parent="." unique_id=1996393237]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drcp3uw708pfo"
+path="res://.godot/imported/Menu Button Hover - Cable Unplug.wav-5735de602b7701addc0515f98b60ef00.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Menu Button Hover - Cable Unplug.wav"
+dest_files=["res://.godot/imported/Menu Button Hover - Cable Unplug.wav-5735de602b7701addc0515f98b60ef00.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

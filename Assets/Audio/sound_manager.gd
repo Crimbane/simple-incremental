@@ -2,7 +2,8 @@ extends Node
 
 @export var blackHoleSound: AudioStreamPlayer2D
 @export var eraserSound: AudioStreamPlayer2D
-@export var mainMenuButtonsSound: AudioStreamPlayer2D
+@export var menuButtonClick: AudioStreamPlayer2D
+@export var menuButtonHover: AudioStreamPlayer2D
 @export var noMoneySound: AudioStreamPlayer2D
 @export var placeShapeSound: AudioStreamPlayer2D
 @export var synergyUnlockedSound: AudioStreamPlayer2D
@@ -83,8 +84,11 @@ func playBlackHoleSound() -> void:
 func playEraserSound() -> void:
 	eraserSound.play()
 
-func playMainMenuButtonSound() -> void:
-	mainMenuButtonsSound.play()
+func playMenuButtonClickSound() -> void:
+	menuButtonClick.play()
+
+func playMenuButtonHoverSound() -> void:
+	menuButtonHover.play()
 
 func playNoMoneySound() -> void:
 	noMoneySound.play()

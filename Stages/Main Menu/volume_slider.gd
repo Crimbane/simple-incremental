@@ -9,6 +9,9 @@ func _ready() -> void:
 	value_changed.connect(_on_value_changed)
 	
 	value = db_to_linear(AudioServer.get_bus_volume_db(busIndex))
+	
+	mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
+	drag_ended.connect(func(_v): SoundManager.playMenuButtonClickSound())
 
 
 func _on_value_changed(soundValue: float) -> void:

@@ -8,12 +8,13 @@ extends Control
 @onready var shapes2 = parallaxLayer2.get_children()
 @onready var shapes3 = parallaxLayer3.get_children()
 @onready var mainMenuParallax = %MainMenuParallax
-@onready var continueButton = %Continue
-@onready var newGameButton = %NewGame
-@onready var settingsButton = %Settings
-@onready var quitGameButton = %QuitGame
 @onready var settingsParallax = %SettingsParallax
-@onready var backButton = %Back
+
+@onready var continueButton: Button = %Continue
+@onready var newGameButton: Button = %NewGame
+@onready var settingsButton: Button = %Settings
+@onready var quitGameButton: Button = %QuitGame
+@onready var backButton: Button = %Back
 
 
 
@@ -25,6 +26,12 @@ func _ready() -> void:
 	settingsButton.pressed.connect(settings)
 	quitGameButton.pressed.connect(quitGame)
 	backButton.pressed.connect(backToMainMenu)
+	
+	continueButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
+	newGameButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
+	settingsButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
+	quitGameButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
+	backButton.mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
 
 func _process(_delta: float) -> void:
 	animateMainMenu()
@@ -57,7 +64,7 @@ func animateMainMenu() -> void:
 
 
 func continueGame() -> void:
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()
 	pass # Load save file and start game.
 
@@ -65,19 +72,19 @@ func newGame() -> void:
 	# If save exists, ask for confirmation.
 	# Overwrite save file with new game.
 	get_tree().change_scene_to_file(GameManager.GAME)
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()
 
 func settings() -> void:
 	mainMenuParallax.visible = false
 	settingsParallax.visible = true
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()
 
 func quitGame() -> void:
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()
 	get_tree().quit()
 
 func backToMainMenu() -> void:
 	mainMenuParallax.visible = true
 	settingsParallax.visible = false
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()

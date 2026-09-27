@@ -8,6 +8,8 @@ func _ready() -> void:
 	pressed.connect(openDropdown)
 	focus_exited.connect(closeDropdown)
 	notationLabel.text = GameManager.NotationStyle.find_key(GameManager.notationStyle).capitalize()
+	
+	mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Left Click") and notationDropdown.visible:
@@ -16,6 +18,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func openDropdown() -> void:
 	notationDropdown.visible = true
+	SoundManager.playMenuButtonClickSound()
 
 func closeDropdown() -> void:
 	await get_tree().process_frame

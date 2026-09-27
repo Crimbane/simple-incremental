@@ -7,9 +7,11 @@ extends Button
 
 func _ready() -> void:
 	pressed.connect(closeSettings)
+	
+	mouse_entered.connect(SoundManager.playMenuButtonHoverSound)
 
 
 func closeSettings() -> void:
 	settingsMenu.visible = false
 	mainEscapeMenu.visible = true
-	SoundManager.playMainMenuButtonSound()
+	SoundManager.playMenuButtonClickSound()
