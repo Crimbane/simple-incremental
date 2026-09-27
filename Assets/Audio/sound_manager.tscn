@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bmng7f73108ki" path="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav" id="13_gtfnx"]
 [ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
 
-[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "synergyUnlockedSound", "trashcanThrowSound", "upgradeButtonSound")]
+[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "maxUpgradeSound", "trashcanThrowSound", "upgradeButtonSound")]
 script = ExtResource("1_qfo6o")
 blackHoleSound = NodePath("Black Hole")
 eraserSound = NodePath("Eraser")
@@ -24,14 +24,13 @@ menuButtonClick = NodePath("Menu Button Click")
 menuButtonHover = NodePath("Menu Button Hover")
 noMoneySound = NodePath("No Money")
 placeShapeSound = NodePath("Place Shape")
-synergyUnlockedSound = NodePath("Synergy Unlocked")
+maxUpgradeSound = NodePath("Max Upgrade Level Reached")
 trashcanThrowSound = NodePath("Trashcan Throw")
 upgradeButtonSound = NodePath("Upgrade Button")
 menuMusic = ExtResource("2_pucfo")
-gameMusic = ExtResource("2_pucfo")
+gameMusic1 = ExtResource("5_oq88w")
 gameMusic2 = ExtResource("3_5mqmg")
 gameMusic3 = ExtResource("4_sorwi")
-gameMusic4 = ExtResource("5_oq88w")
 creditsMusic = ExtResource("6_2t5b1")
 
 [node name="Music Player" type="AudioStreamPlayer" parent="." unique_id=421528191]
@@ -62,7 +61,7 @@ bus = &"SFX"
 stream = ExtResource("11_0s17l")
 bus = &"SFX"
 
-[node name="Synergy Unlocked" type="AudioStreamPlayer2D" parent="." unique_id=1670508254]
+[node name="Max Upgrade Level Reached" type="AudioStreamPlayer2D" parent="." unique_id=1670508254]
 stream = ExtResource("12_ma1uu")
 bus = &"SFX"
 

@@ -29,6 +29,9 @@ var gridLeftClickHold: bool = false
 func _ready() -> void:
 	GameManager.UIManager = self
 	updateGrid()
+	updateGridSlots()
+	updateColor()
+	GameManager.calculateMoneyIncrement()
 	
 	upgradeBigShapeButton.pressed.connect(GameManager.upgradeBigShape)
 	upgradeMoneyIntervalButton.pressed.connect(GameManager.upgradeMoneyInterval)
@@ -108,7 +111,12 @@ func updateColor() -> void:
 		leftPanelStyle.border_color = Color(0.286, 0.506, 0.612)
 		shapeZonePanelStyle.bg_color = Color(0.0, 0.0, 0.0)
 		
-		upgradeBigShapeButton.self_modulate = Color(0.663, 0.663, 1.0)
+		if GameManager.currentBigShapeType == GameManager.ShapeType.Decagon:
+			upgradeBigShapeButton.self_modulate = Color(0.1, 0.1, 0.1)
+			upgradeBigShapeButton.get_child(2).get_theme_stylebox("panel").shadow_color = Color(1.0, 1.0, 1.0)
+		else:
+			upgradeBigShapeButton.self_modulate = Color(0.663, 0.663, 1.0)
+		
 		upgradeMoneyIntervalButton.self_modulate = Color(0.663, 0.663, 1.0)
 		upgradeGridButton.self_modulate = Color(0.663, 0.663, 1.0)
 		upgradeSynergyUnlockButton.self_modulate = Color(0.663, 0.663, 1.0)
@@ -348,4 +356,25 @@ func updateGrid() -> void:
 		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 	
 	gridContainer.columns = GameManager.gridSize
+
+func updateGridSlots() -> void:
+	if not gridContainer:
+		print("No grid container")
+		return
+	
+	var slotButtons = gridContainer.get_children()
+	var gridStorage = GameManager.gridStorage
+	if gridStorage:
+		for dict in gridStorage:
+			var newShape: Shape = GameManager.SHAPE_SCENE.instantiate()
+			newShape.shapeSprite = newShape.ShapeSprite[dict["shape_type"]]
+			
+			if dict["slot"] is float:
+				var newValue = int(dict["slot"])
+				dict["slot"] = newValue
+			
+			slotButtons[dict["slot"]].add_child(newShape)
+			newShape.position = slotButtons[dict["slot"]].size / 2
+			dict["shape"] = newShape
+				
 #endregion

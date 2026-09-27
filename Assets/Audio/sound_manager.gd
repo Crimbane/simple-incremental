@@ -6,7 +6,7 @@ extends Node
 @export var menuButtonHover: AudioStreamPlayer2D
 @export var noMoneySound: AudioStreamPlayer2D
 @export var placeShapeSound: AudioStreamPlayer2D
-@export var synergyUnlockedSound: AudioStreamPlayer2D
+@export var maxUpgradeSound: AudioStreamPlayer2D
 @export var trashcanThrowSound: AudioStreamPlayer2D
 @export var upgradeButtonSound: AudioStreamPlayer2D
 
@@ -14,10 +14,9 @@ extends Node
 @onready var musicPlayer: AudioStreamPlayer = $"Music Player"
 
 @export var menuMusic: AudioStream
-@export var gameMusic: AudioStream
+@export var gameMusic1: AudioStream
 @export var gameMusic2: AudioStream
 @export var gameMusic3: AudioStream
-@export var gameMusic4: AudioStream
 @export var creditsMusic: AudioStream
 
 var gameMusicTracks: Array[AudioStream] = []
@@ -29,7 +28,7 @@ var sfxVolume: float = 1.0
 func _ready() -> void:
 	musicPlayer.finished.connect(onGameMusicFinished)
 	playMenuMusic()
-	gameMusicTracks = [gameMusic, gameMusic2, gameMusic3, gameMusic4]
+	gameMusicTracks = [gameMusic1, gameMusic2, gameMusic3]
 	
 	var masterBusIndex = AudioServer.get_bus_index("Master")
 	var musicBusIndex = AudioServer.get_bus_index("Music")
@@ -96,8 +95,8 @@ func playNoMoneySound() -> void:
 func playPlaceShapeSound() -> void:
 	placeShapeSound.play()
 
-func playSynergyUnlockedSound() -> void:
-	synergyUnlockedSound.play()
+func playMaxUpgradeSound() -> void:
+	maxUpgradeSound.play()
 
 func playTrashcanThrowSound() -> void:
 	trashcanThrowSound.play()

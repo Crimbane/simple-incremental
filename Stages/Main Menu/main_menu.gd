@@ -23,13 +23,8 @@ extends Control
 
 
 
-
-
-const SAVE_PATH = "user://savegame.json"
-var saveExists = FileAccess.file_exists(SAVE_PATH)
-
 func _ready() -> void:
-	if saveExists:
+	if FileAccess.file_exists(GameManager.SAVE_PATH):
 		continueButton.show()
 	else:
 		continueButton.hide()
@@ -89,7 +84,7 @@ func continueGame() -> void:
 	get_tree().change_scene_to_file(GameManager.GAME)
 
 func newGame() -> void:
-	if saveExists:
+	if FileAccess.file_exists(GameManager.SAVE_PATH):
 		confirmationPanel.show()
 		return
 	startNewGame()
@@ -98,11 +93,8 @@ func hideConfirmation() -> void:
 	confirmationPanel.hide()
 
 func startNewGame() -> void:
-	# Delete save file
-	if saveExists: 
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+	GameManager.resetGame()
 	
-	GameManager.loadSaveFile()
 	get_tree().change_scene_to_file(GameManager.GAME)
 	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()

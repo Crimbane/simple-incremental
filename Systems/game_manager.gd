@@ -4,7 +4,11 @@ extends Node
 const GAME: String = "res://Stages/main.tscn"
 const MAIN_MENU: String = "res://Stages/Main Menu/main_menu.tscn"
 const END_SEQUENCE: String = "res://Stages/end_sequence.tscn"
+const SHAPE_SCENE: PackedScene = preload("uid://e1iphvwkj5db")
 
+const START_MONEY = 10**18
+const START_STATE = State.Purple
+const START_BIG_SHAPE = ShapeType.Dot
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
 const BASE_INTERVAL: float = 1.0
@@ -13,7 +17,7 @@ const BASE_SHAPE_SYNERGY_MULTI: float = 0.2
 enum NotationStyle { NONE, ABBREVIATION, SCIENTIFIC, ENGINEERING }
 var notationStyle: NotationStyle = NotationStyle.ABBREVIATION
 
-var money: int = 10
+var money: int = START_MONEY
 var time: float = 0.0
 var interval: float = BASE_INTERVAL # Seconds between increments
 var incrementAmount: int = BASE_INCREMENT_AMOUNT
@@ -92,7 +96,7 @@ var StateInfo: Dictionary[State, StateData] = {
 		HighestUnlockedShapeButton = 7
 	})
 }
-var currentState: int = State.White
+var currentState: int = START_STATE
 
 enum ShapeType { Dot, Line, Triangle, Square, Pentagon, Hexagon, Heptagon, Octagon, Nonagon, Decagon, Circle }
 var ShapeInfo: Dictionary[ShapeType, ShapeData] = {
@@ -150,10 +154,10 @@ var ShapeInfo: Dictionary[ShapeType, ShapeData] = {
 	}),
 	ShapeType.Decagon: ShapeData.new({
 		BigShapeMultiplier = 10,
-		NextBigShapeCost = 1000000000000000000 # 1 Quadrillion / 1.0e18
+		NextBigShapeCost = 10**18 # 1 Quintillion / 1.0e18
 	})
 }
-var currentBigShapeType: int = ShapeType.Dot
+var currentBigShapeType: int = START_BIG_SHAPE
 
 enum UpgradeType { Interval, Grid, SynergyUnlock, SynergyMulti }
 var UpgradeInfo: Dictionary[UpgradeType, UpgradeData] = {
@@ -225,7 +229,7 @@ func calculateMoneyIncrement() -> void:
 		
 		var finalShapeValue = shapeValue * shapeSynergy
 		
-		incrementAmount += roundi(finalShapeValue) * 10#playtesting number
+		incrementAmount += roundi(finalShapeValue)# * 10#playtesting number
 	
 	if currentBigShapeType != ShapeType.Circle:
 		incrementAmount *= ShapeInfo[currentBigShapeType].BigShapeMultiplier
@@ -301,6 +305,9 @@ func upgradeBigShape() -> void:
 	
 	currentBigShapeType += 1
 	
+	if currentBigShapeType == ShapeType.Decagon:
+		UIManager.updateColor()
+	
 	bigShape.updateSprite()
 	
 	if currentBigShapeType == ShapeType.Circle:
@@ -333,7 +340,11 @@ func upgradeMoneyInterval() -> void:
 	UpgradeInfo[UpgradeType.Interval].NextLevelCost = nextLevelCost
 	
 	interval -= 0.09
-	SoundManager.playUpgradeButtonSound()
+	
+	if currentLevel == UpgradeInfo[UpgradeType.Interval].MaxLevel:
+		SoundManager.playMaxUpgradeSound()
+	else:
+		SoundManager.playUpgradeButtonSound()
 
 func upgradeGrid() -> void:
 	var cost: int = UpgradeInfo[UpgradeType.Grid].NextLevelCost
@@ -357,7 +368,11 @@ func upgradeGrid() -> void:
 	UpgradeInfo[UpgradeType.Grid].NextLevelCost = nextLevelCost
 	
 	gridSize += 1
-	SoundManager.playUpgradeButtonSound()
+	
+	if currentLevel == UpgradeInfo[UpgradeType.Grid].MaxLevel:
+		SoundManager.playMaxUpgradeSound()
+	else:
+		SoundManager.playUpgradeButtonSound()
 
 
 func upgradeSynergyUnlock() -> void:
@@ -382,7 +397,7 @@ func upgradeSynergyUnlock() -> void:
 	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = nextLevelCost
 	
 	synergyUnlocked = true
-	SoundManager.playSynergyUnlockedSound()
+	SoundManager.playMaxUpgradeSound()
 
 
 func upgradeSynergyMultiplier() -> void:
@@ -407,7 +422,11 @@ func upgradeSynergyMultiplier() -> void:
 	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = nextLevelCost
 	
 	synergyMulti += 0.1
-	SoundManager.playUpgradeButtonSound()
+	
+	if currentLevel == UpgradeInfo[UpgradeType.SynergyMulti].MaxLevel:
+		SoundManager.playMaxUpgradeSound()
+	else:
+		SoundManager.playUpgradeButtonSound()
 
 
 func clearUpgrades() -> void:
@@ -568,7 +587,7 @@ func saveGame() -> void:
 		"synergyUnlocked": synergyUnlocked,
 		"synergyMulti": synergyMulti,
 		"highestUnlockedShapeButton": StateInfo[currentState].HighestUnlockedShapeButton,
-		#"gridStorage": gridStorage,
+		"gridStorage": gridStorage,
 		
 		"intervalUpgradeLevel": UpgradeInfo[UpgradeType.Interval].CurrentLevel,
 		"intervalUpgradeNextCost": UpgradeInfo[UpgradeType.Interval].NextLevelCost,
@@ -593,7 +612,6 @@ func saveGame() -> void:
 
 func loadSaveFile() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
-		resetGameManager()
 		return
 	
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -603,46 +621,59 @@ func loadSaveFile() -> void:
 		file.close()
 		
 		if saveData is Dictionary:
-			money = saveData.get("money", 10)
-			currentState = saveData.get("currentState", State.White)
-			currentBigShapeType = saveData.get("currentBigShapeType", ShapeType.Dot)
-			gridSize = saveData.get("gridSize", 2)
-			interval = saveData.get("interval", 1)
+			money = saveData.get("money", START_MONEY)
+			currentState = saveData.get("currentState", START_STATE)
+			currentBigShapeType = saveData.get("currentBigShapeType", START_BIG_SHAPE)
+			gridSize = saveData.get("gridSize", BASE_GRID_SIZE)
+			interval = saveData.get("interval", BASE_INTERVAL)
 			synergyUnlocked = saveData.get("synergyUnlocked", false)
 			synergyMulti = saveData.get("synergyMulti", BASE_SHAPE_SYNERGY_MULTI)
-			StateInfo[currentState].HighestUnlockedShapeButton = saveData.get("highestUnlockedShapeButton", 0)
-			#gridStorage = saveData.get("gridStorage")
+			StateInfo[currentState].HighestUnlockedShapeButton = saveData.get("highestUnlockedShapeButton", currentState)
+			gridStorage.assign(saveData.get("gridStorage", []))
+			
+			var intervalBaseCost = UpgradeInfo[UpgradeType.Interval].BaseCost
+			var gridBaseCost = UpgradeInfo[UpgradeType.Grid].BaseCost
+			var synergyUnlockBaseCost = UpgradeInfo[UpgradeType.SynergyUnlock].BaseCost
+			var synergyMultiBaseCost = UpgradeInfo[UpgradeType.SynergyMulti].BaseCost
 			
 			UpgradeInfo[UpgradeType.Interval].CurrentLevel = saveData.get("intervalUpgradeLevel", 0)
-			UpgradeInfo[UpgradeType.Interval].NextLevelCost = saveData.get("intervalUpgradeNextCost", 250)
+			UpgradeInfo[UpgradeType.Interval].NextLevelCost = saveData.get("intervalUpgradeNextCost", intervalBaseCost)
 			UpgradeInfo[UpgradeType.Grid].CurrentLevel = saveData.get("gridUpgradeLevel", 0)
-			UpgradeInfo[UpgradeType.Grid].NextLevelCost = saveData.get("gridUpgradeNextCost", 1000)
+			UpgradeInfo[UpgradeType.Grid].NextLevelCost = saveData.get("gridUpgradeNextCost", gridBaseCost)
 			UpgradeInfo[UpgradeType.SynergyUnlock].CurrentLevel = saveData.get("synergyUnlockedLevel", 0)
-			UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = saveData.get("synergyUnlockedUNextCost", 25000)
+			UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = saveData.get("synergyUnlockedUNextCost", synergyUnlockBaseCost)
 			UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = saveData.get("synergyMultiLevel", 0)
-			UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = saveData.get("synergyMultiUpgradeNextCost", 250000)
+			UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = saveData.get("synergyMultiUpgradeNextCost", synergyMultiBaseCost)
 			
 			SoundManager.masterVolume = saveData.get("masterVolume", 1.0)
 			SoundManager.musicVolume = saveData.get("musicVolume", 1.0)
 			SoundManager.sfxVolume = saveData.get("sfxVolume", 1.0)
 			notationStyle = saveData.get("notationStyle", NotationStyle.ABBREVIATION)
 
-func resetGameManager() -> void:
-	money = 10
-	currentState = State.White
-	currentBigShapeType = ShapeType.Dot
+func resetGame() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+	
+	money = START_MONEY
+	currentState = START_STATE
+	currentBigShapeType = START_BIG_SHAPE
 	gridSize = BASE_GRID_SIZE
 	interval = BASE_INTERVAL
 	synergyUnlocked = false
 	synergyMulti = BASE_SHAPE_SYNERGY_MULTI
-	StateInfo[currentState].HighestUnlockedShapeButton = 0
-	#gridStorage = empty
+	StateInfo[currentState].HighestUnlockedShapeButton = currentState
+	gridStorage = []
+	
+	var intervalBaseCost = UpgradeInfo[UpgradeType.Interval].BaseCost
+	var gridBaseCost = UpgradeInfo[UpgradeType.Grid].BaseCost
+	var synergyUnlockBaseCost = UpgradeInfo[UpgradeType.SynergyUnlock].BaseCost
+	var synergyMultiBaseCost = UpgradeInfo[UpgradeType.SynergyMulti].BaseCost
 	
 	UpgradeInfo[UpgradeType.Interval].CurrentLevel = 0
-	UpgradeInfo[UpgradeType.Interval].NextLevelCost = 250
+	UpgradeInfo[UpgradeType.Interval].NextLevelCost = intervalBaseCost
 	UpgradeInfo[UpgradeType.Grid].CurrentLevel = 0
-	UpgradeInfo[UpgradeType.Grid].NextLevelCost = 1000
+	UpgradeInfo[UpgradeType.Grid].NextLevelCost = gridBaseCost
 	UpgradeInfo[UpgradeType.SynergyUnlock].CurrentLevel = 0
-	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = 25000
+	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = synergyUnlockBaseCost
 	UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = 0
-	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = 250000
+	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = synergyMultiBaseCost

@@ -73,7 +73,7 @@ shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udlpr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y76o"]
 shadow_color = Color(0, 0, 0, 0.39215687)
 shadow_size = 2
 
@@ -109,6 +109,10 @@ shader = SubResource("Shader_5t6h7")
 shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udlpr"]
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 2
 
 [sub_resource type="Shader" id="Shader_ppjn4"]
 code = "shader_type canvas_item;
@@ -791,7 +795,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_udlpr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y76o")
 
 [node name="Upgrade Interval" type="Button" parent="UI Manager/Buttons And Labels/LeftPanel/UpgradeButtons" unique_id=980957521]
 custom_minimum_size = Vector2(40, 40)

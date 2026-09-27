@@ -6,7 +6,7 @@ extends PanelContainer
 
 @export_multiline var description: String
 
-@onready var parent = $".."
+@onready var parent = self.get_parent()
 
 @export_enum("Big Shape", "Rebirth", "Shape", "Interval", "Grid", 
 "SynergyUnlock", "SynergyMulti", "MoneyLabel") var parentType: String
@@ -88,6 +88,10 @@ func setBigShapeTooltip() -> void:
 		costLabel.hide()
 		functionLabel.text = "Current multiplier: " + str(bigShapeMulti) + "x"
 		
+	elif GameManager.currentState == GameManager.State.Black and currentLevel == 9:
+		costLabel.show()
+		setCost(GameManager.ShapeInfo[GameManager.currentBigShapeType].NextBigShapeCost)
+		functionLabel.text = "Current multiplier: " + str(bigShapeMulti) + "x"
 	else:
 		costLabel.show()
 		setCost(GameManager.ShapeInfo[GameManager.currentBigShapeType].NextBigShapeCost)
@@ -112,7 +116,7 @@ func setShapeTooltip() -> void:
 	var shapeSynergy = GameManager.getShapeSynergyMulti(parent.shapeSprite)
 	var colorMultiplier = GameManager.StateInfo[GameManager.currentState].ColorMultiplier
 	var generationValue = roundi(baseGeneration * shapeSynergy * colorMultiplier)
-	functionLabel.text = "Generates " + str(generationValue) + " vertices"
+	functionLabel.text = "Generates " + GameManager.formatMoney(generationValue) + " vertices"
 	if generationValue == 1:
 		functionLabel.text = "Generates " + str(generationValue) + " vertex"
 

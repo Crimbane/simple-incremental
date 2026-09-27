@@ -191,4 +191,5 @@ func startEndSequence() -> void:
 	toPurpleTween.parallel().tween_property(credits, "modulate:a", 0.0, 4)
 	
 	await get_tree().create_timer(5).timeout
+	GameManager.resetGame()
 	get_tree().change_scene_to_file(GameManager.MAIN_MENU)

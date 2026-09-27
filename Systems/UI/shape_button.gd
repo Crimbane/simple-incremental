@@ -3,7 +3,6 @@ extends Button
 
 
 const BUTTON_BACKGROUND = preload("uid://dtndmfviqeq4d")
-const SHAPE_SCENE: PackedScene = preload("uid://e1iphvwkj5db")
 
 const ICON_TEXTURE: Dictionary[String, CompressedTexture2D] = {
 	DOT = preload("uid://dlg50nillq8k1"),
@@ -68,7 +67,7 @@ func _on_shape_button_press() -> void:
 	if GameManager.UIManager.shapeHeldByCursor:
 		return
 		
-	var newShape: Shape = SHAPE_SCENE.instantiate()
+	var newShape: Shape = GameManager.SHAPE_SCENE.instantiate()
 	newShape.shapeSprite = newShape.ShapeSprite[ShapeSprite.find_key(shapeSprite)]
 	newShape.cost = GameManager.getShapeCost(cost, newShape.shapeSprite)
 	newShape.isPurchaseShape = true
