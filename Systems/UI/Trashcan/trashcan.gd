@@ -70,7 +70,7 @@ func deleteAllShapes() -> void:
 			GameManager.getShapeInStorageBySlot(dict["slot"]).queue_free()
 			GameManager.removeShapeFromStorageSlot(dict["slot"])
 			GameManager.calculateMoneyIncrement()
-			SoundManager.playTrashcanThrowSound()
+			SoundManager.playTrashcanDeleteAllSound()
 
 func hideConfirmation() -> void:
 	confirmationPanel.visible = false

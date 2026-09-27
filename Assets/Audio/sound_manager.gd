@@ -8,6 +8,7 @@ extends Node
 @export var placeShapeSound: AudioStreamPlayer2D
 @export var maxUpgradeSound: AudioStreamPlayer2D
 @export var trashcanThrowSound: AudioStreamPlayer2D
+@export var trashcanDeleteAllSound: AudioStreamPlayer2D
 @export var upgradeButtonSound: AudioStreamPlayer2D
 @export var rebirthThresholdSound: AudioStreamPlayer2D
 @export var rebirthSound: AudioStreamPlayer2D
@@ -101,6 +102,9 @@ func playMaxUpgradeSound() -> void:
 
 func playTrashcanThrowSound() -> void:
 	trashcanThrowSound.play()
+
+func playTrashcanDeleteAllSound() -> void:
+	trashcanDeleteAllSound.play()
 
 func playUpgradeButtonSound() -> void:
 	upgradeButtonSound.play()

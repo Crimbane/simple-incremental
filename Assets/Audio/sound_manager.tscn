@@ -15,10 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://gnn4occvkeux" path="res://Assets/Audio/SFX/Synergy Unlock - UI Double Button 003.wav" id="12_ma1uu"]
 [ext_resource type="AudioStream" uid="uid://bmng7f73108ki" path="res://Assets/Audio/SFX/Trashcan Throw - Server Hum End.wav" id="13_gtfnx"]
 [ext_resource type="AudioStream" uid="uid://cync3qh7hv4he" path="res://Assets/Audio/SFX/Upgrade - Single Button 001.wav" id="14_rfhmp"]
+[ext_resource type="AudioStream" uid="uid://cwhbveqp50tg0" path="res://Assets/Audio/SFX/Trashcan Delete All - Gravel Plunge A.wav" id="15_0s17l"]
 [ext_resource type="AudioStream" uid="uid://b2jie0fho1rxm" path="res://Assets/Audio/SFX/Rebirth Threshold - Cure 004.wav" id="16_drp63"]
 [ext_resource type="AudioStream" uid="uid://dscu2ljqmigqg" path="res://Assets/Placeholders/Rebirth v2 - Bless 001.wav" id="17_6t8d7"]
 
-[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "maxUpgradeSound", "trashcanThrowSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound")]
+[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("blackHoleSound", "eraserSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "placeShapeSound", "maxUpgradeSound", "trashcanThrowSound", "trashcanDeleteAllSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound")]
 script = ExtResource("1_qfo6o")
 blackHoleSound = NodePath("Black Hole")
 eraserSound = NodePath("Eraser")
@@ -28,6 +29,7 @@ noMoneySound = NodePath("No Money")
 placeShapeSound = NodePath("Place Shape")
 maxUpgradeSound = NodePath("Max Upgrade Level Reached")
 trashcanThrowSound = NodePath("Trashcan Throw")
+trashcanDeleteAllSound = NodePath("Trashcan Delete All")
 upgradeButtonSound = NodePath("Upgrade Button")
 rebirthThresholdSound = NodePath("Rebirth Threshold Reached")
 rebirthSound = NodePath("Rebirth")
@@ -63,7 +65,7 @@ bus = &"SFX"
 
 [node name="Place Shape" type="AudioStreamPlayer2D" parent="." unique_id=304459455]
 stream = ExtResource("12_6t8d7")
-volume_db = -2.0
+volume_db = -5.0
 pitch_scale = 0.8
 bus = &"SFX"
 
@@ -73,6 +75,10 @@ bus = &"SFX"
 
 [node name="Trashcan Throw" type="AudioStreamPlayer2D" parent="." unique_id=1150862980]
 stream = ExtResource("13_gtfnx")
+bus = &"SFX"
+
+[node name="Trashcan Delete All" type="AudioStreamPlayer2D" parent="." unique_id=735279739]
+stream = ExtResource("15_0s17l")
 bus = &"SFX"
 
 [node name="Upgrade Button" type="AudioStreamPlayer2D" parent="." unique_id=283381335]
@@ -85,5 +91,4 @@ bus = &"SFX"
 
 [node name="Rebirth" type="AudioStreamPlayer2D" parent="." unique_id=1983146042]
 stream = ExtResource("17_6t8d7")
-pitch_scale = 0.8
 bus = &"SFX"
