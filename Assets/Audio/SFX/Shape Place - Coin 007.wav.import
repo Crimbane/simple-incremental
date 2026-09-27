@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cudqm2vn6y00v"
+path="res://.godot/imported/Shape Place - Coin 007.wav-1d919bfe5b86870d0da9c1fa544646ec.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Shape Place - Coin 007.wav"
+dest_files=["res://.godot/imported/Shape Place - Coin 007.wav-1d919bfe5b86870d0da9c1fa544646ec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

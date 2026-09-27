@@ -7,7 +7,7 @@ const END_SEQUENCE: String = "res://Stages/end_sequence.tscn"
 const SHAPE_SCENE: PackedScene = preload("uid://e1iphvwkj5db")
 
 const START_MONEY = 10**18
-const START_STATE = State.Purple
+const START_STATE = State.White
 const START_BIG_SHAPE = ShapeType.Dot
 const BASE_GRID_SIZE: int = 2
 const BASE_INCREMENT_AMOUNT: int = 0
@@ -197,6 +197,7 @@ var gridStorage: Array[Dictionary]
 var UIManager: Node = null
 var bigShape: Node2D = null
 var upgraded = false
+var rebirthThresholdReached = false
 
 const SAVE_PATH = "user://savegame.json"
 
@@ -270,7 +271,9 @@ func rebirth() -> void:
 	
 	removeMoney(StateInfo[currentState].NextRebirthCost)
 	
+	SoundManager.playRebirthSound()
 	currentState += 1
+	rebirthThresholdReached = false
 	
 	await UIManager.createPreRebirthScreenshot()
 	

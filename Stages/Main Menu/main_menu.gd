@@ -24,6 +24,8 @@ extends Control
 
 
 func _ready() -> void:
+	SoundManager.playMenuMusic()
+	
 	if FileAccess.file_exists(GameManager.SAVE_PATH):
 		continueButton.show()
 	else:
@@ -80,7 +82,7 @@ func animateMainMenu() -> void:
 func continueGame() -> void:
 	SoundManager.playMenuButtonClickSound()
 	SoundManager.playRandomTrack()
-	GameManager.loadSaveFile()
+	#GameManager.loadSaveFile()
 	get_tree().change_scene_to_file(GameManager.GAME)
 
 func newGame() -> void:

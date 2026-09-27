@@ -11,9 +11,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var threshold = GameManager.StateInfo[GameManager.currentState].NextRebirthAvailabilityThreshold
 	if threshold > 0:
-		if GameManager.money < threshold and visible == true:
+		if GameManager.money < threshold and visible and not GameManager.rebirthThresholdReached:
 			visible = false
-		elif GameManager.money >= threshold and visible == false:
+		elif GameManager.money >= threshold and not visible:
+			SoundManager.playRebirthThresholdSound()
+			GameManager.rebirthThresholdReached = true
 			visible = true
 	else:
 		visible = false

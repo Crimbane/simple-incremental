@@ -9,6 +9,8 @@ extends Node
 @export var maxUpgradeSound: AudioStreamPlayer2D
 @export var trashcanThrowSound: AudioStreamPlayer2D
 @export var upgradeButtonSound: AudioStreamPlayer2D
+@export var rebirthThresholdSound: AudioStreamPlayer2D
+@export var rebirthSound: AudioStreamPlayer2D
 
 
 @onready var musicPlayer: AudioStreamPlayer = $"Music Player"
@@ -27,7 +29,6 @@ var sfxVolume: float = 1.0
 
 func _ready() -> void:
 	musicPlayer.finished.connect(onGameMusicFinished)
-	playMenuMusic()
 	gameMusicTracks = [gameMusic1, gameMusic2, gameMusic3]
 	
 	var masterBusIndex = AudioServer.get_bus_index("Master")
@@ -103,6 +104,12 @@ func playTrashcanThrowSound() -> void:
 
 func playUpgradeButtonSound() -> void:
 	upgradeButtonSound.play()
+
+func playRebirthThresholdSound() -> void:
+	rebirthThresholdSound.play()
+
+func playRebirthSound() -> void:
+	rebirthSound.play()
 
 
 func updateSoundVolumeVariables(busName: String, soundValue: float) -> void:

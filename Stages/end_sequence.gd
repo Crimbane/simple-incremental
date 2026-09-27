@@ -177,6 +177,7 @@ func startEndSequence() -> void:
 	tweenLeft.parallel().tween_property(leftPanelObject, "scale", Vector2(0.0, 0.0), distanceLeft + randf_range(-1.0, 0.0))
 	
 	await tweenBigShape.finished
+	SoundManager.playCreditsMusic()
 	bigShape.get_child(1).get_child(0).visible = false
 	blackStateStars.visible = false
 	var fadeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
