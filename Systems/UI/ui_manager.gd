@@ -14,6 +14,7 @@ const GRID_SLOT_BUTTON: PackedScene = preload("uid://dvinbarfymwhy")
 @export var upgradeSynergyMultiButton: Button
 
 @onready var shaderMaterial = rebirthTransition.material
+@onready var blackStateStars: Node2D = %ParallaxStars
 
 var ghostStorage: Array[Dictionary]
 
@@ -37,6 +38,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if blackStateStars.visible:
+		blackStateStars.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2)
+	
 	if shapeHeldByCursor:
 		shapeHeldByCursor.global_position = get_global_mouse_position()
 	elif eraserHeldByCursor:
@@ -95,6 +99,8 @@ func updateColor() -> void:
 		var topPanelStyle: StyleBoxFlat = topPanel.get_theme_stylebox("panel")
 		var leftPanelStyle: StyleBoxFlat = leftPanel.get_theme_stylebox("panel")
 		var shapeZonePanelStyle: StyleBoxFlat = shapeZonePanel.get_theme_stylebox("panel")
+		
+		blackStateStars.visible = true
 		
 		topPanelStyle.bg_color = Color(0.307, 0.065, 0.238)
 		topPanelStyle.border_color = Color(0.286, 0.506, 0.612)

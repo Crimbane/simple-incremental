@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy8j6xk1ymfk" path="res://Stages/end_sequence.gd" id="1_0ry8p"]
 [ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="1_uotvr"]
+[ext_resource type="Texture2D" uid="uid://2iaai1fnjd43" path="res://Systems/UI/Escape Menu/Art/Stars Background.png" id="2_8v87f"]
 [ext_resource type="Texture2D" uid="uid://yuc7ontcbs7y" path="res://Systems/UI/Trashcan/Art/Trashcan closed pink.png" id="3_gnex7"]
 [ext_resource type="Texture2D" uid="uid://bymt4ep1i6rmm" path="res://Systems/UI/Art/Eraser.png" id="4_law1d"]
 [ext_resource type="Texture2D" uid="uid://dtndmfviqeq4d" path="res://Systems/UI/Art/Button background.png" id="5_5a71w"]
@@ -197,6 +198,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
+
+[node name="ParallaxStars" type="Node2D" parent="." unique_id=346461067]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(367, 227)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxStars" unique_id=1746552281]
+self_modulate = Color(1, 1, 1, 0.78431374)
+texture_filter = 2
+texture = ExtResource("2_8v87f")
 
 [node name="TopPanel" type="Node2D" parent="." unique_id=1231734998]
 position = Vector2(320, 47)

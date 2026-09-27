@@ -12,3 +12,4 @@ func _ready() -> void:
 func closeSettings() -> void:
 	settingsMenu.visible = false
 	mainEscapeMenu.visible = true
+	SoundManager.playMainMenuButtonSound()

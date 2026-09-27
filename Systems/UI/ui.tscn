@@ -25,9 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://73p4w1wlcqyb" path="res://Systems/UI/Art/Slider Handle.png" id="21_kdiue"]
 [ext_resource type="Script" uid="uid://c4vwhyig7x3i6" path="res://Systems/UI/Escape Menu/escape_menu.gd" id="21_wyr30"]
 [ext_resource type="Texture2D" uid="uid://ciwi0mt6n7tvn" path="res://Systems/UI/Art/Slider Handle Hover.png" id="22_475vg"]
+[ext_resource type="Texture2D" uid="uid://2iaai1fnjd43" path="res://Systems/UI/Escape Menu/Art/Stars Background.png" id="22_fi2f8"]
 [ext_resource type="Script" uid="uid://bav0rtlmc4pcb" path="res://Systems/UI/Escape Menu/return_to_main_menu_button.gd" id="22_rq576"]
+[ext_resource type="Texture2D" uid="uid://bithnw6q2wftl" path="res://Systems/UI/Escape Menu/Art/Stars Middleground.png" id="23_838px"]
 [ext_resource type="Script" uid="uid://b8m3a5073wtr6" path="res://Systems/UI/Escape Menu/quit_game_button.gd" id="23_rq576"]
 [ext_resource type="Script" uid="uid://c62ucikcrbcwv" path="res://Stages/Main Menu/volume_slider.gd" id="23_wyr30"]
+[ext_resource type="Texture2D" uid="uid://bryho6avgaat8" path="res://Systems/UI/Escape Menu/Art/Stars Foreground.png" id="24_4176j"]
 [ext_resource type="Script" uid="uid://c2qg5arln8cwk" path="res://Stages/Main Menu/notation_button.gd" id="24_rq576"]
 [ext_resource type="Texture2D" uid="uid://duvtom7e3vn4q" path="res://Systems/UI/Art/Dropdown Menu Arrow.png" id="25_85hk8"]
 [ext_resource type="Script" uid="uid://dltxb1wh6tq7y" path="res://Systems/UI/Escape Menu/back_button.gd" id="26_fi2f8"]
@@ -362,6 +365,8 @@ shader = ExtResource("21_85hk8")
 shader_parameter/blur_amount = 2.000000095
 shader_parameter/color_tint = Color(0, 0, 0, 1)
 shader_parameter/color_alpha = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qepfu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t3r2"]
 content_margin_left = 16.0
@@ -1169,6 +1174,17 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fjc7g")
 
+[node name="ParallaxStars" type="Node2D" parent="UI Manager/Shapes/ShapeZonePanel" unique_id=229782453]
+unique_name_in_owner = true
+visible = false
+position = Vector2(273, 133)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Manager/Shapes/ShapeZonePanel/ParallaxStars" unique_id=147122798]
+self_modulate = Color(1, 1, 1, 0.78431374)
+texture_filter = 2
+texture = ExtResource("22_fi2f8")
+
 [node name="HSplit" type="HBoxContainer" parent="UI Manager/Shapes/ShapeZonePanel" unique_id=1892669714]
 layout_mode = 1
 anchors_preset = 15
@@ -1215,7 +1231,7 @@ size_flags_vertical = 4
 [node name="Escape Menu" type="Control" parent="UI Manager" unique_id=1580567347 node_paths=PackedStringArray("resumeButton")]
 visible = false
 top_level = true
-z_index = 10
+z_index = 500
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1223,7 +1239,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("21_wyr30")
-resumeButton = NodePath("MainEscapeMenu/Buttons/Resume")
+resumeButton = NodePath("EscapeMenuParallax/MainEscapeMenu/Buttons/Resume")
+
+[node name="StarsBackground" type="Node2D" parent="UI Manager/Escape Menu" unique_id=781562856]
+unique_name_in_owner = true
+position = Vector2(320, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Manager/Escape Menu/StarsBackground" unique_id=1252578516]
+texture = ExtResource("22_fi2f8")
 
 [node name="BlurBackground" type="Panel" parent="UI Manager/Escape Menu" unique_id=698635439]
 material = SubResource("ShaderMaterial_fjc7g")
@@ -1233,30 +1256,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qepfu")
 
-[node name="MainEscapeMenu" type="PanelContainer" parent="UI Manager/Escape Menu" unique_id=1881402777]
+[node name="StarsMiddleground" type="Node2D" parent="UI Manager/Escape Menu" unique_id=509898707]
+unique_name_in_owner = true
+position = Vector2(320, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Manager/Escape Menu/StarsMiddleground" unique_id=1653871126]
+texture_filter = 2
+texture = ExtResource("23_838px")
+
+[node name="StarsForeground" type="Node2D" parent="UI Manager/Escape Menu" unique_id=55156535]
+unique_name_in_owner = true
+position = Vector2(320, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI Manager/Escape Menu/StarsForeground" unique_id=31840858]
+texture = ExtResource("24_4176j")
+
+[node name="EscapeMenuParallax" type="Node2D" parent="UI Manager/Escape Menu" unique_id=1247901718]
+unique_name_in_owner = true
+position = Vector2(320, 180)
+
+[node name="MainEscapeMenu" type="PanelContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax" unique_id=1881402777]
 unique_name_in_owner = true
 custom_maximum_size = Vector2(158, 192)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -79.0
-offset_top = -75.0
+offset_top = -96.0
 offset_right = 79.0
-offset_bottom = 75.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2t3r2")
 
-[node name="Buttons" type="VBoxContainer" parent="UI Manager/Escape Menu/MainEscapeMenu" unique_id=810353290]
+[node name="Buttons" type="VBoxContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax/MainEscapeMenu" unique_id=810353290]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Resume" type="Button" parent="UI Manager/Escape Menu/MainEscapeMenu/Buttons" unique_id=412516836]
+[node name="Resume" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/MainEscapeMenu/Buttons" unique_id=412516836]
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
 layout_mode = 2
@@ -1269,7 +1312,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8uawr")
 text = "Resume
 "
 
-[node name="Settings" type="Button" parent="UI Manager/Escape Menu/MainEscapeMenu/Buttons" unique_id=4852338]
+[node name="Settings" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/MainEscapeMenu/Buttons" unique_id=4852338]
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
 layout_mode = 2
@@ -1282,7 +1325,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8uawr")
 text = "Settings"
 script = ExtResource("21_475vg")
 
-[node name="MainMenu" type="Button" parent="UI Manager/Escape Menu/MainEscapeMenu/Buttons" unique_id=315672470]
+[node name="MainMenu" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/MainEscapeMenu/Buttons" unique_id=315672470]
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
 layout_mode = 2
@@ -1295,7 +1338,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8uawr")
 text = "Main Menu"
 script = ExtResource("22_rq576")
 
-[node name="QuitGame" type="Button" parent="UI Manager/Escape Menu/MainEscapeMenu/Buttons" unique_id=2023059533]
+[node name="QuitGame" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/MainEscapeMenu/Buttons" unique_id=2023059533]
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
 layout_mode = 2
@@ -1308,12 +1351,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8uawr")
 text = "Quit Game"
 script = ExtResource("23_rq576")
 
-[node name="SettingsMenu" type="PanelContainer" parent="UI Manager/Escape Menu" unique_id=203068048]
+[node name="SettingsMenu" type="PanelContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax" unique_id=203068048]
 unique_name_in_owner = true
 visible = false
 custom_maximum_size = Vector2(-1, 312)
 propagate_maximum_size = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1327,11 +1369,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_838px")
 
-[node name="Buttons" type="VBoxContainer" parent="UI Manager/Escape Menu/SettingsMenu" unique_id=1108838716]
+[node name="Buttons" type="VBoxContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu" unique_id=1108838716]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="VolumeLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=610400436]
+[node name="VolumeLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=610400436]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1342,7 +1384,7 @@ theme_override_font_sizes/font_size = 12
 text = "VOLUME"
 horizontal_alignment = 1
 
-[node name="MasterLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=912431752]
+[node name="MasterLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=912431752]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1353,7 +1395,7 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 10
 text = "Master"
 
-[node name="MasterSlider" type="HSlider" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1344031424]
+[node name="MasterSlider" type="HSlider" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1344031424]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("21_kdiue")
@@ -1366,7 +1408,7 @@ step = 0.001
 script = ExtResource("23_wyr30")
 busName = "Master"
 
-[node name="MusicLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=702402019]
+[node name="MusicLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=702402019]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1377,7 +1419,7 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 10
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1744039044]
+[node name="MusicSlider" type="HSlider" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1744039044]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("21_kdiue")
@@ -1390,7 +1432,7 @@ step = 0.001
 script = ExtResource("23_wyr30")
 busName = "Music"
 
-[node name="SFXLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=628588445]
+[node name="SFXLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=628588445]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1401,7 +1443,7 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 10
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=429364736]
+[node name="SFXSlider" type="HSlider" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=429364736]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("21_kdiue")
@@ -1414,11 +1456,11 @@ step = 0.001
 script = ExtResource("23_wyr30")
 busName = "SFX"
 
-[node name="Spacer1" type="Panel" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1232532579]
+[node name="Spacer1" type="Panel" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1232532579]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="MiscLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=432125358]
+[node name="MiscLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=432125358]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1429,7 +1471,7 @@ theme_override_font_sizes/font_size = 12
 text = "MISC."
 horizontal_alignment = 1
 
-[node name="Notation Style" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1263597330]
+[node name="Notation Style" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1263597330]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1440,12 +1482,12 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 10
 text = "Notation Style"
 
-[node name="Spacer2" type="Panel" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1641032845]
+[node name="Spacer2" type="Panel" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1641032845]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="NotationButton" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=972468884]
+[node name="NotationButton" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=972468884]
 custom_minimum_size = Vector2(126, 22)
 custom_maximum_size = Vector2(126, 22)
 layout_mode = 2
@@ -1454,7 +1496,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gbfnm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i3klx")
 script = ExtResource("24_rq576")
 
-[node name="NotationLabel" type="Label" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationButton" unique_id=1869619665]
+[node name="NotationLabel" type="Label" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationButton" unique_id=1869619665]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1469,7 +1511,7 @@ theme_override_fonts/font = ExtResource("2_70d3y")
 theme_override_font_sizes/font_size = 8
 text = "None"
 
-[node name="DownArrowIcon" type="TextureRect" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationButton" unique_id=19700829]
+[node name="DownArrowIcon" type="TextureRect" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationButton" unique_id=19700829]
 custom_minimum_size = Vector2(16, 16)
 custom_maximum_size = Vector2(16, 16)
 layout_mode = 1
@@ -1487,13 +1529,13 @@ grow_vertical = 2
 offset_transform_position = Vector2(2, 3)
 texture = ExtResource("25_85hk8")
 
-[node name="Spacer3" type="Panel" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1081697383]
+[node name="Spacer3" type="Panel" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1081697383]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Back" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=1707337894]
+[node name="Back" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=1707337894]
 custom_minimum_size = Vector2(126, 34)
 custom_maximum_size = Vector2(126, 34)
 layout_mode = 2
@@ -1506,7 +1548,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5yh8p")
 text = "Back"
 script = ExtResource("26_fi2f8")
 
-[node name="NotationDropdown" type="PanelContainer" parent="UI Manager/Escape Menu/SettingsMenu/Buttons" unique_id=298702293]
+[node name="NotationDropdown" type="PanelContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons" unique_id=298702293]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -1518,13 +1560,13 @@ offset_transform_position = Vector2(0, -78)
 offset_transform_visual_only = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdjan")
 
-[node name="Options" type="VBoxContainer" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationDropdown" unique_id=1582022897]
+[node name="Options" type="VBoxContainer" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationDropdown" unique_id=1582022897]
 layout_mode = 2
 mouse_filter = 0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="None" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=935045057]
+[node name="None" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=935045057]
 custom_minimum_size = Vector2(122, 18)
 custom_maximum_size = Vector2(122, 18)
 layout_mode = 2
@@ -1537,7 +1579,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_40clu")
 text = "None"
 script = ExtResource("27_ipuq1")
 
-[node name="Abbreviation" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=1208495662]
+[node name="Abbreviation" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=1208495662]
 custom_minimum_size = Vector2(122, 18)
 custom_maximum_size = Vector2(122, 18)
 layout_mode = 2
@@ -1551,7 +1593,7 @@ text = "Abbreviation"
 script = ExtResource("27_ipuq1")
 notationStyle = 1
 
-[node name="Scientific" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=1701729943]
+[node name="Scientific" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=1701729943]
 custom_minimum_size = Vector2(122, 18)
 custom_maximum_size = Vector2(122, 18)
 layout_mode = 2
@@ -1565,7 +1607,7 @@ text = "Scientific"
 script = ExtResource("27_ipuq1")
 notationStyle = 2
 
-[node name="Engineering" type="Button" parent="UI Manager/Escape Menu/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=2057500290]
+[node name="Engineering" type="Button" parent="UI Manager/Escape Menu/EscapeMenuParallax/SettingsMenu/Buttons/NotationDropdown/Options" unique_id=2057500290]
 custom_minimum_size = Vector2(122, 18)
 custom_maximum_size = Vector2(122, 18)
 layout_mode = 2

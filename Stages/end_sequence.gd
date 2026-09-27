@@ -12,6 +12,8 @@ extends Node2D
 @onready var gridObject: Node2D = $Grid
 @onready var bigShape: Node2D = $Bishape
 
+@onready var blackStateStars: Node2D = %ParallaxStars
+
 @onready var topPanel: Control = topPanelObject.get_child(0)
 @onready var leftPanel: Control = leftPanelObject.get_child(0)
 @onready var moneyLabel: Control = moneyLabelObject.get_child(0)
@@ -33,7 +35,8 @@ func _ready() -> void:
 	SoundManager.playBlackHoleSound()
 
 func _process(_delta: float) -> void:
-	pass
+	blackStateStars.position = -get_local_mouse_position() * 0.04 + (get_viewport_rect().size / 2) + Vector2(94.0, 94.0)
+	
 	money -= 10**15
 	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(money)
 
@@ -175,6 +178,7 @@ func startEndSequence() -> void:
 	
 	await tweenBigShape.finished
 	bigShape.get_child(1).get_child(0).visible = false
+	blackStateStars.visible = false
 	var fadeTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	fadeTween.tween_property(bigShape, "modulate:a", 0.0, 3)
 	var creditTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
