@@ -1,6 +1,8 @@
 extends Node
 
 
+const GAME: String = "res://Stages/main.tscn"
+const MAIN_MENU: String = "res://Stages/Main Menu/main_menu.tscn"
 const END_SEQUENCE: String = "res://Stages/end_sequence.tscn"
 
 const BASE_GRID_SIZE: int = 2

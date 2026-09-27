@@ -1,8 +1,6 @@
 extends Control
 
 
-@export_file("*.tscn") var gamePath: String
-
 @onready var parallaxLayer1 = %ParallaxLayer1
 @onready var parallaxLayer2 = %ParallaxLayer2
 @onready var parallaxLayer3 = %ParallaxLayer3
@@ -66,7 +64,7 @@ func continueGame() -> void:
 func newGame() -> void:
 	# If save exists, ask for confirmation.
 	# Overwrite save file with new game.
-	get_tree().change_scene_to_file(gamePath)
+	get_tree().change_scene_to_file(GameManager.GAME)
 	SoundManager.playMainMenuButtonSound()
 	SoundManager.playRandomTrack()
 

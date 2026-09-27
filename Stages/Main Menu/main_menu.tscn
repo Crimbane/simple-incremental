@@ -198,7 +198,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_r7bji")
-gamePath = "uid://chn1n630kw24g"
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Control" parent="Control" unique_id=1869326813]

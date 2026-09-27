@@ -1,7 +1,5 @@
 extends Node2D
 
-const MAIN_MENU: String = "res://Stages/Main Menu/main_menu.tscn"
-
 @onready var background: Panel = $Background/BackgroundColor
 
 @onready var topPanelObject: Node2D = $TopPanel
@@ -189,4 +187,4 @@ func startEndSequence() -> void:
 	toPurpleTween.parallel().tween_property(credits, "modulate:a", 0.0, 4)
 	
 	await get_tree().create_timer(5).timeout
-	get_tree().change_scene_to_file(MAIN_MENU)
+	get_tree().change_scene_to_file(GameManager.MAIN_MENU)
