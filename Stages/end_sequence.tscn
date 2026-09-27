@@ -56,6 +56,10 @@ shader_parameter/blur_strength = 1.2
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 16.709, 18.892, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v87f"]
+shadow_color = Color(1, 1, 1, 0.39215687)
+shadow_size = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbd47"]
 shadow_color = Color(0, 0, 0, 0.39215687)
 shadow_size = 2
@@ -302,7 +306,7 @@ position = Vector2(4, 98)
 position = Vector2(20, 20)
 
 [node name="Background" type="Sprite2D" parent="Upgrades/Upgrade1" unique_id=1169126850]
-self_modulate = Color(0.663, 0.663, 1, 1)
+self_modulate = Color(0.1, 0.1, 0.1, 1)
 texture = ExtResource("5_5a71w")
 
 [node name="Icon" type="Sprite2D" parent="Upgrades/Upgrade1/Background" unique_id=975202140]
@@ -326,7 +330,7 @@ offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fbd47")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v87f")
 
 [node name="Upgrade2" type="Node2D" parent="Upgrades" unique_id=2036624054]
 position = Vector2(64, 20)

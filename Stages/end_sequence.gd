@@ -44,7 +44,8 @@ func _process(_delta: float) -> void:
 	if cameraShake:
 		camera.offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	
-	money -= 10**15
+	if money > 10000:
+		money -= money / 1000.0
 	moneyLabel.text = "Vertices:\n" + GameManager.formatMoney(money)
 
 
