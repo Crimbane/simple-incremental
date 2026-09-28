@@ -33,6 +33,7 @@ extends Node
 @export var gameMusic1: AudioStream
 @export var gameMusic2: AudioStream
 @export var gameMusic3: AudioStream
+@export var blackStateMusic: AudioStream
 @export var creditsMusic: AudioStream
 
 var gameMusicTracks: Array[AudioStream] = []
@@ -64,6 +65,10 @@ func playMenuMusic():
 	musicPlayer.stream = menuMusic
 	musicPlayer.play()
 
+func playBlackStateMusic():
+	musicPlayer.stream = blackStateMusic
+	musicPlayer.play()
+
 func playGameMusic():
 	musicPlayer.pitch_scale = 1.0
 	#if musicPlayer.stream == gameMusic or musicPlayer.stream == gameMusic2 or musicPlayer.stream == gameMusic3:
@@ -83,6 +88,11 @@ func onGameMusicFinished() -> void:
 	if musicPlayer.stream == menuMusic:
 		musicPlayer.play()
 		print("Playing Menu Music")
+		return
+	
+	if musicPlayer.stream == blackStateMusic:
+		musicPlayer.play()
+		return
 	
 	playRandomTrack()
 

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://betkse1w4dcvg" path="res://Assets/Audio/Music/Lo-Fi Melow-Colli Main.wav" id="4_sorwi"]
 [ext_resource type="AudioStream" uid="uid://i7mm00bum76m" path="res://Assets/Audio/Music/Lo-Fi Wicker Main.wav" id="5_oq88w"]
 [ext_resource type="AudioStream" uid="uid://ckm156yq8xkh" path="res://Assets/Audio/Music/Credits - Synthwave Spacious Odyssey Cut 30.wav" id="6_2t5b1"]
+[ext_resource type="AudioStream" uid="uid://c3rg42onybpnx" path="res://Assets/Audio/Music/Black State - Ambient Vol5 Underglow Main.wav" id="6_4nsr5"]
 [ext_resource type="AudioStream" uid="uid://2xujcth5bxp7" path="res://Assets/Audio/SFX/End Sequence/Pixel Wind Close Loop.wav" id="7_tq2el"]
 [ext_resource type="AudioStream" uid="uid://c1dp0fov53n1a" path="res://Assets/Audio/SFX/Eraser - 16bitBoxing 001.wav" id="8_70pi0"]
 [ext_resource type="AudioStream" uid="uid://chd6e0xrale57" path="res://Assets/Audio/SFX/Eraser Pickup - Paintbrush Canvas Impact.wav" id="9_gtfnx"]
@@ -61,6 +62,7 @@ menuMusic = ExtResource("2_xng1w")
 gameMusic1 = ExtResource("5_oq88w")
 gameMusic2 = ExtResource("3_5mqmg")
 gameMusic3 = ExtResource("4_sorwi")
+blackStateMusic = ExtResource("6_4nsr5")
 creditsMusic = ExtResource("6_2t5b1")
 
 [node name="Music Player" type="AudioStreamPlayer" parent="." unique_id=421528191]

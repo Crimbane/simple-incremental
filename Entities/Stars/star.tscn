@@ -118,7 +118,7 @@ starButton = NodePath("Button")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1214188490]
 z_index = 10
 sprite_frames = SubResource("SpriteFrames_cf6r6")
-animation = &"heptagon"
+animation = &"dot"
 
 [node name="DropShadow" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=347636342]
 show_behind_parent = true

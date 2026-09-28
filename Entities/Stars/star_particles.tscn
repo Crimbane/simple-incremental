@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cyj20iw1ny8nn"]
+
+[sub_resource type="Gradient" id="Gradient_bmm43"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="StarParticles" type="CPUParticles2D" unique_id=650247280]
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 70.0
+color_ramp = SubResource("Gradient_bmm43")

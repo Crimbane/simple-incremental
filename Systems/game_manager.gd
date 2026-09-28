@@ -312,6 +312,8 @@ func rebirth() -> void:
 	
 	UIManager.playRebirthTransition(StateInfo[currentState].ColorRGB)
 	saveGame()
+	
+	SoundManager.playBlackStateMusic()
 
 
 func upgradeBigShape() -> void:

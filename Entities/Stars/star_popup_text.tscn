@@ -5,5 +5,5 @@
 
 [node name="StarPopupText" type="Label" unique_id=1148554685]
 theme_override_fonts/font = ExtResource("1_xh1jg")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 script = ExtResource("1_fdt0m")
