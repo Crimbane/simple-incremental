@@ -11,3 +11,4 @@ func _ready() -> void:
 func selectNotation() -> void:
 	GameManager.notationStyle = notationStyle
 	SoundManager.playMenuButtonClickSound()
+	GameManager.saveSettings()

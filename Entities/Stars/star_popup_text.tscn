@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b50vixnhv0wr0"]
+
+[ext_resource type="Script" uid="uid://d25aawbxhijw8" path="res://Entities/Stars/star_popup_text.gd" id="1_fdt0m"]
+[ext_resource type="FontFile" uid="uid://blru27aif36tr" path="res://Assets/Fonts/Pixel_Promise.ttf" id="1_xh1jg"]
+
+[node name="StarPopupText" type="Label" unique_id=1148554685]
+theme_override_fonts/font = ExtResource("1_xh1jg")
+theme_override_font_sizes/font_size = 12
+script = ExtResource("1_fdt0m")

@@ -16,6 +16,7 @@ extends Node
 @export var upgradeButtonSound: AudioStreamPlayer2D
 @export var rebirthThresholdSound: AudioStreamPlayer2D
 @export var rebirthSound: AudioStreamPlayer2D
+@export var starClickSound: AudioStreamPlayer2D
 
 @export var endSequenceStart1: AudioStreamPlayer2D
 @export var endSequenceStart2: AudioStreamPlayer2D
@@ -140,6 +141,8 @@ func playRebirthThresholdSound() -> void:
 func playRebirthSound() -> void:
 	rebirthSound.play()
 
+func playStarClickSound() -> void:
+	starClickSound.play()
 
 
 func playEndSequenceStart1() -> void:

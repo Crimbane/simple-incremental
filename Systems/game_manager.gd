@@ -204,9 +204,11 @@ var upgraded = false
 var rebirthThresholdReached = false
 
 const SAVE_PATH = "user://savegame.json"
+const SETTINGS_PATH = "user://settings.json"
 
 func _ready() -> void:
 	loadSaveFile()
+	loadSettingsFile()
 	starMultiplierTimer.timeout.connect(onStarMultiplierTimerTimeout)
 
 func _process(delta: float) -> void:
@@ -264,9 +266,10 @@ func getShapeSynergyMulti(shape: Shape.ShapeSprite) -> float:
 	else:
 		return 1.0
 
-func starMoneyGift(number: float) -> void:
+func starMoneyGift(number: float) -> int:
 	var moneyGift = incrementAmount * number
 	money += int(moneyGift)
+	return int(moneyGift)
 
 func starMultiplierGift() -> float:
 	if starBuffActive == true:
@@ -673,6 +676,36 @@ func loadSaveFile() -> void:
 			SoundManager.musicVolume = saveData.get("musicVolume", 1.0)
 			SoundManager.sfxVolume = saveData.get("sfxVolume", 1.0)
 			notationStyle = saveData.get("notationStyle", NotationStyle.ABBREVIATION)
+
+func saveSettings() -> void:
+	var settingsData = {
+		"masterVolume": SoundManager.masterVolume,
+		"musicVolume": SoundManager.musicVolume,
+		"sfxVolume": SoundManager.sfxVolume,
+		"notationStyle": notationStyle
+	}
+	
+	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
+	
+	if file:
+		file.store_string(JSON.stringify(settingsData))
+		file.close()
+
+func loadSettingsFile() -> void:
+	if not FileAccess.file_exists(SETTINGS_PATH):
+		return
+	
+	var file = FileAccess.open(SETTINGS_PATH, FileAccess.READ)
+	
+	if file:
+		var settingsData = JSON.parse_string(file.get_as_text())
+		file.close()
+		
+		if settingsData is Dictionary:
+			SoundManager.masterVolume = settingsData.get("masterVolume", 1.0)
+			SoundManager.musicVolume = settingsData.get("musicVolume", 1.0)
+			SoundManager.sfxVolume = settingsData.get("sfxVolume", 1.0)
+			notationStyle = settingsData.get("notationStyle", NotationStyle.ABBREVIATION)
 
 func resetGame() -> void:
 	if FileAccess.file_exists(SAVE_PATH):

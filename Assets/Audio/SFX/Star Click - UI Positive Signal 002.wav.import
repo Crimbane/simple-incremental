@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://be50v6015uiht"
+path="res://.godot/imported/Star Click - UI Positive Signal 002.wav-c42ab8f42ee9cc2972473c24f3cdf9ac.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Star Click - UI Positive Signal 002.wav"
+dest_files=["res://.godot/imported/Star Click - UI Positive Signal 002.wav-c42ab8f42ee9cc2972473c24f3cdf9ac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

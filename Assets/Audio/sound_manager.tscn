@@ -24,13 +24,14 @@
 [ext_resource type="AudioStream" uid="uid://dkfo72qghw34j" path="res://Assets/Audio/SFX/Trashcan Nothing - Safe Lock.wav" id="16_ma1uu"]
 [ext_resource type="AudioStream" uid="uid://elfc6j2it8v3" path="res://Assets/Audio/SFX/Rebirth v3 - Bless 001.wav" id="18_0s17l"]
 [ext_resource type="AudioStream" uid="uid://bas2odalptfg3" path="res://Assets/Audio/SFX/End Sequence/Earthquake Long A.wav" id="23_5cwae"]
+[ext_resource type="AudioStream" uid="uid://be50v6015uiht" path="res://Assets/Audio/SFX/Star Click - UI Positive Signal 002.wav" id="23_v30wq"]
 [ext_resource type="AudioStream" uid="uid://c272idvivgqlg" path="res://Assets/Audio/SFX/End Sequence/Giant Boulder Slide Loop B.wav" id="24_xng1w"]
 [ext_resource type="AudioStream" uid="uid://ci7tcmc3exxih" path="res://Assets/Audio/SFX/End Sequence/Landslide Stomp D.wav" id="25_v30wq"]
 [ext_resource type="AudioStream" uid="uid://ckuvc2saq0bdb" path="res://Assets/Audio/SFX/End Sequence/Gravel Pour E.wav" id="27_4nsr5"]
 [ext_resource type="AudioStream" uid="uid://bvgnbiykvmnqy" path="res://Assets/Audio/SFX/End Sequence/Landslide Long B.wav" id="28_4qyc0"]
 [ext_resource type="AudioStream" uid="uid://crs5df7d2o2k3" path="res://Assets/Audio/SFX/End Sequence/Sand Shake A.wav" id="29_3ypgy"]
 
-[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("eraserSound", "eraserPickupSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "shapeButtonSound", "shapeSound", "buyShapeSound", "placeGhostSound", "maxUpgradeSound", "trashcanThrowSound", "trashcanDeleteAllSound", "trashcanNothingSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound", "endSequenceStart1", "endSequenceStart2", "endSequenceStart3", "endSequenceMiddle1", "endSequenceMiddle2", "endSequenceMiddle3", "endSequenceEnd")]
+[node name="Sound Manager" type="Node" unique_id=704143368 node_paths=PackedStringArray("eraserSound", "eraserPickupSound", "menuButtonClick", "menuButtonHover", "noMoneySound", "shapeButtonSound", "shapeSound", "buyShapeSound", "placeGhostSound", "maxUpgradeSound", "trashcanThrowSound", "trashcanDeleteAllSound", "trashcanNothingSound", "upgradeButtonSound", "rebirthThresholdSound", "rebirthSound", "starClickSound", "endSequenceStart1", "endSequenceStart2", "endSequenceStart3", "endSequenceMiddle1", "endSequenceMiddle2", "endSequenceMiddle3", "endSequenceEnd")]
 script = ExtResource("1_qfo6o")
 eraserSound = NodePath("Eraser")
 eraserPickupSound = NodePath("Eraser Pickup")
@@ -48,6 +49,7 @@ trashcanNothingSound = NodePath("Trashcan Nothing")
 upgradeButtonSound = NodePath("Upgrade Button")
 rebirthThresholdSound = NodePath("Rebirth Threshold Reached")
 rebirthSound = NodePath("Rebirth")
+starClickSound = NodePath("Star Click")
 endSequenceStart1 = NodePath("End Sequence/Start")
 endSequenceStart2 = NodePath("End Sequence/Start2")
 endSequenceStart3 = NodePath("End Sequence/Start3")
@@ -136,6 +138,9 @@ bus = &"SFX"
 [node name="Rebirth" type="AudioStreamPlayer2D" parent="." unique_id=1983146042]
 stream = ExtResource("18_0s17l")
 bus = &"SFX"
+
+[node name="Star Click" type="AudioStreamPlayer2D" parent="." unique_id=354553080]
+stream = ExtResource("23_v30wq")
 
 [node name="End Sequence" type="Node" parent="." unique_id=892214997]
 

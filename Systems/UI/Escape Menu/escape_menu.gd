@@ -33,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		notationDropdown.visible = false
 	elif event.is_action_pressed("Escape") and visible:
 		visible = false
+		GameManager.saveSettings()
 	
 	if event.is_action_pressed("Left Click") and notationDropdown.visible:
 		notationDropdown.visible = false
@@ -41,3 +42,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func closeMenu() -> void:
 	visible = false
 	SoundManager.playMenuButtonClickSound()
+	GameManager.saveSettings()

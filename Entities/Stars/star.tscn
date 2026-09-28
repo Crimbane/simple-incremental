@@ -109,13 +109,11 @@ shader_parameter/blur_strength = 2.000000095
 shader_parameter/blur_alpha = 9.0
 shader_parameter/blur_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyjvv"]
-size = Vector2(26, 26)
-
-[node name="Star" type="Node2D" unique_id=1750988255]
+[node name="Star" type="Node2D" unique_id=1750988255 node_paths=PackedStringArray("starButton")]
 top_level = true
 z_index = 500
 script = ExtResource("1_lwat2")
+starButton = NodePath("Button")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1214188490]
 z_index = 10
@@ -129,7 +127,9 @@ material = SubResource("ShaderMaterial_6dbh6")
 sprite_frames = SubResource("SpriteFrames_cf6r6")
 animation = &"dot"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1554247772]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1587560391]
-shape = SubResource("RectangleShape2D_fyjvv")
+[node name="Button" type="Button" parent="." unique_id=1028271859]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+flat = true
