@@ -290,6 +290,7 @@ func rebirth() -> void:
 	if currentState == State.Black:
 		return
 	if money < StateInfo[currentState].NextRebirthCost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	
@@ -325,6 +326,7 @@ func upgradeBigShape() -> void:
 	var cost: int = ShapeInfo[currentBigShapeType].NextBigShapeCost
 	
 	if money < cost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	
@@ -356,6 +358,7 @@ func upgradeMoneyInterval() -> void:
 		return
 	
 	if money < cost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	removeMoney(cost)
@@ -384,6 +387,7 @@ func upgradeGrid() -> void:
 		return
 	
 	if money < cost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	removeMoney(cost)
@@ -413,6 +417,7 @@ func upgradeSynergyUnlock() -> void:
 		return
 	
 	if money < cost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	removeMoney(cost)
@@ -438,6 +443,7 @@ func upgradeSynergyMultiplier() -> void:
 		return
 	
 	if money < cost:
+		SoundManager.playNoMoneySound()
 		print("Not enough money")
 		return
 	removeMoney(cost)

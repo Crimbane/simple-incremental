@@ -86,12 +86,14 @@ func continueGame() -> void:
 	get_tree().change_scene_to_file(GameManager.GAME)
 
 func newGame() -> void:
+	SoundManager.playMenuButtonClickSound()
 	if FileAccess.file_exists(GameManager.SAVE_PATH):
 		confirmationPanel.show()
 		return
 	startNewGame()
 
 func hideConfirmation() -> void:
+	SoundManager.playMenuButtonClickSound()
 	confirmationPanel.hide()
 
 func startNewGame() -> void:

@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Right Click") and GameManager.UIManager.eraserHeldByCursor:
+		SoundManager.playEraserSound()
 		GameManager.UIManager.eraserHeldByCursor.queue_free()
 		visible = true
 
