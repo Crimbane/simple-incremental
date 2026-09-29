@@ -313,7 +313,9 @@ func rebirth() -> void:
 	UIManager.playRebirthTransition(StateInfo[currentState].ColorRGB)
 	saveGame()
 	
-	SoundManager.playBlackStateMusic()
+	if currentState == State.Black:
+		SoundManager.playBlackStateMusic()
+	
 
 
 func upgradeBigShape() -> void:
