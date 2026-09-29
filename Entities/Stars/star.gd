@@ -51,7 +51,7 @@ func wish() -> Dictionary:
 			var formattedGift = GameManager.formatMoney(moneyGift)
 			return {"text": "+$" + str(formattedGift), "type": "Money"}
 		"Multiplier":
-			GameManager.currentStarMultiplier = randf_range(1.0, 3.0)
+			GameManager.currentStarMultiplier = randf_range(1.2, 3.0)
 			applyRewardAfterDelay()
 			return {"text": "x" + str(snapped(GameManager.currentStarMultiplier, 0.1)), "type": "Multiplier"}
 	return {"text": "", "type": ""}
@@ -96,6 +96,8 @@ func onStarClicked() -> void:
 	SoundManager.playStarClickSound()
 	showPopup(result.text, result.type)
 	spawnParticles()
+	hide()
+	await get_tree().create_timer(1.0).timeout
 	queue_free()
 
 func spawnParticles() -> void:
