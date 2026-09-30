@@ -280,7 +280,8 @@ func starMultiplierGift() -> float:
 func onStarMultiplierTimerTimeout() -> void:
 	starBuffActive = false
 	currentStarMultiplier = 1.0
-	calculateMoneyIncrement()
+	if currentBigShapeType != ShapeType.Circle:
+		calculateMoneyIncrement()
 
 #endregion
 

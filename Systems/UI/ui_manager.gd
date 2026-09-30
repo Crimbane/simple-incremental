@@ -343,7 +343,7 @@ func updateGrid() -> void:
 		return
 	if totalButtonAmountNeeded < currentAmountOfButtons:
 		for button in buttonsInGrid:
-			button.queue_free()
+			button.free()
 		currentAmountOfButtons = 0
 	
 	var amountOfButtonsToAdd = 0
