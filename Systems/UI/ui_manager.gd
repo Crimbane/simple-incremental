@@ -355,11 +355,13 @@ func updateGrid() -> void:
 		return
 	
 	for i in range(amountOfButtonsToAdd):
+		var nameNumber = i + currentAmountOfButtons
 		var newButton: Button = GRID_SLOT_BUTTON.instantiate()
 		gridContainer.add_child(newButton)
 		if GameManager.currentState == GameManager.State.Black:
 			newButton.self_modulate = Color(0.663, 0.663, 1.0)
 		var centerPosition = newButton.size / 2
+		newButton.name = "GridSlotButton" + str(nameNumber)
 		newButton.button_down.connect(_on_grid_button_pressed.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 		newButton.mouse_entered.connect(_on_grid_slot_hovered.bind(newButton, gridContainer.get_children().find(newButton), centerPosition))
 	
