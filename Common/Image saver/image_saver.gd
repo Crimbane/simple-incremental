@@ -1,6 +1,6 @@
 extends Node
 
-# Change SubViewport size to desired image size and place desired image under it
+# Change SubViewport size to image size and place desired image under it
 # Remember to change file name
 
 @onready var viewport = $SubViewport

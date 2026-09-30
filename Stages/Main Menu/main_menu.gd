@@ -22,7 +22,6 @@ extends Control
 @onready var confirmationNo: Button = %No
 
 
-
 func _ready() -> void:
 	SoundManager.playMenuMusic()
 	
@@ -110,6 +109,7 @@ func settings() -> void:
 
 func quitGame() -> void:
 	SoundManager.playMenuButtonClickSound()
+	GameManager.saveSettings()
 	get_tree().quit()
 
 func backToMainMenu() -> void:

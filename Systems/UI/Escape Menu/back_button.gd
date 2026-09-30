@@ -15,3 +15,4 @@ func closeSettings() -> void:
 	settingsMenu.visible = false
 	mainEscapeMenu.visible = true
 	SoundManager.playMenuButtonClickSound()
+	GameManager.saveSettings()

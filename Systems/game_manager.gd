@@ -39,32 +39,32 @@ var StateInfo: Dictionary[State, StateData] = {
 	State.White: StateData.new({
 		ColorRGB = Color(0.9, 0.9, 0.9),
 		ColorMultiplier = 1,
-		NextRebirthCost = 500,
-		NextRebirthAvailabilityThreshold = 400,
+		NextRebirthCost = 2000,
+		NextRebirthAvailabilityThreshold = 1500,
 		MaxBigShapeLevel = 9,
 		HighestUnlockedShapeButton = 0
 	}),
 	State.Red: StateData.new({
 		ColorRGB = Color(0.8, 0.2, 0.2),
 		ColorMultiplier = 8,
-		NextRebirthCost = 25000,
-		NextRebirthAvailabilityThreshold = 2500,
+		NextRebirthCost = 50000,
+		NextRebirthAvailabilityThreshold = 10000,
 		MaxBigShapeLevel = 9,
 		HighestUnlockedShapeButton = 1
 	}),
 	State.Orange: StateData.new({
 		ColorRGB = Color(1.0, 0.5, 0.0),
 		ColorMultiplier = 64,
-		NextRebirthCost = 10000000,
-		NextRebirthAvailabilityThreshold = 1000000,
+		NextRebirthCost = 20000000,
+		NextRebirthAvailabilityThreshold = 2000000,
 		MaxBigShapeLevel = 9,
 		HighestUnlockedShapeButton = 2
 	}),
 	State.Yellow: StateData.new({
 		ColorRGB = Color(1.0, 0.8, 0.0),
 		ColorMultiplier = 512,
-		NextRebirthCost = 500000000,
-		NextRebirthAvailabilityThreshold = 50000000,
+		NextRebirthCost = 1000000000,
+		NextRebirthAvailabilityThreshold = 100000000,
 		MaxBigShapeLevel = 9,
 		HighestUnlockedShapeButton = 3
 	}),
@@ -170,28 +170,28 @@ var UpgradeInfo: Dictionary[UpgradeType, UpgradeData] = {
 		MaxLevel = 10,
 		BaseCost = 250,
 		NextLevelCost = 250,
-		ExponentialCostIncrease = 4.5
+		ExponentialCostIncrease = 6.5
 	}),
 	UpgradeType.Grid: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 6,
 		BaseCost = 1000,
 		NextLevelCost = 1000,
-		ExponentialCostIncrease = 6
+		ExponentialCostIncrease = 8
 	}),
 	UpgradeType.SynergyUnlock: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 1,
-		BaseCost = 25000,
-		NextLevelCost = 25000,
+		BaseCost = 2500000,
+		NextLevelCost = 250000,
 		ExponentialCostIncrease = 1
 	}),
 	UpgradeType.SynergyMulti: UpgradeData.new({
 		CurrentLevel = 0,
 		MaxLevel = 4,
-		BaseCost = 250000,
-		NextLevelCost = 250000,
-		ExponentialCostIncrease = 10
+		BaseCost = 25000000,
+		NextLevelCost = 2500000,
+		ExponentialCostIncrease = 40
 	}),
 }
 #endregion
@@ -501,8 +501,6 @@ func unlockNextShapeButton(shape: int) -> void:
 				button.updateVisibility()
 
 
-
-
 #region Grid
 func addShapeToStorage(slot: int, shape: Node2D, storage: Array[Dictionary] = gridStorage) -> void:
 	if not shape is Eraser:
@@ -614,6 +612,7 @@ func formatMoney(value: int) -> String:
 
 #endregion
 
+#region Saving and Loading
 func saveGame() -> void:
 	var saveData = {
 		"money": money,
@@ -744,3 +743,5 @@ func resetGame() -> void:
 	UpgradeInfo[UpgradeType.SynergyUnlock].NextLevelCost = synergyUnlockBaseCost
 	UpgradeInfo[UpgradeType.SynergyMulti].CurrentLevel = 0
 	UpgradeInfo[UpgradeType.SynergyMulti].NextLevelCost = synergyMultiBaseCost
+
+#endregion

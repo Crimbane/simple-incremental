@@ -56,6 +56,23 @@ func wish() -> Dictionary:
 			return {"text": "x" + str(snapped(GameManager.currentStarMultiplier, 0.1)), "type": "Multiplier"}
 	return {"text": "", "type": ""}
 
+func superWish() -> Dictionary:
+	var giftType: String
+	var giftTypes = ["Money", "Multiplier"]
+	giftType = giftTypes.pick_random()
+	
+	match giftType:
+		"Money":
+			var gift = randi_range(15, 30)
+			var moneyGift = GameManager.starMoneyGift(gift)
+			var formattedGift = GameManager.formatMoney(moneyGift)
+			return {"text": "+$" + str(formattedGift), "type": "Money"}
+		"Multiplier":
+			GameManager.currentStarMultiplier = randf_range(2.0, 3.5)
+			applyRewardAfterDelay()
+			return {"text": "x" + str(snapped(GameManager.currentStarMultiplier, 0.1)), "type": "Multiplier"}
+	return {"text": "", "type": ""}
+
 func applyRewardAfterDelay() -> void:
 	await get_tree().create_timer(1.0).timeout
 	GameManager.starBuffActive = true
@@ -92,7 +109,12 @@ func scaleDown() -> void:
 	scale -= Vector2(0.01, 0.01)
 
 func onStarClicked() -> void:
-	var result = wish()
+	var result
+	if GameManager.currentState == GameManager.State.Black:
+		result = superWish()
+	else:
+		result = wish()
+	
 	SoundManager.playStarClickSound()
 	showPopup(result.text, result.type)
 	spawnParticles()

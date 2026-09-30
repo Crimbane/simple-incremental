@@ -5,10 +5,18 @@ var starScene = preload("uid://b2obby7d7gewo")
 var time: float = 0.0
 var baseSpawnTimer = 30
 var spawnTimer: int = baseSpawnTimer
+var timerOffset: int = 15
+
 
 func _process(delta: float) -> void:
 	time += delta
 	
+	if GameManager.currentState == GameManager.State.Black:
+		baseSpawnTimer = 12
+		timerOffset = 2
+	else:
+		baseSpawnTimer = 30
+		timerOffset = 15
 	if time >= spawnTimer:
 		time = 0
 		createClickableStar()
@@ -36,7 +44,6 @@ func randomValidPosition() -> Vector2:
 	return spawnArea
 
 func randomizeSpawnTimer(timer) -> int:
-	var timerOffset: int = 1
 	var newSpawnTimer = randi_range(timer - timerOffset, timer + timerOffset)
 	
 	return newSpawnTimer
